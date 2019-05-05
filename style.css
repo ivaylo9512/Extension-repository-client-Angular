@@ -3,7 +3,7 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    height: 50px;
+    height: 30px;
     will-change: transform;
     -webkit-transition: -webkit-transform .5s;
     transition: -webkit-transform .5s;
@@ -11,15 +11,13 @@ header {
     transition: transform .5s, -webkit-transform .5s;
     background-color: rgba(0, 0, 0, 0.9);
     overflow: hidden;
+    z-index: 3;
 
 }
 header.hidden {
     -webkit-transform: translateY(-100%);
         -ms-transform: translateY(-100%);
             transform: translateY(-100%);
-}
-body{
-    height:1000px;
 }
 nav {
     float: right;
@@ -108,7 +106,7 @@ span{
     padding-bottom: 100%;
     overflow: hidden;
 }
-.info-box .img-container{
+.info-box .logo-box{
     width: 50%;
     position: absolute;
     top: 50%;
@@ -121,29 +119,87 @@ span{
     width: 100%;
     padding-bottom: 100%;
 }
-.hover-box{
+.hover-circle{
     position: absolute;
     top: 25px;
     left: 25px;
-    width: 10px;
-    height: 10px;
+    width: 250%;
+    height: 250%;
     background-color: black;
-    transition: 0.5s;
+    transition: 1s;
     border-radius: 50%;
     box-shadow: 0 0 0 20px #000000;
+    overflow: hidden;
+}
+.info-box:hover .hover-circle{
+    width: 10px;
+    height: 10px;
 }
 .info-box:hover .hover-box{
-    box-shadow: 0 0 0 500px #000000;
+    width: 500px;
+    height: 500px;
 }
-.circle3{
+.info-box:hover .logo-container{
+    width: 0;
+    height: 0;
+}
+.info-box:hover .info{
+    transition-delay: 1s;
+    opacity: 1;
+}
+.logo-container{
     position: absolute;
-    right: 25px;
-    bottom: 25px;
-    width: 10px;
-    height: 10px;
-    background-color: black;
-    transition: 0.5s;
-    border-radius: 50%;
-    box-shadow: 0 0 0 20px #000000;
+    overflow: hidden;
+    transition: 1s;
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+}
+.info{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    bottom: 0;
+    opacity: 0;
+    transition: 1s;
+    transition-delay: 0s;
+}
+.info p{
+    margin-top: 60px;
+    margin-left: 5px;
+    font-size: 120%;
+    font-style: italic;
+
+}
+.info b{
+    font-weight: bold;
+    font-style: normal;
+
+}
+.second-section {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    visibility: hidden;
+}
+.second-section > div {
+    transform: translateY(100%);
+    transition: all 1s ease-out;
+    background-color: white;
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    visibility: visible;
+}
+.second-section > div.translate-second-section {
+    transform: translateY(0%);
+}
+.translate-first-section{
+    transform: translateY(-100%);
 
 }
