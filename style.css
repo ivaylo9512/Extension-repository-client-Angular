@@ -147,8 +147,8 @@ nav span {
     height: 100vh;
     width: 100%;
     display: inline-block;
-
     position: absolute;
+
     background-image: url("ps-background.jpg");
     background-size: cover;
     background-position: center bottom;
