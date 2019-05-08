@@ -11,38 +11,37 @@ document.addEventListener('DOMContentLoaded', function (event) {
     let nextBackground = backgrounds[currentIndex + 1];
 
     let selected = false;
-    setInterval(function(){
+    setInterval(() => {
         if(!selected){
-        currentBtn = navBtns[currentIndex];
-        currentBtn.classList.remove('active');
+            currentBtn = navBtns[currentIndex];
+            currentBtn.classList.remove('current');
 
-        currentBackground = backgrounds[currentIndex];
-        currentBackground.classList.add('backward');
-        currentBackground.classList.remove("current");
+            currentBackground = backgrounds[currentIndex];
+            currentBackground.classList.add('backward');
+            currentBackground.classList.remove("current");
 
-        currentIndex++;
-        if(currentIndex > backgrounds.length - 1){
-            currentIndex = 0;
-        }
+            currentIndex++;
+            if(currentIndex > backgrounds.length - 1){
+                currentIndex = 0;
+            }
 
-        currentBtn = navBtns[currentIndex];
-        currentBtn.classList.add("active");
+            currentBtn = navBtns[currentIndex];
+            currentBtn.classList.add("current");
          
-        nextBackground = backgrounds[currentIndex];
-        nextBackground.classList.add('current');
+            nextBackground = backgrounds[currentIndex];
+            nextBackground.classList.add('current');
 
-        setTimeout(() => {
-            currentBackground.classList.remove('backward');
-            currentBackground = nextBackground;
-
-        }, 2000);
+            setTimeout(() => {
+                currentBackground.classList.remove('backward');
+                currentBackground = nextBackground;
+            }, 2000);
         }
         selected = false;
     }, 5000);
 
     nav.addEventListener("click", function(event){
         if(event.target.tagName === "LI"){
-            let index = Array.from(navBtns).indexOf(event.target);
+            let index = [...navBtns].indexOf(event.target);
             if(currentIndex != index){
                 currentIndex = index;
                 selected = true;
@@ -52,11 +51,11 @@ document.addEventListener('DOMContentLoaded', function (event) {
 
                 nextBackground.classList.remove("current");
                 nextBackground.classList.remove("backwards");
-                
-                currentBtn.classList.remove("active");
+
+                currentBtn.classList.remove("current");
 
                 currentBtn = navBtns[index];
-                currentBtn.classList.add("active");
+                currentBtn.classList.add("current");
                  
 
                 currentBackground = backgrounds[index];
