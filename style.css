@@ -251,10 +251,12 @@ nav span {
     margin-left: 5px;
     font-size: 1.8em;
     font-style: italic;
+    color: white;
 
 }
 .extension-info b{
     font-weight: bold;
+    color: black;
     font-style: normal;
 
 }
