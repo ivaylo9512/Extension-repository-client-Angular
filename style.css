@@ -18,8 +18,6 @@ header.hidden {
         -ms-transform: translateY(-100%);
             transform: translateY(-100%);
 }
-body{
-}
 nav {
     float: right;
     height: 100%;
