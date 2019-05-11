@@ -6,6 +6,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AuthService {
 
+  isLoggedIn : boolean = false;
+
   constructor(private httpClient : HttpClient) { }
 
   login(username, password) {
@@ -13,8 +15,6 @@ export class AuthService {
       username,
       password
     })
-    console.log(password)
-    console.log(username)
   }
 }
 

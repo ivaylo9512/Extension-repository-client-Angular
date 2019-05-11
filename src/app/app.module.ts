@@ -5,12 +5,14 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { AuthService } from './auth.service';
 import { HttpClientModule } from '@angular/common/http'
-import { RouterModule } from '@angular/router'
+import { RouterModule } from '@angular/router';
+import { HomeComponent } from './home/home.component'
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -18,7 +20,7 @@ import { RouterModule } from '@angular/router'
     RouterModule.forRoot([
       {
         path: '',
-        component: LoginComponent
+        component: HomeComponent
       }
     ])
   ],

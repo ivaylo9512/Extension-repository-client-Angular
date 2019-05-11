@@ -7,14 +7,15 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  error
+  error;
 
   constructor(private auth : AuthService) { }
 
   ngOnInit() {
-    let data = this.auth.login("Robocop1", "password").subscribe(
+    this.auth.login("Robocop1", "password").subscribe(
       data =>{
         localStorage.setItem('Authorization', data['token'])
+        this.auth.isLoggedIn = true
       },
       err  => this.error = err['error']
     );
