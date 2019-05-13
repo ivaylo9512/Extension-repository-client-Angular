@@ -7,7 +7,7 @@ import { AuthService } from '../auth.service'
 })
 export class HomeComponent implements OnInit {
 
-  isLoggedIn : boolean = false;
+  isLoggedIn : boolean;
 
   constructor(private auth : AuthService) { }
 

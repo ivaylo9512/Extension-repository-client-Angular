@@ -7,6 +7,7 @@ import { AuthService } from './auth.service';
 import { HttpClientModule } from '@angular/common/http'
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component'
+import { componentRefresh } from '@angular/core/src/render3/instructions';
 
 @NgModule({
   declarations: [
@@ -19,9 +20,17 @@ import { HomeComponent } from './home/home.component'
     HttpClientModule,
     RouterModule.forRoot([
       {
+        path: 'home',
+        component: HomeComponent
+      },
+      {
+        path: 'login',
+        component: LoginComponent
+      },
+      {
         path: '',
         component: HomeComponent
-      }
+      },
     ])
   ],
   providers: [AuthService],
