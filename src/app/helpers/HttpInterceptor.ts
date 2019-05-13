@@ -3,20 +3,23 @@ import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/c
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-import { AuthService } from './app/auth.service';
+import { AuthService } from '../services/auth.service';
 
 @Injectable()
-export class ErrorInterceptor implements HttpInterceptor {
+export class HttpInterceptor implements HttpInterceptor {
     constructor(private authService: AuthService) { }
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+        if (this.authService.isLoggedIn) {
+            request = request.clone({
+                setHeaders: {
+                    Authorization: localStorage.getItem('Authorization')
+                }
+            });
+        }
         return next.handle(request).pipe(catchError(err => {
-            if (err.status === 401) {
-                location.reload(true);
-            }
-    
             const error = err.error.message || err.statusText;
-            return throwError(error);
+            return throwError(error)
         }))
     }
 }

@@ -3,11 +3,11 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import { AuthService } from './auth.service';
-import { HttpClientModule } from '@angular/common/http'
+import { AuthService } from './services/auth.service';
+import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http'
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component'
-import { componentRefresh } from '@angular/core/src/render3/instructions';
+import { HttpInterceptor } from './helpers/httpInterceptor'
 
 @NgModule({
   declarations: [
@@ -33,7 +33,11 @@ import { componentRefresh } from '@angular/core/src/render3/instructions';
       },
     ])
   ],
-  providers: [AuthService],
+  providers: [ AuthService,
+               { 
+                   provide: HTTP_INTERCEPTORS, useClass: HttpInterceptor, multi: true 
+               }
+            ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
