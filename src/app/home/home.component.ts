@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service'
+import { ExtensionsService } from '../services/extensions.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -9,10 +10,10 @@ export class HomeComponent implements OnInit {
 
   isLoggedIn : boolean;
 
-  constructor(private auth : AuthService) { }
+  constructor(private authService : AuthService, private extensionsService : ExtensionsService ) { }
 
   ngOnInit() {
-    this.isLoggedIn = this.auth.isLoggedIn
+    this.isLoggedIn = this.authService.isLoggedIn
 
   }
 

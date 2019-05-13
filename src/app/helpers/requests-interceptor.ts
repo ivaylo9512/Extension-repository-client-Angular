@@ -6,8 +6,11 @@ import { catchError } from 'rxjs/operators';
 import { AuthService } from '../services/auth.service';
 
 @Injectable()
-export class HttpInterceptor implements HttpInterceptor {
-    constructor(private authService: AuthService) { }
+export class RequestsInterceptor implements HttpInterceptor {
+    baseUrl : string
+    constructor(private authService: AuthService) {
+        this.baseUrl = 'http://localhost:8090'
+     }
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         if (this.authService.isLoggedIn) {
@@ -17,8 +20,10 @@ export class HttpInterceptor implements HttpInterceptor {
                 }
             });
         }
+
+        request = request.clone({url : this.baseUrl + request.url})
         return next.handle(request).pipe(catchError(err => {
-            const error = err.error.message || err.statusText;
+            const error = err.message || err.statusText;
             return throwError(error)
         }))
     }

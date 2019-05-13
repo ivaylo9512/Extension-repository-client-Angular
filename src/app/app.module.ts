@@ -3,11 +3,10 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import { AuthService } from './services/auth.service';
 import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http'
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component'
-import { HttpInterceptor } from './helpers/httpInterceptor'
+import { RequestsInterceptor } from './helpers/requests-interceptor'
 
 @NgModule({
   declarations: [
@@ -20,24 +19,24 @@ import { HttpInterceptor } from './helpers/httpInterceptor'
     HttpClientModule,
     RouterModule.forRoot([
       {
-        path: 'home',
+        path: '',
         component: HomeComponent
       },
       {
         path: 'login',
         component: LoginComponent
       },
-      {
-        path: '',
-        component: HomeComponent
-      },
+      { 
+        path: '**', 
+        redirectTo: '' 
+      }
     ])
   ],
-  providers: [ AuthService,
-               { 
-                   provide: HTTP_INTERCEPTORS, useClass: HttpInterceptor, multi: true 
-               }
-            ],
+  providers: [
+    { 
+      provide: HTTP_INTERCEPTORS, useClass: RequestsInterceptor, multi: true 
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
