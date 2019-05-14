@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 interface Extension {
   name : string
+  cover : string
 }
 @Injectable({
   providedIn: 'root'

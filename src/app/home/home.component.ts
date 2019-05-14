@@ -9,15 +9,17 @@ import { ExtensionsService } from '../services/extensions.service';
 export class HomeComponent implements OnInit {
 
   isLoggedIn : boolean;
+  extensions : any;
 
   constructor(private authService : AuthService, private extensionsService : ExtensionsService ) { }
 
   ngOnInit() {
     this.isLoggedIn = this.authService.isLoggedIn
 
-    let extensions;
     this.extensionsService.getFeatured().subscribe(data => {
-      extensions = data;
+      console.log("hey")
+      this.extensions = data;
+      console.log(data)
       
     })
   }
