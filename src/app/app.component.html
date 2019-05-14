@@ -3,12 +3,12 @@
         <span class="circle"></span>
         <span class="circle1"></span>
         <span class="circle2"></span>
-        <ul *ngIf="!isLoggedIn">
+        <ul *ngIf="!this.authService.isLoggedIn">
             <li><a href="">Home</a></li>
             <li><a href="">Discover</a></li>
-            <li><a href="">Login</a></li>
+            <li><a [routerLink]="'/login'">Login</a></li>
         </ul>
-        <ul *ngIf="isLoggedIn">
+        <ul *ngIf="this.authService.isLoggedIn">
             <li><a href="">Home</a></li>
             <li><a href="">Discover</a></li>
             <li><a href="">Profile</a></li>

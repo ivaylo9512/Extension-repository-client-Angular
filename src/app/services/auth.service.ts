@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {Router} from "@angular/router"
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +8,7 @@ export class AuthService {
 
   isLoggedIn : boolean;
 
-  constructor(private httpClient : HttpClient, private router : Router) { 
+  constructor(private httpClient : HttpClient) { 
     this.isLoggedIn = localStorage.getItem('Authorization') !== null ? true : false
   }
 

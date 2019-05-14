@@ -1,6 +1,5 @@
-<p>
-  login works!
-  {{error}}
-</p>
-<a routerLink="/home">home</a>
-
+<form #userForm="ngForm" (ngSubmit)="login(userForm)">
+  <input name="username" type="text" placeholder="username" ngModel required>
+  <input name="password" type="password" placeholder="password" ngModel required>
+  <button>login</button>
+</form>

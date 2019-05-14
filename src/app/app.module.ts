@@ -7,6 +7,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http'
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component'
 import { RequestsInterceptor } from './helpers/requests-interceptor'
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { RequestsInterceptor } from './helpers/requests-interceptor'
   imports: [
     BrowserModule,
     HttpClientModule,
+    FormsModule,
     RouterModule.forRoot([
       {
         path: '',
@@ -29,8 +31,8 @@ import { RequestsInterceptor } from './helpers/requests-interceptor'
       { 
         path: '**', 
         redirectTo: '' 
-      }
-    ])
+      },
+    ],{onSameUrlNavigation : 'reload'})
   ],
   providers: [
     { 
