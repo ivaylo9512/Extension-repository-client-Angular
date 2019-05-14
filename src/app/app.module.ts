@@ -8,12 +8,14 @@ import { RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component'
 import { RequestsInterceptor } from './helpers/requests-interceptor'
 import { FormsModule } from '@angular/forms';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
