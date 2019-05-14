@@ -15,6 +15,11 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.isLoggedIn = this.authService.isLoggedIn
 
+    let extensions;
+    this.extensionsService.getFeatured().subscribe(data => {
+      extensions = data;
+      
+    })
   }
 
 }

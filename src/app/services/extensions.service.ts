@@ -11,4 +11,8 @@ export class ExtensionsService {
 
   constructor(private httpClient : HttpClient) { 
   }
+
+  getFeatured(){
+    return this.httpClient.get<Extension>('/api/extensions/featured')
+  }
 }
