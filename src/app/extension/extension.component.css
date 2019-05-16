@@ -1,0 +1,58 @@
+section{
+    height: 100vh;
+    width:100%;
+    white-space: nowrap;
+    overflow: hidden;
+}
+section > div{
+    float: left;
+    white-space: normal;
+
+}
+.cover{
+    width: 70%;
+    height:100%;
+}
+.cover img{
+    width: 100%;
+    height: 100%;
+    background-image: url("ps-background.jpg");
+    background-size: cover;
+    background-position: right bottom;
+}
+.extension-info{
+    width: 30%;
+    height: 100%;
+}
+.image-container{
+    width: 100%;
+    height: 30%;
+    position: relative;
+}
+.image-container img{
+    position: absolute;
+    width: 30%;
+    padding-bottom: 30%;
+    top: 50%;
+    left: 50%;
+    margin: 0 0 0 -15%; 
+}
+.info-container{
+    text-align: center;
+    padding-top: 10%;
+    height: 100%;
+    width: 100%;
+}
+.info{
+    height: 70%;
+}
+.info > div {
+    width:50%;
+    height: 40%;
+    display: inline-block;
+    text-align: center;
+}
+.info p{
+    width: 100%;
+    height: 60%;
+}

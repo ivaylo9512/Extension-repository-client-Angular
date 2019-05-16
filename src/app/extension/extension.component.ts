@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ExtensionsService } from '../services/extensions.service';
 
 @Component({
   selector: 'app-extension',

@@ -5,8 +5,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AuthService {
 
-  isLoggedIn : boolean;
-  isAdmin : boolean;
+  isLoggedIn : boolean
+  isAdmin : boolean
 
   constructor(private httpClient : HttpClient) { 
     this.isLoggedIn = localStorage.getItem('Authorization') !== null ? true : false

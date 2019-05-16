@@ -24,6 +24,7 @@ export class RequestsInterceptor implements HttpInterceptor {
         request = request.clone({url : this.baseUrl + request.url})
         return next.handle(request).pipe(catchError(err => {
             const error = err.message || err.statusText;
+            console.log(error)
             return throwError(error)
         }))
     }

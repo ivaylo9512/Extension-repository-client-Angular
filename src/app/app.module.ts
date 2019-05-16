@@ -33,6 +33,10 @@ import { ExtensionComponent } from './extension/extension.component';
         component: LoginComponent
       },
       { 
+        path: 'extension', 
+        component: ExtensionComponent
+      },
+      { 
         path: '**', 
         redirectTo: '' 
       },
