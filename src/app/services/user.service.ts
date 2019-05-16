@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http'
 interface User{
-  name : String,
+  id : number
+  username : String,
   extension : String
 }
 @Injectable({
@@ -12,7 +13,7 @@ export class UserService {
   constructor(private httpClient : HttpClient) { }
 
   getUser(id : number){
-    this.httpClient.get<User>('/api/users/${id}')
+    return this.httpClient.get<User>(`/api/users/${id}`)
   }
 
   getAllUsers(){

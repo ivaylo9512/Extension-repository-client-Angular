@@ -4,16 +4,14 @@
         <div class="profile">
             <h1>Adobe Inc.</h1>
             <div class="user-info-container">
-                <h2>Extensions: 5</h2>
-                <h3>Rating: 5</h3>
-                <h4>Country: United States</h4>
+                <h2>Extensions: {{user['totalExtensions']}}</h2>
+                <h3>Rating: {{user['rating']}}</h3>
+                <h4>Country: {{user['country']}}</h4>
                 <h5>Info</h5>
             </div>
             <div class="user-info">
                 <p>
-                    Adobe Inc. is an American multinational computer software company
-                    headquartered in San Jose, California. It has historically focused upon the creation of
-                    multimedia and creativity software products.
+                    {{user['info']}}
                 </p>
             </div>
         </div>

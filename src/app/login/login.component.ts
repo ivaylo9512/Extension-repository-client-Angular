@@ -22,6 +22,7 @@ export class LoginComponent implements OnInit {
     this.auth.login(username, password).subscribe(
       data => {
         localStorage.setItem('Authorization', data['token'])
+        localStorage.setItem('user', JSON.stringify(data))
         this.auth.isLoggedIn = true
         this.router.navigate(['home'])
 

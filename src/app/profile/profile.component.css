@@ -1,0 +1,240 @@
+
+span{
+    background: linear-gradient(#e66465, #9198e5);
+    border-radius: 50%;
+    display: inline-block;
+}
+.info-container{
+    width: 16%;
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.3);
+    /* border: 3px solid black; */
+    z-index: 4;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 8%;
+    overflow: hidden;
+    top: 50%;
+    left:50%;
+    margin: -8% 0 0 -8%;
+}
+.info-box{
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%;
+    overflow: hidden;
+}
+.info-box .logo-box{
+    width: 50%;
+    position: absolute;
+    top: 50%;
+    left:50%;
+    margin: -25% 0 0 -25%;
+}
+.info-box img{
+    content:url("photoshop-logo.png");
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%;
+}
+.hover-circle{
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    width: 250%;
+    height: 250%;
+    background-color: black;
+    transition: 1s;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.info-box:hover .hover-circle{
+    width: 15%;
+    height: 15%;
+}
+.info-box:hover .hover-box{
+    width: 500px;
+    height: 500px;
+}
+.info-box:hover .logo-container{
+    width: 0;
+    height: 0;
+}
+.info-box:hover .extension-info{
+    transition-delay: 1s;
+    opacity: 1;
+}
+.logo-container{
+    position: absolute;
+    overflow: hidden;
+    transition: 1s;
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+}
+.extension-info{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    bottom: 0;
+    opacity: 0;
+    transition: 1s;
+    transition-delay: 0s;
+}
+.extension-info p{
+    margin-top: 60px;
+    margin-left: 5px;
+    font-size: 1.8em;
+    font-style: italic;
+    color: white;
+
+}
+.extension-info b{
+    font-weight: bold;
+    color: black;
+    font-style: normal;
+
+}
+.second-section {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    visibility: hidden;
+    z-index: 4;
+}
+.second-section > div {
+    
+    background-color: white;
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    visibility: visible;
+    overflow: hidden; 
+}
+.second-section > div.translate-second-section {
+    transition: all 1s ease-out;
+
+    transform: translateY(0%);
+    -webkit-animation: fadeIn 4s;
+    -moz-animation: fadeIn 4s;
+    -o-animation: fadeIn 4s;
+       animation: fadeIn 4s;
+
+}
+.second-section > div.fade-out {
+    transform: translateY(100%);
+    transition-delay: 1s;
+    -webkit-animation: fadeOut 1s;
+    -moz-animation: fadeOut 1s;
+    -o-animation: fadeOut 1s;
+       animation: fadeOut 1s;
+
+}
+@-webkit-keyframes fadeIn {
+    0%   { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  @-moz-keyframes fadeIn {
+    0%   { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  @-o-keyframes fadeIn {
+    0%   { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  @keyframes fadeIn {
+    0%   { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  @-webkit-keyframes fadeOut {
+    0%   { opacity: 1; }
+    100% { opacity: 0; }
+  }
+  @-moz-keyframes fadeOut {
+    0%   { opacity: 1; }
+    100% { opacity: 0; }
+  }
+  @-o-keyframes fadeOut {
+    0%   { opacity: 1; }
+    100% { opacity: 0; }
+  }
+  @keyframes fadeOut {
+    0%   { opacity: 1; }
+    100% { opacity: 0; }
+  }
+.profile{
+    position: absolute;
+    right: 0%;
+    top: 40%;
+    height: 60%;
+    width:40%;
+    text-align: center;
+    z-index: 3;
+}
+.user-info-container{
+    text-align: center;
+}
+.profile h1{
+    font-size: 6em;
+    margin-left: 10%;
+    font-weight: bold;
+
+}
+.profile h2{
+    font-size: 1.5em;
+    margin-top: 5%;
+    font-weight: bold;
+}
+.profile h3{
+    margin-top: 1%;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+.profile h4{
+    margin-top: 1%;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+.profile h5{
+    margin-top: 4%;
+    font-size: 1.8em;
+    font-weight: bold;
+    text-decoration: underline;
+}
+.user-info{
+    width: 99%;
+    text-align: center;
+    padding-right: 25px;
+}
+.user-info p{
+    text-align: center;
+    padding-right: 25px;
+    width: 99%;
+    height: 100%;
+    font-size: 1.8em;
+}
+.circle4-container{
+    width: 20%;
+}
+.circle4{
+    padding-bottom: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 2;
+    bottom: 0;
+    right: 20%;
+    transition: 1s;
+    -webkit-transform: translateY(0%);
+    transform: translateY(0%);
+}
+.circle4.animate{
+    transition: 5s;
+    -webkit-transform: translateY(0%);
+    -ms-transform: translateY(0%);
+        transform: translateY(0%);
+    
+}
