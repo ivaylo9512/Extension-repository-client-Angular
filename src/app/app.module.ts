@@ -9,6 +9,7 @@ import { HomeComponent } from './home/home.component'
 import { RequestsInterceptor } from './helpers/requests-interceptor'
 import { FormsModule } from '@angular/forms';
 import { ProfileComponent } from './profile/profile.component';
+import { ExtensionComponent } from './extension/extension.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { ProfileComponent } from './profile/profile.component';
     LoginComponent,
     HomeComponent,
     ProfileComponent,
+    ExtensionComponent,
   ],
   imports: [
     BrowserModule,
