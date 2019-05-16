@@ -8,22 +8,29 @@
         </div>  
         <div class="info-container">
             <div>
-                <h1>Name: Adobe Photoshop</h1>
-                <h2>Rating: 5</h2>
+                <h1>Name: {{extension.name}}</h1>
+                <h2>Rating: {{extension.rating}}</h2>
             </div>
             <div class="info">
                 <div>
                     <br>Upload date: 
+                    <br>{{extension.uploadDate}}
                     <br>Pull requests:
+                    <br>{{extension.pullRequests}}
                     <br>Open issues:
+                    <br>{{extension.openIssues}}
                 </div>
                 <div>
                     <br>Times downloaded:
+                    <br>{{extension.timesDownloaded}}
                     <br>Times rated:
+                    <br>{{extension.timesRated}}
                     <br>Last commit:
+                    <br>{{extension.lastCommit}}
                 </div>
+                <h2>Info:</h2>
                 <p>
-                  
+                    {{extension.description}}
                 </p>
             </div>
         </div>

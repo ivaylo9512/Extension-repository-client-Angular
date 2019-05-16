@@ -8,9 +8,16 @@ import { ExtensionsService } from '../services/extensions.service';
 })
 export class ExtensionComponent implements OnInit {
 
-  constructor() { }
+  extension : any
 
-  ngOnInit() {
+  constructor(private extensionService : ExtensionsService) { }
+
+  ngOnInit() {}
+
+  getExtension(id : number){
+    this.extensionService.getExtension(id).subscribe(data =>{
+      this.extension = data    
+    })
   }
 
 }
