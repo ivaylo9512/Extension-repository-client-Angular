@@ -105,13 +105,9 @@ span{
     z-index: 4;
 }
 .second-section > div {
-    
     background-color: white;
     width: 100%;
     height: 100vh;
-    position: absolute;
-    top: 0;
-    left: 0;
     visibility: visible;
     overflow: hidden; 
 }
@@ -206,7 +202,6 @@ span{
     text-decoration: underline;
 }
 .user-info{
-    width: 99%;
     text-align: center;
     padding-right: 25px;
 }
@@ -236,5 +231,19 @@ span{
     -webkit-transform: translateY(0%);
     -ms-transform: translateY(0%);
         transform: translateY(0%);
-    
+}
+.user-extensions{
+    position: relative;
+}
+.user-extensions > div{
+    width: 100%;
+    margin: 10%;
+}
+.user-extensions .info-container {
+    position: relative;
+    float: left;
+    top: 0;
+    bottom: 0;
+    margin: 0;
+    margin-right: 5%;
 }
