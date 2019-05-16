@@ -16,7 +16,6 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
     this.loggedUser = JSON.parse(localStorage.getItem('user'))
-    this.admin = this.loggedUser['authorities'][0]['authority'] === 'ROLE_ADMIN' ? true : false
     if(this.loggedUser){
       this.getUser(this.loggedUser['id'])
     }

@@ -30,10 +30,7 @@ export class HomeComponent implements OnInit {
     this.isLoggedIn = this.authService.isLoggedIn
 
     this.extensionsService.getFeatured().subscribe(data => {
-      console.log("hey")
       this.extensions = data;
-      console.log(data)
-      
     })
   }
 

@@ -11,7 +11,7 @@ import { Router } from '@angular/router'
 export class LoginComponent implements OnInit {
   error : string;
 
-  constructor(private auth : AuthService, private router : Router) { }
+  constructor(private authService : AuthService, private router : Router) { }
 
   ngOnInit() {
   }
@@ -19,11 +19,13 @@ export class LoginComponent implements OnInit {
   login(userForm : NgForm) {
     const username =  userForm.controls['username'].value
     const password = userForm.controls['password'].value
-    this.auth.login(username, password).subscribe(
+    this.authService.login(username, password).subscribe(
       data => {
         localStorage.setItem('Authorization', data['token'])
         localStorage.setItem('user', JSON.stringify(data))
-        this.auth.isLoggedIn = true
+        this.authService.isLoggedIn = true
+        this.authService.isAdmin = data['authorities'][0]['authority'] === 'ROLE_ADMIN' ? true : false
+
         this.router.navigate(['home'])
 
       },
