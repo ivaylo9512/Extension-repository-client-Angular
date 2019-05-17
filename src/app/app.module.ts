@@ -33,7 +33,7 @@ import { ExtensionComponent } from './extension/extension.component';
         component: LoginComponent
       },
       { 
-        path: 'extension', 
+        path: 'extension/:id', 
         component: ExtensionComponent
       },
       { 

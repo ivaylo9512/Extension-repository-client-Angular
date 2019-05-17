@@ -28,7 +28,7 @@
     </div>
     <div class="user-extensions">
       <div>
-          <div class="info-container" *ngFor="let extension of user['extensions']">
+          <div class="info-container" *ngFor="let extension of user['extensions']" [routerLink]="['/extension', extension.id]">
               <div class="info-box">
                   <div class="hover-circle">
                   </div>

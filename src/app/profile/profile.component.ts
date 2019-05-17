@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service'
+import { ExtensionComponent } from '../extension/extension.component';
 
 @Component({
   selector: 'app-profile',
@@ -26,5 +27,4 @@ export class ProfileComponent implements OnInit {
       this.user = data
     })
   }
-
 }
