@@ -12,6 +12,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { ExtensionComponent } from './extension/extension.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { DiscoverComponent } from './discover/discover.component';
+import { PendingsComponent } from './pendings/pendings.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { DiscoverComponent } from './discover/discover.component';
     HomeComponent,
     ProfileComponent,
     ExtensionComponent,
-    DiscoverComponent
+    DiscoverComponent,
+    PendingsComponent
   ],
   imports: [
     BrowserModule,
