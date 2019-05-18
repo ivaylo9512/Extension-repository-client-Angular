@@ -13,6 +13,7 @@ import { ExtensionComponent } from './extension/extension.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { DiscoverComponent } from './discover/discover.component';
 import { PendingsComponent } from './pendings/pendings.component';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { PendingsComponent } from './pendings/pendings.component';
     ProfileComponent,
     ExtensionComponent,
     DiscoverComponent,
-    PendingsComponent
+    PendingsComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
