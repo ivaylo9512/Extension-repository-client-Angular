@@ -39,9 +39,14 @@ import { DiscoverComponent } from './discover/discover.component';
       { 
         path: 'extension/:id', 
         component: ExtensionComponent
-      },      { 
+      },      
+      { 
         path: 'profile/:id', 
         component: ProfileComponent
+      },
+      { 
+        path: 'discover', 
+        component: DiscoverComponent
       },
       { 
         path: '**', 
