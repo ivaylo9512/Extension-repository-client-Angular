@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service'
 import { ExtensionComponent } from '../extension/extension.component';
+import { ActivatedRoute, Params } from '@angular/router';
+
 
 @Component({
   selector: 'app-profile',
@@ -18,14 +20,18 @@ export class ProfileComponent implements OnInit {
     totalItems: 0
   };
 
-  constructor(private userService : UserService) {
+  constructor(private userService : UserService, private route: ActivatedRoute) {
     this.user = []
   }
 
   ngOnInit() {
-    this.loggedUser = JSON.parse(localStorage.getItem('user'))
-    if(this.loggedUser){
-      this.getUser(this.loggedUser['id'])
+    if(+this.route.snapshot.paramMap.get('id')){
+      this.getUser(+this.route.snapshot.paramMap.get('id'));
+    }else{
+      this.loggedUser = JSON.parse(localStorage.getItem('user'))
+      if(this.loggedUser){
+        this.getUser(this.loggedUser['id'])
+      }
     }
   }
 

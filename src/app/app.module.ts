@@ -37,6 +37,9 @@ import {NgxPaginationModule} from 'ngx-pagination';
       { 
         path: 'extension/:id', 
         component: ExtensionComponent
+      },      { 
+        path: 'profile/:id', 
+        component: ProfileComponent
       },
       { 
         path: '**', 

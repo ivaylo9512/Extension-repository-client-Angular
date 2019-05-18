@@ -7,11 +7,12 @@ export class AuthService {
 
   isLoggedIn : boolean
   isAdmin : boolean
+  id : number
 
   constructor(private httpClient : HttpClient) { 
     this.isLoggedIn = localStorage.getItem('Authorization') !== null ? true : false
     this.isAdmin = JSON.parse(localStorage.getItem('user'))['authorities'][0]['authority'] === 'ROLE_ADMIN' ? true : false
-
+    this.id = JSON.parse(localStorage.getItem('user'))['id']
   }
 
   login(username, password) {
@@ -22,6 +23,12 @@ export class AuthService {
   }
   logout() {
     localStorage.removeItem('Authorization')
+  }
+  setUserDetails(user){
+      this.isLoggedIn = true
+      this.isAdmin = user['authorities'][0]['authority'] === 'ROLE_ADMIN' ? true : false
+      this.id = user['id']
+
   }
 }
 

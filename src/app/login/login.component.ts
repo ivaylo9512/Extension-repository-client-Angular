@@ -23,9 +23,7 @@ export class LoginComponent implements OnInit {
       data => {
         localStorage.setItem('Authorization', data['token'])
         localStorage.setItem('user', JSON.stringify(data))
-        this.authService.isLoggedIn = true
-        this.authService.isAdmin = data['authorities'][0]['authority'] === 'ROLE_ADMIN' ? true : false
-
+        this.authService.setUserDetails(data)
         this.router.navigate(['home'])
 
       },
