@@ -10,9 +10,15 @@ export class AuthService {
   id : number
 
   constructor(private httpClient : HttpClient) { 
-    this.isLoggedIn = localStorage.getItem('Authorization') !== null ? true : false
-    this.isAdmin = JSON.parse(localStorage.getItem('user'))['authorities'][0]['authority'] === 'ROLE_ADMIN' ? true : false
-    this.id = JSON.parse(localStorage.getItem('user'))['id']
+    if(localStorage.getItem('user') !== null && localStorage.getItem('Authorization') !== null){
+      this.isLoggedIn = true
+      this.isAdmin = JSON.parse(localStorage.getItem('user'))['authorities'][0]['authority'] === 'ROLE_ADMIN' ? true : false
+      this.id = JSON.parse(localStorage.getItem('user'))['id']
+    }else{
+      this.isLoggedIn = false
+      this.isAdmin = false
+      this.id = 0
+    }
   }
 
   login(username, password) {
