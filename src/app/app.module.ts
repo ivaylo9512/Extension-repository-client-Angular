@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { ProfileComponent } from './profile/profile.component';
 import { ExtensionComponent } from './extension/extension.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { DiscoverComponent } from './discover/discover.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     LoginComponent,
     HomeComponent,
     ProfileComponent,
-    ExtensionComponent
+    ExtensionComponent,
+    DiscoverComponent
   ],
   imports: [
     BrowserModule,
