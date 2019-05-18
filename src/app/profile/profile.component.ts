@@ -35,8 +35,4 @@ export class ProfileComponent implements OnInit {
       this.config.totalItems = data['totalExtensions']
     })
   }
-  pageChanged(event){
-    console.log(event)
-    this.config.currentPage = event;
-  }
 }

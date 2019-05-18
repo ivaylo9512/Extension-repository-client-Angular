@@ -1,9 +1,4 @@
 
-span{
-    background: linear-gradient(#e66465, #9198e5);
-    border-radius: 50%;
-    display: inline-block;
-}
 .info-container{
     width: 16%;
     position: absolute;
@@ -55,8 +50,8 @@ span{
     height: 500px;
 }
 .info-box:hover .logo-container{
-    width: 0;
-    height: 0;
+    width: 25%;
+    height: 25%;
 }
 .info-box:hover .extension-info{
     transition-delay: 1s;
@@ -211,10 +206,16 @@ span{
     height: 100%;
     font-size: 1.8em;
 }
-.circle4-container{
+.circle-container{
     width: 20%;
 }
-.circle4{
+.circle{
+    background: linear-gradient(#e66465, #9198e5);
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.circle{
     padding-bottom: 100%;
     width: 100%;
     position: absolute;
@@ -225,7 +226,7 @@ span{
     -webkit-transform: translateY(0%);
     transform: translateY(0%);
 }
-.circle4.animate{
+.circle.animate{
     transition: 5s;
     -webkit-transform: translateY(0%);
     -ms-transform: translateY(0%);
@@ -250,7 +251,62 @@ span{
     margin-right: 5%;
     margin-top: 5%;
 }
-pagination-controls{
-    text-align: center;
+pagination-template ul{
+    text-align:center;
+}
+pagination-template li{
+    display: inline-block;
+    margin-right: 0.0625rem;
+    border-radius: 0;
+    cursor: pointer;
+}
+pagination-template li.current{
+    padding: 0.1875rem 0.625rem;
+    background: black;
+    color: white;
+    cursor: default;
+}
+pagination-template ul a:hover{
+    background: rgba(0, 0, 0, 0.4);
+}
+pagination-template a{
     display: block;
+    padding: 0.1875rem 0.625rem;
+    border-radius: 0;
+}
+pagination-template .previous.disabled::before{
+    content: '«';
+    display: inline-block;
+    margin-right: 0.5rem;
+}
+pagination-template .previous.disabled{
+    padding: 0.1875rem 0.625rem;
+    color: #cacaca;
+    cursor: default;
+}
+pagination-temlate a{
+    color: #0a0a0a;
+    display: block;
+    padding: 0.1875rem 0.625rem;
+    border-radius: 0;
+}
+pagination-template .previous a::before{
+    content: '«';
+    display: inline-block;
+    margin-right: 0.5rem;
+}
+pagination-template .next.disabled{
+    padding: 0.1875rem 0.625rem;
+    color: #cacaca;
+    cursor: default;
+}
+pagination-template .next.disabled::after{
+    content: '»';
+    display: inline-block;
+    margin-left: 0.5rem;
+}
+pagination-template .next a::after{
+    content: '»';
+    display: inline-block;
+    margin-left: 0.5rem;
 }
