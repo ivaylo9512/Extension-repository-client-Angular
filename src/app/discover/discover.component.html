@@ -8,7 +8,7 @@
     <button class="menu-item" orderBy="downloads"><i class="fas fa-fire"></i> By popularity</button>
     <button class="menu-item" orderBy="commits"><i class="fas fa-code-branch"></i> By latest commit</button>
 </div>
-<div class="info-container" *ngFor="let extension of user['extensions'] | paginate: config" [routerLink]="['/extension', extension.id]">
+<div class="info-container" *ngFor="let extension of extensions | paginate: config" [routerLink]="['/extension', extension.id]">
     <div class="info-box">
         <div class="hover-circle">
         </div>

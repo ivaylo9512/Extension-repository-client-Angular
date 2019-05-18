@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 interface Extension {
   name : string
@@ -23,5 +23,11 @@ export class ExtensionsService {
     this.httpClient.post('/api/extensions/featured', {
       extension
     })
+  }
+  getExtensions(name : string, criteria : string, page : string, perPage : string){
+    const  params = new  HttpParams().set('name', name).set('orderBy', criteria).set('page', page).set('perPage', perPage)
+
+    return this.httpClient.get("/api/extensions/filter", {params});                          
+                              
   }
 }
