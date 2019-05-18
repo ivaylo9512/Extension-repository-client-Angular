@@ -99,7 +99,7 @@ span{
     left: 0px;
     height: 100vh;
     width: 100%;
-    overflow: hidden;
+    /* overflow: hidden; */
     visibility: hidden;
     z-index: 4;
 }
@@ -237,6 +237,9 @@ span{
 .user-extensions > div{
     width: 100%;
     margin: 10%;
+    margin-top: 0%;
+    margin-bottom: 0%;
+    height: 90%;
 }
 .user-extensions .info-container {
     position: relative;
@@ -245,4 +248,9 @@ span{
     left: 0;
     margin: 0;
     margin-right: 5%;
+    margin-top: 5%;
+}
+pagination-controls{
+    text-align: center;
+    display: block;
 }

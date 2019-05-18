@@ -1,3 +1,6 @@
+*{
+    font-family: "Segoe UI Web (West European)", "Segoe UI", -apple-system, BlinkMacSystemFont, "Roboto", "Helvetica Neue", sans-serif;
+}
 section{
     height: 100vh;
     width:100%;
@@ -36,20 +39,30 @@ section > div{
 }
 .info-container{
     text-align: center;
-    padding-top: 10%;
+    padding-top: 5%;
     height: 100%;
     width: 100%;
 }
-.info{
-    height: 70%;
+.info-container > div{
+    font-size: 1.8em;
+    font-weight: bold;
+}
+.info-container > div.info{
+    font-size: 1em;
+    padding-top: 10%;
 }
 .info > div {
+    margin-bottom: 10%;
     width:50%;
-    height: 40%;
-    display: inline-block;
+    float: left;
     text-align: center;
 }
 .info p{
     width: 100%;
     height: 60%;
+    font-weight: normal;
+}
+h3{
+    font-size: 1.8em;
+    padding-top: 10%;
 }

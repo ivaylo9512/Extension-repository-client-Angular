@@ -4,11 +4,11 @@
     </div>
     <div class="extension-info">
         <div class="image-container">
-          <img src="../photoshop-logo.png">
+          <img [src]="extension.imageLocation">
         </div>  
         <div class="info-container">
             <div>
-                <h1>Name: {{extension.name}}</h1>
+                <h1>{{extension.name}}</h1>
                 <h2>Rating: {{extension.rating}}</h2>
             </div>
             <div class="info">
@@ -28,7 +28,7 @@
                     <br>Last commit:
                     <br>{{extension.lastCommit}}
                 </div>
-                <h2>Info:</h2>
+                <h3>Info:</h3>
                 <p>
                     {{extension.description}}
                 </p>

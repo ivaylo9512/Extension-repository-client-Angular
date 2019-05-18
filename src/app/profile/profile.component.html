@@ -27,8 +27,8 @@
         </div>
     </div>
     <div class="user-extensions">
-      <div>
-          <div class="info-container" *ngFor="let extension of user['extensions']" [routerLink]="['/extension', extension.id]">
+      <div class="extensions">
+          <div class="info-container" *ngFor="let extension of user['extensions'] | paginate: config" [routerLink]="['/extension', extension.id]">
               <div class="info-box">
                   <div class="hover-circle">
                   </div>
@@ -46,5 +46,6 @@
               </div>
           </div>
       </div>
+        <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
     </div>
 </section>

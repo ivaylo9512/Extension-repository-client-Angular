@@ -10,6 +10,7 @@ import { RequestsInterceptor } from './helpers/requests-interceptor'
 import { FormsModule } from '@angular/forms';
 import { ProfileComponent } from './profile/profile.component';
 import { ExtensionComponent } from './extension/extension.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -17,12 +18,13 @@ import { ExtensionComponent } from './extension/extension.component';
     LoginComponent,
     HomeComponent,
     ProfileComponent,
-    ExtensionComponent,
+    ExtensionComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    NgxPaginationModule,
     RouterModule.forRoot([
       {
         path: '',

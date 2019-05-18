@@ -11,6 +11,13 @@ export class ProfileComponent implements OnInit {
   loggedUser : any
   user : any
   admin : boolean
+
+  config = {
+    itemsPerPage: 8,
+    currentPage: 1,
+    totalItems: 0
+  };
+
   constructor(private userService : UserService) {
     this.user = []
   }
@@ -25,6 +32,11 @@ export class ProfileComponent implements OnInit {
   getUser(id : number){
     this.userService.getUser(id).subscribe(data => {
       this.user = data
+      this.config.totalItems = data['totalExtensions']
     })
+  }
+  pageChanged(event){
+    console.log(event)
+    this.config.currentPage = event;
   }
 }
