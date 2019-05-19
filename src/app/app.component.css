@@ -37,7 +37,7 @@ li a{
 .user > a{
     text-decoration: underline;
     font-size: 80%;
-    padding: 8px 12px;
+    padding: 8.5px 12px;
 }
 .user:hover ul{
     display: block;
