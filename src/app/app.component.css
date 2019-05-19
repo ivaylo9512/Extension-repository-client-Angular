@@ -9,7 +9,6 @@ header {
     transition: -webkit-transform .5s;
     transition: transform .5s;
     background-color: rgba(0, 0, 0, 0.9);
-    overflow: hidden;
     z-index: 5;
 
 }
@@ -24,22 +23,33 @@ nav {
     padding-right: 5%;
 
 }
-nav > ul {
-    font-size: 1em;
-    z-index: 2;
-    width: 100%;
-    background-color: #ffffff;
-    display: none;
-    box-shadow: 0 14px 20px rgba(0, 0, 0, 0.2);
+li {
+  float: left;
 }
 
-nav > ul li {
+li a{
+    color: white;
     display: inline-block;
-    color: white;
-}
-nav > ul a {
+    text-align: center;
+    padding: 7px 12px;
     text-decoration: none;
-    color: white;
+}
+.user > a{
+    text-decoration: underline;
+    font-size: 80%;
+    padding: 8px 12px;
+}
+.user:hover ul{
+    display: block;
+
+}
+nav > ul ul li{
+    display: block;
+    float: none;
+    background: black;
+}
+nav > ul ul{
+    display: none;
 }
 span{
     background: linear-gradient(#e66465, #9198e5);
@@ -94,23 +104,7 @@ nav span {
         transform: translateY(-30%);
     
 }
-@media only screen and (min-width: 1024px) {
-    nav {
-        display: table;
-    }
 
-    nav > ul {
-        display: table-cell;
-        vertical-align: middle;
-        position: relative;
-        width: auto;
-        top: 0;
-        padding: 0;
-        background-color: transparent;
-        box-shadow: none;
-    }
-
-    nav > ul > li {
-        margin-right: 1.5em;
-    }
+nav .user li {
+    display: block;
 }

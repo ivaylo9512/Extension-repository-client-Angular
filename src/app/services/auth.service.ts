@@ -8,12 +8,15 @@ export class AuthService {
   isLoggedIn : boolean
   isAdmin : boolean
   id : number
+  username : string
 
   constructor(private httpClient : HttpClient) { 
     if(localStorage.getItem('user') !== null && localStorage.getItem('Authorization') !== null){
+      const user = JSON.parse(localStorage.getItem('user'))
       this.isLoggedIn = true
-      this.isAdmin = JSON.parse(localStorage.getItem('user'))['authorities'][0]['authority'] === 'ROLE_ADMIN' ? true : false
-      this.id = JSON.parse(localStorage.getItem('user'))['id']
+      this.isAdmin = user['authorities'][0]['authority'] === 'ROLE_ADMIN' ? true : false
+      this.id = user['id']
+      this.username = user['username']
     }else{
       this.isLoggedIn = false
       this.isAdmin = false
@@ -33,7 +36,9 @@ export class AuthService {
   setUserDetails(user){
       this.isLoggedIn = true
       this.isAdmin = user['authorities'][0]['authority'] === 'ROLE_ADMIN' ? true : false
+      this.username = user['username']
       this.id = user['id']
+
 
   }
 }

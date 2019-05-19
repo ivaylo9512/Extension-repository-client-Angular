@@ -42,9 +42,4 @@ export class DiscoverComponent implements OnInit {
       this.config.totalItems = data['totalResults']
     })
   }
-  findPage(page){
-    this.findExtensions(page)
-    console.log(page)
-  }
-
 }
