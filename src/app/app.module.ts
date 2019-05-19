@@ -15,6 +15,7 @@ import { DiscoverComponent } from './discover/discover.component';
 import { PendingsComponent } from './pendings/pendings.component';
 import { AdminComponent } from './admin/admin.component';
 import { CreateComponent } from './create/create.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { CreateComponent } from './create/create.component';
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     NgxPaginationModule,
     RouterModule.forRoot([
       {
