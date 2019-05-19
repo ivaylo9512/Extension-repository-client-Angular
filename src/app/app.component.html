@@ -12,7 +12,7 @@
             <li><a href="">Home</a></li>
             <li><a [routerLink]="['/discover']">Discover</a></li>
             <li><a [routerLink]="['/profile', extension.id]">Profile</a></li>
-            <li><a href="">Create</a></li>
+            <li><a [routerLink]="['/create']">Create</a></li>
             <li><a href="" (click)="this.authService.logout()">logout</a></li>
         </ul>
         <ul *ngIf="this.authService.isLoggedIn && this.authService.isAdmin">
@@ -20,7 +20,7 @@
             <li><a [routerLink]="['/discover']">Discover</a></li>
             <li><a [routerLink]="['/profile', this.authService.id]">Profile</a></li>
             <li><a href="">Admin</a></li>
-            <li><a href="">Create</a></li>
+            <li><a [routerLink]="['/create']">Create</a></li>
             <li><a href="">Pendings</a></li>
             <li><a href="" (click)="this.authService.logout()">logout</a></li>
         </ul>

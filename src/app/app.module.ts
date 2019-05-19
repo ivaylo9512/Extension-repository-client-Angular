@@ -55,6 +55,10 @@ import { CreateComponent } from './create/create.component';
         component: DiscoverComponent
       },
       { 
+        path: 'create', 
+        component: CreateComponent
+      },
+      { 
         path: '**', 
         redirectTo: '' 
       },
