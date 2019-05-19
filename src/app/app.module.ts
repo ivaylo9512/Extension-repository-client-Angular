@@ -16,6 +16,7 @@ import { PendingsComponent } from './pendings/pendings.component';
 import { AdminComponent } from './admin/admin.component';
 import { CreateComponent } from './create/create.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { EditComponent } from './edit/edit.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     DiscoverComponent,
     PendingsComponent,
     AdminComponent,
-    CreateComponent
+    CreateComponent,
+    EditComponent
   ],
   imports: [
     BrowserModule,
