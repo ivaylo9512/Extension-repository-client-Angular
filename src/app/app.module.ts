@@ -14,6 +14,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { DiscoverComponent } from './discover/discover.component';
 import { PendingsComponent } from './pendings/pendings.component';
 import { AdminComponent } from './admin/admin.component';
+import { CreateComponent } from './create/create.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { AdminComponent } from './admin/admin.component';
     ExtensionComponent,
     DiscoverComponent,
     PendingsComponent,
-    AdminComponent
+    AdminComponent,
+    CreateComponent
   ],
   imports: [
     BrowserModule,

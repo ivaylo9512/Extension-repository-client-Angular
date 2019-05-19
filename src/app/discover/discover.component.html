@@ -24,6 +24,10 @@
             </div>
         </div>
     </div>
+    <div class="menu">
+
+    </div>
+    <div class="pagination">
     <pagination-template #p="paginationApi" [id]="config.id" (pageChange)="this.findPage($event)">
             <ul class="pagination-list">
                 <li class="previous" [class.disabled]="p.isFirstPage()">
@@ -47,8 +51,5 @@
                 
             </ul>
           </pagination-template>
-    
-    <div class="menu">
-
     </div>
 </section>
