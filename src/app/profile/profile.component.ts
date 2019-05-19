@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service'
-import { ExtensionComponent } from '../extension/extension.component';
 import { ActivatedRoute, Params } from '@angular/router';
 
 

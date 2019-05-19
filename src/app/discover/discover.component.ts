@@ -10,9 +10,12 @@ export class DiscoverComponent implements OnInit {
   extensions : any
 
   config = {
-    itemsPerPage: 8,
+    id: 'custom',
+    itemsPerPage: 12,
     currentPage: 1,
-    totalItems: 0
+    totalItems: 0,
+    criteria: 'name',
+    search: ''
   };
 
   constructor(private extensionsService : ExtensionsService) {
@@ -20,13 +23,19 @@ export class DiscoverComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.findExtensions("", "name", '0', this.config.itemsPerPage.toString())
+    this.findExtensions(1)
   }
 
-  findExtensions(name : string, criteria : string, page : string, perPage: string){
-    this.extensionsService.getExtensions(name, criteria, page, perPage).subscribe(data => {
+  findExtensions(page : number){
+    this.extensionsService.getExtensions(this.config.search, this.config.criteria, (page - 1).toString() , this.config.itemsPerPage.toString()).subscribe(data => {
       this.extensions = data['extensions']
+      this.config.currentPage = page
+      this.config.totalItems = data['totalResults']
     })
+  }
+  findPage(page){
+    this.findExtensions(page)
+    console.log(page)
   }
 
 }
