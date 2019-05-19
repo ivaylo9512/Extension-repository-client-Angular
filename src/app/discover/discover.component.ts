@@ -20,12 +20,12 @@ export class DiscoverComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.findExtensions("", "name", '0', this.config.itemsPerPage)
+    this.findExtensions("", "name", '0', this.config.itemsPerPage.toString())
   }
 
   findExtensions(name : string, criteria : string, page : string, perPage: string){
     this.extensionsService.getExtensions(name, criteria, page, perPage).subscribe(data => {
-      this.extensions = Object.values(data)
+      this.extensions = data['extensions']
     })
   }
 

@@ -3,7 +3,6 @@
     width: 16%;
     position: absolute;
     background-color: rgba(255, 255, 255, 0.3);
-    /* border: 3px solid black; */
     z-index: 4;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 8%;
@@ -11,7 +10,11 @@
     top: 50%;
     left:50%;
     margin: -8% 0 0 -8%;
+    cursor: pointer;
 }
+.info-container:focus {
+    outline: 0;
+  }
 .info-box{
     position: relative;
     width: 100%;
@@ -75,18 +78,24 @@
     transition-delay: 0s;
 }
 .extension-info p{
-    margin-top: 60px;
     margin-left: 5px;
-    font-size: 1.8em;
+    font-size: 1.3em;
     font-style: italic;
-    color: white;
+    color: black;
 
 }
 .extension-info b{
+    margin-top: 60px;
+    margin-left: 5px;
+    font-size: 1.8em;
+    width: 100%;
+    display: inline-block;
     font-weight: bold;
     color: black;
     font-style: normal;
-
+    text-overflow: ellipsis;
+    white-space: nowrap; 
+    overflow: hidden;
 }
 .second-section {
     position: absolute;

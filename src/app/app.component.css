@@ -13,9 +13,6 @@ header {
     z-index: 5;
 
 }
-main{
-    padding-top:30px;
-}
 header.hidden {
     -webkit-transform: translateY(-100%);
         -ms-transform: translateY(-100%);
