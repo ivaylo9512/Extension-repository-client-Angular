@@ -42,4 +42,9 @@ export class DiscoverComponent implements OnInit {
       this.config.totalItems = data['totalResults']
     })
   }
+  changeCriteria(value){
+    this.config.criteria = value.target.value
+    this.findExtensions(0)
+
+  }
 }

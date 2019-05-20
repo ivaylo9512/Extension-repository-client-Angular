@@ -25,10 +25,20 @@
         </div>
     </div>
     <div class="menu">
+        <ul>
+            <input checked name="order" value="name" id="name" type="radio" (click)="changeCriteria($event)">
+            <label for="name">Name</label>
+            <input name="order" value="downloads" id="download" type="radio" (click)="changeCriteria($event)">
+            <label for="download" type='radio'>Download</label>
+            <input name="order" value="date" id="upload" type="radio" (click)="changeCriteria($event)">
+            <label for="upload" type='radio'>Upload</label>
+            <input name="order" value="commits" id="commit" type="radio" (click)="changeCriteria($event)">
+            <label for="commit" type='radio'>Commit</label>
+        </ul>
 
     </div>
     <div class="pagination">
-    <pagination-template #p="paginationApi" [id]="config.id" (pageChange)="this.findPage($event)">
+    <pagination-template #p="paginationApi" [id]="config.id" (pageChange)="this.findExtensions($event)">
             <ul class="pagination-list">
                 <li class="previous" [class.disabled]="p.isFirstPage()">
                     <a  *ngIf="!p.isFirstPage()" (click)="p.previous()">
