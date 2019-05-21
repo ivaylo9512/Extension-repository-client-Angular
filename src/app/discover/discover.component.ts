@@ -17,7 +17,7 @@ export class DiscoverComponent implements OnInit {
     id: 'custom',
     itemsPerPage: 12,
     currentPage: 1,
-    totalItems: 0,
+    totalItems: null,
     criteria: 'name',
     search: ''
   };

@@ -35,6 +35,10 @@ form button{
     color: white;
 
 }
+h1{
+    font-size: 1.1em;
+    font-weight: bold;
+}
 .circle{
     background: linear-gradient(#e66465, #9198e5);
     border-radius: 50%;
@@ -51,12 +55,6 @@ form button{
     -webkit-transform: translateY(0%);
     -ms-transform: translateY(0%);
         transform: translateY(0%);
-}
-h1{
-    position: absolute;
-    top: 5%;
-    right: 5%;
-    font-size: 2.5em;
 }
 .action-btn Button{
     background: black;
@@ -173,41 +171,33 @@ h1{
     overflow: hidden;
 }
 .menu{
-    width: 12%;
-    height: 100%;
-    z-index: 5;
     position: relative;
-}
-.menu ul{
-    height: 100%;
+    margin-left: 35px;
     width: 100%;
-    top: 50%;
-    position: absolute;
-    list-style: none;
+    margin-top: 10px;
 }
 .menu label{
-    width: 69%;
     text-align: center;
-    display: block;
-    padding-bottom: 17.5%;
-    padding-top: 17.5%;
-    background-color: black;
-    color:white;
+    display: inline-block;
+    padding: 0.5% 10px;
+    color: black;
     z-index: 4;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    border-radius: 8%;
     overflow: hidden;
     cursor: pointer;
-    margin-bottom: 10%;
+    margin-right: 10px;
     font-weight: bold;
-    
+    font-size: 0.9em;
+
+}
+i{
+    margin-right: 7px;
+    font-size: 0.9em;
 }
 .menu input{
     display: none;
 }
 .menu input:checked + label{
-    background-color: white;
-    color: black;
+    text-decoration: underline;
 }
 .pagination{
     width: 100%;
