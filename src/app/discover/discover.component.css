@@ -10,7 +10,6 @@ section > div{
 form{
     height: 16%;
     margin-top: 20px;
-    margin-bottom: 20px;
     margin-left: 35px;
 }
 form input{
@@ -38,6 +37,7 @@ form button{
 h1{
     font-size: 1.1em;
     font-weight: bold;
+    margin-top: 2px;
 }
 .circle{
     background: linear-gradient(#e66465, #9198e5);
@@ -173,8 +173,16 @@ h1{
 .menu{
     position: relative;
     margin-left: 35px;
-    width: 100%;
+    border-bottom: 1px solid black;
     margin-top: 10px;
+}
+.menu ul > :first-child{
+    font-size: 1.2em;
+    padding-left: 0px;
+}
+.menu ul > :last-child{
+    font-size: 1.9em;
+    margin-left: 5px;
 }
 .menu label{
     text-align: center;

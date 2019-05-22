@@ -17,6 +17,7 @@ import { AdminComponent } from './admin/admin.component';
 import { CreateComponent } from './create/create.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EditComponent } from './edit/edit.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { EditComponent } from './edit/edit.component';
     PendingsComponent,
     AdminComponent,
     CreateComponent,
-    EditComponent
+    EditComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

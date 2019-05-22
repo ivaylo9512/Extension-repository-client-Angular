@@ -1,23 +1,23 @@
 <section>
-    <div class="menu">
-        <ul>
-            <label>Order by:</label>
-            <input checked name="order" value="name" id="name" type="radio" (click)="changeCriteria($event)">
-            <label for="name"><i class="fa fa-i-cursor"></i>Name</label>
-            <input name="order" value="downloads" id="download" type="radio" (click)="changeCriteria($event)">
-            <label for="download" type='radio'><i class="fa fa-fire"></i>Download</label>
-            <input name="order" value="date" id="upload" type="radio" (click)="changeCriteria($event)">                <label for="upload" type='radio'><i class="fas fa-calendar-alt"></i>Upload</label>
-            <input name="order" value="commits" id="commit" type="radio" (click)="changeCriteria($event)">
-            <label for="commit" type='radio'><i class="fas fa-code-branch"></i>Commit</label>
-        </ul>
-    </div>
     <form>
         <input [formControl]="queryField">
         <button>Search</button>
     </form>
+    <div class="menu">
+            <ul>
+                <label>Order by:</label>
+                <input checked name="order" value="name" id="name" type="radio" (click)="changeCriteria($event)">
+                <label for="name"><i class="fa fa-i-cursor"></i>Name</label>
+                <input name="order" value="downloads" id="download" type="radio" (click)="changeCriteria($event)">
+                <label for="download" type='radio'><i class="fa fa-fire"></i>Download</label>
+                <input name="order" value="date" id="upload" type="radio" (click)="changeCriteria($event)">                <label for="upload" type='radio'><i class="fas fa-calendar-alt"></i>Upload</label>
+                <input name="order" value="commits" id="commit" type="radio" (click)="changeCriteria($event)">
+                <label for="commit" type='radio'><i class="fas fa-code-branch"></i>Commit</label>
+                <label>Extensions found: {{config.totalItems}}</label>
+            </ul>
+        </div>
     <span class="circle"></span>
     <div class="extensions">
-        <h1>Extensions found: {{config.totalItems}}</h1>
         <div class="info-container" *ngFor="let extension of extensions | paginate: config" [routerLink]="['/extension', extension.id]">
             <div class="info-box">
                 <div class="hover-circle">
