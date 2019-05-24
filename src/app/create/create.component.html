@@ -9,10 +9,17 @@
                 </div>
             </div>
             <input [formControl]="nameInput" type="text" placeholder="Name">
+            <div class="loading-container">
+                <i *ngIf="nameAvailable == 'loading'" class="fas fa-circle-notch fa-spin"></i>
+                <i *ngIf="nameAvailable == 'true'" class="fas fa-check"></i>
+                <i *ngIf="nameAvailable == 'false'" class="fas fa-times"></i>
+            </div>
             <input [formControl]="gitHubInput" type="text" placeholder="GitHub repo">
             <div class="loading-container">
-                <i class="fas fa-circle-notch fa-spin"></i>
-            </div>
+                    <i *ngIf="gitHubAvailable == 'loading'" class="fas fa-circle-notch fa-spin"></i>
+                    <i *ngIf="gitHubAvailable == 'true'" class="fas fa-check"></i>
+                    <i *ngIf="gitHubAvailable == 'false'" class="fas fa-times"></i>
+                </div>
             <input type="text" placeholder="Version">
             <input type="text" placeholder="Tags">
 
