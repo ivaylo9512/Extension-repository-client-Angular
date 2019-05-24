@@ -1,6 +1,6 @@
 <section>
     <form>
-        <input [formControl]="queryField">
+        <input [formControl]="search">
         <button>Search</button>
     </form>
     <div class="menu">
@@ -10,7 +10,8 @@
                 <label for="name"><i class="fa fa-i-cursor"></i>Name</label>
                 <input name="order" value="downloads" id="download" type="radio" (click)="changeCriteria($event)">
                 <label for="download" type='radio'><i class="fa fa-fire"></i>Download</label>
-                <input name="order" value="date" id="upload" type="radio" (click)="changeCriteria($event)">                <label for="upload" type='radio'><i class="fas fa-calendar-alt"></i>Upload</label>
+                <input name="order" value="date" id="upload" type="radio" (click)="changeCriteria($event)">                
+                <label for="upload" type='radio'><i class="fas fa-calendar-alt"></i>Upload</label>
                 <input name="order" value="commits" id="commit" type="radio" (click)="changeCriteria($event)">
                 <label for="commit" type='radio'><i class="fas fa-code-branch"></i>Commit</label>
                 <label>Extensions found: {{config.totalItems}}</label>
