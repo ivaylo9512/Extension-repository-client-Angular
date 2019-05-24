@@ -9,21 +9,41 @@ import { ExtensionsService } from '../services/extensions.service';
   styleUrls: ['./create.component.css']
 })
 export class CreateComponent implements OnInit {
-  avaiable : string
-  name : FormControl = new FormControl();
+  nameAvailable : string
+  gitHubAvailable : string
+  nameInput : FormControl = new FormControl()
+  gitHubInput : FormControl = new FormControl()
+  gitHub : any
+
 
   constructor(private extensionService : ExtensionsService) { }
 
   ngOnInit() {
-    this.name.valueChanges.pipe(debounceTime(200)).subscribe(result => {
-      this.avaiable = 'loading'
-      this.extensionService.checkName(result).subscribe(avaiable => {
-        this.avaiable = avaiable.toString()
-      })
+    this.nameInput.valueChanges.pipe(debounceTime(200)).subscribe(result => {
+      this.checkName(result)
+    })
+    this.gitHubInput.valueChanges.pipe(debounceTime(200)).subscribe(result => {
+      this.checkGithub(result)
     })
   }
 
-  checkName(){
-    
+  checkName(name){
+    this.nameAvailable = 'loading'
+    this.extensionService.checkName(name).subscribe(available => {
+      this.nameAvailable = available.toString()
+    })
+  }
+  checkGithub(gitHub){
+    const pattern = /^https:\/\/github\.com\/.+\/.+$/
+    if(pattern.test(gitHub)){
+      this.gitHubAvailable = 'loading'
+      this.extensionService.checkGithub(gitHub).subscribe(gitHub => {
+        this.gitHub = gitHub
+        this.gitHubAvailable = 'true'
+      },
+    error => {
+        this.gitHubAvailable = 'false'
+    })
+    }
   }
 }

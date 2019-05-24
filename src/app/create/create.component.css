@@ -80,7 +80,12 @@ button{
 .extension-files input{
     display: none;
 }
-.extension-info label{
+.extension-info i{
+    margin-left: 5px;
+}
+.extension-info .fa-times{
+    margin-left: 7px;
+
 }
 .extension-info input{
     height: 10%;

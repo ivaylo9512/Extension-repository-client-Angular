@@ -28,6 +28,10 @@ export class ExtensionsService {
     const params = new HttpParams().set('name', name)
     return this.httpClient.get('/api/extensions/checkName', {params})
   }
+  checkGithub(gitHub : string){
+    const params = new HttpParams().set('link', gitHub)
+    return this.httpClient.get('/api/github/getRepoDetails', {params})
+  }
   getExtensions(name : string, criteria : string, page : string, perPage : string){
     const params = new  HttpParams().set('name', name).set('orderBy', criteria).set('page', page).set('perPage', perPage)
 

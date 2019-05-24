@@ -8,10 +8,11 @@
                     <img/>
                 </div>
             </div>
-            <input [formControl]="name" type="text" placeholder="Name">
-            <div class="loading-container"><i class="fas fa-circle-notch fa-spin"></i><div></div></div>
-            <input type="text" placeholder="GitHub">
-            <div class="loading-container"><i class="fas fa-circle-notch fa-spin"></i><div></div></div>
+            <input [formControl]="nameInput" type="text" placeholder="Name">
+            <input [formControl]="gitHubInput" type="text" placeholder="GitHub repo">
+            <div class="loading-container">
+                <i class="fas fa-circle-notch fa-spin"></i>
+            </div>
             <input type="text" placeholder="Version">
             <input type="text" placeholder="Tags">
 
