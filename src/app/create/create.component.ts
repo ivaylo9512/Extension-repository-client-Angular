@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms'
+import { FormControl, FormBuilder } from '@angular/forms'
 import { debounceTime } from 'rxjs/operators';
 import { ExtensionsService } from '../services/extensions.service';
 
@@ -16,7 +16,7 @@ export class CreateComponent implements OnInit {
   gitHub : any
 
 
-  constructor(private extensionService : ExtensionsService) { }
+  constructor(private extensionService : ExtensionsService, private form: FormBuilder) { }
 
   ngOnInit() {
     this.nameInput.valueChanges.pipe(debounceTime(200)).subscribe(result => {
