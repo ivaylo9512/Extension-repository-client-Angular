@@ -1,36 +1,101 @@
 section{
     width: 100%;
     height: 100vh;
-    padding-top: 40px;
+    overflow: hidden;
 }
 h1{
     text-align: center;
     font-size: 2.5em;
 }
 form{
-    width: 50%;
-    margin: 0 auto;
-}
-form > *{
     width: 100%;
+    height: 50%;
+    padding-top: 15px;
+}
+form > div{
+    height: 100%;
+    width: 35%;
+    float: left;
+}
+form > div.extension-files{
+    width: 30%;
 }
 textarea{
-    border: 1px solid black;
-    padding: 20px;
-    box-sizing: border-box;
-    margin-bottom: 20px;
-}
-input{
-    height: 5%;
-    border: 1px solid black;
-    padding: 20px;
-    box-sizing: border-box;
-    margin-bottom: 20px;
+    text-align: center;
+    width: 92%;
+    height: 80%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 button{
-    padding: 20px;
     background: black;
     color: white;
-    border: 0px;
+    border: 1px solid black;
+    padding: 5%;
+    text-align: center;
+    box-sizing: border-box;
+    width: 50%;
+    margin-left: 25%;
     margin-bottom: 15px;
+    border-radius: 16px;
+    display: inline-block;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.cover{
+    position: relative;
+    height: 50%;
+    width: 100%;
+    padding-top: 30px;
+    background-image: url("ps-background.jpg");
+    background-size: cover;
+    background-position: bottom left;
+}
+.logo{
+    width: 20%;
+    position: absolute;
+    z-index: 4;
+    border-radius: 8%;
+    overflow: hidden;
+    padding-bottom: 20%;
+    top: 50%;
+    left: 50%;
+    margin: calc(-10%) 0 0 -10%;
+}
+.logo img{
+    content:url("photoshop-logo.png");
+    width: 100%;
+    position: absolute;
+}
+.extension-files label{
+    border: 1px solid black;
+    padding: 5%;
+    text-align: center;
+    box-sizing: border-box;
+    width: 50%;
+    margin-left: 25%;
+    margin-bottom: 10px;
+    border-radius: 16px;
+    display: inline-block;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.extension-files input{
+    display: none;
+}
+.extension-info label{
+}
+.extension-info input{
+    height: 10%;
+    width: 80%;
+    margin-left: 10%;
+    border: 0px;
+    border-bottom: 1px solid black;
+    
+}
+.logo-container{
+    width: 100%;
+    height: 30%;
+    position: relative;
+}
+.loading-container{
+    display: inline-block;
+
 }

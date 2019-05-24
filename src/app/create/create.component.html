@@ -1,30 +1,41 @@
 <section class="create">
-    <div class="loading-block"><i class="fas fa-circle-notch fa-spin"></i><div></div></div>
-    <h1>Add a new extension</h1>
+    <div class="cover">
+    </div>
     <form action="" class="regular" id="submit-form">
-        <div class="errors"></div>
-        <label for="name">Name</label>
-        <input type="text" id="name">
-        <label for="version">Version</label>
-        <input type="text" id="version">
-        <label for="name">Description</label>
-        <textarea type="text" id="description"></textarea>
-        <label for="github">Link to GitHub repository</label>
-        <input type="text" id="github">
-        <label for="tags">Comma separated tags</label>
-        <input type="text" id="tags">
-        <label for="file" class="as-field">
-            <div class="menu-item"><i class="fas fa-cloud-upload-alt"></i> File: <span>select file</span>
+        <div class="extension-info">
+            <div class="logo-container">
+                <div class="logo">
+                    <img/>
+                </div>
             </div>
-        </label>
-        <input type="file" id="file" class="submit-file">
-        <label for="image" class="as-field">
-            <div class="menu-item"><i class="fas fa-image"></i> Icon: <span>select image</span></div>
-        </label>
-        <input type="file" id="image" class="submit-file">
-        <button type="submit" class="menu-item" id="submit-btn"><i class="fas fa-angle-double-right"></i> submit for
-            review
-        </button>
-        <div class="errors"></div>
+            <input type="text" placeholder="Name">
+            <div class="loading-container"><i class="fas fa-circle-notch fa-spin"></i><div></div></div>
+            <input type="text" placeholder="GitHub">
+            <div class="loading-container"><i class="fas fa-circle-notch fa-spin"></i><div></div></div>
+            <input type="text" placeholder="Version">
+            <input type="text" placeholder="Tags">
+
+
+
+        </div>
+        <div class="extension-files">
+            <label for="file" class="as-field">
+                <i class="fas fa-cloud-upload-alt"></i> File:
+            </label>
+            <input type="file" id="file" class="submit-file">
+            <label for="image" class="as-field">
+                <i class="fas fa-image"></i> Icon: <span>select image</span>
+            </label>
+            <input type="file" id="image" class="submit-file">
+            <label  class="as-field">
+                <i class="fas fa-cloud-upload-alt"></i> File:
+            </label>
+            <button type="submit" class="menu-item" id="submit-btn"><i class="fas fa-angle-double-right"></i> submit for
+                review
+            </button>
+        </div>
+        <div class="extension-description">
+            <textarea placeholder="Description" id="description"></textarea>    
+        </div>
     </form>
 </section>
