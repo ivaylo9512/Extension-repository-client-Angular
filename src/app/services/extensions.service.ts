@@ -24,10 +24,14 @@ export class ExtensionsService {
       extension
     })
   }
+  checkName(name : string){
+    const params = new HttpParams().set('name', name)
+    return this.httpClient.get('/api/extensions/checkName', {params})
+  }
   getExtensions(name : string, criteria : string, page : string, perPage : string){
-    const  params = new  HttpParams().set('name', name).set('orderBy', criteria).set('page', page).set('perPage', perPage)
+    const params = new  HttpParams().set('name', name).set('orderBy', criteria).set('page', page).set('perPage', perPage)
 
-    return this.httpClient.get("/api/extensions/filter", {params});                          
+    return this.httpClient.get("/api/extensions/filter", {params})                  
                               
   }
 }
