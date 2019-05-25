@@ -3,6 +3,7 @@ import { FormControl, FormBuilder } from '@angular/forms'
 import { debounceTime } from 'rxjs/operators';
 import { ExtensionsService } from '../services/extensions.service';
 import { NgForm } from '@angular/forms'
+import { DomSanitizer } from '@angular/platform-browser';
 
 
 @Component({
@@ -12,16 +13,17 @@ import { NgForm } from '@angular/forms'
 })
 export class CreateComponent implements OnInit {
   nameAvailable : string
-  gitHubAvailable : string
   nameInput : FormControl = new FormControl()
 
+  gitHubAvailable : string
   gitHubInput : FormControl = new FormControl()
   gitHub : any
 
-  formData
+  formData : FormData
+  logoURL : any
+  coverURL : any
 
-
-  constructor(private extensionService : ExtensionsService, private form: FormBuilder) {
+  constructor(private extensionService : ExtensionsService, private form: FormBuilder, private sanitizer: DomSanitizer) {
     this.formData = new FormData()
   }
 
@@ -55,8 +57,6 @@ export class CreateComponent implements OnInit {
   }
 
   createExtension(extensionForm : NgForm){
-    console.log(this.nameAvailable)
-    console.log(this.gitHubAvailable)
     if(this.nameAvailable == 'true' && this.gitHubAvailable == 'true'){
       const name = this.nameInput.value
       const github = this.gitHubInput.value
@@ -83,13 +83,31 @@ export class CreateComponent implements OnInit {
   addLogo(e){
     const logo = e.target.files[0]
     this.formData.append('image', logo)
+    this.logoURL = window.URL.createObjectURL(logo)
+
+    let reader = new FileReader();
+    reader.readAsDataURL(logo); 
+    reader.onload = (_event) => { 
+      this.logoURL = reader.result; 
+    }
+
   }
   addCover(e){
     const cover = e.target.files[0]
     this.formData.append('cover', cover)
+
+    let reader = new FileReader();
+    reader.readAsDataURL(cover); 
+    reader.onload = (_event) => { 
+      this.coverURL = reader.result; 
+    }
   }
   addFile(e){
     const cover = e.target.files[0]
     this.formData.append('file', cover)
   }
+
+  getSantizeUrl(url : string) {
+    return this.sanitizer.bypassSecurityTrustUrl(url);
+}
 }

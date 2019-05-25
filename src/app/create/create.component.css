@@ -57,7 +57,10 @@ button:hover i{
     height: 50%;
     width: 100%;
     padding-top: 30px;
-    background-image: url("ps-background.jpg");
+}
+.cover div{
+    height: 100%;
+    width: 100%;
     background-size: cover;
     background-position: bottom left;
 }
@@ -73,7 +76,6 @@ button:hover i{
     margin: calc(-10%) 0 0 -10%;
 }
 .logo img{
-    content:url("photoshop-logo.png");
     width: 100%;
     position: absolute;
 }

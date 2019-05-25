@@ -1,11 +1,12 @@
 <section class="create">
     <div class="cover">
+        <div [ngStyle]="{'background-image':'url(' + coverURL + ')'}" *ngIf="coverURL"></div>
     </div>
     <form #extensionForm="ngForm" (ngSubmit)="createExtension(extensionForm)" class="regular" id="submit-form">
         <div class="extension-info">
             <div class="logo-container">
                 <div class="logo">
-                    <img/>
+                    <img [src]="getSantizeUrl(logoURL)" *ngIf="logoURL"/>
                 </div>
             </div>
             <input [formControl]="nameInput" type="text" placeholder="Name">

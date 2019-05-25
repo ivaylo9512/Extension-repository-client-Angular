@@ -12,13 +12,8 @@ section > div{
 .cover{
     width: 70%;
     height:100%;
-}
-.cover img{
-    width: 100%;
-    height: 100%;
-    background-image: url("ps-background.jpg");
     background-size: cover;
-    background-position: right bottom;
+    background-position: left bottom;
 }
 .extension-info{
     width: 30%;
