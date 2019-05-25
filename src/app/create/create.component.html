@@ -1,7 +1,7 @@
 <section class="create">
     <div class="cover">
     </div>
-    <form (ngSubmit)="createExtension() class="regular" id="submit-form">
+    <form #extensionForm="ngForm" (ngSubmit)="createExtension(extensionForm)" class="regular" id="submit-form">
         <div class="extension-info">
             <div class="logo-container">
                 <div class="logo">
@@ -14,14 +14,14 @@
                 <i *ngIf="nameAvailable == 'true'" class="fas fa-check"></i>
                 <i *ngIf="nameAvailable == 'false'" class="fas fa-times"></i>
             </div>
-            <input [formControl]="gitHubInput" type="text" placeholder="GitHub repo">
+            <input [formControl]="gitHubInput" name="github" type="text" placeholder="GitHub repo">
             <div class="loading-container">
                     <i *ngIf="gitHubAvailable == 'loading'" class="fas fa-circle-notch fa-spin"></i>
                     <i *ngIf="gitHubAvailable == 'true'" class="fas fa-check"></i>
                     <i *ngIf="gitHubAvailable == 'false'" class="fas fa-times"></i>
-                </div>
-            <input type="text" placeholder="Version">
-            <input type="text" placeholder="Tags">
+            </div>
+            <input name="version" type="text" placeholder="Version" ngModel required>
+            <input name="tags" type="text" placeholder="Tags" ngModel required>
 
 
 
@@ -30,20 +30,24 @@
             <label for="file" class="as-field">
                 <i class="fas fa-cloud-upload-alt"></i> File:
             </label>
-            <input type="file" id="file" class="submit-file">
-            <label for="image" class="as-field">
-                <i class="fas fa-image"></i> Icon: <span>select image</span>
+            <input name="file" (change)="addFile($event)" type="file" id="file" class="submit-file" ngModel required>
+            <label for="logo" class="as-field">
+                <i class="fas fa-image"></i> logo:
             </label>
-            <input type="file" id="image" class="submit-file">
-            <label  class="as-field">
-                <i class="fas fa-cloud-upload-alt"></i> File:
+            <input name="logo" (change)="addLogo($event)" type="file" id="logo" class="submit-file" ngModel required>
+            <label  for="cover" class="as-field">
+                <i class="fas fa-image"></i> 
+                <span>Cover:</span>
             </label>
-            <button type="submit" class="menu-item" id="submit-btn"><i class="fas fa-angle-double-right"></i> submit for
-                review
+            <input name="cover" (change)="addCover($event)" type="file" id="cover" class="submit-file" ngModel required>
+
+            <button type="submit" class="menu-item" id="submit-btn">
+                <i class="fas fa-angle-double-right"></i>
+                <span>submit for review</span>
             </button>
         </div>
         <div class="extension-description">
-            <textarea placeholder="Description" id="description"></textarea>    
+            <textarea name="description" placeholder="Description" id="description" ngModel required></textarea>    
         </div>
     </form>
 </section>

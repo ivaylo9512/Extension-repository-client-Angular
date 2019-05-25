@@ -33,12 +33,24 @@ button{
     padding: 5%;
     text-align: center;
     box-sizing: border-box;
+    transition: 1s;
     width: 50%;
     margin-left: 25%;
     margin-bottom: 15px;
     border-radius: 16px;
     display: inline-block;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+button span{
+    margin-left: 5px;
+}
+button:hover span{
+    opacity: 0;
+    transition: 1s;
+}
+button:hover i{
+    transition: 1s;
+    transform: translateX(100%);
 }
 .cover{
     position: relative;
@@ -77,6 +89,17 @@ button{
     display: inline-block;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+.extension-files label:hover span{
+    display: none;
+}
+.extension-files label:hover i{
+    animation: fadeIn 2.5s;
+}
+.extension-files label:hover{
+    background: black;
+    color: white;
+}
+
 .extension-files input{
     display: none;
 }
@@ -104,3 +127,20 @@ button{
     display: inline-block;
 
 }
+
+@-webkit-keyframes fadeIn {
+    0%   { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  @-moz-keyframes fadeIn {
+    0%   { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  @-o-keyframes fadeIn {
+    0%   { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  @keyframes fadeIn {
+    0%   { opacity: 0; }
+    100% { opacity: 1; }
+  }

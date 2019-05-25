@@ -39,6 +39,7 @@ export class DiscoverComponent implements OnInit {
       this.extensions = data['extensions']
       this.config.currentPage = page
       this.config.totalItems = data['totalResults']
+      console.log(data)
     })
   }
   changeCriteria(value){
