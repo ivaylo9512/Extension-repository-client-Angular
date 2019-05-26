@@ -23,8 +23,14 @@ export class RequestsInterceptor implements HttpInterceptor {
 
         request = request.clone({url : this.baseUrl + request.url})
         return next.handle(request).pipe(catchError(err => {
-            const error = err.message || err.statusText;
-            return throwError(error)
+            let error = err.message || err.statusText;
+            if(err.status == 403){
+                this.authService.logout()
+                error = "Session has expired. Log again." 
+                return throwError(error)
+            }else{
+                return throwError(error)
+            }
         }))
     }
 }

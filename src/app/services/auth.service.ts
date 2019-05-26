@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
@@ -10,7 +11,7 @@ export class AuthService {
   id : number
   username : string
 
-  constructor(private httpClient : HttpClient) { 
+  constructor(private httpClient : HttpClient, private router : Router) { 
     if(localStorage.getItem('user') !== null && localStorage.getItem('Authorization') !== null){
       const user = JSON.parse(localStorage.getItem('user'))
       this.isLoggedIn = true
@@ -32,14 +33,16 @@ export class AuthService {
   }
   logout() {
     localStorage.removeItem('Authorization')
+    localStorage.removeItem('user')
+    this.isLoggedIn = false
+    this.isAdmin = false
+    this.router.navigate(['login'])
   }
   setUserDetails(user){
       this.isLoggedIn = true
       this.isAdmin = user['authorities'][0]['authority'] === 'ROLE_ADMIN' ? true : false
       this.username = user['username']
       this.id = user['id']
-
-
   }
 }
 
