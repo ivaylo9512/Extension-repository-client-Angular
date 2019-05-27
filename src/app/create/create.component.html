@@ -1,3 +1,21 @@
+<section class="cover-section"> 
+    <div class="input">
+        <label  for="cover" class="as-field">
+                <i class="fas fa-image"></i> 
+            <span>Cover:</span>
+        </label>
+        <input name="cover" (change)="addCover($event)" type="file" id="cover" class="submit-file" ngModel required>        
+    </div> 
+    <div class="background-animation">
+         <label  for="cover" class="as-field">
+                <i class="fas fa-image"></i> 
+            <span>Cover:</span>
+        </label>
+    </div>  
+    <div class="cover"> 
+        <div [ngStyle]="{'background-image':'url(' + coverURL + ')'}" *ngIf="coverURL"></div>
+    </div>
+</section>
 <section class="create">
     <div class="cover">
         <div [ngStyle]="{'background-image':'url(' + coverURL + ')'}" *ngIf="coverURL"></div>

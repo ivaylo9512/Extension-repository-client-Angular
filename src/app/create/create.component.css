@@ -2,6 +2,7 @@ section{
     width: 100%;
     height: 100vh;
     overflow: hidden;
+    position: relative;
 }
 h1{
     text-align: center;
@@ -58,6 +59,36 @@ button:hover i{
     width: 100%;
     padding-top: 30px;
 }
+.cover-section{
+    background: black;
+}
+.cover-section .cover{
+    height: 100%;   
+}
+.cover-section .input{
+    z-index: 5;
+}
+.cover-section label{
+    transition: 2s;
+    background: black;
+}
+.cover-section .input,
+.cover-section > .background-animation{
+    position: absolute;
+    width: 50%;
+    bottom: 15%;
+    right: 5%;
+}
+.cover-section .background-animation label{
+    color: transparent;
+    background: white;
+    transition: 2s;
+    transform: scale(12);
+}
+.cover-section .input:hover + .background-animation label{
+    transform: scale(1);
+    background: white;
+}
 .cover div{
     height: 100%;
     width: 100%;
@@ -79,7 +110,8 @@ button:hover i{
     width: 100%;
     position: absolute;
 }
-.extension-files label{
+.extension-files label,
+.cover-section label{
     border: 1px solid black;
     padding: 5%;
     text-align: center;
@@ -90,6 +122,11 @@ button:hover i{
     border-radius: 16px;
     display: inline-block;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.cover-section label{
+    border: 3px solid white;
+    color: white;
+
 }
 .extension-files label:hover span{
     display: none;
@@ -102,10 +139,12 @@ button:hover i{
     color: white;
 }
 
-.extension-files input{
+.extension-files input,
+.cover-section input{
     display: none;
 }
-.extension-info i{
+.extension-info i,
+.cover-section i{
     margin-left: 5px;
 }
 .extension-info .fa-times{
