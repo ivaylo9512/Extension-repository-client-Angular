@@ -119,6 +119,73 @@ button:hover i{
     background-size: cover;
     background-position: bottom left;
 }
+.info-container{
+    width: 16%;
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.3);
+    z-index: 4;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 8%;
+    overflow: hidden;
+    top: 50%;
+    left:50%;
+    margin: -8% 0 0 -8%;
+    cursor: pointer;
+}
+.info-container:focus {
+    outline: 0;
+  }
+.info-box{
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%;
+    overflow: hidden;
+}
+.info-box .logo-box{
+    width: 50%;
+    position: absolute;
+    top: 50%;
+    left:50%;
+    margin: -25% 0 0 -25%;
+}
+.info-box img{
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%;
+}
+.hover-circle{
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    width: 250%;
+    height: 250%;
+    background-color: black;
+    transition: 1s;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.extension{
+    position: absolute;
+    right: 0%;
+    top: 40%;
+    height: 60%;
+    width:40%;
+    text-align: center;
+    z-index: 3;
+}
+.extension-info-container{
+    text-align: center;
+}
+.name{
+    font-size: 2.5em;
+    text-align: center;
+}
+.extension .info{
+    height: 50%;
+}
+.extension textarea{
+    height: 100%;
+}
 .logo{
     width: 20%;
     position: absolute;

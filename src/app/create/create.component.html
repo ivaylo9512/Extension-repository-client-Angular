@@ -17,28 +17,26 @@
     </div>
 </section>
 <section class="extension-section"> 
-    <div id="second-section">
-        <div class="profile">
-            <input placeholder="Name" class="name">
-            <div class="user-info-container">
-                <input placeholder="Version">
-                <input placeholder="Tags">
-            </div>
-            <div class="info">
-                <textarea></textarea>
-            </div>
+    <div class="extension">
+        <input placeholder="Name" class="name">
+        <div class="extension-info-container">
+            <input placeholder="Version">
+            <input placeholder="Tags">
         </div>
-        <div class="info-container">
-            <div class="hover-circle">
-            </div>
-            <div class="info-box">
-                <img class="logo-box" [src]="getSantizeUrl(logoURL)" *ngIf="logoURL"/>
-            </div>
+        <div class="info">
+            <textarea></textarea>
         </div>
-        <div class="circle-container">
-            <span class="circle"></span>
+    </div>
+    <div class="info-container">
+        <div class="hover-circle">
         </div>
-    </div> 
+        <div class="info-box">
+            <img class="logo-box" [src]="getSantizeUrl(logoURL)" *ngIf="logoURL"/>
+        </div>
+    </div>
+    <div class="circle-container">
+        <span class="circle"></span>
+    </div>
 </section>
 <section class="create">
     <div class="cover">
