@@ -9,6 +9,18 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
   selector: 'app-create',
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.css'],
+  animations: [
+    trigger('buttonState', [
+      state('inactive', style({
+        transform: 'scale(20)'
+       })),
+      state('active', style({
+        transform: 'scale(0)'
+      })),
+      transition('inactive => active', animate('2s ease-in')),
+      transition('active => inactive', animate('2s ease-out'))
+    ])
+  ]
 })
 export class CreateComponent implements OnInit {
   @ViewChild('button') button : ElementRef;

@@ -48,13 +48,12 @@ h1{
     padding-bottom: 35%;
     top: -20%;
     right: -10%;
-    -webkit-transform: translateY(-100%);
-        -ms-transform: translateY(-100%);
-            transform: translateY(-100%);
+    -webkit-transform: translateZ(0) translateY(0);
+    -moz-transform: translateZ(0 translateY(0));
+    -ms-transform: translateZ(0) translateY(0);
+    -o-transform: translateZ(0) translateY(0);
+    transform: translateZ(0) translateY(0);
     transition: 1s all;
-    -webkit-transform: translateY(0%);
-    -ms-transform: translateY(0%);
-        transform: translateY(0%);
 }
 .action-btn Button{
     background: black;

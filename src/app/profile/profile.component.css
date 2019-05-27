@@ -105,6 +105,11 @@
     width: 100%;
     visibility: hidden;
     z-index: 4;
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
 }
 .second-section > div {
     background-color: white;
@@ -116,6 +121,10 @@
 .second-section > div.translate-second-section {
     transition: all 1s ease-out;
 
+    -webkit-transform: translateY(0%);
+    -moz-transform:  translateY(0%);
+    -ms-transform: translateY(0%);
+    -o-transform: translateY(0%);
     transform: translateY(0%);
     -webkit-animation: fadeIn 4s;
     -moz-animation: fadeIn 4s;
@@ -231,14 +240,19 @@
     bottom: 0;
     right: 20%;
     transition: 1s;
-    -webkit-transform: translateY(0%);
-    transform: translateY(0%);
+    -webkit-transform: translateZ(0) translateY(0);
+    -moz-transform: translateZ(0) translateY(0);
+    -ms-transform: translateZ(0) translateY(0);
+    -o-transform: translateZ(0) translateY(0);
+    transform: translateZ(0) translateY(0);
 }
 .circle.animate{
     transition: 5s;
     -webkit-transform: translateY(0%);
+    -moz-transform: translateZ(0);
     -ms-transform: translateY(0%);
-        transform: translateY(0%);
+    -o-transform: translateZ(0);
+    transform: translateY(0%);
 }
 .user-extensions{
     position: relative;
