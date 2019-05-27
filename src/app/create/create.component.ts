@@ -9,18 +9,6 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
   selector: 'app-create',
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.css'],
-  animations: [
-    trigger('buttonState', [
-      state('inactive', style({
-        height: '100%'
-       })),
-      state('active', style({
-        height: '{{buttonHeight}}px',
-      }),{params:{buttonHeight: 0}}),
-      transition('inactive => active', animate('2s ease-in')),
-      transition('active => inactive', animate('2s ease-out'))
-    ])
-  ]
 })
 export class CreateComponent implements OnInit {
   @ViewChild('button') button : ElementRef;
@@ -50,7 +38,6 @@ export class CreateComponent implements OnInit {
       this.checkGithub(result)
     })
     this.buttonHeight = this.button.nativeElement.offsetHeight
-    console.log(this.buttonHeight)
   }
 
   checkName(name){
