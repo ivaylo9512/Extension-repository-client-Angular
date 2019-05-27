@@ -1,13 +1,13 @@
 <section class="cover-section"> 
     <div class="input">
-        <label  for="cover" class="as-field">
+        <label #button for="cover" class="as-field" (mouseover)="state ='active'" (mouseout)="state='inactive'">
             <i class="fas fa-image"></i> 
             <span>Cover:</span>
         </label>
-        <input name="cover" (change)="addCover($event)" type="file" id="cover" class="submit-file" ngModel required>        
+        <input name="cover" (change)="addCover($event)" type="file" id="cover" ngModel required>        
     </div> 
     <div class="background-animation">
-         <label  for="cover" class="as-field">
+         <label [@buttonState]="{value: state, params: {buttonHeight: buttonHeight}}">
             <i class="fas fa-image"></i> 
             <span>Cover:</span>
         </label>
@@ -22,7 +22,7 @@
     <div class="cover">
         <div [ngStyle]="{'background-image':'url(' + coverURL + ')'}" *ngIf="coverURL"></div>
     </div>
-    <form #extensionForm="ngForm" (ngSubmit)="createExtension(extensionForm)" class="regular" id="submit-form">
+    <form #extensionForm="ngForm" (ngSubmit)="createExtension(extensionForm)">
         <div class="extension-info">
             <div class="logo-container">
                 <div class="logo">
@@ -45,21 +45,21 @@
             <input name="tags" type="text" placeholder="Tags" ngModel required>
         </div>
         <div class="extension-files">
-            <label for="file" class="as-field">
+            <label for="file">
                 <i class="fas fa-cloud-upload-alt"></i> File:
             </label>
-            <input name="file" (change)="addFile($event)" type="file" id="file" class="submit-file" ngModel required>
-            <label for="logo" class="as-field">
+            <input name="file" (change)="addFile($event)" type="file" id="file" ngModel required>
+            <label for="logo">
                 <i class="fas fa-image"></i> logo:
             </label>
-            <input name="logo" (change)="addLogo($event)" type="file" id="logo" class="submit-file" ngModel required>
-            <label  for="cover" class="as-field">
+            <input name="logo" (change)="addLogo($event)" type="file" id="logo" ngModel required>
+            <label  for="cover">
                 <i class="fas fa-image"></i> 
                 <span>Cover:</span>
             </label>
-            <input name="cover" (change)="addCover($event)" type="file" id="cover" class="submit-file" ngModel required>
+            <input name="cover" (change)="addCover($event)" type="file" id="cover" ngModel required>
 
-            <button type="submit" class="menu-item" id="submit-btn">
+            <button type="submit">
                 <i class="fas fa-angle-double-right"></i>
                 <span>submit for review</span>
             </button>

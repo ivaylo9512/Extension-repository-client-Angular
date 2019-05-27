@@ -1,20 +1,34 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormBuilder } from '@angular/forms'
+import { Component, OnInit, ViewChild, ElementRef  } from '@angular/core';
+import { FormControl, FormBuilder, NgForm } from '@angular/forms'
 import { debounceTime } from 'rxjs/operators';
 import { ExtensionsService } from '../services/extensions.service';
-import { NgForm } from '@angular/forms'
 import { DomSanitizer } from '@angular/platform-browser';
-
+import { trigger, state, style, animate, transition } from '@angular/animations';
 
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
-  styleUrls: ['./create.component.css']
+  styleUrls: ['./create.component.css'],
+  animations: [
+    trigger('buttonState', [
+      state('inactive', style({
+        height: '100%'
+       })),
+      state('active', style({
+        height: '{{buttonHeight}}px',
+      }),{params:{buttonHeight: 0}}),
+      transition('inactive => active', animate('2s ease-in')),
+      transition('active => inactive', animate('2s ease-out'))
+    ])
+  ]
 })
 export class CreateComponent implements OnInit {
+  @ViewChild('button') button : ElementRef;
+  buttonHeight : number;
+
   nameAvailable : string
   nameInput : FormControl = new FormControl()
-
+  state: String = 'inactive'
   gitHubAvailable : string
   gitHubInput : FormControl = new FormControl()
   gitHub : any
@@ -25,6 +39,7 @@ export class CreateComponent implements OnInit {
 
   constructor(private extensionService : ExtensionsService, private form: FormBuilder, private sanitizer: DomSanitizer) {
     this.formData = new FormData()
+    this.buttonHeight = 0
   }
 
   ngOnInit() {
@@ -34,6 +49,8 @@ export class CreateComponent implements OnInit {
     this.gitHubInput.valueChanges.pipe(debounceTime(200)).subscribe(result => {
       this.checkGithub(result)
     })
+    this.buttonHeight = this.button.nativeElement.offsetHeight
+    console.log(this.buttonHeight)
   }
 
   checkName(name){
@@ -47,6 +64,7 @@ export class CreateComponent implements OnInit {
     if(pattern.test(gitHub)){
       this.gitHubAvailable = 'loading'
       this.extensionService.checkGithub(gitHub).subscribe(gitHub => {
+        console.log(gitHub)
         this.gitHub = gitHub
         this.gitHubAvailable = 'true'
       },
@@ -109,5 +127,5 @@ export class CreateComponent implements OnInit {
 
   getSantizeUrl(url : string) {
     return this.sanitizer.bypassSecurityTrustUrl(url);
-}
+  }
 }

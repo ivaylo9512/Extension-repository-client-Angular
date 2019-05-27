@@ -18,6 +18,7 @@ import { CreateComponent } from './create/create.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EditComponent } from './edit/edit.component';
 import { HeaderComponent } from './header/header.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { HeaderComponent } from './header/header.component';
     FormsModule,
     ReactiveFormsModule,
     NgxPaginationModule,
+    BrowserAnimationsModule,
     RouterModule.forRoot([
       {
         path: '',
