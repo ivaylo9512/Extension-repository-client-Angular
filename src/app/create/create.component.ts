@@ -72,12 +72,13 @@ export class CreateComponent implements OnInit {
         tags
       }
       this.formData.append('extension', JSON.stringify(extension))
-      this.extensionService.createExtension(this.formData).subscribe(data =>{
+      this.extensionService.createExtension(this.formData).subscribe(
+        data =>{
 
-      },
-    error => {
-      console.log(error)
-    })
+        },
+        error => {
+          console.log(error)
+        })
     }
   }
   addLogo(e){
@@ -95,7 +96,6 @@ export class CreateComponent implements OnInit {
   addCover(e){
     const cover = e.target.files[0]
     this.formData.append('cover', cover)
-
     let reader = new FileReader();
     reader.readAsDataURL(cover); 
     reader.onload = (_event) => { 

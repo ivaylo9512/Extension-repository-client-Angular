@@ -66,10 +66,9 @@ button:hover i{
     height: 100%;   
 }
 .cover-section .input{
-    z-index: 5;
+    z-index: 4;
 }
 .cover-section label{
-    transition: 2s;
     background: black;
 }
 .cover-section .input,

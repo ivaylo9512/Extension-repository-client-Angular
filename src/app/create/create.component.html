@@ -1,20 +1,22 @@
 <section class="cover-section"> 
     <div class="input">
         <label  for="cover" class="as-field">
-                <i class="fas fa-image"></i> 
+            <i class="fas fa-image"></i> 
             <span>Cover:</span>
         </label>
         <input name="cover" (change)="addCover($event)" type="file" id="cover" class="submit-file" ngModel required>        
     </div> 
     <div class="background-animation">
          <label  for="cover" class="as-field">
-                <i class="fas fa-image"></i> 
+            <i class="fas fa-image"></i> 
             <span>Cover:</span>
         </label>
     </div>  
     <div class="cover"> 
         <div [ngStyle]="{'background-image':'url(' + coverURL + ')'}" *ngIf="coverURL"></div>
     </div>
+</section>
+<section class="extension-section"> 
 </section>
 <section class="create">
     <div class="cover">
@@ -35,15 +37,12 @@
             </div>
             <input [formControl]="gitHubInput" name="github" type="text" placeholder="GitHub repo">
             <div class="loading-container">
-                    <i *ngIf="gitHubAvailable == 'loading'" class="fas fa-circle-notch fa-spin"></i>
-                    <i *ngIf="gitHubAvailable == 'true'" class="fas fa-check"></i>
-                    <i *ngIf="gitHubAvailable == 'false'" class="fas fa-times"></i>
+                <i *ngIf="gitHubAvailable == 'loading'" class="fas fa-circle-notch fa-spin"></i>
+                <i *ngIf="gitHubAvailable == 'true'" class="fas fa-check"></i>
+                <i *ngIf="gitHubAvailable == 'false'" class="fas fa-times"></i>
             </div>
             <input name="version" type="text" placeholder="Version" ngModel required>
             <input name="tags" type="text" placeholder="Tags" ngModel required>
-
-
-
         </div>
         <div class="extension-files">
             <label for="file" class="as-field">
