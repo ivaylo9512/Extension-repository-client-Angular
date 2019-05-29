@@ -48,8 +48,28 @@
     <form #extensionForm="ngForm" (ngSubmit)="createExtension(extensionForm)">
         <div class="extension-info">
             <div class="logo-container">
+                <div class="github-info left" *ngIf="gitHub">
+                    <div>
+                        <span>User:</span>
+                        <span>{{gitHub.user}}</span>
+                    </div>
+                    <div>
+                        <span>Last commit</span>
+                        <span>{{gitHub.lastCommit | date: 'yyyy-MM-dd'}}</span>
+                    </div>
+                </div>
                 <div class="logo">
                     <img [src]="getSantizeUrl(logoURL)" *ngIf="logoURL"/>
+                </div>
+                <div class="github-info right" *ngIf="gitHub">
+                    <div>
+                        <span>Pull requests</span>
+                        <span>{{gitHub.pullRequests}}</span>
+                    </div>
+                    <div>
+                        <span>Open issues</span>
+                        <span>{{gitHub.openIssues}}</span>
+                    </div>
                 </div>
             </div>
             <input [formControl]="nameInput" type="text" placeholder="Name">

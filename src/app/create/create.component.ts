@@ -46,6 +46,7 @@ export class CreateComponent implements OnInit {
     if(pattern.test(gitHub)){
       this.gitHubAvailable = 'loading'
       this.extensionService.checkGithub(gitHub).subscribe(gitHub => {
+        console.log(gitHub)
         this.gitHub = gitHub
         this.gitHubAvailable = 'true'
       },
