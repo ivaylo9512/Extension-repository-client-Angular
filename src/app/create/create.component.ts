@@ -3,32 +3,16 @@ import { FormControl, FormBuilder, NgForm } from '@angular/forms'
 import { debounceTime } from 'rxjs/operators';
 import { ExtensionsService } from '../services/extensions.service';
 import { DomSanitizer } from '@angular/platform-browser';
-import { trigger, state, style, animate, transition } from '@angular/animations';
 
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
-  styleUrls: ['./create.component.css'],
-  animations: [
-    trigger('buttonState', [
-      state('inactive', style({
-        transform: 'scale(20)'
-       })),
-      state('active', style({
-        transform: 'scale(0)'
-      })),
-      transition('inactive => active', animate('2s ease-in')),
-      transition('active => inactive', animate('2s ease-out'))
-    ])
-  ]
+  styleUrls: ['./create.component.css']
 })
 export class CreateComponent implements OnInit {
-  @ViewChild('button') button : ElementRef;
-  buttonHeight : number;
-
   nameAvailable : string
   nameInput : FormControl = new FormControl()
-  state: String = 'inactive'
+  state: String 
   gitHubAvailable : string
   gitHubInput : FormControl = new FormControl()
   gitHub : any
@@ -39,7 +23,7 @@ export class CreateComponent implements OnInit {
 
   constructor(private extensionService : ExtensionsService, private form: FormBuilder, private sanitizer: DomSanitizer) {
     this.formData = new FormData()
-    this.buttonHeight = 0
+    this.state = 'inactive'
   }
 
   ngOnInit() {
@@ -49,7 +33,6 @@ export class CreateComponent implements OnInit {
     this.gitHubInput.valueChanges.pipe(debounceTime(200)).subscribe(result => {
       this.checkGithub(result)
     })
-    this.buttonHeight = this.button.nativeElement.offsetHeight
   }
 
   checkName(name){
@@ -63,7 +46,6 @@ export class CreateComponent implements OnInit {
     if(pattern.test(gitHub)){
       this.gitHubAvailable = 'loading'
       this.extensionService.checkGithub(gitHub).subscribe(gitHub => {
-        console.log(gitHub)
         this.gitHub = gitHub
         this.gitHubAvailable = 'true'
       },
@@ -120,8 +102,8 @@ export class CreateComponent implements OnInit {
     }
   }
   addFile(e){
-    const cover = e.target.files[0]
-    this.formData.append('file', cover)
+    const file = e.target.files[0]
+    this.formData.append('file', file)
   }
 
   getSantizeUrl(url : string) {

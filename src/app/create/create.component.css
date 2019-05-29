@@ -21,11 +21,37 @@ form > div{
 form > div.extension-files{
     width: 30%;
 }
+label{
+    border: 1px solid black;
+    padding: 5%;
+    text-align: center;
+    box-sizing: border-box;
+    width: 50%;
+    margin-left: 25%;
+    margin-bottom: 10px;
+    border-radius: 16px;
+    display: inline-block;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+label:hover span{
+    display: none;
+}
+label:hover i{
+    animation: fadeIn 2.5s;
+}
+label.black span{
+    display: none;
+}
+label.black:hover span{
+    display: inline-block;
+}
 textarea{
     text-align: center;
     width: 92%;
     height: 80%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 20px;
+    border: 3px solid black;
 }
 button{
     background: black;
@@ -69,6 +95,10 @@ button:hover i{
     -ms-transform: translateX(100%);
     -o-transform: translateX(100%);
     transform: translateX(100%);
+}
+.black{
+    background: black;
+    color: white;
 }
 .cover{
     position: relative;
@@ -153,11 +183,30 @@ button:hover i{
     z-index: 4;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 8%;
-    overflow: hidden;
     top: 50%;
     left:50%;
     margin: -8% 0 0 -8%;
     cursor: pointer;
+}
+.info-container input{
+    display: none;
+}
+.info-container label{
+    position: absolute;
+    bottom: -45%;
+    width: 100%;
+    margin-left: 0;
+    padding: 10%;
+    background: black;
+    color: white;
+    border: 3px solid white;
+}
+.info-container .circle-container{
+    width: 100%;
+    padding-bottom: 100%;
+    overflow: hidden;
+    position: absolute;
+    border-radius: 8%;
 }
 .info-container:focus {
     outline: 0;
@@ -166,7 +215,11 @@ button:hover i{
     position: relative;
     width: 100%;
     padding-bottom: 100%;
-    overflow: hidden;
+}
+.info-box button{
+    position: absolute;
+    bottom: -10%;
+
 }
 .info-box .logo-box{
     width: 50%;
@@ -213,6 +266,22 @@ button:hover i{
 .extension textarea{
     height: 100%;
 }
+.extension input{
+    border: 0px;
+    width: 100%;
+    text-align: center;
+}
+.extension input::placeholder { 
+    color: black;
+  }
+  
+.extension input:-ms-input-placeholder {
+    color: black;
+  }
+  
+.extension input::-ms-input-placeholder {
+    color: black;
+  }
 .logo{
     width: 20%;
     position: absolute;
@@ -228,29 +297,14 @@ button:hover i{
     width: 100%;
     position: absolute;
 }
-.extension-files label,
-.cover-section label{
-    border: 1px solid black;
-    padding: 5%;
-    text-align: center;
-    box-sizing: border-box;
-    width: 50%;
-    margin-left: 25%;
-    margin-bottom: 10px;
-    border-radius: 16px;
-    display: inline-block;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
 .cover-section label{
     border: 3px solid white;
     color: white;
 
 }
-.extension-files label:hover span{
-    display: none;
-}
-.extension-files label:hover i{
-    animation: fadeIn 2.5s;
+.extension-files label.black:hover{
+    background: white;
+    color: black;
 }
 .extension-files label:hover{
     background: black;
@@ -261,8 +315,10 @@ button:hover i{
 .cover-section input{
     display: none;
 }
-.extension-info i,
-.cover-section i{
+i{
+    margin-right: 5px;
+}
+.extension-info i{
     margin-left: 5px;
 }
 .extension-info .fa-times{
@@ -271,11 +327,16 @@ button:hover i{
 }
 .extension-info input{
     height: 10%;
-    width: 80%;
-    margin-left: 10%;
-    border: 0px;
-    border-bottom: 1px solid black;
-    
+    border: 2px solid black;
+    padding: 5%;
+    text-align: center;
+    box-sizing: border-box;
+    width: 50%;
+    margin-left: 25%;
+    margin-bottom: 10px;
+    border-radius: 16px;
+    display: inline-block;
+
 }
 .logo-container{
     width: 100%;

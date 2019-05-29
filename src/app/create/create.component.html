@@ -1,6 +1,6 @@
 <section class="cover-section"> 
     <div class="input">
-        <label #button for="cover" class="as-field" (mouseover)="state ='active'" (mouseout)="state='inactive'">
+        <label for="cover" class="as-field" (mouseover)="state ='active'" (mouseout)="state='inactive'">
             <i class="fas fa-image"></i> 
             <span>Cover:</span>
         </label>
@@ -21,21 +21,24 @@
         <input placeholder="Name" class="name">
         <div class="extension-info-container">
             <input placeholder="Version">
-            <input placeholder="Tags">
         </div>
         <div class="info">
-            <textarea></textarea>
+            <textarea placeholder="Description"></textarea>
         </div>
     </div>
     <div class="info-container">
-        <div class="hover-circle">
+        <div class="circle-container">
+            <div class="hover-circle"></div>
         </div>
         <div class="info-box">
             <img class="logo-box" [src]="getSantizeUrl(logoURL)" *ngIf="logoURL"/>
         </div>
-    </div>
-    <div class="circle-container">
-        <span class="circle"></span>
+        <label for="logo">
+                <i class="fas fa-image"></i>
+                <span>logo:</span>
+        </label>
+        <input name="logo" (change)="addLogo($event)" type="file" id="logo" ngModel required>
+
     </div>
 </section>
 <section class="create">
@@ -62,18 +65,19 @@
                 <i *ngIf="gitHubAvailable == 'false'" class="fas fa-times"></i>
             </div>
             <input name="version" type="text" placeholder="Version" ngModel required>
-            <input name="tags" type="text" placeholder="Tags" ngModel required>
         </div>
         <div class="extension-files">
-            <label for="file">
-                <i class="fas fa-cloud-upload-alt"></i> File:
+            <label [ngClass]="{'black' : formData.get('file')}" for="file">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <span>File:</span>
             </label>
             <input name="file" (change)="addFile($event)" type="file" id="file" ngModel required>
-            <label for="logo">
-                <i class="fas fa-image"></i> logo:
+            <label [ngClass]="{'black' : logoURL}" for="logo">
+                <i class="fas fa-image"></i>
+                <span>Logo:</span>
             </label>
             <input name="logo" (change)="addLogo($event)" type="file" id="logo" ngModel required>
-            <label  for="cover">
+            <label [ngClass]="{'black' : coverURL}" for="cover">
                 <i class="fas fa-image"></i> 
                 <span>Cover:</span>
             </label>
