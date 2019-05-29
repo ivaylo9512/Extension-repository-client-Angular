@@ -1,37 +1,37 @@
 <header>
-        <nav>
-            <span class="circle"></span>
-            <span class="circle1"></span>
-            <span class="circle2"></span>
-            <ul *ngIf="!this.authService.isLoggedIn">
-                <li><a routerLink="/home">Home</a></li>
-                <li><a routerLink="/discover">Discover</a></li>
-                <li><a routerLink="/login">Login</a></li>
-            </ul>
-            <ul *ngIf="this.authService.isLoggedIn && !this.authService.isAdmin">
-                <li class="user"><a [routerLink]="['/profile', this.authService.id]">{{this.authService.username}}</a>
-                    <ul>
-                        <li><a [routerLink]="['/profile', this.authService.id]">Profile</a></li>
-                        <li><a href="" (click)="this.authService.logout()">Logout</a></li>
-                    </ul>
-                </li>
-                <li><a routerLink='/home'>Home</a></li>
-                <li><a routerLink="/discover">Discover</a></li>
-                <li><a routerLink="/create">Create</a></li>
-            </ul>
-            <ul *ngIf="this.authService.isLoggedIn && this.authService.isAdmin">
-                <li class="user"><a [routerLink]="['/profile', this.authService.id]">{{this.authService.username}}</a>
-                    <ul>
-                        <li><a [routerLink]="['/profile', this.authService.id]">Profile</a></li>
-                        <li><a>Admin</a></li>
-                        <li><a href="" (click)="this.authService.logout()">Logout</a></li>
-                    </ul>
-                </li>
-                <li><a routerLink="/home">Home</a></li>
-                <li><a routerLink="/discover">Discover</a></li>
-                <li><a routerLink="/create">Create</a></li>
-                <li><a href="">Pendings</a></li>
-    
-            </ul>
-        </nav>
-    </header>
+    <nav>
+        <span class="circle"></span>
+        <span class="circle1"></span>
+        <span class="circle2"></span>
+        <ul *ngIf="!this.authService.isLoggedIn">
+            <li><a routerLink="/home">Home</a></li>
+            <li><a routerLink="/discover">Discover</a></li>
+            <li><a routerLink="/login">Login</a></li>
+        </ul>
+        <ul *ngIf="this.authService.isLoggedIn && !this.authService.isAdmin">
+            <li class="user"><a [routerLink]="['/profile', this.authService.id]">{{this.authService.username}}</a>
+                <ul>
+                    <li><a [routerLink]="['/profile', this.authService.id]">Profile</a></li>
+                    <li><a href="" (click)="this.authService.logout()">Logout</a></li>
+                </ul>
+            </li>
+            <li><a routerLink='/home'>Home</a></li>
+            <li><a routerLink="/discover">Discover</a></li>
+            <li><a routerLink="/create">Create</a></li>
+        </ul>
+        <ul *ngIf="this.authService.isLoggedIn && this.authService.isAdmin">
+            <li class="user"><a [routerLink]="['/profile', this.authService.id]">{{this.authService.username}}</a>
+                <ul>
+                    <li><a [routerLink]="['/profile', this.authService.id]">Profile</a></li>
+                    <li><a>Admin</a></li>
+                    <li><a href="" (click)="this.authService.logout()">Logout</a></li>
+                </ul>
+            </li>
+            <li><a routerLink="/home">Home</a></li>
+            <li><a routerLink="/discover">Discover</a></li>
+            <li><a routerLink="/create">Create</a></li>
+            <li><a href="">Pendings</a></li>
+
+        </ul>
+    </nav>
+</header>
