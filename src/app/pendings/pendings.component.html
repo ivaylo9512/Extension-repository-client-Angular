@@ -1,3 +1,20 @@
-<p>
-  pendings works!
-</p>
+<label>Extensions found:</label>
+<div class="extensions">
+    <div class="info-container" *ngFor="let extension of extensions" [routerLink]="['/extension', extension.id]">
+        <div class="info-box">
+            <div class="hover-circle">
+            </div>
+
+            <div class="logo-container">
+                <img class="logo-box" [src]="extension.imageLocation" />
+            </div>
+
+            <div class="extension-info">
+                <b>{{extension.name}}</b>
+                <p>
+                    {{extension.description}}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
