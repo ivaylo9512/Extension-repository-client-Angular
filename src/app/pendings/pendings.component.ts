@@ -12,7 +12,7 @@ export class PendingsComponent implements OnInit {
 
   config = {
     id: 'custom',
-    itemsPerPage: 12,
+    itemsPerPage: 1,
     currentPage: 1,
     totalItems: null,
     criteria: 'name',
@@ -24,9 +24,13 @@ export class PendingsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.findPendings()
   }
 
-  findPendings(page : number){
-
+  findPendings(){
+    this.extensionsService.getPendings().subscribe(data => {
+      this.extensions = data
+      this.config.totalItems = this.extensions.length
+    })
   }
 }

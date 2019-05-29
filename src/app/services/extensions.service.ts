@@ -19,6 +19,9 @@ export class ExtensionsService {
   getExtension(id : number){
     return this.httpClient.get<Extension>(`/api/extensions/${id}`)
   }
+  getPendings(){
+    return this.httpClient.get<Extension>(`/api/auth/extensions/unpublished`)
+  }
   createExtension(formData){
     return this.httpClient.post<Extension>('/api/auth/extensions/create', formData)
   }
