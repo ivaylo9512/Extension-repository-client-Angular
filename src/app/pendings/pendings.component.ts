@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ExtensionsService } from '../services/extensions.service';
 
 @Component({
   selector: 'app-pendings',
@@ -7,9 +8,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PendingsComponent implements OnInit {
 
-  constructor() { }
+  extensions : any
+
+  config = {
+    id: 'custom',
+    itemsPerPage: 12,
+    currentPage: 1,
+    totalItems: null,
+    criteria: 'name',
+    search: ''
+  }
+
+  constructor(private extensionsService : ExtensionsService) { 
+    this.extensions = []
+  }
 
   ngOnInit() {
   }
 
+  findPendings(page : number){
+
+  }
 }

@@ -67,6 +67,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         component: CreateComponent
       },
       { 
+        path: 'pendings', 
+        component: PendingsComponent
+      },
+      { 
         path: '**', 
         redirectTo: '' 
       },

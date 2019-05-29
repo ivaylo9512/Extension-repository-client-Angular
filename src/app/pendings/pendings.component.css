@@ -1,15 +1,52 @@
-.info-container{
-    width: 16%;
+section{
+    padding-top: 30px;
+    height: calc(100vh - 30px);
+    overflow-x: hidden;
+    position: relative;
+}
+label{
+    font-size: 3em;
+    margin-left: 34px;
+}
+.circle{
+    background: linear-gradient(#e66465, #9198e5);
+    border-radius: 50%;
+    display: inline-block;
     position: absolute;
+    width: 35%;
+    padding-bottom: 35%;
+    top: -20%;
+    right: -10%;
+    -webkit-transform: translateZ(0) translateY(0);
+    -moz-transform: translateZ(0 translateY(0));
+    -ms-transform: translateZ(0) translateY(0);
+    -o-transform: translateZ(0) translateY(0);
+    transform: translateZ(0) translateY(0);
+    transition: 1s all;
+}   
+.extensions{
+    width: 85%;
+    padding-left: 35px;
+    overflow: overlay;
+    min-height: 65%;
+}
+.info-container{
+    position: relative;
+    float: left;
+    top: 0;
+    left: 0;
+    margin: 0;
+    margin-right: 5%;
+    margin-top: 1%;
+    margin-bottom: 4%;
+    width: 20%;
     background-color: rgba(255, 255, 255, 0.3);
     z-index: 4;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 8%;
     overflow: hidden;
-    top: 50%;
-    left:50%;
-    margin: -8% 0 0 -8%;
     cursor: pointer;
+
 }
 .info-container:focus {
     outline: 0;
@@ -95,4 +132,11 @@
     text-overflow: ellipsis;
     white-space: nowrap; 
     overflow: hidden;
+}
+pagination-template ul{
+    margin-bottom: 20px;
+}
+.menu li.current{
+    color: black;
+    background-color: rgba(255, 255, 255, 0.3);
 }

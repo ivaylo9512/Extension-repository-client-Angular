@@ -16,8 +16,8 @@ export class ProfileComponent implements OnInit {
   config = {
     itemsPerPage: 8,
     currentPage: 1,
-    totalItems: 0
-  };
+    totalItems: null
+  }
 
   constructor(private userService : UserService, private route: ActivatedRoute) {
     this.user = []

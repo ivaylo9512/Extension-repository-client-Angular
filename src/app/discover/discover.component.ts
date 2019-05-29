@@ -19,7 +19,7 @@ export class DiscoverComponent implements OnInit {
     totalItems: null,
     criteria: 'name',
     search: ''
-  };
+  }
 
   constructor(private extensionsService : ExtensionsService) {
     this.extensions = []
@@ -39,7 +39,6 @@ export class DiscoverComponent implements OnInit {
       this.extensions = data['extensions']
       this.config.currentPage = page
       this.config.totalItems = data['totalResults']
-      console.log(data)
     })
   }
   changeCriteria(value){
