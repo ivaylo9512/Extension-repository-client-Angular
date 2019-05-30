@@ -1,4 +1,4 @@
-*{
+*:not(i){
     font-family: "Segoe UI Web (West European)", "Segoe UI", -apple-system, BlinkMacSystemFont, "Roboto", "Helvetica Neue", sans-serif;
 }
 section{
@@ -121,4 +121,71 @@ section{
     -ms-transform: translateZ(0) translateY(0);
     -o-transform: translateZ(0) translateY(0);
     transform: translateZ(0) translateY(0);
+}
+.sliding-info-container{
+    position: absolute;
+    bottom: 0%;
+    border-top: 1px solid black;
+    width: 100%;
+    background: rgba(255, 255, 255, 1);
+    z-index: 5;
+    box-shadow: 0 -12px 17px 0 rgba(0, 0, 0, 0.3), 0 10px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+}
+.sliding-info-container > div{
+    float: left; 
+    width: 30%;
+}
+.sliding-info-container span,
+.sliding-info-container a{
+    box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.2), 0px 4px 0px -1px rgba(0, 0, 0, 0.19);
+    background: white;
+    margin-top: 7px;
+    margin-left: 15px;
+    border-radius: 3px;
+    font-size: 13px;
+    color: #333;
+}
+.github-info span{
+    display: inline-block;
+    padding: 5px 0px;
+    width: 24%;
+}
+.sliding-info-container .user-menu{
+    width:40%;
+    display: flex;
+    align-items: center;
+}
+.sliding-info-container .user-menu > div{
+    display: inline-block;
+    width: 50%;
+}
+.fa-star{
+    width: 20%;
+    font-size: 1.7em;
+}
+
+.sliding-info-container button{
+    background: white;
+    color: black;
+    border: 1px solid black;
+    padding: 5%;
+    text-align: center;
+    box-sizing: border-box;
+    width: 25%;
+    border-radius: 16px;
+    display: inline-block;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.sliding-info-container .tags{
+    display: inline-block;
+    height: 85%;
+    align-self: baseline;
+}
+.tags a{
+    float: left;
+    padding: 4px 5px;
 }

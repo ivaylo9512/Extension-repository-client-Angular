@@ -26,9 +26,10 @@ label{
 }   
 .extensions{
     width: 85%;
+    padding-top: 10px;
     padding-left: 35px;
     overflow: overlay;
-    min-height: 85%;
+    min-height: 92%;
 }
 .info-container{
     position: relative;

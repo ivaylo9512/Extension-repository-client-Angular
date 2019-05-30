@@ -70,12 +70,6 @@ button{
     border-radius: 16px;
     display: inline-block;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
-    -webkit-transform: translateZ(0);
-    -moz-transform: translateZ(0);
-    -ms-transform: translateZ(0);
-    -o-transform: translateZ(0);
-    transform: translateZ(0);
 }
 button span{
     margin-left: 5px;
@@ -358,6 +352,7 @@ button:hover i{
 }
 .github-info span{
     padding: 4px 6px;
+    font-style: italic;
 }
 .github-info div > :first-child{
     border: 1px solid #ddd;

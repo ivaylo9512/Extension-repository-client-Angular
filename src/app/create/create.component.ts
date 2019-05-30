@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef  } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormBuilder, NgForm } from '@angular/forms'
 import { debounceTime } from 'rxjs/operators';
 import { ExtensionsService } from '../services/extensions.service';

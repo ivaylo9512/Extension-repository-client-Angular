@@ -25,6 +25,33 @@
         <div class="circle-container">
             <span class="circle"></span>
         </div>
+        <div class="sliding-info-container">
+            <div class="github-info">
+                <span>Pull requests</span>
+                <span>Open issues</span>
+                <span>Last commit</span>
+                <span>{{extension.pullRequests}}</span>
+                <span>{{extension.openIssues}}</span>
+                <span>{{extension.lastCommit | date : 'yyyy-MM-dd'}}</span>
+            </div>
+            <div class="user-menu">
+                <button><i class="fas fa-download"></i>Download</button>
+                <div>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <button><i class="fab fa-github"></i>GitHub</button>
+            </div>
+            <div class="tags">
+                <a>editor</a>
+                <a>adobe</a>
+                <a>illustrator</a>
+                <a>illustrator</a>
+            </div>
+        </div>
     </div>
     
 </section>
