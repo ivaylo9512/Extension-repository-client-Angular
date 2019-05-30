@@ -360,6 +360,7 @@ button:hover i{
     width: 100%;
     height: 30%;
     position: relative;
+    margin-bottom: 5px;
 }
 .github-info{
     width: 40%;

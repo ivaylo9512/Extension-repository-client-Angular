@@ -3,6 +3,8 @@ import { FormControl, FormBuilder, NgForm } from '@angular/forms'
 import { debounceTime } from 'rxjs/operators';
 import { ExtensionsService } from '../services/extensions.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { NullTemplateVisitor } from '@angular/compiler';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create',
@@ -28,7 +30,7 @@ export class CreateComponent implements OnInit {
   gitHubError : string
   nameError : string
 
-  constructor(private extensionService : ExtensionsService, private form: FormBuilder, private sanitizer: DomSanitizer) {
+  constructor(private extensionService : ExtensionsService, private router : Router, private sanitizer: DomSanitizer) {
     this.formData = new FormData()
     this.name = ''
     this.version = ''
@@ -39,12 +41,13 @@ export class CreateComponent implements OnInit {
     this.nameInput.valueChanges.pipe(debounceTime(200)).subscribe(name => {
       this.nameAvailable = 'loading'
       this.nameError = null
+      this.name = name
       this.checkName(name)
     })
     this.gitHubInput.valueChanges.pipe(debounceTime(200)).subscribe(gitHub => {
       this.gitHubAvailable = 'loading'
       this.gitHub = null
-      this.gitHubError = ''
+      this.gitHubError = null
       
       this.checkGithub(gitHub)
     })
@@ -58,7 +61,9 @@ export class CreateComponent implements OnInit {
 
   checkName(name){
     this.nameAvailable = 'loading'
-    if(name.length > 7){
+    if(name.length == 0){
+      this.nameAvailable = null    
+    }else if(name.length > 7){
       this.extensionService.checkName(name).subscribe(available => {
         this.nameAvailable = available.toString()
         if(this.nameAvailable == 'false'){
@@ -75,7 +80,9 @@ export class CreateComponent implements OnInit {
   }
   checkGithub(gitHub){
     const pattern = /^https:\/\/github\.com\/.+\/.+$/
-    if(pattern.test(gitHub)){
+    if(gitHub.length == 0){
+      this.gitHubAvailable = null
+    }else if(pattern.test(gitHub)){
       this.extensionService.checkGithub(gitHub).subscribe(
         gitHub => {
           this.gitHub = gitHub
@@ -96,23 +103,19 @@ export class CreateComponent implements OnInit {
       const name = this.nameInput.value
       const github = this.gitHubInput.value
       const version = this.version
-      const tags = extensionForm.controls['tags'].value
       const description = this.description
       
       const extension = {
         name,
         version,
         description,
-        github,
-        tags
+        github
       }
       this.formData.append('extension', JSON.stringify(extension))
       this.extensionService.createExtension(this.formData).subscribe(
         data =>{
-
-        },
-        error => {
-          console.log(error)
+          this.router.navigate(['extension', data['id']])
+          
         })
     }
   }
