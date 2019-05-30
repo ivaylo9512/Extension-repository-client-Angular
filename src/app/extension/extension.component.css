@@ -172,8 +172,7 @@ section{
     width: 50%;
 }
 .fa-star{
-    width: 20%;
-    font-size: 1.7em;
+    font-size: 2em;
 }
 
 .sliding-info-container button{
@@ -190,7 +189,6 @@ section{
 }
 .sliding-info-container .tags{
     display: inline-block;
-    height: 85%;
     align-self: baseline;
 }
 .tags a{

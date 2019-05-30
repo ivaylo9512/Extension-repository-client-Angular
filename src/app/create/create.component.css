@@ -10,8 +10,7 @@ h1{
 }
 form{
     width: 100%;
-    height: 50%;
-    padding-top: 15px;
+    height: calc(50% - 30px);
 }
 form > div{
     height: 100%;
@@ -20,6 +19,11 @@ form > div{
 }
 form > div.extension-files{
     width: 30%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    align-items: center;
 }
 span{
     margin-left: 5px;
@@ -51,7 +55,7 @@ label.black:hover span{
 textarea{
     text-align: center;
     width: 92%;
-    height: 80%;
+    height: 94%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 20px;
     border: 3px solid black;
@@ -66,7 +70,6 @@ button{
     transition: 1s;
     width: 50%;
     margin-left: 25%;
-    margin-bottom: 15px;
     border-radius: 16px;
     display: inline-block;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -183,7 +186,6 @@ button:hover i{
     top: 50%;
     left:50%;
     margin: -8% 0 0 -8%;
-    cursor: pointer;
 }
 .info-container input{
     display: none;
@@ -279,12 +281,12 @@ button:hover i{
     color: black;
 }
 .logo{
-    width: 20%;
+    width: 19%;
     position: absolute;
     z-index: 4;
     border-radius: 8%;
     overflow: hidden;
-    padding-bottom: 20%;
+    padding-bottom: 19%;
     top: 50%;
     left: 50%;
     margin: calc(-10%) 0 0 -10%;
@@ -306,7 +308,9 @@ button:hover i{
     background: black;
     color: white;
 }
-
+.extension-files > div{
+    width: 100%;
+}
 .extension-files input,
 .cover-section input{
     display: none;
@@ -319,9 +323,8 @@ button:hover i{
 
 }
 .extension-info input{
-    height: 10%;
+    height: 20%;
     border: 2px solid black;
-    padding: 5%;
     text-align: center;
     box-sizing: border-box;
     width: 50%;
@@ -330,6 +333,28 @@ button:hover i{
     border-radius: 16px;
     display: inline-block;
 
+}
+.red-input{
+    background: rgba(115, 53, 53, 0.5)
+}
+.info-input-container{
+    position: relative;
+    height: 20%;
+    margin-bottom: 10px;
+}
+.info-input-container input{
+    height: 100%;
+}
+.extension-info input.error{
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: black;
+    display: none;
+    color: white;
+}
+.loading-container:hover ~ input.error{
+    display: block;
 }
 .logo-container{
     width: 100%;

@@ -25,6 +25,8 @@ export class CreateComponent implements OnInit {
   name : string
   version : string
   description : string
+  gitHubError : string
+  nameError : string
 
   constructor(private extensionService : ExtensionsService, private form: FormBuilder, private sanitizer: DomSanitizer) {
     this.formData = new FormData()
@@ -35,10 +37,15 @@ export class CreateComponent implements OnInit {
 
   ngOnInit() {
     this.nameInput.valueChanges.pipe(debounceTime(200)).subscribe(name => {
+      this.nameAvailable = 'loading'
+      this.nameError = null
       this.checkName(name)
-      this.name = name
     })
     this.gitHubInput.valueChanges.pipe(debounceTime(200)).subscribe(gitHub => {
+      this.gitHubAvailable = 'loading'
+      this.gitHub = null
+      this.gitHubError = ''
+      
       this.checkGithub(gitHub)
     })
     this.versionInput.valueChanges.pipe(debounceTime(200)).subscribe(version => {
@@ -51,22 +58,36 @@ export class CreateComponent implements OnInit {
 
   checkName(name){
     this.nameAvailable = 'loading'
-    this.extensionService.checkName(name).subscribe(available => {
-      this.nameAvailable = available.toString()
-    })
+    if(name.length > 7){
+      this.extensionService.checkName(name).subscribe(available => {
+        this.nameAvailable = available.toString()
+        if(this.nameAvailable == 'false'){
+          this.nameError = 'Name is unavailable.'
+        }else{
+          this.name = name
+          this.nameAvailable = 'true'
+        }
+      })
+    }else{
+      this.nameAvailable = 'false'
+      this.nameError = 'Name must be more than 7 symbolls'
+    }
   }
   checkGithub(gitHub){
     const pattern = /^https:\/\/github\.com\/.+\/.+$/
     if(pattern.test(gitHub)){
-      this.gitHubAvailable = 'loading'
-      this.extensionService.checkGithub(gitHub).subscribe(gitHub => {
-        this.gitHub = gitHub
-        this.gitHubAvailable = 'true'
-      },
-    error => {
-      this.gitHub = null
+      this.extensionService.checkGithub(gitHub).subscribe(
+        gitHub => {
+          this.gitHub = gitHub
+          this.gitHubAvailable = 'true'
+        },
+        error => {
+          this.gitHubAvailable = 'false'
+          this.gitHubError = error
+        })
+    }else{
       this.gitHubAvailable = 'false'
-    })
+      this.gitHubError = 'Link is not a valid repo URL.'
     }
   }
 

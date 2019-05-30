@@ -72,41 +72,49 @@
                     </div>
                 </div>
             </div>
-            <input [value]="name" [formControl]="nameInput" type="text" placeholder="Name">
-            <div class="loading-container">
-                <i *ngIf="nameAvailable == 'loading'" class="fas fa-circle-notch fa-spin"></i>
-                <i *ngIf="nameAvailable == 'true'" class="fas fa-check"></i>
-                <i *ngIf="nameAvailable == 'false'" class="fas fa-times"></i>
+            <div class="info-input-container">
+                <input [ngClass]="{'red-input' : nameAvailable == 'false'}" [value]="name" [formControl]="nameInput" type="text" placeholder="Name">
+                <div class="loading-container">
+                    <i *ngIf="nameAvailable == 'loading'" class="fas fa-circle-notch fa-spin"></i>
+                    <i *ngIf="nameAvailable == 'true'" class="fas fa-check"></i>
+                    <i *ngIf="nameAvailable == 'false'" class="fas fa-times"></i>
+                </div>
+                <input [value]="nameError" *ngIf="nameAvailable == 'false'" class="error">
             </div>
-            <input [formControl]="gitHubInput" name="github" type="text" placeholder="GitHub repo">
-            <div class="loading-container">
-                <i *ngIf="gitHubAvailable == 'loading'" class="fas fa-circle-notch fa-spin"></i>
-                <i *ngIf="gitHubAvailable == 'true'" class="fas fa-check"></i>
-                <i *ngIf="gitHubAvailable == 'false'" class="fas fa-times"></i>
+            <div class="info-input-container">
+                <input [ngClass]="{'red-input' : gitHubAvailable == 'false'}" [formControl]="gitHubInput" name="github" type="text" placeholder="GitHub repo">
+                <div class="loading-container">
+                    <i *ngIf="gitHubAvailable == 'loading'" class="fas fa-circle-notch fa-spin"></i>
+                    <i *ngIf="gitHubAvailable == 'true'" class="fas fa-check"></i>
+                    <i *ngIf="gitHubAvailable == 'false'" class="fas fa-times"></i>
+                </div>
+                <input [value]="gitHubError" *ngIf="gitHubAvailable == 'false'" class="error">
             </div>
-            <input [value]="version" [formControl]="versionInput" name="version" type="text" placeholder="Version">
+            <input [value]="version"  [formControl]="versionInput" name="version" type="text" placeholder="Version">
         </div>
         <div class="extension-files">
-            <label [ngClass]="{'black' : formData.get('file')}" for="file">
-                <i class="fas fa-cloud-upload-alt"></i>
-                <span>File:</span>
-            </label>
-            <input name="file" (change)="addFile($event)" type="file" id="file" ngModel required>
-            <label [ngClass]="{'black' : logoURL}" for="logo">
-                <i class="fas fa-image"></i>
-                <span>Logo:</span>
-            </label>
-            <input name="logo" (change)="addLogo($event)" type="file" id="logo" ngModel required>
-            <label [ngClass]="{'black' : coverURL}" for="cover">
-                <i class="fas fa-image"></i> 
-                <span>Cover:</span>
-            </label>
-            <input name="cover" (change)="addCover($event)" type="file" id="cover" ngModel required>
+            <div>
+                <label [ngClass]="{'black' : formData.get('file')}" for="file">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <span>File:</span>
+                </label>
+                <input name="file" (change)="addFile($event)" type="file" id="file" ngModel required>
+                <label [ngClass]="{'black' : logoURL}" for="logo">
+                    <i class="fas fa-image"></i>
+                    <span>Logo:</span>
+                </label>
+                <input name="logo" (change)="addLogo($event)" type="file" id="logo" ngModel required>
+                <label [ngClass]="{'black' : coverURL}" for="cover">
+                    <i class="fas fa-image"></i> 
+                    <span>Cover:</span>
+                </label>
+                <input name="cover" (change)="addCover($event)" type="file" id="cover" ngModel required>
 
-            <button type="submit">
-                <i class="fas fa-angle-double-right"></i>
-                <span>submit for review</span>
-            </button>
+                <button type="submit">
+                    <i class="fas fa-angle-double-right"></i>
+                    <span>submit for review</span>
+                </button>
+            </div>
         </div>
         <div class="extension-description">
             <textarea [value]="description" [formControl]="descriptionInput" name="description" placeholder="Description" id="description"></textarea>    
