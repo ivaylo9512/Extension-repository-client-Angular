@@ -1,37 +1,30 @@
 <section>
-    <div class="cover" [ngStyle]="{'background-image':'url(' + extension.coverLocation + ')'}">
+    <div class="cover" [ngStyle]="{'background-image':'url(' + extension.coverLocation + ')'}" *ngIf="extension.coverLocation">
     </div>
     <div class="extension-info">
-        <div class="image-container">
-          <img [src]="extension.imageLocation">
-        </div>  
-        <div class="info-container">
-            <div>
-                <h1>{{extension.name}}</h1>
-                <h2>Rating: {{extension.rating}}</h2>
+        <div class="logo-container">
+            <div class="hover-circle">
             </div>
-            <div class="info">
-                <div>
-                    Pull requests:
-                    <br>{{extension.pullRequests}}
-                    <br>Open issues:
-                    <br>{{extension.openIssues}}
-                    <br>Upload date: 
-                    <br>{{extension.uploadDate}}
-                </div>
-                <div>
-                    Times downloaded:
-                    <br>{{extension.timesDownloaded}}
-                    <br>Times rated:
-                    <br>{{extension.timesRated}}
-                    <br>Last commit:
-                    <br>{{extension.lastCommit}}
-                </div>
-                <h3>Info:</h3>
+            <div class="logo-box">
+                <img class="logo" [src]="extension.imageLocation" *ngIf="extension.imageLocation"/>
+            </div>
+        </div>
+        <div class="extension">
+            <h1>{{extension.name}}</h1>
+            <div class="extension-info-container">
+                <h2>Rating: {{extension.rating}}</h2>
+                <h3>Owner: {{extension.ownerName}}</h3>
+                <h5>Info</h5>
+            </div>
+            <div class="extension-info">
                 <p>
                     {{extension.description}}
                 </p>
             </div>
         </div>
+        <div class="circle-container">
+            <span class="circle"></span>
+        </div>
     </div>
+    
 </section>

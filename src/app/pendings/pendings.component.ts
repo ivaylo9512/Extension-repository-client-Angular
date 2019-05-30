@@ -12,11 +12,9 @@ export class PendingsComponent implements OnInit {
 
   config = {
     id: 'custom',
-    itemsPerPage: 1,
+    itemsPerPage: 12,
     currentPage: 1,
-    totalItems: null,
-    criteria: 'name',
-    search: ''
+    totalItems: null
   }
 
   constructor(private extensionsService : ExtensionsService) { 

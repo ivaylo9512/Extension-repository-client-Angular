@@ -1,3 +1,6 @@
+*{
+    font-family: "Segoe UI Web (West European)", "Segoe UI", -apple-system, BlinkMacSystemFont, "Roboto", "Helvetica Neue", sans-serif;
+}
 .info-container{
     width: 16%;
     position: absolute;
@@ -84,7 +87,6 @@
 
 }
 .extension-info b{
-    margin-top: 60px;
     margin-left: 5px;
     font-size: 1.8em;
     width: 100%;
@@ -93,8 +95,9 @@
     color: black;
     font-style: normal;
     text-overflow: ellipsis;
-    white-space: nowrap; 
+    white-space: nowrap;
     overflow: hidden;
+    line-height: normal;
 }
 .second-section {
     position: absolute;
@@ -174,6 +177,7 @@
   }
 .profile{
     position: absolute;
+    overflow: hidden;
     right: 0%;
     top: 40%;
     height: 60%;
@@ -185,14 +189,16 @@
     text-align: center;
 }
 .profile h1{
-    font-size: 6em;
-    margin-left: 10%;
+    text-overflow: ellipsis; 
+    overflow: hidden; 
+    white-space: nowrap;
+    font-size: 5.8em;
     font-weight: bold;
-
+    line-height: normal;
 }
 .profile h2{
     font-size: 1.5em;
-    margin-top: 5%;
+    margin-top: 1%;
     font-weight: bold;
 }
 .profile h3{
@@ -229,9 +235,6 @@
     background: linear-gradient(#e66465, #9198e5);
     border-radius: 50%;
     display: inline-block;
-}
-
-.circle{
     padding-bottom: 100%;
     width: 100%;
     position: absolute;
