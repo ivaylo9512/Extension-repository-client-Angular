@@ -1,6 +1,6 @@
 <section class="cover-section"> 
     <div class="input">
-        <label for="cover" class="as-field" (mouseover)="state ='active'" (mouseout)="state='inactive'">
+        <label for="cover" class="as-field">
             <i class="fas fa-image"></i> 
             <span>Cover:</span>
         </label>
@@ -18,12 +18,12 @@
 </section>
 <section class="extension-section"> 
     <div class="extension">
-        <input placeholder="Name" class="name">
+        <input [formControl]="nameInput" [value]="name" placeholder="Name" class="name">
         <div class="extension-info-container">
-            <input placeholder="Version">
+            <input [value]="version" [formControl]="versionInput" placeholder="Version">
         </div>
         <div class="info">
-            <textarea placeholder="Description"></textarea>
+            <textarea [value]="description" [formControl]="descriptionInput" placeholder="Description"></textarea>
         </div>
     </div>
     <div class="info-container">
@@ -72,7 +72,7 @@
                     </div>
                 </div>
             </div>
-            <input [formControl]="nameInput" type="text" placeholder="Name">
+            <input [value]="name" [formControl]="nameInput" type="text" placeholder="Name">
             <div class="loading-container">
                 <i *ngIf="nameAvailable == 'loading'" class="fas fa-circle-notch fa-spin"></i>
                 <i *ngIf="nameAvailable == 'true'" class="fas fa-check"></i>
@@ -84,7 +84,7 @@
                 <i *ngIf="gitHubAvailable == 'true'" class="fas fa-check"></i>
                 <i *ngIf="gitHubAvailable == 'false'" class="fas fa-times"></i>
             </div>
-            <input name="version" type="text" placeholder="Version" ngModel required>
+            <input [value]="version" [formControl]="versionInput" name="version" type="text" placeholder="Version">
         </div>
         <div class="extension-files">
             <label [ngClass]="{'black' : formData.get('file')}" for="file">
@@ -109,7 +109,7 @@
             </button>
         </div>
         <div class="extension-description">
-            <textarea name="description" placeholder="Description" id="description" ngModel required></textarea>    
+            <textarea [value]="description" [formControl]="descriptionInput" name="description" placeholder="Description" id="description"></textarea>    
         </div>
     </form>
 </section>

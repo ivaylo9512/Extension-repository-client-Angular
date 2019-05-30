@@ -270,15 +270,14 @@ button:hover i{
 }
 .extension input::placeholder { 
     color: black;
-  }
-  
+    opacity: 1
+}
 .extension input:-ms-input-placeholder {
     color: black;
-  }
-  
+} 
 .extension input::-ms-input-placeholder {
     color: black;
-  }
+}
 .logo{
     width: 20%;
     position: absolute;

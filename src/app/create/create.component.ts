@@ -10,28 +10,42 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./create.component.css']
 })
 export class CreateComponent implements OnInit {
-  nameAvailable : string
   nameInput : FormControl = new FormControl()
-  state: String 
-  gitHubAvailable : string
   gitHubInput : FormControl = new FormControl()
-  gitHub : any
-
+  versionInput : FormControl = new FormControl()
+  descriptionInput : FormControl = new FormControl()
+  
   formData : FormData
   logoURL : any
   coverURL : any
+  gitHub : any
+
+  gitHubAvailable : string
+  nameAvailable : string
+  name : string
+  version : string
+  description : string
 
   constructor(private extensionService : ExtensionsService, private form: FormBuilder, private sanitizer: DomSanitizer) {
     this.formData = new FormData()
-    this.state = 'inactive'
+    this.name = ''
+    this.version = ''
+    this.description = ''
   }
 
   ngOnInit() {
-    this.nameInput.valueChanges.pipe(debounceTime(200)).subscribe(result => {
-      this.checkName(result)
+    this.nameInput.valueChanges.pipe(debounceTime(200)).subscribe(name => {
+      this.checkName(name)
+      this.name = name
     })
-    this.gitHubInput.valueChanges.pipe(debounceTime(200)).subscribe(result => {
-      this.checkGithub(result)
+    this.gitHubInput.valueChanges.pipe(debounceTime(200)).subscribe(gitHub => {
+      this.checkGithub(gitHub)
+    })
+    this.versionInput.valueChanges.pipe(debounceTime(200)).subscribe(version => {
+      this.version = version
+    })
+    this.descriptionInput.valueChanges.pipe(debounceTime(1000)).subscribe(description => {
+      this.description = description
     })
   }
 
@@ -60,9 +74,9 @@ export class CreateComponent implements OnInit {
     if(this.nameAvailable == 'true' && this.gitHubAvailable == 'true'){
       const name = this.nameInput.value
       const github = this.gitHubInput.value
-      const version = extensionForm.controls['version'].value
+      const version = this.version
       const tags = extensionForm.controls['tags'].value
-      const description = extensionForm.controls['description'].value
+      const description = this.description
       
       const extension = {
         name,

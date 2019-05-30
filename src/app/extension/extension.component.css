@@ -131,7 +131,12 @@ section{
     z-index: 5;
     box-shadow: 0 -12px 17px 0 rgba(0, 0, 0, 0.3), 0 10px 20px 0 rgba(0, 0, 0, 0.19);
     text-align: center;
+
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
     display: flex;
+
     align-items: center;
     padding: 10px 0;
 }
@@ -156,6 +161,9 @@ section{
 }
 .sliding-info-container .user-menu{
     width:40%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
     display: flex;
     align-items: center;
 }
