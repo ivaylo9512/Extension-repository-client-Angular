@@ -26,6 +26,7 @@ export class CreateComponent implements OnInit {
   coverURL : any
   gitHub : any
 
+  file : boolean
   gitHubAvailable : string
   nameAvailable : string
   name : string
@@ -158,6 +159,7 @@ export class CreateComponent implements OnInit {
   }
   addFile(e){
     const file = e.target.files[0]
+    this.file = true
     this.formData.append('file', file)
   }
   getSantizeUrl(url : string) {
@@ -174,8 +176,7 @@ export class CreateComponent implements OnInit {
       const scrollHeight = this.tagsContainer.nativeElement.scrollHeight
       const offsetHeight = this.tagsContainer.nativeElement.offsetHeight
       if(scrollHeight > offsetHeight){
-        const index = this.tags.indexOf(tag)
-        this.tags.splice(index, 1)
+        this.tags.pop()
       }
     }
   }

@@ -19,7 +19,7 @@
 <section class="extension-section"> 
     <div #tagsContainer (click)="focusInput(this)" class="tags">
         <div *ngFor = "let tag of tags"><i class="fas fa-tags"></i>{{tag}}</div>
-        <input [ngClass]="{'left' : tags.length > 0}" [formControl]="tagsInput" #tagsInputElmnt>
+        <input [ngClass]="{'left' : tags.length > 0}" [formControl]="tagsInput"  placeholder="Tags" #tagsInputElmnt>
     </div>
     <div class="info-container">
         <div class="circle-container">
@@ -61,8 +61,8 @@
                         <span>{{gitHub.lastCommit | date: 'yyyy-MM-dd'}}</span>
                     </div>
                 </div>
-                <div class="logo">
-                    <img [src]="getSantizeUrl(logoURL)" *ngIf="logoURL"/>
+                <div [ngClass]="{'center-logo' : gitHub}" class="logo" *ngIf="logoURL">
+                    <img [src]="getSantizeUrl(logoURL)"/>
                 </div>
                 <div class="github-info right" *ngIf="gitHub">
                     <div>
@@ -93,11 +93,13 @@
                 </div>
                 <input [value]="gitHubError" *ngIf="gitHubAvailable == 'false'" class="error">
             </div>
-            <input [value]="version"  [formControl]="versionInput" name="version" type="text" placeholder="Version">
+            <div class="info-input-container">
+                <input [value]="version"  [formControl]="versionInput" name="version" type="text" placeholder="Version">
+            </div>
         </div>
         <div class="extension-files">
             <div>
-                <label [ngClass]="{'black' : formData.get('file')}" for="file">
+                <label [ngClass]="{'black' : file}" for="file">
                     <i class="fas fa-cloud-upload-alt"></i>
                     <span>File:</span>
                 </label>
@@ -120,6 +122,9 @@
             </div>
         </div>
         <div class="extension-description">
+            <div class="tags">
+                <div *ngFor = "let tag of tags"><i class="fas fa-tags"></i>{{tag}}</div>
+            </div>
             <textarea [value]="description" [formControl]="descriptionInput" name="description" placeholder="Description" id="description"></textarea>    
         </div>
     </form>

@@ -176,19 +176,14 @@ button:hover i{
     background-size: cover;
     background-position: bottom left;
 }
-.tags{
+.extension-section .tags{
     position: absolute;
     left: 0%;
     top: 40%;
-    height: 20%;
+    height: 15.6%;
     width:40%;
     text-align: center;
     z-index: 3;
-}
-.tags-border{
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    border-radius: 20px;
-    border: 3px solid black;
 }
 .tags *{
     float: left;
@@ -205,7 +200,8 @@ button:hover i{
     margin: -8% 0 0 -8%;
 }
 .tags input{
-    margin-top: 3px;
+    margin-top: 8px;
+    margin-left: 8px;
     padding: 0.5% 1.5%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 5px;
@@ -219,6 +215,7 @@ button:hover i{
 .tags i{
     font-size: 0.6em;
     align-self: center;
+    margin-right: 2px;
 }
 .info-container input{
     display: none;
@@ -232,10 +229,17 @@ button:hover i{
 }
 .tags div{
     padding: 0.5% 1.5%;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    border-radius: 8px;
+    box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.2), 0px 4px 0px -1px rgba(0, 0, 0, 0.19);
+    background: white;
+    margin-top: 7px;
+    margin-left: 15px;
+    border-radius: 3px;
+    font-size: 13px;
+    color: #333;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
     display: flex;
-    border-width: 2px;
 }
 .info-container label{
     position: absolute;
@@ -325,15 +329,19 @@ button:hover i{
     color: black;
 }
 .logo{
-    width: 19%;
-    position: absolute;
+    width: 20%;
+    position: relative;
     z-index: 4;
     border-radius: 8%;
     overflow: hidden;
-    padding-bottom: 19%;
-    top: 50%;
+    padding-bottom: 20%;
     left: 50%;
-    margin: calc(-10%) 0 0 -10%;
+    display: inline-block;
+    margin: 0 0 0 -10%;
+}
+.center-logo{
+    left:0;
+    margin:0;
 }
 .logo img{
     width: 100%;
@@ -359,6 +367,14 @@ button:hover i{
 .cover-section input{
     display: none;
 }
+.extension-info{
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 .extension-info i{
     margin-left: 5px;
 }
@@ -378,12 +394,26 @@ button:hover i{
     display: inline-block;
 
 }
+.extension-description{
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    flex-direction: column;
+}
+.extension-description > div{
+    width: 100%;
+}
+.extension-description textarea{
+    margin: 8px 0;
+    align-items: stretch;
+}
 .red-input{
     background: rgba(115, 53, 53, 0.5)
 }
 .info-input-container{
     position: relative;
-    height: 20%;
+    height: 19%;
     margin-bottom: 10px;
 }
 .info-input-container input{
@@ -402,9 +432,10 @@ button:hover i{
 }
 .logo-container{
     width: 100%;
-    height: 30%;
+    height: auto;
     position: relative;
     margin-bottom: 5px;
+    margin-top: 22px;
 }
 .github-info{
     width: 40%;
