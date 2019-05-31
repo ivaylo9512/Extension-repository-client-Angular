@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { FormControl, FormBuilder, NgForm } from '@angular/forms'
 import { debounceTime } from 'rxjs/operators';
 import { ExtensionsService } from '../services/extensions.service';
@@ -12,10 +12,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./create.component.css']
 })
 export class CreateComponent implements OnInit {
+  @ViewChild('tagsInputElmnt') tagsInputElmnt : ElementRef
+  @ViewChild('tagsContainer') tagsContainer : ElementRef
+
   nameInput : FormControl = new FormControl()
   gitHubInput : FormControl = new FormControl()
   versionInput : FormControl = new FormControl()
   descriptionInput : FormControl = new FormControl()
+  tagsInput : FormControl = new FormControl()
   
   formData : FormData
   logoURL : any
@@ -30,8 +34,11 @@ export class CreateComponent implements OnInit {
   gitHubError : string
   nameError : string
 
+  tags : string[]
+
   constructor(private extensionService : ExtensionsService, private router : Router, private sanitizer: DomSanitizer) {
     this.formData = new FormData()
+    this.tags = []
     this.name = ''
     this.version = ''
     this.description = ''
@@ -57,6 +64,15 @@ export class CreateComponent implements OnInit {
     this.descriptionInput.valueChanges.pipe(debounceTime(1000)).subscribe(description => {
       this.description = description
     })
+    this.tagsInput.valueChanges.subscribe(tag =>{
+      if (/\s/.test(tag)) {
+        if(tag.length > 1){
+          this.addTag(tag)
+        }else{
+          this.tagsInputElmnt.nativeElement.value = ''
+        }
+      }
+    })
   }
 
   checkName(name){
@@ -75,7 +91,7 @@ export class CreateComponent implements OnInit {
       })
     }else{
       this.nameAvailable = 'false'
-      this.nameError = 'Name must be more than 7 symbolls'
+      this.nameError = 'Name is less than 7 symbolls'
     }
   }
   checkGithub(gitHub){
@@ -144,8 +160,23 @@ export class CreateComponent implements OnInit {
     const file = e.target.files[0]
     this.formData.append('file', file)
   }
-
   getSantizeUrl(url : string) {
     return this.sanitizer.bypassSecurityTrustUrl(url);
+  }
+  focusInput(e){
+    this.tagsInputElmnt.nativeElement.focus()
+  }
+  addTag(tag){
+    tag = tag.trim()
+    this.tagsInputElmnt.nativeElement.value = ''
+    if(!this.tags.includes(tag)){
+      this.tags.push(tag)
+      const scrollHeight = this.tagsContainer.nativeElement.scrollHeight
+      const offsetHeight = this.tagsContainer.nativeElement.offsetHeight
+      if(scrollHeight > offsetHeight){
+        const index = this.tags.indexOf(tag)
+        this.tags.splice(index, 1)
+      }
+    }
   }
 }

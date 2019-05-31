@@ -17,14 +17,9 @@
     </div>
 </section>
 <section class="extension-section"> 
-    <div class="extension">
-        <input [formControl]="nameInput" [value]="name" placeholder="Name" class="name">
-        <div class="extension-info-container">
-            <input [value]="version" [formControl]="versionInput" placeholder="Version">
-        </div>
-        <div class="info">
-            <textarea [value]="description" [formControl]="descriptionInput" placeholder="Description"></textarea>
-        </div>
+    <div #tagsContainer (click)="focusInput(this)" class="tags">
+        <div *ngFor = "let tag of tags"><i class="fas fa-tags"></i>{{tag}}</div>
+        <input [ngClass]="{'left' : tags.length > 0}" [formControl]="tagsInput" #tagsInputElmnt>
     </div>
     <div class="info-container">
         <div class="circle-container">
@@ -38,7 +33,15 @@
                 <span>logo:</span>
         </label>
         <input name="logo" (change)="addLogo($event)" type="file" id="logo" ngModel required>
-
+    </div>
+    <div class="extension">
+        <input [formControl]="nameInput" [value]="name" placeholder="Name" class="name">
+        <div class="extension-info-container">
+            <input [value]="version" [formControl]="versionInput" placeholder="Version">
+        </div>
+        <div class="info">
+            <textarea [value]="description" [formControl]="descriptionInput" placeholder="Description"></textarea>
+        </div>
     </div>
 </section>
 <section class="create">

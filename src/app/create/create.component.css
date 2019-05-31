@@ -176,6 +176,23 @@ button:hover i{
     background-size: cover;
     background-position: bottom left;
 }
+.tags{
+    position: absolute;
+    left: 0%;
+    top: 40%;
+    height: 20%;
+    width:40%;
+    text-align: center;
+    z-index: 3;
+}
+.tags-border{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 20px;
+    border: 3px solid black;
+}
+.tags *{
+    float: left;
+}
 .info-container{
     width: 16%;
     position: absolute;
@@ -187,8 +204,38 @@ button:hover i{
     left:50%;
     margin: -8% 0 0 -8%;
 }
+.tags input{
+    margin-top: 3px;
+    padding: 0.5% 1.5%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 5px;
+    border: 2px solid black;
+    align-self: center;
+    float: none;
+}
+.tags input.left{
+    float: left;
+}
+.tags i{
+    font-size: 0.6em;
+    align-self: center;
+}
 .info-container input{
     display: none;
+}
+.info-container label,
+.tags div{
+    background: black;
+    color: white;
+    border: 3px solid white;
+    margin-top: 3px;
+}
+.tags div{
+    padding: 0.5% 1.5%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 8px;
+    display: flex;
+    border-width: 2px;
 }
 .info-container label{
     position: absolute;
@@ -196,9 +243,6 @@ button:hover i{
     width: 100%;
     margin-left: 0;
     padding: 10%;
-    background: black;
-    color: white;
-    border: 3px solid white;
 }
 .info-container .circle-container{
     width: 100%;
