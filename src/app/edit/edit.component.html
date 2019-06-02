@@ -48,7 +48,7 @@
     <div class="cover">
         <div [ngStyle]="{'background-image':'url(' + coverURL + ')'}" *ngIf="coverURL"></div>
     </div>
-    <form #extensionForm="ngForm" (ngSubmit)="createExtension()">
+    <form #extensionForm="ngForm" (ngSubmit)="editExtension()">
         <div class="extension-info">
             <div class="logo-container">
                 <div class="github-info left" *ngIf="gitHub">

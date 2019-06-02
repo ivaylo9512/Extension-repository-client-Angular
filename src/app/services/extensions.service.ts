@@ -22,6 +22,9 @@ export class ExtensionsService {
   getPendings(){
     return this.httpClient.get<Extension>(`/api/auth/extensions/unpublished`)
   }
+  editExtension(id : number, formData){
+    return this.httpClient.post<any>(`/api/auth/extensions/edit/${id}`, formData)
+  }
   createExtension(formData){
     return this.httpClient.post<any>('/api/auth/extensions/create', formData)
   }

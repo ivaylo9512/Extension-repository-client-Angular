@@ -1,5 +1,5 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { debounceTime } from 'rxjs/operators';
 import { ExtensionsService } from '../services/extensions.service';
 import { FormControl } from '@angular/forms';
@@ -36,7 +36,7 @@ export class EditComponent implements OnInit {
 
   tags : string[]
 
-  constructor(private extensionService : ExtensionsService, private route : ActivatedRoute, private sanitizer: DomSanitizer) {
+  constructor(private extensionService : ExtensionsService, private router : Router, private route : ActivatedRoute, private sanitizer: DomSanitizer) {
     this.formData = new FormData()
     this.extension = {}
     this.tags = []
@@ -87,7 +87,27 @@ export class EditComponent implements OnInit {
       }
     })
   }
-
+  editExtension(){
+    if(this.nameAvailable == 'true' && this.gitHubAvailable == 'true'){
+      const name = this.nameInput.value
+      const github = this.extension.gitHubLink
+      const version = this.extension.version
+      const description = this.extension.description
+      const tags = this.tags.toString()      
+      const extension = {
+        name,
+        version,
+        description,
+        github,
+        tags
+      }
+      this.formData.append('extension', JSON.stringify(extension))
+      this.extensionService.editExtension(this.extension.id, this.formData).subscribe(
+        data =>{
+          this.router.navigate(['extension', data['id']])      
+        })
+    }
+  }
   checkName(name){
     this.nameAvailable = 'loading'
     if(name.length == 0){
