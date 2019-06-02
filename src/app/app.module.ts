@@ -20,6 +20,7 @@ import { EditComponent } from './edit/edit.component';
 import { HeaderComponent } from './header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TagsComponent } from './tags/tags.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { TagsComponent } from './tags/tags.component';
     CreateComponent,
     EditComponent,
     HeaderComponent,
-    TagsComponent
+    TagsComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
