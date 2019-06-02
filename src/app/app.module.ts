@@ -19,6 +19,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { EditComponent } from './edit/edit.component';
 import { HeaderComponent } from './header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TagsComponent } from './tags/tags.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AdminComponent,
     CreateComponent,
     EditComponent,
-    HeaderComponent
+    HeaderComponent,
+    TagsComponent
   ],
   imports: [
     BrowserModule,
