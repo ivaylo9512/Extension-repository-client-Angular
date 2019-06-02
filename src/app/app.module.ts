@@ -59,6 +59,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         component: ProfileComponent
       },
       { 
+        path: 'edit/:id', 
+        component: EditComponent
+      },
+      { 
         path: 'discover', 
         component: DiscoverComponent
       },

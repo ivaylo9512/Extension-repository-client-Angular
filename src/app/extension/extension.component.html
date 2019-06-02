@@ -15,7 +15,7 @@
                     <button><i class="fas fa-trash-alt"></i></button> 
                     <button><i class="fas fa-sync-alt"></i></button> 
                     <button><i class="fas fa-star"></i></button> 
-                    <button><i class="fas fa-edit"></i></button> 
+                    <button [routerLink]="['/edit', extension.id]"><i class="fas fa-edit"></i></button> 
                     <button><i class="fas fa-check"></i></button> 
             </div>
             <h1>{{extension.name}}</h1>
@@ -24,7 +24,7 @@
                 <h3>Owner: {{extension.ownerName}}</h3>
                 <h5>Info</h5>
             </div>
-            <div class="extension-info">
+            <div class="info">
                 <p>
                     {{extension.description}}
                 </p>
