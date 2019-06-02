@@ -162,7 +162,7 @@ export class CreateComponent implements OnInit {
     this.file = true
     this.formData.append('file', file)
   }
-  getSantizeUrl(url : string) {
+  getSanitizeUrl(url : string) {
     return this.sanitizer.bypassSecurityTrustUrl(url);
   }
   focusInput(e){
