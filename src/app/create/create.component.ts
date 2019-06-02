@@ -1,9 +1,8 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
-import { FormControl, FormBuilder, NgForm } from '@angular/forms'
+import { FormControl, NgForm } from '@angular/forms'
 import { debounceTime } from 'rxjs/operators';
 import { ExtensionsService } from '../services/extensions.service';
 import { DomSanitizer } from '@angular/platform-browser';
-import { NullTemplateVisitor } from '@angular/compiler';
 import { Router } from '@angular/router';
 
 @Component({
