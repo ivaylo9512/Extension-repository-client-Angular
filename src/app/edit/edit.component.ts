@@ -8,7 +8,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html',
-  styleUrls: ['./edit.component.css']
+  styleUrls: ['../create/create.component.css']
 })
 export class EditComponent implements OnInit {
   @ViewChild('tagsInputElmnt') tagsInputElmnt : ElementRef

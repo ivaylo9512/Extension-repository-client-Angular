@@ -5,7 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-tags',
   templateUrl: './tags.component.html',
-  styleUrls: ['./tags.component.css']
+  styleUrls: ['../pendings/pendings.component.css']
 })
 export class TagsComponent implements OnInit {
 

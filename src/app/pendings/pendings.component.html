@@ -1,4 +1,5 @@
 <section>
+    <h1>Extensions waiting: {{config.totalItems}}</h1>
     <span class="circle"></span>
     <div class="extensions">
         <div class="info-container" *ngFor="let extension of extensions | paginate: config" [routerLink]="['/extension', extension.id]">
