@@ -65,6 +65,10 @@ import { TagsComponent } from './tags/tags.component';
         component: EditComponent
       },
       { 
+        path: 'tag/:tag', 
+        component: TagsComponent
+      },
+      { 
         path: 'discover', 
         component: DiscoverComponent
       },

@@ -20,13 +20,16 @@ export class ExtensionsService {
     return this.httpClient.get<Extension>(`/api/extensions/${id}`)
   }
   getPendings(){
-    return this.httpClient.get<Extension>(`/api/auth/extensions/unpublished`)
+    return this.httpClient.get<Extension[]>('/api/auth/extensions/unpublished')
+  }
+  getByTag(tag : string){
+    return this.httpClient.get<any>(`/api/tag/${tag}`)
   }
   editExtension(id : number, formData){
-    return this.httpClient.post<any>(`/api/auth/extensions/edit/${id}`, formData)
+    return this.httpClient.post<Extension>(`/api/auth/extensions/edit/${id}`, formData)
   }
   createExtension(formData){
-    return this.httpClient.post<any>('/api/auth/extensions/create', formData)
+    return this.httpClient.post<Extension>('/api/auth/extensions/create', formData)
   }
   checkName(name : string){
     const params = new HttpParams().set('name', name)
@@ -38,8 +41,7 @@ export class ExtensionsService {
   }
   getExtensions(name : string, criteria : string, page : string, perPage : string){
     const params = new  HttpParams().set('name', name).set('orderBy', criteria).set('page', page).set('perPage', perPage)
-
-    return this.httpClient.get("/api/extensions/filter", {params})                  
+    return this.httpClient.get<any>("/api/extensions/filter", {params})                  
                               
   }
 }

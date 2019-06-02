@@ -10,7 +10,7 @@ import { debounceTime, switchMap } from 'rxjs/operators';
 })
 export class DiscoverComponent implements OnInit {
   search: FormControl = new FormControl()
-  extensions : any
+  extensions : any[]
 
   config = {
     id: 'custom',

@@ -8,7 +8,7 @@ import { ExtensionsService } from '../services/extensions.service';
 })
 export class PendingsComponent implements OnInit {
 
-  extensions : any
+  extensions : any[]
 
   config = {
     id: 'custom',
