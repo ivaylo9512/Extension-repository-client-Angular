@@ -21,7 +21,7 @@
             <h1>{{extension.name}}</h1>
             <div class="extension-info-container">
                 <h2>Rating: {{extension.rating}}</h2>
-                <h3>Owner: {{extension.ownerName}}</h3>
+                <h3>Owner: <a [routerLink]="['/profile', extension.ownerId]">{{extension.ownerName}}</a></h3>
                 <h5>Info</h5>
             </div>
             <div class="info">
@@ -43,7 +43,7 @@
                 <span>{{extension.lastCommit | date : 'yyyy-MM-dd'}}</span>
             </div>
             <div class="user-menu">
-                <button><i class="fas fa-download"></i>Download</button>
+                <a [href]="extension.fileLocation"><button><i class="fas fa-download"></i>Download</button></a>
                 <div>
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
@@ -51,13 +51,10 @@
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
                 </div>
-                <button><i class="fab fa-github"></i>GitHub</button>
+                <a [href]="extension.gitHubLink"><button><i class="fab fa-github"></i>GitHub</button></a>
             </div>
             <div class="tags">
-                <a>editor</a>
-                <a>adobe</a>
-                <a>illustrator</a>
-                <a>illustrator</a>
+                <a [routerLink]="['/tag', tag]" *ngFor="let tag of extension.tags">{{tag}}</a>
             </div>
         </div>
     </div>
