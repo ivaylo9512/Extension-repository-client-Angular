@@ -1,3 +1,10 @@
-<p>
-  register works!
-</p>
+<form #userForm="ngForm" (ngSubmit)="register(userForm)" autocomplete="on">
+    <input name="username" type="text" placeholder="username" ngModel required autocomplete="username">
+    <input name="password" type="password" placeholder="password" ngModel required autocomplete="password">
+    <input name="repeat-password" type="password" placeholder="repeat" ngModel required autocomplete="password">
+    <input name="logo" type="file">
+    <div class="buttons-container">
+        <button>register</button>
+        <button>login</button>
+    </div>
+</form>
