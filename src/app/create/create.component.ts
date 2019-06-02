@@ -120,12 +120,13 @@ export class CreateComponent implements OnInit {
       const github = this.gitHubInput.value
       const version = this.version
       const description = this.description
-      
+      const tags = this.tags.toString()      
       const extension = {
         name,
         version,
         description,
-        github
+        github,
+        tags
       }
       this.formData.append('extension', JSON.stringify(extension))
       this.extensionService.createExtension(this.formData).subscribe(

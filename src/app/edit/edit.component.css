@@ -414,7 +414,7 @@ button:hover i{
 }
 .info-input-container{
     position: relative;
-    height: 19%;
+    height: 18%;
     margin-bottom: 10px;
 }
 .info-input-container input{
@@ -436,7 +436,7 @@ button:hover i{
     height: auto;
     position: relative;
     margin-bottom: 5px;
-    margin-top: 22px;
+    margin-top: 5px;
 }
 .github-info{
     width: 40%;

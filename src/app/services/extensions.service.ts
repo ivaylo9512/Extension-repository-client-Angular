@@ -23,7 +23,7 @@ export class ExtensionsService {
     return this.httpClient.get<Extension>(`/api/auth/extensions/unpublished`)
   }
   createExtension(formData){
-    return this.httpClient.post<Extension>('/api/auth/extensions/create', formData)
+    return this.httpClient.post<any>('/api/auth/extensions/create', formData)
   }
   checkName(name : string){
     const params = new HttpParams().set('name', name)
