@@ -23,4 +23,4 @@
             </div>
         </div>
     </div>
-    <app-profile></app-profile>
+    <app-profile *ngIf="this.authService.isLoggedIn"></app-profile>
