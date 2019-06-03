@@ -24,7 +24,7 @@ export class RequestsInterceptor implements HttpInterceptor {
         request = request.clone({url : this.baseUrl + request.url})
         return next.handle(request).pipe(catchError(err => {
             let error = err.error || err.statusText;
-            if(err.status == 401){
+            if(err.status == 401 && error == "Jwt token has expired."){
                 this.authService.logout()
                 error = "Session has expired. Log again." 
                 return throwError(error)

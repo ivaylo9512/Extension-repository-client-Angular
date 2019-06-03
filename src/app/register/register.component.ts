@@ -13,7 +13,7 @@ import { AuthService } from '../services/auth.service';
 export class RegisterComponent implements OnInit {
 
   formData : FormData
-  error : any[]
+  errors : any[]
   constructor(private authService : AuthService ,private userService : UserService, private router : Router) {
     this.formData = new FormData()
   }
@@ -26,11 +26,11 @@ export class RegisterComponent implements OnInit {
     const password = userForm.controls['password'].value
     const repeatPassword = userForm.controls['repeat-password'].value
 
-    const user = [
+    const user = {
       username,
       password,
       repeatPassword
-    ]
+    }
 
     this.formData.append('user', JSON.stringify(user))
     this.userService.register(this.formData).subscribe(
@@ -41,7 +41,7 @@ export class RegisterComponent implements OnInit {
         this.router.navigate(['home'])
 
       },
-      err  => this.error = err['error']
+      err  => this.errors = err['errors']
     );
   }
 }

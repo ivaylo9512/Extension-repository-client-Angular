@@ -8,3 +8,6 @@
         <button>login</button>
     </div>
 </form>
+<div class="errors" *ngIf="errors">
+    <a *ngFor="let error of errors">{{error.code}}</a>
+</div>

@@ -54,6 +54,10 @@ import { RegisterComponent } from './register/register.component';
         path: 'login',
         component: LoginComponent
       },
+      {
+        path: 'register',
+        component: RegisterComponent
+      },
       { 
         path: 'extension/:id', 
         component: ExtensionComponent
