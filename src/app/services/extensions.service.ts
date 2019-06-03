@@ -46,4 +46,13 @@ export class ExtensionsService {
   setFeatureState(id : number, state : string){
     return this.httpClient.patch<Extension>(`/api/auth/extensions/${id}/featured/${state}`, null)
   }
+  setPublishState(id : number, state : string){
+    return this.httpClient.patch<Extension>(`/api/auth/extensions/${id}/status/${state}`, null)
+  }
+  deleteExtension(id : number){
+    return this.httpClient.delete(`/api/auth/extensions/${id}`)
+  }
+  refreshGitHub(id : number){
+    return this.httpClient.patch<Extension>(`/api/auth/extensions/${id}/github`,null)
+  }
 }

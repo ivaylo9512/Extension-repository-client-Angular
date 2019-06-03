@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('Authorization', data['token'])
         localStorage.setItem('user', JSON.stringify(data))
         this.authService.setUserDetails(data)
-        this.router.navigate(['home'])
+        this.router.navigate(['/home'])
 
       },
       err  => this.error = err['error']
