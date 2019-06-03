@@ -24,5 +24,17 @@ export class ExtensionComponent implements OnInit {
       this.extension = data    
     })
   }
+  setFeatureState(){
+    let state
+    if(this.extension.featured){
+      state = 'unfeature'
+    }else{
+      state = 'feature'
+    }
+    this.extensionService.setFeatureState(this.extension.id, state).subscribe(data =>{
+      this.extension.featured = data['featured']
+    })
+
+  }
 
 }

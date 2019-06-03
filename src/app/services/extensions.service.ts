@@ -41,7 +41,9 @@ export class ExtensionsService {
   }
   getExtensions(name : string, criteria : string, page : string, perPage : string){
     const params = new  HttpParams().set('name', name).set('orderBy', criteria).set('page', page).set('perPage', perPage)
-    return this.httpClient.get<any>("/api/extensions/filter", {params})                  
-                              
+    return this.httpClient.get<any>("/api/extensions/filter", {params})                                          
+  }
+  setFeatureState(id : number, state : string){
+    return this.httpClient.patch<Extension>(`/api/auth/extensions/${id}/featured/${state}`, null)
   }
 }

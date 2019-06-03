@@ -14,7 +14,7 @@
                 <button><i class="fas fa-cog"></i></button> 
                 <button><i class="fas fa-trash-alt"></i></button> 
                 <button><i class="fas fa-sync-alt"></i></button> 
-                <button><i class="fas fa-star"></i></button> 
+                <button (click)="setFeatureState()" [ngStyle]="{'color': extension.featured ? 'orange' : 'black' }"><i class="fas fa-star"></i></button> 
                 <button [routerLink]="['/edit', extension.id]"><i class="fas fa-edit"></i></button> 
                 <button><i class="fas fa-check"></i></button> 
             </div>
@@ -43,7 +43,7 @@
                 <span>{{extension.lastCommit | date : 'yyyy-MM-dd'}}</span>
             </div>
             <div class="user-menu">
-                <a [href]="extension.fileLocation"><button><i class="fas fa-download"></i>Download</button></a>
+                <a [href]="extension.fileLocation"><i class="fas fa-download"></i>Download</a>
                 <div>
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
@@ -51,7 +51,7 @@
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
                 </div>
-                <a [href]="extension.gitHubLink"><button><i class="fab fa-github"></i>GitHub</button></a>
+                <a [href]="extension.gitHubLink"><i class="fab fa-github"></i>GitHub</a>
             </div>
             <div class="tags">
                 <a [routerLink]="['/tag', tag]" *ngFor="let tag of extension.tags">{{tag}}</a>
