@@ -1,0 +1,78 @@
+form{
+    width: 40%;
+    border: 2px solid black;
+    text-align: center;
+    height: 50vh;
+    margin: 25vh auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 16px;
+    position: relative;
+    overflow: hidden;
+}
+input,
+label{
+    border: 0px;
+    width: 85%;
+    height: 100%;
+    padding-left: 8px;
+    background: transparent;
+    border-radius: 0 16px
+}
+i{
+    display: flex;
+    height: 100%;
+    align-items: center;
+    padding: 0 18px;
+    border-right: 1px solid black;
+    float: left;
+}
+.inputs-container{
+    height: 50%;
+    margin: 20px 0px;
+}
+.inputs-container div{
+    height: 35%;
+    border: 1px solid black;
+    margin: 0 15%;
+    width: 70%;
+    display: flex;
+    border-radius: 15px;
+    margin-top: 15px;
+    align-items: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.buttons-container{
+    height: 30%;
+}
+button{
+    border: 1px solid black;
+    height: 100%;
+    text-align: center;
+    box-sizing: border-box;
+    width: 50%;
+    display: inline-block;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background: black;
+    color: white;
+    margin-top: 3px;
+}
+span{
+    background: linear-gradient(#e66465, #9198e5);
+    border-radius: 50%;
+    display: inline-block;
+    padding-bottom: 50%;
+    width: 50%;
+    position: absolute;
+    bottom: 50%;
+    right: -20%;
+    transition: 1s;
+    z-index: -1;
+    -webkit-transform: translateZ(0) translateY(0);
+    -moz-transform: translateZ(0) translateY(0);
+    -ms-transform: translateZ(0) translateY(0);
+    -o-transform: translateZ(0) translateY(0);
+    transform: translateZ(0) translateY(0);
+}
+.logo{
+    display: none;
+}

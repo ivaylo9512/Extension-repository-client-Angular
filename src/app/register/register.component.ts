@@ -14,34 +14,38 @@ export class RegisterComponent implements OnInit {
 
   formData : FormData
   errors : any[]
+  next : boolean
   constructor(private authService : AuthService ,private userService : UserService, private router : Router) {
     this.formData = new FormData()
+    this.next = false
   }
 
   ngOnInit() {
   }
 
   register(userForm : NgForm){
-    const username =  userForm.controls['username'].value
-    const password = userForm.controls['password'].value
-    const repeatPassword = userForm.controls['repeat-password'].value
+    if(this.next){
+      const username =  userForm.controls['username'].value
+      const password = userForm.controls['password'].value
+      const repeatPassword = userForm.controls['repeat-password'].value
 
-    const user = {
-      username,
-      password,
-      repeatPassword
+      const user = {
+        username,
+        password,
+        repeatPassword
+      }
+
+      this.formData.set('user', JSON.stringify(user))
+      this.userService.register(this.formData).subscribe(
+        data => {
+          localStorage.setItem('Authorization', data['token'])
+          localStorage.setItem('user', JSON.stringify(data))
+          this.authService.setUserDetails(data)
+          this.router.navigate(['home'])
+
+        },
+        err  => console.log(err)
+      );
     }
-
-    this.formData.append('user', JSON.stringify(user))
-    this.userService.register(this.formData).subscribe(
-      data => {
-        localStorage.setItem('Authorization', data['token'])
-        localStorage.setItem('user', JSON.stringify(data))
-        this.authService.setUserDetails(data)
-        this.router.navigate(['home'])
-
-      },
-      err  => this.errors = err['errors']
-    );
   }
 }

@@ -29,8 +29,8 @@
             <img class="logo-box" [src]="getSanitizeUrl(logoURL)" *ngIf="logoURL"/>
         </div>
         <label for="logo">
-                <i class="fas fa-image"></i>
-                <span>logo:</span>
+            <i class="fas fa-image"></i>
+            <span>logo:</span>
         </label>
         <input name="logo" (change)="addLogo($event)" type="file" id="logo" ngModel required>
     </div>

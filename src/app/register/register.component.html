@@ -1,12 +1,31 @@
 <form #userForm="ngForm" (ngSubmit)="register(userForm)" autocomplete="on">
-    <input name="username" type="text" placeholder="username" ngModel required autocomplete="username">
-    <input name="password" type="password" placeholder="password" ngModel required autocomplete="password">
-    <input name="repeat-password" type="password" placeholder="repeat" ngModel required autocomplete="password">
-    <input name="logo" type="file">
+    <div class="inputs-container" [ngStyle]="{'display' : next ? 'none' : 'block'}">
+        <div>  
+            <i class="fas fa-user"></i>
+            <input name="username" type="text" placeholder="username" ngModel required autocomplete="username">
+        </div>
+        <div>  
+            <i class="fas fa-image"></i>
+            <label for="logo"></label>
+            <input class="logo" name="logo" id="logo" type="file">
+        </div>
+    </div> 
+    <div class="inputs-container" [ngStyle]="{'display' : next ? 'block' : 'none'}">
+        <div>  
+            <i class="fas fa-key"></i>
+            <input name="password" type="password" placeholder="password" ngModel required autocomplete="password">
+        </div>
+        <div>  
+            <i class="fas fa-key"></i>
+            <input name="repeat-password" type="password" placeholder="repeat" ngModel required autocomplete="password">
+        </div>
+    </div>   
     <div class="buttons-container">
-        <button>register</button>
-        <button>login</button>
+        <button [ngStyle]="{'display' : !next ? 'inline-block' : 'none'}" (click)="next = true">next</button>
+        <button [ngStyle]="{'display' : !next ? 'none' : 'inline-block'}">register</button>
+        <button type="button" routerLink="/login">login</button>
     </div>
+    <span></span>
 </form>
 <div class="errors" *ngIf="errors">
     <a *ngFor="let error of errors">{{error.code}}</a>
