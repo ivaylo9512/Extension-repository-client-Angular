@@ -36,7 +36,8 @@ section{
     display: block;
 }
 .admin-menu:hover button{
-    animation: fadeIn 2.5s forwards;    
+    -webkit-animation: fadeIn 2.5s forwards;
+            animation: fadeIn 2.5s forwards;    
     display: block;
 }
 .admin-menu > :nth-child(3){

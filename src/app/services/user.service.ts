@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http'
+import {HttpClient, HttpParams} from '@angular/common/http'
 interface User{
   id : number,
   username : String,
@@ -16,12 +16,13 @@ export class UserService {
     return this.httpClient.get<User>(`/api/users/${id}`)
   }
 
-  getAllUsers(){
-    this.httpClient.get<User>('/api/auth/users/all')
+  getAllByState(state : string){
+    const params = new  HttpParams().set('state', state)    
+    return this.httpClient.get<User[]>('/api/auth/users/all', {params})
   }
 
-  disableUser(id : number, state : string){
-    this.httpClient.patch('api/auth/users/disable/${id}/${state}', null)
+  setState(id : number, state : string){
+    return this.httpClient.patch<User>(`/auth/users/setState/${id}/${state}`, null)
   }
 
   changePassword(password : string, repeatPassword : string){

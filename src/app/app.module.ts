@@ -67,6 +67,10 @@ import { RegisterComponent } from './register/register.component';
         component: ProfileComponent
       },
       { 
+        path: 'admin', 
+        component: AdminComponent
+      },
+      { 
         path: 'edit/:id', 
         component: EditComponent
       },
