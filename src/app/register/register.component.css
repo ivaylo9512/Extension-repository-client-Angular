@@ -3,7 +3,7 @@ form{
     border: 2px solid black;
     text-align: center;
     height: 50vh;
-    margin: 25vh auto;
+    margin: calc(25vh - 4px) auto;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 16px;
     position: relative;
@@ -63,8 +63,6 @@ span{
     padding-bottom: 50%;
     width: 50%;
     position: absolute;
-    bottom: 50%;
-    right: -20%;
     transition: 1s;
     z-index: -1;
     -webkit-transform: translateZ(0) translateY(0);
@@ -72,6 +70,14 @@ span{
     -ms-transform: translateZ(0) translateY(0);
     -o-transform: translateZ(0) translateY(0);
     transform: translateZ(0) translateY(0);
+}
+form span{
+    bottom: 50%;
+    right: -20%;
+}
+.circle{
+    left: -15%;
+    bottom: 45%;
 }
 .logo{
     display: none;

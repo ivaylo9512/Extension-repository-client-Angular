@@ -1,4 +1,5 @@
-<form #userForm="ngForm" (ngSubmit)="register(userForm)" autocomplete="on">
+<span class="circle"></span>
+<form #userForm="ngForm" autocomplete="on">
     <div class="inputs-container" [ngStyle]="{'display' : next ? 'none' : 'block'}">
         <div>  
             <i class="fas fa-user"></i>
@@ -7,10 +8,10 @@
         <div>  
             <i class="fas fa-image"></i>
             <label for="logo"></label>
-            <input class="logo" name="logo" id="logo" type="file">
+            <input class="logo" (change)="addLogo($event)" name="logo" id="logo" type="file">
         </div>
     </div> 
-    <div class="inputs-container" [ngStyle]="{'display' : next ? 'block' : 'none'}">
+    <div class="inputs-container" (ngSubmit)="register(userForm)" [ngStyle]="{'display' : next ? 'block' : 'none'}">
         <div>  
             <i class="fas fa-key"></i>
             <input name="password" type="password" placeholder="password" ngModel required autocomplete="password">
@@ -22,7 +23,7 @@
     </div>   
     <div class="buttons-container">
         <button [ngStyle]="{'display' : !next ? 'inline-block' : 'none'}" (click)="next = true">next</button>
-        <button [ngStyle]="{'display' : !next ? 'none' : 'inline-block'}">register</button>
+        <button type="submit" [ngStyle]="{'display' : !next ? 'none' : 'inline-block'}" (click)=register(userForm)>register</button>
         <button type="button" routerLink="/login">login</button>
     </div>
     <span></span>

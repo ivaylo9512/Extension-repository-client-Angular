@@ -20,7 +20,11 @@ export class RegisterComponent implements OnInit {
     this.next = false
   }
 
-  ngOnInit() {
+  ngOnInit() { }
+
+  addLogo(e){
+    const logo = e.target.files[0]
+    this.formData.set('image', logo)
   }
 
   register(userForm : NgForm){
@@ -44,7 +48,7 @@ export class RegisterComponent implements OnInit {
           this.router.navigate(['home'])
 
         },
-        err  => console.log(err)
+        err  => this.errors = err['errors']
       );
     }
   }

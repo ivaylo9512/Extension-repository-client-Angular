@@ -161,6 +161,7 @@ h1{
     margin-left: 5px;
     font-size: 1.8em;
     width: 100%;
+    line-height: normal;
     display: inline-block;
     font-weight: bold;
     color: black;

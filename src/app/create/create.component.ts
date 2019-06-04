@@ -128,7 +128,7 @@ export class CreateComponent implements OnInit {
         github,
         tags
       }
-      this.formData.append('extension', JSON.stringify(extension))
+      this.formData.set('extension', JSON.stringify(extension))
       this.extensionService.createExtension(this.formData).subscribe(
         data =>{
           this.router.navigate(['extension', data['id']])
@@ -138,7 +138,7 @@ export class CreateComponent implements OnInit {
   }
   addLogo(e){
     const logo = e.target.files[0]
-    this.formData.append('image', logo)
+    this.formData.set('image', logo)
     this.logoURL = window.URL.createObjectURL(logo)
 
     let reader = new FileReader();
@@ -146,21 +146,22 @@ export class CreateComponent implements OnInit {
     reader.onload = (_event) => { 
       this.logoURL = reader.result; 
     }
-
   }
+
   addCover(e){
     const cover = e.target.files[0]
-    this.formData.append('cover', cover)
+    this.formData.set('cover', cover)
     let reader = new FileReader();
     reader.readAsDataURL(cover); 
     reader.onload = (_event) => { 
       this.coverURL = reader.result; 
     }
   }
+
   addFile(e){
     const file = e.target.files[0]
     this.file = true
-    this.formData.append('file', file)
+    this.formData.set('file', file)
   }
   getSanitizeUrl(url : string) {
     return this.sanitizer.bypassSecurityTrustUrl(url);

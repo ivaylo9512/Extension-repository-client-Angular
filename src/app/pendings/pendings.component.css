@@ -124,9 +124,9 @@ h1{
     font-size: 1.3em;
     font-style: italic;
     color: black;
-
 }
 .extension-info b{
+    line-height: normal;
     margin-top: 60px;
     margin-left: 5px;
     font-size: 1.8em;
