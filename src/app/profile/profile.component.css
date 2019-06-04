@@ -120,14 +120,13 @@
     visibility: visible;
     overflow: hidden; 
 }
-.second-section > div.translate-second-section {
-    transition: all 1s ease-out;
-
-    -webkit-transform: translateY(0%);
-    -moz-transform:  translateY(0%);
-    -ms-transform: translateY(0%);
-    -o-transform: translateY(0%);
-    transform: translateY(0%);
+.profile-section{
+    opacity: 0;
+    position: relative;
+}
+.second-section > div.translate-profile-section {
+    opacity: 1;
+    transition: all 4s ease-out;
     -webkit-animation: fadeIn 4s;
     -moz-animation: fadeIn 4s;
     -o-animation: fadeIn 4s;
@@ -135,12 +134,10 @@
 
 }
 .second-section > div.fade-out {
-    transform: translateY(100%);
-    transition-delay: 1s;
-    -webkit-animation: fadeOut 1s;
-    -moz-animation: fadeOut 1s;
-    -o-animation: fadeOut 1s;
-       animation: fadeOut 1s;
+    -webkit-animation: fadeOut 2.5s;
+    -moz-animation: fadeOut 2.5s;
+    -o-animation: fadeOut 2.5s;
+       animation: fadeOut 2.5s;
 
 }
 @-webkit-keyframes fadeIn {

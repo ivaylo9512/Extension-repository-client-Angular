@@ -1,5 +1,5 @@
 <section class="second-section">
-    <div id="second-section">
+    <div class="profile-section" id="profile-section">
         <div class="profile">
             <h1>Adobe Inc.</h1>
             <div class="user-info-container">
@@ -25,7 +25,7 @@
             <span class="circle"></span>
         </div>
     </div>
-    <div class="user-extensions">
+    <div class="user-extensions" id="extensions-section">
       <div class="extensions">
           <div class="info-container" *ngFor="let extension of user['extensions'] | paginate: config" [routerLink]="['/extension', extension.id]">
               <div class="info-box">

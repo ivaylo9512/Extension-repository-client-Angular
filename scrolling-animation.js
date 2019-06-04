@@ -17,7 +17,6 @@ document.addEventListener('DOMContentLoaded', function (event) {
                 secondSection.classList.add("fade-out");
                 currentSection = 'first';
             }
-            
         }
     });
 });

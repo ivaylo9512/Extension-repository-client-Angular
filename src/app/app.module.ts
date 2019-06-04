@@ -21,6 +21,7 @@ import { HeaderComponent } from './header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TagsComponent } from './tags/tags.component';
 import { RegisterComponent } from './register/register.component';
+import { MouseWheelDirective } from './helpers/mouse-wheel.directive';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { RegisterComponent } from './register/register.component';
     EditComponent,
     HeaderComponent,
     TagsComponent,
-    RegisterComponent
+    RegisterComponent,
+    MouseWheelDirective
   ],
   imports: [
     BrowserModule,

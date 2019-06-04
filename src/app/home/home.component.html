@@ -1,26 +1,28 @@
-    <div class="fav-extensions">
-        <div id="backgrounds" class="backgrounds">
-            <img class="current" *ngFor="let extension of extensions" [ngStyle]="{'background-image':'url(' + extension.coverLocation + ')'}">
-        </div>
-        <ul id="backgrounds-nav">
-            <li class="current" *ngFor="let extension of extensions"></li>
-        </ul>
-        <div class="info-container">
-            <div class="info-box">
-                <div class="hover-circle">
-                </div>
+<section mouseWheel (mouseWheelUp)="mouseWheelUpFunc(event)" (mouseWheelDown)="mouseWheelDownFunc(event)">
+<div class="fav-extensions">
+    <div #tagsContainer id="backgrounds" class="backgrounds">
+        <img class="current" *ngFor="let extension of extensions" [ngStyle]="{'background-image':'url(' + extension.coverLocation + ')'}">
+    </div>
+    <ul id="backgrounds-nav">
+        <li class="current" *ngFor="let extension of extensions"></li>
+    </ul>
+    <div class="info-container">
+        <div class="info-box">
+            <div class="hover-circle">
+            </div>
 
-                <div class="logo-container">
-                    <img class="logo-box" />
-                </div>
+            <div class="logo-container">
+                <img class="logo-box" />
+            </div>
 
-                <div class="extension-info">
-                    <p>
-                        <b>Adobe Photoshop</b> is a raster graphics editor developed and published by Adobe Inc. for
-                        Windows and macOS.
-                    </p>
-                </div>
+            <div class="extension-info">
+                <p>
+                    <b>Adobe Photoshop</b> is a raster graphics editor developed and published by Adobe Inc. for
+                    Windows and macOS.
+                </p>
             </div>
         </div>
     </div>
-    <app-profile *ngIf="this.authService.isLoggedIn"></app-profile>
+</div>
+<app-profile *ngIf="this.authService.isLoggedIn"></app-profile>
+</section>
