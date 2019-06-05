@@ -114,6 +114,11 @@ section{
     transition-delay: 1s;
     opacity: 1;
 }
+.profile-section{
+    opacity: 1!important;
+    position: relative;
+    pointer-events: none;
+}
 .logo-container{
     position: absolute;
     overflow: hidden;

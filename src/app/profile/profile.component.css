@@ -155,7 +155,6 @@
     -moz-animation: fadeOut 2.5s;
     -o-animation: fadeOut 2.5s;
        animation: fadeOut 2.5s;
-
 }
 @-webkit-keyframes fadeIn {
     0%   { opacity: 0; }
