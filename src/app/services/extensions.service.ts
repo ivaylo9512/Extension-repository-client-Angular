@@ -41,7 +41,7 @@ export class ExtensionsService {
   }
   getExtensions(name : string, criteria : string, page : string, perPage : string){
     const params = new  HttpParams().set('name', name).set('orderBy', criteria).set('page', page).set('perPage', perPage)
-    return this.httpClient.get<any>("/api/extensions/filter", {params})                                          
+    return this.httpClient.get<any>('/api/extensions/filter', {params})                                          
   }
   setFeatureState(id : number, state : string){
     return this.httpClient.patch<Extension>(`/api/auth/extensions/${id}/featured/${state}`, null)
@@ -54,5 +54,8 @@ export class ExtensionsService {
   }
   refreshGitHub(id : number){
     return this.httpClient.patch<Extension>(`/api/auth/extensions/${id}/github`,null)
+  }
+  rateExtension(id : number, rating : string){
+    return this.httpClient.patch(`/api/auth/rate/${id}/${rating}`, {})
   }
 }

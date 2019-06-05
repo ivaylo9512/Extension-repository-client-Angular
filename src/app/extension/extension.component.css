@@ -203,9 +203,34 @@ section{
     display: flex;
     align-items: center;
 }
-.sliding-info-container .user-menu > div{
+.rating{
     display: inline-block;
     width: 50%;
+    justify-content: center;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+.rating button{
+    padding: 0;
+    background: transparent;
+    border: 0;
+    padding: 3px;
+    float: right;
+    cursor: pointer;
+}
+.current {
+    color: #f6cd61;
+}
+.rating > div:hover .current{
+    color: black;
+}
+.rating button:hover {
+    color: #f6cd61 !important;
+}
+.rating button:hover ~ button {
+    color: #f6cd61 !important;
 }
 .fa-star{
     font-size: 2em;

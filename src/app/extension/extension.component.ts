@@ -12,7 +12,7 @@ export class ExtensionComponent implements OnInit {
 
   extension : any
 
-  constructor(private extensionService : ExtensionsService,private router : Router, private authService : AuthService, private route: ActivatedRoute) { }
+  constructor(private extensionService : ExtensionsService, private router : Router, private authService : AuthService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.extension = []
@@ -60,6 +60,13 @@ export class ExtensionComponent implements OnInit {
       this.extension.lastErrorMessage = data['lastErrorMessage']
       this.extension.lastSuccessfulPullOfData = data['lastSuccessfulPullOfData']
       this.extension.lastFailedAttemptToCollectData = data['lastFailedAttemptToCollectData']
+    })
+  }
+
+  rateExtension(userRating : string){
+    this.extensionService.rateExtension(this.extension.id, userRating).subscribe(extensionRating =>{
+      this.extension.rating = extensionRating
+      this.extension.currentUserRatingValue = userRating
     })
   }
 }
