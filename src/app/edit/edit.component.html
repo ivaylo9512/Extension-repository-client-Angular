@@ -1,3 +1,4 @@
+<div mouseWheel>
 <section class="cover-section"> 
     <div class="input">
         <label for="cover" class="as-field">
@@ -17,115 +18,123 @@
     </div>
 </section>
 <section class="extension-section"> 
-    <div #tagsContainer (click)="focusInput(this)" class="tags">
-        <div *ngFor = "let tag of tags"><i class="fas fa-tags"></i>{{tag}}</div>
-        <input [ngClass]="{'left' : tags.length > 0}" [formControl]="tagsInput"  placeholder="Tags" #tagsInputElmnt>
-    </div>
-    <div class="info-container">
-        <div class="circle-container">
-            <div class="hover-circle"></div>
+    <div id="extension-section"> 
+        <div #tagsContainer (click)="focusInput(this)" class="tags">
+            <div *ngFor = "let tag of tags"><i class="fas fa-tags"></i>{{tag}}</div>
+            <input [ngClass]="{'left' : tags.length > 0}" [formControl]="tagsInput"  placeholder="Tags" #tagsInputElmnt>
         </div>
-        <div class="info-box">
-            <img class="logo-box" [src]="getSanitizeUrl(logoURL)" *ngIf="logoURL"/>           
-        </div>
-        <label for="logo">
-                <i class="fas fa-image"></i>
-                <span>logo:</span>
-        </label>
-        <input name="logo" (change)="addLogo($event)" type="file" id="logo" ngModel required>
-    </div>
-    <div class="extension">
-        <input [formControl]="nameInput" [value]="extension.name" placeholder="Name" class="name">
-        <div class="extension-info-container">
-            <input [value]="extension.version" [formControl]="versionInput" placeholder="Version">
-        </div>
-        <div class="info">
-            <textarea [value]="extension.description" [formControl]="descriptionInput" placeholder="Description"></textarea>
-        </div>
-    </div>
-</section>
-<section class="create">
-    <div class="cover">
-        <div [ngStyle]="{'background-image':'url(' + coverURL + ')'}" *ngIf="coverURL"></div>
-    </div>
-    <form #extensionForm="ngForm" (ngSubmit)="editExtension()">
-        <div class="extension-info">
-            <div class="logo-container">
-                <div class="github-info left" *ngIf="gitHub">
-                    <div>
-                        <span>User:</span>
-                        <span>{{gitHub.user}}</span>
-                    </div>
-                    <div>
-                        <span>Last commit</span>
-                        <span>{{gitHub.lastCommit | date: 'yyyy-MM-dd'}}</span>
-                    </div>
-                </div>
-                <div [ngClass]="{'center-logo' : gitHub}" class="logo" *ngIf="logoURL">
-                    <img [src]="getSanitizeUrl(logoURL)"/>
-                </div>
-                <div class="github-info right" *ngIf="gitHub">
-                    <div>
-                        <span>Pull requests</span>
-                        <span>{{gitHub.pullRequests}}</span>
-                    </div>
-                    <div>
-                        <span>Open issues</span>
-                        <span>{{gitHub.openIssues}}</span>
-                    </div>
-                </div>
+        <div class="info-container">
+            <div class="circle-container">
+                <div class="hover-circle"></div>
             </div>
-            <div class="info-input-container">
-                <input [ngClass]="{'red-input' : nameAvailable == 'false'}" [value]="extension.name" [formControl]="nameInput" type="text" placeholder="Name">
-                <div class="loading-container">
-                    <i *ngIf="nameAvailable == 'loading'" class="fas fa-circle-notch fa-spin"></i>
-                    <i *ngIf="nameAvailable == 'true'" class="fas fa-check"></i>
-                    <i *ngIf="nameAvailable == 'false'" class="fas fa-times"></i>
-                </div>
-                <input [value]="nameError" *ngIf="nameAvailable == 'false'" class="error">
+            <div class="info-box">
+                <img class="logo-box" [src]="getSanitizeUrl(logoURL)" *ngIf="logoURL"/>           
             </div>
-            <div class="info-input-container">
-                <input [ngClass]="{'red-input' : gitHubAvailable == 'false'}" [formControl]="gitHubInput" [value]="extension.gitHubLink" name="github" type="text" placeholder="GitHub repo">
-                <div class="loading-container">
-                    <i *ngIf="gitHubAvailable == 'loading'" class="fas fa-circle-notch fa-spin"></i>
-                    <i *ngIf="gitHubAvailable == 'true'" class="fas fa-check"></i>
-                    <i *ngIf="gitHubAvailable == 'false'" class="fas fa-times"></i>
-                </div>
-                <input [value]="gitHubError" *ngIf="gitHubAvailable == 'false'" class="error">
-            </div>
-            <div class="info-input-container">
-                <input [value]="extension.version"  [formControl]="versionInput" name="version" type="text" placeholder="Version">
-            </div>
-        </div>
-        <div class="extension-files">
-            <div>
-                <label [ngClass]="{'black' : extension.fileLocation}" for="file">
-                    <i class="fas fa-cloud-upload-alt"></i>
-                    <span>File:</span>
-                </label>
-                <input name="file" (change)="addFile($event)" type="file" id="file" ngModel required>
-                <label [ngClass]="{'black' : extension.imageLocation}" for="logo">
+            <label for="logo">
                     <i class="fas fa-image"></i>
-                    <span>Logo:</span>
-                </label>
-                <input name="logo" (change)="addLogo($event)" type="file" id="logo" ngModel required>
-                <label [ngClass]="{'black' : extension.coverLocation}" for="cover">
-                    <i class="fas fa-image"></i> 
-                    <span>Cover:</span>
-                </label>
-                <input name="cover" (change)="addCover($event)" type="file" id="cover" ngModel required>
-
-                <button type="submit">
-                    <i class="fas fa-angle-double-right"></i>
-                    <span>edit</span>
-                </button>
+                    <span>logo:</span>
+            </label>
+            <input name="logo" (change)="addLogo($event)" type="file" id="logo" ngModel required>
+        </div>
+        <div class="extension">
+            <input [formControl]="nameInput" [value]="extension.name" placeholder="Name" class="name">
+            <div class="extension-info-container">
+                <input [value]="extension.version" [formControl]="versionInput" placeholder="Version">
+            </div>
+            <div class="info">
+                <textarea [value]="extension.description" [formControl]="descriptionInput" placeholder="Description"></textarea>
             </div>
         </div>
-        <div class="extension-description">
-            <div class="tags">
-                <div *ngFor = "let tag of tags"><i class="fas fa-tags"></i>{{tag}}</div>
-            </div>
-            <textarea [value]="extension.description" [formControl]="descriptionInput" name="description" placeholder="Description" id="description"></textarea>    
+        <div class="circle-container">
+                <span class="circle" id="circle"></span>
         </div>
-    </form>
+    </div>
 </section>
+<section class="preview-section">
+    <div id="preview-section"> 
+        <div class="cover">
+            <div [ngStyle]="{'background-image':'url(' + coverURL + ')'}" *ngIf="coverURL"></div>
+        </div>
+        <form #extensionForm="ngForm" (ngSubmit)="editExtension()">
+            <div class="extension-info">
+                <div class="logo-container">
+                    <div class="github-info left" *ngIf="gitHub">
+                        <div>
+                            <span>User:</span>
+                            <span>{{gitHub.user}}</span>
+                        </div>
+                        <div>
+                            <span>Last commit</span>
+                            <span>{{gitHub.lastCommit | date: 'yyyy-MM-dd'}}</span>
+                        </div>
+                    </div>
+                    <div [ngClass]="{'center-logo' : gitHub}" class="logo" *ngIf="logoURL">
+                        <img [src]="getSanitizeUrl(logoURL)"/>
+                    </div>
+                    <div class="github-info right" *ngIf="gitHub">
+                        <div>
+                            <span>Pull requests</span>
+                            <span>{{gitHub.pullRequests}}</span>
+                        </div>
+                        <div>
+                            <span>Open issues</span>
+                            <span>{{gitHub.openIssues}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="info-input-container">
+                    <input [ngClass]="{'red-input' : nameAvailable == 'false'}" [value]="extension.name" [formControl]="nameInput" type="text" placeholder="Name">
+                    <div class="loading-container">
+                        <i *ngIf="nameAvailable == 'loading'" class="fas fa-circle-notch fa-spin"></i>
+                        <i *ngIf="nameAvailable == 'true'" class="fas fa-check"></i>
+                        <i *ngIf="nameAvailable == 'false'" class="fas fa-times"></i>
+                    </div>
+                    <input [value]="nameError" *ngIf="nameAvailable == 'false'" class="error">
+                </div>
+                <div class="info-input-container">
+                    <input [ngClass]="{'red-input' : gitHubAvailable == 'false'}" [formControl]="gitHubInput" [value]="extension.gitHubLink" name="github" type="text" placeholder="GitHub repo">
+                    <div class="loading-container">
+                        <i *ngIf="gitHubAvailable == 'loading'" class="fas fa-circle-notch fa-spin"></i>
+                        <i *ngIf="gitHubAvailable == 'true'" class="fas fa-check"></i>
+                        <i *ngIf="gitHubAvailable == 'false'" class="fas fa-times"></i>
+                    </div>
+                    <input [value]="gitHubError" *ngIf="gitHubAvailable == 'false'" class="error">
+                </div>
+                <div class="info-input-container">
+                    <input [value]="extension.version"  [formControl]="versionInput" name="version" type="text" placeholder="Version">
+                </div>
+            </div>
+            <div class="extension-files">
+                <div>
+                    <label [ngClass]="{'black' : extension.fileLocation}" for="file">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <span>File:</span>
+                    </label>
+                    <input name="file" (change)="addFile($event)" type="file" id="file" ngModel required>
+                    <label [ngClass]="{'black' : extension.imageLocation}" for="logo">
+                        <i class="fas fa-image"></i>
+                        <span>Logo:</span>
+                    </label>
+                    <input name="logo" (change)="addLogo($event)" type="file" id="logo" ngModel required>
+                    <label [ngClass]="{'black' : extension.coverLocation}" for="cover">
+                        <i class="fas fa-image"></i> 
+                        <span>Cover:</span>
+                    </label>
+                    <input name="cover" (change)="addCover($event)" type="file" id="cover" ngModel required>
+
+                    <button type="submit">
+                        <i class="fas fa-angle-double-right"></i>
+                        <span>edit</span>
+                    </button>
+                </div>
+            </div>
+            <div class="extension-description">
+                <div class="tags">
+                    <div *ngFor = "let tag of tags"><i class="fas fa-tags"></i>{{tag}}</div>
+                </div>
+                <textarea [value]="extension.description" [formControl]="descriptionInput" name="description" placeholder="Description" id="description"></textarea>    
+            </div>
+        </form>
+    </div>
+</section>
+</div>
