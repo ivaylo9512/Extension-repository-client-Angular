@@ -12,6 +12,7 @@ export class ProfileComponent implements OnInit {
   loggedUser : any
   user : any
   admin : boolean
+  homeComponent : boolean
 
   config = {
     itemsPerPage: 8,
@@ -24,7 +25,8 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit() {
-    if(+this.route.snapshot.paramMap.get('id')){
+    this.homeComponent = this.route.component['name'] == 'HomeComponent'
+    if(!this.homeComponent){
       this.getUser(+this.route.snapshot.paramMap.get('id'));
     }else{
       this.loggedUser = JSON.parse(localStorage.getItem('user'))
