@@ -427,7 +427,10 @@ button:hover i{
 }
 .extension-info .fa-times{
     margin-left: 7px;
-
+    color: rgba(115, 53, 53, 0.8);
+}
+.fa-check{
+    color: green;
 }
 .extension-info input{
     height: 20%;
