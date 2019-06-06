@@ -29,5 +29,7 @@
     <span></span>
 </form>
 <div class="errors" *ngIf="errors">
-    <a *ngFor="let error of errors">{{error.code}}</a>
+    <div>
+        <b *ngFor="let error of errors"><i class="fas fa-exclamation-triangle"></i>{{error.code}}</b>
+    </div>
 </div>

@@ -4,6 +4,7 @@ form{
     text-align: center;
     height: 50vh;
     margin: calc(25vh - 4px) auto;
+    margin-bottom: 0;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 16px;
     position: relative;
@@ -17,6 +18,9 @@ input{
     background: transparent;
 }
 i{
+    padding: 0 3px;
+}
+form i{
     display: flex;
     height: 100%;
     align-items: center;
@@ -72,6 +76,11 @@ span{
 form span{
     bottom: 50%;
     right: -20%;
+}
+.errors{
+    text-align: center;
+    margin-top: 15px;
+    color: red;
 }
 .circle{
     left: -15%;
