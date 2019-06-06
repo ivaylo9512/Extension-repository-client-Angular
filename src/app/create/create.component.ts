@@ -181,4 +181,8 @@ export class CreateComponent implements OnInit {
       }
     }
   }
+  removeTag(tag){
+    const index = this.tags.indexOf(tag)
+    this.tags.splice(index, 1)
+  }
 }

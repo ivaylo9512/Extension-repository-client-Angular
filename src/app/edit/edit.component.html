@@ -20,7 +20,7 @@
 <section class="extension-section"> 
     <div id="extension-section"> 
         <div #tagsContainer (click)="focusInput(this)" class="tags">
-            <div *ngFor = "let tag of tags"><i class="fas fa-tags"></i>{{tag}}</div>
+            <div *ngFor = "let tag of tags" (click)="removeTag(tag)" ><i class="fas fa-tags"></i>{{tag}}</div>
             <input [ngClass]="{'left' : tags.length > 0}" [formControl]="tagsInput"  placeholder="Tags" #tagsInputElmnt>
         </div>
         <div class="info-container">
@@ -130,7 +130,7 @@
             </div>
             <div class="extension-description">
                 <div class="tags">
-                    <div *ngFor = "let tag of tags"><i class="fas fa-tags"></i>{{tag}}</div>
+                    <div *ngFor = "let tag of tags" (click)="removeTag(tag)"><i class="fas fa-tags"></i>{{tag}}</div>
                 </div>
                 <textarea [value]="extension.description" [formControl]="descriptionInput" name="description" placeholder="Description" id="description"></textarea>    
             </div>

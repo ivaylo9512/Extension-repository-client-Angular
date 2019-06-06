@@ -184,6 +184,10 @@ export class EditComponent implements OnInit {
       }
     }
   }
+  removeTag(tag){
+    const index = this.tags.indexOf(tag)
+    this.tags.splice(index, 1)
+  }
   getExtension(id : number){
     this.extensionService.getExtension(id).subscribe(extension =>{
       this.extension = extension
