@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChildren, QueryList } from '@angular/core';
 import { ExtensionsService } from '../services/extensions.service';
 import { ActivatedRoute, Params, Route, Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
@@ -11,6 +11,7 @@ import { AuthService } from '../services/auth.service';
 export class ExtensionComponent implements OnInit {
 
   extension : any
+  @ViewChildren('extensionDescription') extensionDescriptions : QueryList<any>
 
   constructor(private extensionService : ExtensionsService, private router : Router, private authService : AuthService, private route: ActivatedRoute) { }
 
@@ -67,6 +68,26 @@ export class ExtensionComponent implements OnInit {
     this.extensionService.rateExtension(this.extension.id, userRating).subscribe(extensionRating =>{
       this.extension.rating = extensionRating
       this.extension.currentUserRatingValue = userRating
+    })
+  }
+  ngAfterViewInit() {
+    this.extensionDescriptions.changes.subscribe(descriptions => {
+      descriptions.toArray().forEach(description => {
+        let height = description.nativeElement.offsetHeight
+        let scrollHeight = description.nativeElement.scrollHeight
+        let text = description.nativeElement.innerHTML + '...'
+      
+        while(height < scrollHeight){
+          let words = text.split(' ')
+          words.pop()
+          words.pop()
+          text = words.join(' ') + '...'
+          
+          description.nativeElement.innerHTML = text
+          height = description.nativeElement.offsetHeight
+          scrollHeight = description.nativeElement.scrollHeight
+        }
+      })
     })
   }
 }
