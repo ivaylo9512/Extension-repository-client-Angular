@@ -25,7 +25,7 @@
             <span class="circle" id="circle"></span>
         </div>
     </div>
-    <div class="user-extensions" id="extensions-section">
+    <div #extensionsContainer class="user-extensions" id="extensions-section">
       <div class="extensions">
           <div class="info-container" *ngFor="let extension of user['extensions'] | paginate: config" [routerLink]="['/extension', extension.id]">
               <div class="info-box">
@@ -38,7 +38,7 @@
   
                   <div class="extension-info">
                         <b>{{extension.name}}</b>
-                        <p>
+                        <p #extensionDescriptions>
                           {{extension.description}}
                         </p>
                         <div class="rating">

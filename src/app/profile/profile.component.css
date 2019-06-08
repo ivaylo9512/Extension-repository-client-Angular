@@ -96,6 +96,8 @@
     margin-left: 5px;
     font-size: 1.3em;
     font-style: italic;
+    visibility: visible;
+    display: block;
     height: 56.5%;
     color: black;
 }

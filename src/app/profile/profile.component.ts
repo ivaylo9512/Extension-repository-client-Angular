@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChildren, ElementRef, QueryList, ViewChild} from '@angular/core';
 import { UserService } from '../services/user.service'
 import { ActivatedRoute, Params } from '@angular/router';
 
@@ -13,6 +13,8 @@ export class ProfileComponent implements OnInit {
   user : any
   admin : boolean
   homeComponent : boolean
+  @ViewChildren('extensionDescriptions') extensionDescriptions : QueryList<any>
+  @ViewChild('extensionsContainer') profileSection : ElementRef
 
   config = {
     itemsPerPage: 8,
@@ -36,6 +38,31 @@ export class ProfileComponent implements OnInit {
     }
   }
 
+  ngAfterViewInit() {
+    this.extensionDescriptions.changes.subscribe(descriptions => {
+      this.profileSection.nativeElement.style.display = "block"
+
+      descriptions.toArray().forEach(description => {
+      
+        let height = description.nativeElement.offsetHeight
+        let scrollHeight = description.nativeElement.scrollHeight
+        let text = description.nativeElement.innerHTML
+      
+        while(height < scrollHeight){
+          let words = description.nativeElement.innerHTML.split(' ')
+          words.pop()
+          words.pop()
+          text = words.join(' ')
+          
+          description.nativeElement.innerHTML = text + '...'
+          height = description.nativeElement.offsetHeight
+          scrollHeight = description.nativeElement.scrollHeight
+        }
+      })
+      
+      this.profileSection.nativeElement.style.display = "none"        
+    })
+  }
   getUser(id : number){
     this.userService.getUser(id).subscribe(data => {
       this.user = data
