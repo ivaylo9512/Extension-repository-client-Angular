@@ -12,10 +12,24 @@
                 </div>
 
                 <div class="extension-info">
-                    <b>{{extension.name}}</b>
+                    <div class="name">
+                        <b>{{extension.name}}</b>
+                    </div>
                     <p #extensionDescriptions>
-                        {{extension.description}}
+                      {{extension.description}}
                     </p>
+                    <div class="rating">
+                        <i *ngIf="extension.rating == 0.5" class="fas fa-star-half"></i>
+                        <i *ngIf="extension.rating >= 1" class="fas fa-star"></i>
+                        <i *ngIf="extension.rating == 1.5" class="fas fa-star-half"></i>
+                        <i *ngIf="extension.rating >= 2" class="fas fa-star"></i>
+                        <i *ngIf="extension.rating == 2.5" class="fas fa-star-half"></i>
+                        <i *ngIf="extension.rating >= 3" class="fas fa-star"></i>
+                        <i *ngIf="extension.rating == 3.5" class="fas fa-star-half"></i>
+                        <i *ngIf="extension.rating >= 4" class="fas fa-star"></i>
+                        <i *ngIf="extension.rating == 4.5" class="fas fa-star-half"></i>
+                        <i *ngIf="extension.rating >= 5" class="fas fa-star"></i>
+                    </div>
                 </div>
             </div>
         </div>

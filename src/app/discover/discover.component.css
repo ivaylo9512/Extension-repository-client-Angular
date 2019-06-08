@@ -132,6 +132,19 @@ h1{
     transition-delay: 1s;
     opacity: 1;
 }
+.rating{
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    align-items: center;
+    height: 25%;
+    padding-left: 22%;
+}
+.rating i{
+    font-size: 1.6em;
+    color: #f6cd61;
+}
 .logo-container{
     position: absolute;
     overflow: hidden;
@@ -140,35 +153,44 @@ h1{
     height: 100%;
     bottom: 0;
 }
+.name{
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    align-items: center;
+    height: 25%;
+}
 .extension-info{
     width: 100%;
     height: 100%;
     position: absolute;
     bottom: 0;
     opacity: 0;
+    text-transform: capitalize;
     transition: 1s;
     transition-delay: 0s;
 }
 .extension-info p{
     margin-left: 5px;
     font-size: 1.3em;
-    height: 56.5%;
     font-style: italic;
+    visibility: visible;
+    display: block;
+    height: 50%;
     color: black;
-
 }
 .extension-info b{
-    margin-top: 60px;
     margin-left: 5px;
     font-size: 1.8em;
+    padding-left: 20%;
     width: 100%;
     line-height: normal;
-    display: inline-block;
     font-weight: bold;
     color: black;
     font-style: normal;
     text-overflow: ellipsis;
-    white-space: nowrap; 
+    white-space: nowrap;
     overflow: hidden;
 }
 .menu{

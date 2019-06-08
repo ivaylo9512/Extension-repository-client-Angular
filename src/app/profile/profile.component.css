@@ -68,10 +68,8 @@
     display: -ms-flexbox;
     display: flex;
     align-items: center;
-    height: 26%;
-    position: absolute;
+    height: 25%;
     padding-left: 22%;
-    bottom: 0;
 }
 .rating i{
     font-size: 1.6em;
@@ -85,39 +83,45 @@
     height: 100%;
     bottom: 0;
 }
+.name{
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    align-items: center;
+    height: 25%;
+}
 .extension-info{
     width: 100%;
     height: 100%;
     position: absolute;
     bottom: 0;
     opacity: 0;
+    text-transform: capitalize;
     transition: 1s;
     transition-delay: 0s;
 }
 .extension-info p{
     margin-left: 5px;
-    margin-top: 2px;
     font-size: 1.3em;
     font-style: italic;
     visibility: visible;
     display: block;
-    height: 56.5%;
+    height: 50%;
     color: black;
 }
 .extension-info b{
     margin-left: 5px;
     font-size: 1.8em;
-    width: 80%;
     padding-left: 20%;
-    padding-top: 4%;
-    display: inline-block;
+    width: 100%;
+    line-height: normal;
     font-weight: bold;
     color: black;
     font-style: normal;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-    line-height: normal;
 }
 .second-section {
     position: absolute;
