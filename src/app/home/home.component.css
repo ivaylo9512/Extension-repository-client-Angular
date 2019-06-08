@@ -59,7 +59,7 @@ section{
     width: 16%;
     position: absolute;
     background-color: rgba(255, 255, 255, 0.3);
-    /* border: 3px solid black; */
+    cursor: pointer;
     z-index: 4;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 8%;
@@ -107,8 +107,8 @@ section{
     height: 500px;
 }
 .info-box:hover .logo-container{
-    width: 0;
-    height: 0;
+    width: 25%;
+    height: 25%;
 }
 .info-box:hover .extension-info{
     transition-delay: 1s;
@@ -119,6 +119,19 @@ section{
     position: relative;
     pointer-events: none;
 }
+.rating{
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    align-items: center;
+    height: 25%;
+    padding-left: 22%;
+}
+.rating i{
+    font-size: 1.6em;
+    color: #f6cd61;
+}
 .logo-container{
     position: absolute;
     overflow: hidden;
@@ -127,25 +140,64 @@ section{
     height: 100%;
     bottom: 0;
 }
+.fade-in{
+    opacity: 1;
+    transition: 1s;
+    animation: fadeIn 2.5s;
+}
+.name{
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    align-items: center;
+    height: 25%;
+}
 .extension-info{
     width: 100%;
     height: 100%;
     position: absolute;
     bottom: 0;
     opacity: 0;
+    text-transform: capitalize;
     transition: 1s;
     transition-delay: 0s;
 }
 .extension-info p{
-    margin-top: 60px;
     margin-left: 5px;
-    font-size: 1.8em;
+    font-size: 1.3em;
     font-style: italic;
-    color: white;
+    visibility: visible;
+    display: block;
+    height: 50%;
+    color: black;
 }
 .extension-info b{
+    margin-left: 5px;
+    font-size: 1.8em;
+    padding-left: 20%;
+    width: 100%;
+    line-height: normal;
     font-weight: bold;
     color: black;
     font-style: normal;
-
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
+@-webkit-keyframes fadeIn {
+    0%   { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  @-moz-keyframes fadeIn {
+    0%   { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  @-o-keyframes fadeIn {
+    0%   { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  @keyframes fadeIn {
+    0%   { opacity: 0; }
+    100% { opacity: 1; }
+  }

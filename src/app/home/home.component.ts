@@ -21,11 +21,14 @@ import { ProfileComponent } from '../profile/profile.component';
 })
 export class HomeComponent implements OnInit {
 
-  extensions : any;
+  extensions : any
+  currentIndex : number
+
   @ViewChild('backgroundsContainer') backgroundsContainer : ElementRef
 
   constructor(private authService : AuthService, private extensionsService : ExtensionsService ) {
-   }
+    this.currentIndex = 0
+  }
 
   ngOnInit() {
     this.extensionsService.getFeatured().subscribe(data => {
@@ -35,25 +38,24 @@ export class HomeComponent implements OnInit {
   }
 
   setSlideShow(){
-    let currentIndex = 0
     const backgrounds = this.backgroundsContainer.nativeElement.children
 
-    let currentBackground = backgrounds[currentIndex];
-    let nextBackground = backgrounds[currentIndex + 1];
+    let currentBackground = backgrounds[this.currentIndex];
+    let nextBackground = backgrounds[this.currentIndex + 1];
 
     let selected = false;
     setInterval(() => {
         if(!selected){
-            currentBackground = backgrounds[currentIndex]
+            currentBackground = backgrounds[this.currentIndex]
             currentBackground.classList.add('backward')
             currentBackground.classList.remove("current")
 
-            currentIndex++
-            if(currentIndex > backgrounds.length - 1){
-                currentIndex = 0
+            this.currentIndex++
+            if(this.currentIndex > backgrounds.length - 1){
+              this.currentIndex = 0
             }
 
-            nextBackground = backgrounds[currentIndex]
+            nextBackground = backgrounds[this.currentIndex]
             nextBackground.classList.add('current')
 
             setTimeout(() => {
