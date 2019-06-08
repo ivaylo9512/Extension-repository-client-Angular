@@ -68,8 +68,10 @@
     display: -ms-flexbox;
     display: flex;
     align-items: center;
-    height: 18%;
+    height: 26%;
+    position: absolute;
     padding-left: 22%;
+    bottom: 0;
 }
 .rating i{
     font-size: 1.6em;
@@ -94,6 +96,7 @@
 }
 .extension-info p{
     margin-left: 5px;
+    margin-top: 2px;
     font-size: 1.3em;
     font-style: italic;
     visibility: visible;
@@ -106,7 +109,7 @@
     font-size: 1.8em;
     width: 80%;
     padding-left: 20%;
-    height: 21%;
+    padding-top: 4%;
     display: inline-block;
     font-weight: bold;
     color: black;
