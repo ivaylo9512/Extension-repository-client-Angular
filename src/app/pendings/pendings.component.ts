@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChildren, QueryList } from '@angular/core';
 import { ExtensionsService } from '../services/extensions.service';
 
 @Component({
@@ -9,6 +9,7 @@ import { ExtensionsService } from '../services/extensions.service';
 export class PendingsComponent implements OnInit {
 
   extensions : any[]
+  @ViewChildren('extensionDescriptions') extensionDescriptions : QueryList<any>
 
   config = {
     id: 'custom',
@@ -29,6 +30,27 @@ export class PendingsComponent implements OnInit {
     this.extensionsService.getPendings().subscribe(data => {
       this.extensions = data
       this.config.totalItems = this.extensions.length
+    })
+  }
+  ngAfterViewInit() {
+    this.extensionDescriptions.changes.subscribe(descriptions => {
+      descriptions.toArray().forEach(description => {
+      
+        let height = description.nativeElement.offsetHeight
+        let scrollHeight = description.nativeElement.scrollHeight
+        let text = description.nativeElement.innerHTML + '...'
+      
+        while(height < scrollHeight){
+          let words = text.split(' ')
+          words.pop()
+          words.pop()
+          text = words.join(' ') + '...'
+          
+          description.nativeElement.innerHTML = text
+          height = description.nativeElement.offsetHeight
+          scrollHeight = description.nativeElement.scrollHeight
+        }
+      })
     })
   }
 }

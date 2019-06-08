@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, ViewChildren, QueryList } from '@angular/core';
 import { AuthService } from '../services/auth.service'
 import { ExtensionsService } from '../services/extensions.service';
 
@@ -25,6 +25,7 @@ export class HomeComponent implements OnInit {
   currentIndex : number
 
   @ViewChild('backgroundsContainer') backgroundsContainer : ElementRef
+  @ViewChildren('extensionDescriptions') extensionDescriptions : QueryList<any>
 
   constructor(private authService : AuthService, private extensionsService : ExtensionsService ) {
     this.currentIndex = 0
@@ -65,5 +66,26 @@ export class HomeComponent implements OnInit {
         }
         selected = false;
     }, 5000);
+  }
+  ngAfterViewInit() {
+    this.extensionDescriptions.changes.subscribe(descriptions => {
+      descriptions.toArray().forEach(description => {
+      
+        let height = description.nativeElement.offsetHeight
+        let scrollHeight = description.nativeElement.scrollHeight
+        let text = description.nativeElement.innerHTML + '...'
+      
+        while(height < scrollHeight){
+          let words = text.split(' ')
+          words.pop()
+          words.pop()
+          text = words.join(' ') + '...'
+          
+          description.nativeElement.innerHTML = text
+          height = description.nativeElement.offsetHeight
+          scrollHeight = description.nativeElement.scrollHeight
+        }
+      })
+    })
   }
 }

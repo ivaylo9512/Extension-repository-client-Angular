@@ -40,8 +40,6 @@ export class ProfileComponent implements OnInit {
 
   ngAfterViewInit() {
     this.extensionDescriptions.changes.subscribe(descriptions => {
-      this.profileSection.nativeElement.style.display = "block"
-
       descriptions.toArray().forEach(description => {
       
         let height = description.nativeElement.offsetHeight
@@ -59,9 +57,6 @@ export class ProfileComponent implements OnInit {
           scrollHeight = description.nativeElement.scrollHeight
         }
       })
-      if(this.homeComponent){
-        this.profileSection.nativeElement.style.display = "none"        
-      }
     })
   }
   getUser(id : number){
