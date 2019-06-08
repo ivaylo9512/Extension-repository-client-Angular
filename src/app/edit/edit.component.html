@@ -136,5 +136,10 @@
             </div>
         </form>
     </div>
+    <span *ngIf="gitHubAvailable == 'loading'"  class="loading-animation">
+            <div>
+                <i class="fas fa-circle-notch fa-spin"></i>
+            </div>
+    </span>
 </section>
 </div>
