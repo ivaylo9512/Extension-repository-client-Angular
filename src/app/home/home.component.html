@@ -1,6 +1,6 @@
 <section mouseWheel>
 <div class="fav-extensions">
-    <div #tagsContainer id="backgrounds" class="backgrounds">
+    <div #backgroundsContainer id="backgrounds" class="backgrounds">
         <img class="current" *ngFor="let extension of extensions" [ngStyle]="{'background-image':'url(' + extension.coverLocation + ')'}">
     </div>
     <ul id="backgrounds-nav">
