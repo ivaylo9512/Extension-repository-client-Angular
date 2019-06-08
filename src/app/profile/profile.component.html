@@ -1,7 +1,7 @@
 <section [ngClass]="{'home-component' : homeComponent}" class="second-section">
     <div class="profile-section" id="profile-section">
         <div class="profile">
-            <h1>Adobe Inc.</h1>
+            <h1>{{user.username}}</h1>
             <div class="user-info-container">
                 <h2>Extensions: {{user['totalExtensions']}}</h2>
                 <h3>Rating: {{user['rating']}}</h3>
@@ -9,8 +9,8 @@
                 <h5>Info</h5>
             </div>
             <div class="user-info">
-                <p>
-                    {{user['info']}}
+                <p #userInfo>
+                    {{user.info}}
                 </p>
             </div>
         </div>

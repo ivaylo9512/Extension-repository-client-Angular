@@ -14,6 +14,7 @@ export class ProfileComponent implements OnInit {
   admin : boolean
   homeComponent : boolean
   @ViewChildren('extensionDescriptions') extensionDescriptions : QueryList<any>
+  @ViewChildren('userInfo') userInfo : QueryList<any>
   @ViewChild('extensionsContainer') profileSection : ElementRef
 
   config = {
@@ -41,23 +42,31 @@ export class ProfileComponent implements OnInit {
   ngAfterViewInit() {
     this.extensionDescriptions.changes.subscribe(descriptions => {
       descriptions.toArray().forEach(description => {
-      
-        let height = description.nativeElement.offsetHeight
-        let scrollHeight = description.nativeElement.scrollHeight
-        let text = description.nativeElement.innerHTML + '...'
-      
-        while(height < scrollHeight){
-          let words = text.split(' ')
-          words.pop()
-          words.pop()
-          text = words.join(' ') + '...'
-          
-          description.nativeElement.innerHTML = text
-          height = description.nativeElement.offsetHeight
-          scrollHeight = description.nativeElement.scrollHeight
-        }
+        this.fixOverflow(description)
       })
     })
+    this.userInfo.changes.subscribe(descriptions => {
+      descriptions.toArray().forEach(description => {
+        this.fixOverflow(description)
+      })
+    })
+  }
+  fixOverflow(node){
+          
+    let height = node.nativeElement.offsetHeight
+    let scrollHeight = node.nativeElement.scrollHeight
+    let text = node.nativeElement.innerHTML + '...'
+  
+    while(height < scrollHeight){
+      let words = text.split(' ')
+      words.pop()
+      words.pop()
+      text = words.join(' ') + '...'
+      
+      node.nativeElement.innerHTML = text
+      height = node.nativeElement.offsetHeight
+      scrollHeight = node.nativeElement.scrollHeight
+    }
   }
   getUser(id : number){
     this.userService.getUser(id).subscribe(data => {
