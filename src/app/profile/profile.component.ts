@@ -46,21 +46,22 @@ export class ProfileComponent implements OnInit {
       
         let height = description.nativeElement.offsetHeight
         let scrollHeight = description.nativeElement.scrollHeight
-        let text = description.nativeElement.innerHTML
+        let text = description.nativeElement.innerHTML + '...'
       
         while(height < scrollHeight){
-          let words = description.nativeElement.innerHTML.split(' ')
+          let words = text.split(' ')
           words.pop()
           words.pop()
-          text = words.join(' ')
+          text = words.join(' ') + '...'
           
-          description.nativeElement.innerHTML = text + '...'
+          description.nativeElement.innerHTML = text
           height = description.nativeElement.offsetHeight
           scrollHeight = description.nativeElement.scrollHeight
         }
       })
-      
-      this.profileSection.nativeElement.style.display = "none"        
+      if(this.homeComponent){
+        this.profileSection.nativeElement.style.display = "none"        
+      }
     })
   }
   getUser(id : number){
