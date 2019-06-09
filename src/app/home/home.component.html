@@ -6,7 +6,7 @@
     <ul id="backgrounds-nav">
         <li class="current" *ngFor="let extension of extensions"></li>
     </ul>
-    <div class="info-container" *ngFor="let extension of extensions" [ngStyle]="{'display' : (extensions.indexOf(extension) == currentIndex || initial == true) ? 'block' : 'none'}" [routerLink]="['/extension', extension.id]">
+    <div class="info-container" *ngFor="let extension of extensions" [ngStyle]="{'display' : (extensions.indexOf(extension) == currentIndex || initial) ? 'block' : 'none'}" [routerLink]="['/extension', extension.id]">
         <div class="info-box">
             <div class="hover-circle">
             </div>

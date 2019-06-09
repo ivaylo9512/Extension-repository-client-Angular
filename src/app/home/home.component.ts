@@ -88,7 +88,6 @@ export class HomeComponent implements OnInit {
           scrollHeight = description.nativeElement.scrollHeight
         }
       })
-      console.log('hey')
       this.initial = false
       this.cdRef.detectChanges();
     })

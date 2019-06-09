@@ -28,6 +28,9 @@ section{
 .fav-extensions .current{
     background-color: rgba(0, 0, 0, 0.973);
 }
+.fav-extensions .info-container{
+    display: none;
+}
 .backgrounds{
     height: 100vh;
     width: 100%;
