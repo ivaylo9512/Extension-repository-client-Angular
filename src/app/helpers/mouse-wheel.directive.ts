@@ -2,6 +2,7 @@ import { Directive,OnInit, Output, HostListener, EventEmitter,  ElementRef, View
 import { AuthService } from '../services/auth.service';
 import { ActivatedRoute } from '@angular/router';
 
+
 @Directive({ selector: '[mouseWheel]' })
 export class MouseWheelDirective implements OnInit {
   profileComponent = {
@@ -10,6 +11,10 @@ export class MouseWheelDirective implements OnInit {
     circle : undefined,
     currentSection : 'profileSection',
     display : true
+  }
+  profileAnimation = {
+    display : false,
+    animate : false
   }
   submitComponent = {
     coverSection : undefined,
@@ -47,27 +52,23 @@ export class MouseWheelDirective implements OnInit {
 
       if(this.profileComponent.currentSection == 'profileSection'){
         if (e.deltaY > 0) {
-          profileSection.classList.remove('fade-out')
-          profileSection.classList.add('fade-in')
           circle.classList.add('animate')
           this.profileComponent.currentSection = 'extensionsSection'
-          this.profileComponent.display = true
-
+          this.profileAnimation.animate = true
           setTimeout(() => {
             const animationFinished = window.getComputedStyle(profileSection).getPropertyValue("opacity") == '1'
-            if(this.profileComponent.display && animationFinished){
-              extensionsSection.style.display = 'block'    
+            if(animationFinished){
+              this.profileAnimation.display = true
+
             }
           }, 4100);
         }
       }else{
         if (e.deltaY < 0 && window.scrollY == 0) {
-          profileSection.classList.remove('fade-in')
+          this.profileAnimation.animate = false
           circle.classList.remove('animate')
-          profileSection.classList.add('fade-out')
-          extensionsSection.style.display = 'none'
           this.profileComponent.currentSection = 'profileSection'
-          this.profileComponent.display = false
+          this.profileAnimation.display = false
         }
       }
     }

@@ -5,6 +5,7 @@ import { ExtensionsService } from '../services/extensions.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ProfileComponent } from '../profile/profile.component';
+import { MouseWheelDirective } from '../helpers/mouse-wheel.directive';
 
 @Component({
   selector: 'app-home',

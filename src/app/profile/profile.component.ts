@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChildren, ElementRef, QueryList, ViewChild} from '@angular/core';
 import { UserService } from '../services/user.service'
 import { ActivatedRoute, Params } from '@angular/router';
+import { MouseWheelDirective } from '../helpers/mouse-wheel.directive';
 
 
 @Component({
@@ -17,13 +18,19 @@ export class ProfileComponent implements OnInit {
   @ViewChildren('userInfo') userInfo : QueryList<any>
   @ViewChild('extensionsContainer') profileSection : ElementRef
 
+  homeAnimation = {
+    diplay : false,
+    animate : false
+
+  }
+
   config = {
     itemsPerPage: 8,
     currentPage: 1,
     totalItems: null
   }
 
-  constructor(private userService : UserService, private route: ActivatedRoute) {
+  constructor(private wheelDirective : MouseWheelDirective ,private userService : UserService, private route: ActivatedRoute) {
     this.user = []
   }
 

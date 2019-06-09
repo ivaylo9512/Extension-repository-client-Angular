@@ -101,7 +101,8 @@ import { MouseWheelDirective } from './helpers/mouse-wheel.directive';
   providers: [
     { 
       provide: HTTP_INTERCEPTORS, useClass: RequestsInterceptor, multi: true 
-    }
+    },
+    MouseWheelDirective
   ],
   bootstrap: [AppComponent]
 })
