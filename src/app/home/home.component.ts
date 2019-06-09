@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, ViewChildren, QueryList } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, ViewChildren, QueryList, ChangeDetectorRef } from '@angular/core';
 import { AuthService } from '../services/auth.service'
 import { ExtensionsService } from '../services/extensions.service';
 
@@ -23,12 +23,14 @@ export class HomeComponent implements OnInit {
 
   extensions : any
   currentIndex : number
+  initial : boolean
 
   @ViewChild('backgroundsContainer') backgroundsContainer : ElementRef
   @ViewChildren('extensionDescriptions') extensionDescriptions : QueryList<any>
 
-  constructor(private authService : AuthService, private extensionsService : ExtensionsService ) {
+  constructor(private authService : AuthService, private extensionsService : ExtensionsService, private cdRef : ChangeDetectorRef ) {
     this.currentIndex = 0
+    this.initial = true
   }
 
   ngOnInit() {
@@ -86,6 +88,9 @@ export class HomeComponent implements OnInit {
           scrollHeight = description.nativeElement.scrollHeight
         }
       })
+      console.log('hey')
+      this.initial = false
+      this.cdRef.detectChanges();
     })
   }
 }
