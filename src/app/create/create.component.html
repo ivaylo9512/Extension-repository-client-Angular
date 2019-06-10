@@ -18,7 +18,7 @@
         </div>
     </section>
     <section class="extension-section">
-        <div id="extension-section"> 
+        <div [ngClass]="{'fade-in' : this.wheelDirective.submitComponent.currentSection != 'coverSection'}" id="extension-section"> 
             <div #tagsContainer (click)="focusInput(this)" class="tags">
                 <div *ngFor = "let tag of tags" (click)="removeTag(tag)" ><i class="fas fa-tags"></i>{{tag}}</div>
                 <input [ngClass]="{'left' : tags.length > 0}" [formControl]="tagsInput"  placeholder="Tags" #tagsInputElmnt>
@@ -46,12 +46,12 @@
                 </div>
             </div>
             <div class="circle-container">
-                <span class="circle" id="circle"></span>
+                <span [ngClass]="{'animate' : this.wheelDirective.submitComponent.currentSection != 'coverSection'}" class="circle" id="circle"></span>
             </div>
         </div>
     </section>
     <section class="preview-section">
-        <div id="preview-section"> 
+        <div [ngClass]="{'fade-in' : this.wheelDirective.submitComponent.currentSection == 'previewSection'}" id="preview-section"> 
             <div class="cover">
                 <div [ngStyle]="{'background-image':'url(' + coverURL + ')'}" *ngIf="coverURL"></div>
             </div>

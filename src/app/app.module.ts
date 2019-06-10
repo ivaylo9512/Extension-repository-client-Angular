@@ -10,7 +10,7 @@ import { RequestsInterceptor } from './helpers/requests-interceptor'
 import { FormsModule } from '@angular/forms';
 import { ProfileComponent } from './profile/profile.component';
 import { ExtensionComponent } from './extension/extension.component';
-import {NgxPaginationModule} from 'ngx-pagination';
+import { NgxPaginationModule } from 'ngx-pagination';
 import { DiscoverComponent } from './discover/discover.component';
 import { PendingsComponent } from './pendings/pendings.component';
 import { AdminComponent } from './admin/admin.component';
@@ -102,7 +102,6 @@ import { MouseWheelDirective } from './helpers/mouse-wheel.directive';
     { 
       provide: HTTP_INTERCEPTORS, useClass: RequestsInterceptor, multi: true 
     },
-    MouseWheelDirective
   ],
   bootstrap: [AppComponent]
 })

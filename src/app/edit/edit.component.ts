@@ -4,6 +4,7 @@ import { debounceTime } from 'rxjs/operators';
 import { ExtensionsService } from '../services/extensions.service';
 import { FormControl } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
+import { MouseWheelDirective } from '../helpers/mouse-wheel.directive';
 
 @Component({
   selector: 'app-edit',
@@ -13,7 +14,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class EditComponent implements OnInit {
   @ViewChild('tagsInputElmnt') tagsInputElmnt : ElementRef
   @ViewChild('tagsContainer') tagsContainer : ElementRef
-
+  @ViewChild(MouseWheelDirective) wheelDirective
+  
   nameInput : FormControl = new FormControl()
   gitHubInput : FormControl = new FormControl()
   versionInput : FormControl = new FormControl()

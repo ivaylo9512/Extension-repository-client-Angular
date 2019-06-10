@@ -1,5 +1,5 @@
 <section [ngClass]="{'home-component' : homeComponent}" class="second-section">
-    <div [ngClass]="{'fade-in' : this.wheelDirective.profileAnimation.animate, 'fade-out' : !this.wheelDirective.profileAnimation.animate}"class="profile-section" id="profile-section">
+    <div [ngClass]="{'fade-in' : this.wheelDirective.profileAnimation.animate, 'fade-out' : this.wheelDirective.profileAnimation.animate === false}" class="profile-section" id="profile-section">
         <div class="profile">
             <h1>{{user.username}}</h1>
             <div class="user-info-container">
@@ -22,10 +22,10 @@
             </div>
         </div>
         <div class="circle-container">
-            <span class="circle" id="circle"></span>
+            <span [ngClass]="{'animate' : this.wheelDirective.profileAnimation.animate}" class="circle" id="circle"></span>
         </div>
     </div>
-    <div  [ngStyle]="{this.wheelDirective.profileAnimation.animate ? 'block' : 'none'}" #extensionsContainer class="user-extensions" id="extensions-section">
+    <div  [ngStyle]="{'display' : this.wheelDirective.profileAnimation.display ? 'block' : 'none'}" #extensionsContainer class="user-extensions" id="extensions-section">
       <div class="extensions">
           <div class="info-container" *ngFor="let extension of user['extensions'] | paginate: config" [routerLink]="['/extension', extension.id]">
               <div class="info-box">

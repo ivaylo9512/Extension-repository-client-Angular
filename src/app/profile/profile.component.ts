@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChildren, ElementRef, QueryList, ViewChild} from '@angular/core';
 import { UserService } from '../services/user.service'
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { MouseWheelDirective } from '../helpers/mouse-wheel.directive';
 
 
@@ -17,7 +17,7 @@ export class ProfileComponent implements OnInit {
   @ViewChildren('extensionDescriptions') extensionDescriptions : QueryList<any>
   @ViewChildren('userInfo') userInfo : QueryList<any>
   @ViewChild('extensionsContainer') profileSection : ElementRef
-
+  
   homeAnimation = {
     diplay : false,
     animate : false

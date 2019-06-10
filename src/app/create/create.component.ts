@@ -4,6 +4,7 @@ import { debounceTime } from 'rxjs/operators';
 import { ExtensionsService } from '../services/extensions.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import { MouseWheelDirective } from '../helpers/mouse-wheel.directive';
 
 @Component({
   selector: 'app-create',
@@ -13,6 +14,7 @@ import { Router } from '@angular/router';
 export class CreateComponent implements OnInit {
   @ViewChild('tagsInputElmnt') tagsInputElmnt : ElementRef
   @ViewChild('tagsContainer') tagsContainer : ElementRef
+  @ViewChild(MouseWheelDirective) wheelDirective
 
   nameInput : FormControl = new FormControl()
   gitHubInput : FormControl = new FormControl()
