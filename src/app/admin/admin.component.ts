@@ -27,6 +27,7 @@ export class AdminComponent implements OnInit {
     this.userService.getAllByState(state).subscribe(data =>{
       this.users = data
       this.config.totalItems = data.length
+      console.log(data)
     })
   }
   setState(userId : number, state : string){

@@ -1,17 +1,19 @@
 <section>
-    <div class="github-settings">
-    </div>
     <div class="users" *ngIf="users">
-        <div *ngFor="let user of users | paginate: config" [routerLink]="['/user', user.id]" class="user">
+        <div class="github-settings">
+        </div>
+        <div *ngFor="let user of users | paginate: config" [routerLink]="['/user', user.id]" class="info-container">
             <div class="info-box">
-                <div class="hover-circle">
+                <div class="circle-container">
+                    <div class="hover-circle">
+                    </div>
                 </div>
 
                 <div class="logo-container">
-                    <img class="logo-box" [src]="user.imageLocation" />
+                    <img class="logo-box" [src]="user.profileImage" *ngIf="user.profileImage"/>
                 </div>
 
-                <div class="extension-info">
+                <div class="user-info">
                     <div class="name">
                         <b>
                             {{user.name}}
