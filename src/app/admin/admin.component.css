@@ -3,14 +3,85 @@ section{
     height: calc(100vh - 30px);
     width: 100%;
 }
+form{
+    height: 100%;
+    width: calc(70% - 3px);
+    float: left;
+}
+.icon-container{
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    align-items: center;
+    font-size: 4em;
+    text-align: center;
+    color: black;
+    justify-content: center;
+    height: 100%;
+    float: left;
+    width: 30%;
+    border-right: 3px solid black;
+}
+.inputs-container{
+    height: 100%;
+    width: 70%;
+    float: left;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.submit-container{
+    float: right;
+    height: 100%;
+    width: 30%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.submit-container button{
+    border-radius: 15px;
+    background: black;
+    padding: 10px;
+    color: white;
+    border: 3px solid white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
 .github-settings{
     width: 29%;
     padding-bottom: 21%;
     float: right;
+    position: relative;
     border-radius: 16px;
     margin-top: 3%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     margin-right: 5%;
+    border: 3px solid black;
+}
+.github-settings .container{
+    position: absolute;
+    text-align: center;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+}
+.github-settings label{
+    display: block;
+}
+.github-settings input{
+    margin-top: 8px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 5px;
+    border: 2px solid black;
+    align-self: center;
+    height: 13%;
+    display: inline-block;
 }
 .users{
     width: 100%;

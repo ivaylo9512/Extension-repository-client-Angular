@@ -1,6 +1,21 @@
 <section>
     <div class="users" *ngIf="users">
         <div class="github-settings">
+            <div class="container">
+                <div class="icon-container"><i class="fas fa-users-cog"></i></div>
+                <form>
+                    <div class="inputs-container">
+                        <input type="text" id="username" [value]="github.username">
+                        <input type="text" id="token" [value]="github.token">
+                        <input type="text" id="rate" [value]="github.rate">
+                        <input type="text" id="wait" [value]="github.wait">
+                    </div>
+                    <div class="submit-container">
+                            <button type="submit" class="menu-item" id="set-github-settings"><i class="fas fa-angle-double-right"></i> set</button>
+                    </div>
+                    <div class="errors"></div>
+                </form>
+            </div>
         </div>
         <div *ngFor="let user of users | paginate: config" [routerLink]="['/user', user.id]" class="info-container">
             <div class="info-box">
