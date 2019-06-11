@@ -1,0 +1,29 @@
+<section>
+    <div class="github-settings">
+    </div>
+    <div *ngFor="let user of users | paginate: config" [routerLink]="['/extension', extension.id]" class="users">
+        <div class="info-box">
+            <div class="hover-circle">
+            </div>
+
+            <div class="logo-container">
+                <img class="logo-box" [src]="extension.imageLocation" />
+            </div>
+
+            <div class="extension-info">
+                <div class="name">
+                    <b>
+                        {{user.name}}
+                    </b>
+                </div>
+                    <p #extensionDescriptions>
+                        {{user.info}}
+                    </p>
+                </div>
+            </div>
+        </div>      
+    </div>
+    <div class="circle-container">
+        <div class="circle"></div>
+    </div>
+</section>
