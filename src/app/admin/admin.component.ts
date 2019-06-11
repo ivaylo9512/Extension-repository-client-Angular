@@ -14,20 +14,27 @@ export class AdminComponent implements OnInit {
     currentPage: 1,
     totalItems: null
   }
+  github : any
   users : any[]
   constructor(private userService : UserService) {
     this.users = undefined
+    this.github = undefined
   }
 
   ngOnInit() {
     this.getUsers('all')
+    this.getGithubSettings()
   }
-
+  getGithubSettings(){
+    this.userService.getGithubSettings().subscribe(data => {
+      this.github = data
+      console.log(data)
+    })
+  }
   getUsers(state : string){
     this.userService.getAllByState(state).subscribe(data =>{
       this.users = data
       this.config.totalItems = data.length
-      console.log(data)
     })
   }
   setState(userId : number, state : string){

@@ -20,7 +20,9 @@ export class UserService {
     const params = new  HttpParams().set('state', state)    
     return this.httpClient.get<User[]>('/api/auth/users/all', {params})
   }
-
+  getGithubSettings(){
+    return this.httpClient.get('/api/auth/github')
+  }
   setState(id : number, state : string){
     return this.httpClient.patch<User>(`/auth/users/setState/${id}/${state}`, null)
   }
