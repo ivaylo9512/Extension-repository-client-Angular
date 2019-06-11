@@ -8,9 +8,15 @@ import { UserService } from '../services/user.service';
 })
 export class AdminComponent implements OnInit {
 
+  config = {
+    id: 'custom',
+    itemsPerPage: 12,
+    currentPage: 1,
+    totalItems: null
+  }
   users : any[]
   constructor(private userService : UserService) {
-
+    this.users = undefined
   }
 
   ngOnInit() {
@@ -20,6 +26,7 @@ export class AdminComponent implements OnInit {
   getUsers(state : string){
     this.userService.getAllByState(state).subscribe(data =>{
       this.users = data
+      this.config.totalItems = data.length
     })
   }
   setState(userId : number, state : string){
