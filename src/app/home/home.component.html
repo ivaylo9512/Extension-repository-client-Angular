@@ -1,42 +1,47 @@
 <section mouseWheel>
-<div class="fav-extensions">
-    <div #backgroundsContainer id="backgrounds" class="backgrounds">
-        <img class="current" *ngFor="let extension of extensions" [ngStyle]="{'background-image':'url(' + extension.coverLocation + ')'}">
-    </div>
-    <ul id="backgrounds-nav">
-        <li class="current" *ngFor="let extension of extensions"></li>
-    </ul>
-    <div class="info-container" *ngFor="let extension of extensions" [ngStyle]="{'display' : (extensions.indexOf(extension) == currentIndex || initial) ? 'block' : 'none'}" [routerLink]="['/extension', extension.id]">
-        <div class="info-box">
-            <div class="hover-circle">
-            </div>
-
-            <div [ngClass]="{'fade-in' : extensions.indexOf(extension) == currentIndex}" class="logo-container">
-                <img class="logo-box"/>
-            </div>
-
-            <div class="extension-info">
-                    <div class="name">
-                        <b>{{extension.name}}</b>
-                    </div>
-                    <p #extensionDescriptions>
-                        {{extension.description}}
-                    </p>
-                    <div class="rating">
-                        <i *ngIf="extension.rating == 0.5" class="fas fa-star-half"></i>
-                        <i *ngIf="extension.rating >= 1" class="fas fa-star"></i>
-                        <i *ngIf="extension.rating == 1.5" class="fas fa-star-half"></i>
-                        <i *ngIf="extension.rating >= 2" class="fas fa-star"></i>
-                        <i *ngIf="extension.rating == 2.5" class="fas fa-star-half"></i>
-                        <i *ngIf="extension.rating >= 3" class="fas fa-star"></i>
-                        <i *ngIf="extension.rating == 3.5" class="fas fa-star-half"></i>
-                        <i *ngIf="extension.rating >= 4" class="fas fa-star"></i>
-                        <i *ngIf="extension.rating == 4.5" class="fas fa-star-half"></i>
-                        <i *ngIf="extension.rating >= 5" class="fas fa-star"></i>
-                    </div>
+    <span *ngIf="!extensions" class="loading-animation">
+        <div>
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </div>
+    </span>
+    <div class="fav-extensions">
+        <div #backgroundsContainer id="backgrounds" class="backgrounds">
+            <img class="current" *ngFor="let extension of extensions" [ngStyle]="{'background-image':'url(' + extension.coverLocation + ')'}">
+        </div>
+        <ul id="backgrounds-nav">
+            <li class="current" *ngFor="let extension of extensions"></li>
+        </ul>
+        <div class="info-container" *ngFor="let extension of extensions" [ngStyle]="{'display' : (extensions.indexOf(extension) == currentIndex || initial) ? 'block' : 'none'}" [routerLink]="['/extension', extension.id]">
+            <div class="info-box">
+                <div class="hover-circle">
                 </div>
+
+                <div [ngClass]="{'fade-in' : extensions.indexOf(extension) == currentIndex}" class="logo-container">
+                    <img class="logo-box"/>
+                </div>
+
+                <div class="extension-info">
+                        <div class="name">
+                            <b>{{extension.name}}</b>
+                        </div>
+                        <p #extensionDescriptions>
+                            {{extension.description}}
+                        </p>
+                        <div class="rating">
+                            <i *ngIf="extension.rating == 0.5" class="fas fa-star-half"></i>
+                            <i *ngIf="extension.rating >= 1" class="fas fa-star"></i>
+                            <i *ngIf="extension.rating == 1.5" class="fas fa-star-half"></i>
+                            <i *ngIf="extension.rating >= 2" class="fas fa-star"></i>
+                            <i *ngIf="extension.rating == 2.5" class="fas fa-star-half"></i>
+                            <i *ngIf="extension.rating >= 3" class="fas fa-star"></i>
+                            <i *ngIf="extension.rating == 3.5" class="fas fa-star-half"></i>
+                            <i *ngIf="extension.rating >= 4" class="fas fa-star"></i>
+                            <i *ngIf="extension.rating == 4.5" class="fas fa-star-half"></i>
+                            <i *ngIf="extension.rating >= 5" class="fas fa-star"></i>
+                        </div>
+                    </div>
+            </div>
         </div>
     </div>
-</div>
-<app-profile class="home-view" *ngIf="this.authService.isLoggedIn"></app-profile>
+    <app-profile class="home-view" *ngIf="this.authService.isLoggedIn"></app-profile>
 </section>

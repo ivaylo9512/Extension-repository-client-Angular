@@ -23,7 +23,7 @@ export class DiscoverComponent implements OnInit {
   }
 
   constructor(private extensionsService : ExtensionsService) {
-    this.extensions = []
+    this.extensions = undefined
    }
 
   ngOnInit() {

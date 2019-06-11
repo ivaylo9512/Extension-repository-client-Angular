@@ -14,7 +14,7 @@ export class ExtensionsService {
   }
 
   getFeatured(){
-    return this.httpClient.get<Extension>('/api/extensions/featured')
+    return this.httpClient.get<Extension[]>('/api/extensions/featured')
   }
   getExtension(id : number){
     return this.httpClient.get<Extension>(`/api/extensions/${id}`)

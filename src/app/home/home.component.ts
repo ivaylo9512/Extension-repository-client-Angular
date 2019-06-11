@@ -22,7 +22,7 @@ import { MouseWheelDirective } from '../helpers/mouse-wheel.directive';
 })
 export class HomeComponent implements OnInit {
 
-  extensions : any
+  extensions : any[]
   currentIndex : number
   initial : boolean
 
@@ -32,6 +32,7 @@ export class HomeComponent implements OnInit {
   constructor(private authService : AuthService, private extensionsService : ExtensionsService, private cdRef : ChangeDetectorRef ) {
     this.currentIndex = 0
     this.initial = true
+    this.extensions = undefined
   }
 
   ngOnInit() {

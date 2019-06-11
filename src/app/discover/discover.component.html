@@ -1,4 +1,9 @@
 <section>
+    <span *ngIf="!extensions" class="loading-animation">
+        <div>
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </div>
+    </span>
     <form>
         <input [formControl]="search">
         <button>Search</button>
@@ -51,7 +56,7 @@
             </div>
         </div>
     </div>
-    <div class="pagination">
+    <div class="pagination" *ngIf="!extensions">
         <pagination-template #p="paginationApi" [id]="config.id" (pageChange)="this.findExtensions($event)">
             <ul class="pagination-list">
                 <li class="previous" [class.disabled]="p.isFirstPage()">

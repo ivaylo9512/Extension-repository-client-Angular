@@ -1,4 +1,9 @@
 <section [ngClass]="{'home-component' : homeComponent}" class="second-section">
+    <span *ngIf="user == loading"  class="loading-animation">
+        <div>
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </div>
+    </span>
     <div [ngClass]="{'fade-in' : this.wheelDirective.profileAnimation.animate, 'fade-out' : this.wheelDirective.profileAnimation.animate === false}" class="profile-section" id="profile-section">
         <div class="profile">
             <h1>{{user.username}}</h1>

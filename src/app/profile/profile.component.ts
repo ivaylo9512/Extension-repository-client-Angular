@@ -14,6 +14,7 @@ export class ProfileComponent implements OnInit {
   user : any
   admin : boolean
   homeComponent : boolean
+
   @ViewChildren('extensionDescriptions') extensionDescriptions : QueryList<any>
   @ViewChildren('userInfo') userInfo : QueryList<any>
   @ViewChild('extensionsContainer') profileSection : ElementRef
@@ -31,7 +32,7 @@ export class ProfileComponent implements OnInit {
   }
 
   constructor(private wheelDirective : MouseWheelDirective ,private userService : UserService, private route: ActivatedRoute) {
-    this.user = []
+    this.user = 'loading'
   }
 
   ngOnInit() {
