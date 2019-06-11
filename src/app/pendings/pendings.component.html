@@ -1,4 +1,9 @@
 <section>
+    <span *ngIf="!extensions"  class="loading-animation">
+        <div>
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </div>
+    </span>
     <h1>Extensions waiting: {{config.totalItems}}</h1>
     <span class="circle"></span>
     <div class="extensions">

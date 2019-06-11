@@ -17,7 +17,8 @@ export class ProfileComponent implements OnInit {
 
   @ViewChildren('extensionDescriptions') extensionDescriptions : QueryList<any>
   @ViewChildren('userInfo') userInfo : QueryList<any>
-  @ViewChild('extensionsContainer') profileSection : ElementRef
+  @ViewChild('extensionsContainer') extensionsContainer : ElementRef
+  @ViewChild('profileSection') profileSection : ElementRef
   
   homeAnimation = {
     diplay : false,
@@ -36,6 +37,8 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log(this.profileSection.nativeElement.offsetHeight)
+    this.wheelDirective.profileComponent.profileHeight = this.profileSection.nativeElement.offsetHeight
     this.homeComponent = this.route.component['name'] == 'HomeComponent'
     if(!this.homeComponent){
       this.getUser(+this.route.snapshot.paramMap.get('id'));
@@ -50,10 +53,10 @@ export class ProfileComponent implements OnInit {
   ngAfterViewInit() {
     this.extensionDescriptions.changes.subscribe(descriptions => {
       descriptions.toArray().forEach(description => {
-        this.profileSection.nativeElement.style.display = "block"
+        this.extensionsContainer.nativeElement.style.display = "block"
         this.fixOverflow(description)
         if(this.homeComponent){
-          this.profileSection.nativeElement.style.display = "none"        
+          this.extensionsContainer.nativeElement.style.display = "none"        
         }
       })
     })

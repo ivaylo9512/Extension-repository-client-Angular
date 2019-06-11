@@ -16,6 +16,10 @@ export class MouseWheelDirective implements OnInit {
     isFinished : undefined,
 
   }
+  profileComponent = {
+    profileHeight : 0,
+    circleTransform: 0
+  }
   currentComponent : string
 
   @ViewChild('tagsContainer') tagsContainer : ElementRef
@@ -34,7 +38,12 @@ export class MouseWheelDirective implements OnInit {
         break;
     }
   }
+  @HostListener("window:scroll", [])
+  onWindowScroll() {
+    this.profileComponent.circleTransform = -(window.scrollY / this.profileComponent.profileHeight * 100)
+    console.log(this.profileComponent.circleTransform)
 
+  }
   homeAnimation(e){
     if(this.authService.isLoggedIn){
       if(!this.profileAnimation.animate){

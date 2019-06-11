@@ -22,7 +22,7 @@ export class TagsComponent implements OnInit {
   }
 
   constructor(private extensionService : ExtensionsService, private route : ActivatedRoute) { 
-    this.extensions = []
+    this.extensions = undefined
   }
 
   ngOnInit() {

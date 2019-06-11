@@ -1,10 +1,10 @@
-<section [ngClass]="{'home-component' : homeComponent}" class="second-section">
+<section [ngClass]="{'home-component' : homeComponent}" class="second-section" id="second-section">
     <span *ngIf="user == loading"  class="loading-animation">
         <div>
             <i class="fas fa-circle-notch fa-spin"></i>
         </div>
     </span>
-    <div [ngClass]="{'fade-in' : this.wheelDirective.profileAnimation.animate, 'fade-out' : this.wheelDirective.profileAnimation.animate === false}" class="profile-section" id="profile-section">
+    <div [ngClass]="{'fade-in' : this.wheelDirective.profileAnimation.animate, 'fade-out' : this.wheelDirective.profileAnimation.animate === false}" class="profile-section" #profileSection>
         <div class="profile">
             <h1>{{user.username}}</h1>
             <div class="user-info-container">
@@ -27,43 +27,49 @@
             </div>
         </div>
         <div class="circle-container">
-            <span [ngClass]="{'animate' : this.wheelDirective.profileAnimation.animate}" class="circle" id="circle"></span>
+            <span [ngClass]="{'animate' : this.wheelDirective.profileAnimation.animate}" [ngStyle]="{'transform': this.wheelDirective.profileAnimation.animate ? 'translateY(' + wheelDirective.profileComponent.circleTransform / 5 + '%)' : 'translateY(90%)'}" class="circle" id="circle"></span>
         </div>
     </div>
     <div  [ngStyle]="{'display' : this.wheelDirective.profileAnimation.display ? 'block' : 'none'}" #extensionsContainer class="user-extensions" id="extensions-section">
-      <div class="extensions">
-          <div class="info-container" *ngFor="let extension of user['extensions'] | paginate: config" [routerLink]="['/extension', extension.id]">
-              <div class="info-box">
-                  <div class="hover-circle">
-                  </div>
-  
-                  <div class="logo-container">
-                      <img class="logo-box" [src]="extension.imageLocation" *ngIf="extension.imageLocation"/>
-                  </div>
-  
-                  <div class="extension-info">
-                    <div class="name">
-                        <b>{{extension.name}}</b>
+        <div class="extensions">
+            <div class="info-container" *ngFor="let extension of user['extensions'] | paginate: config" [routerLink]="['/extension', extension.id]">
+                <div class="info-box">
+                    <div class="hover-circle">
                     </div>
-                    <p #extensionDescriptions>
-                        {{extension.description}}
-                    </p>
-                    <div class="rating">
-                        <i *ngIf="extension.rating == 0.5" class="fas fa-star-half"></i>
-                        <i *ngIf="extension.rating >= 1" class="fas fa-star"></i>
-                        <i *ngIf="extension.rating == 1.5" class="fas fa-star-half"></i>
-                        <i *ngIf="extension.rating >= 2" class="fas fa-star"></i>
-                        <i *ngIf="extension.rating == 2.5" class="fas fa-star-half"></i>
-                        <i *ngIf="extension.rating >= 3" class="fas fa-star"></i>
-                        <i *ngIf="extension.rating == 3.5" class="fas fa-star-half"></i>
-                        <i *ngIf="extension.rating >= 4" class="fas fa-star"></i>
-                        <i *ngIf="extension.rating == 4.5" class="fas fa-star-half"></i>
-                        <i *ngIf="extension.rating >= 5" class="fas fa-star"></i>
+  
+                    <div class="logo-container">
+                        <img class="logo-box" [src]="extension.imageLocation" *ngIf="extension.imageLocation"/>
+                    </div>
+  
+                    <div class="extension-info">
+                        <div class="name">
+                            <b>{{extension.name}}</b>
+                        </div>
+                        <p #extensionDescriptions>
+                            {{extension.description}}
+                        </p>
+                        <div class="rating">
+                            <i *ngIf="extension.rating == 0.5" class="fas fa-star-half"></i>
+                            <i *ngIf="extension.rating >= 1" class="fas fa-star"></i>
+                            <i *ngIf="extension.rating == 1.5" class="fas fa-star-half"></i>
+                            <i *ngIf="extension.rating >= 2" class="fas fa-star"></i>
+                            <i *ngIf="extension.rating == 2.5" class="fas fa-star-half"></i>
+                            <i *ngIf="extension.rating >= 3" class="fas fa-star"></i>
+                            <i *ngIf="extension.rating == 3.5" class="fas fa-star-half"></i>
+                            <i *ngIf="extension.rating >= 4" class="fas fa-star"></i>
+                            <i *ngIf="extension.rating == 4.5" class="fas fa-star-half"></i>
+                            <i *ngIf="extension.rating >= 5" class="fas fa-star"></i>
+                        </div>
                     </div>
                 </div>
-              </div>
-          </div>
-      </div>
+            </div>
+            <div class="circle-container">
+                <span [ngStyle]="{'transform': this.wheelDirective.profileAnimation.animate ? 'translateY(' + wheelDirective.profileComponent.circleTransform * 2.5 + '%)' : 'translateY(90%)'}" class="circle" id="circle"></span>
+            </div>
+            <div class="circle-container">
+                <span [ngStyle]="{'transform': this.wheelDirective.profileAnimation.animate ? 'translateY(' + wheelDirective.profileComponent.circleTransform * 6.5 + '%' : 'translateY(0)'}" class="circle second" id="circle"></span>
+            </div>
+        </div>
         <pagination-template #p="paginationApi" [id]="config.id" (pageChange)="config.currentPage = $event">
           <ul class="pagination-list">
               <li class="previous" [class.disabled]="p.isFirstPage()">
