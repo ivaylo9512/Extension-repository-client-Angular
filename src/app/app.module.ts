@@ -22,6 +22,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TagsComponent } from './tags/tags.component';
 import { RegisterComponent } from './register/register.component';
 import { MouseWheelDirective } from './helpers/mouse-wheel.directive';
+import { FavExtensionsComponent } from './fav-extensions/fav-extensions.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { MouseWheelDirective } from './helpers/mouse-wheel.directive';
     HeaderComponent,
     TagsComponent,
     RegisterComponent,
-    MouseWheelDirective
+    MouseWheelDirective,
+    FavExtensionsComponent
   ],
   imports: [
     BrowserModule,
