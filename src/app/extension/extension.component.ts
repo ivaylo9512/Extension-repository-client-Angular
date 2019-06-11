@@ -1,7 +1,8 @@
-import { Component, OnInit, ViewChildren, QueryList } from '@angular/core';
+import { Component, OnInit, ViewChildren, QueryList, ViewChild, ElementRef } from '@angular/core';
 import { ExtensionsService } from '../services/extensions.service';
 import { ActivatedRoute, Params, Route, Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { MouseWheelDirective } from '../helpers/mouse-wheel.directive';
 
 @Component({
   selector: 'app-extension',
@@ -12,6 +13,7 @@ export class ExtensionComponent implements OnInit {
 
   extension : any
   @ViewChildren('extensionDescription') extensionDescriptions : QueryList<any>
+  @ViewChild(MouseWheelDirective) wheelDirective : MouseWheelDirective
 
   constructor(private extensionService : ExtensionsService, private router : Router, private authService : AuthService, private route: ActivatedRoute) { }
 
@@ -22,7 +24,11 @@ export class ExtensionComponent implements OnInit {
 
   getExtension(id : number){
     this.extensionService.getExtension(id).subscribe(data =>{
-      this.extension = data    
+      this.extension = data
+      if(!data.coverLocation){
+        this.wheelDirective.extensionComponent.currentSection = 'extensionSection'
+        this.wheelDirective.extensionComponent.isCoverPresent = false
+      }
     })
   }
   setFeatureState(){

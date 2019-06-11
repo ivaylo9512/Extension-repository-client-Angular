@@ -20,6 +20,12 @@ export class MouseWheelDirective implements OnInit {
     profileHeight : 0,
     circleTransform: 0
   }
+  extensionComponent = {
+    currentSection : 'coverSection',
+    isCoverPresent : true,
+    animated : true,
+    isFinished : undefined
+  }
   currentComponent : string
 
   @ViewChild('tagsContainer') tagsContainer : ElementRef
@@ -31,17 +37,19 @@ export class MouseWheelDirective implements OnInit {
     switch(this.currentComponent){
       case 'HomeComponent' :
         this.homeAnimation(e)
-        break;
+        break
       case 'CreateComponent' :
       case 'EditComponent' :
         this.submitAnimation(e)
-        break;
+        break
+      case 'ExtensionComponent' :
+        this.extensionAnimation(e)
+        break
     }
   }
   @HostListener("window:scroll", [])
   onWindowScroll() {
     this.profileComponent.circleTransform = -(window.scrollY / this.profileComponent.profileHeight * 100)
-    console.log(this.profileComponent.circleTransform)
 
   }
   homeAnimation(e){
@@ -99,6 +107,34 @@ export class MouseWheelDirective implements OnInit {
         this.submitComponent.isFinished = setTimeout(() => {
           this.submitComponent.animated = true
         }, 3000);
+      }
+    }
+  }
+  extensionAnimation(e){
+    const currentSection = this.extensionComponent.currentSection
+    if(this.extensionComponent.isCoverPresent){
+      if(currentSection == 'coverSection'){
+        if(e.deltaY > 0){
+          this.extensionComponent.currentSection = 'extensionSection'
+          this.extensionComponent.animated = false
+          this.extensionComponent.isFinished = setTimeout(() => {
+            this.extensionComponent.animated = true
+          }, 4100)
+        }
+      }else if(currentSection == 'extensionSection'){
+        if(e.deltaY < 0){
+          clearTimeout(this.submitComponent.isFinished)
+          this.extensionComponent.currentSection = 'coverSection'
+        }
+      }
+    }
+    if(currentSection == 'extensionSection'){
+      if(e.deltaY > 0 && this.extensionComponent.animated){
+        this.extensionComponent.currentSection = 'infoSection'
+      }
+    }else if(currentSection == 'infoSection'){
+      if(e.deltaY < 0){
+        this.extensionComponent.currentSection = 'extensionSection'
       }
     }
   }

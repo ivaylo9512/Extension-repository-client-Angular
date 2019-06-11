@@ -56,7 +56,7 @@
             </div>
         </div>
     </div>
-    <div class="pagination" *ngIf="!extensions">
+    <div class="pagination" *ngIf="extensions">
         <pagination-template #p="paginationApi" [id]="config.id" (pageChange)="this.findExtensions($event)">
             <ul class="pagination-list">
                 <li class="previous" [class.disabled]="p.isFirstPage()">
