@@ -81,7 +81,7 @@ section{
     display: -ms-flexbox;
     display: flex;
 }
-.users button{
+.users form button{
     border-radius: 5px;
     background: black;
     padding: 10px 20px;
@@ -211,7 +211,7 @@ section{
     width: 25%;
     height: 25%;
 }
-.info-box:hover .extension-info{
+.info-box:hover .user-info{
     transition-delay: 1s;
     opacity: 1;
 }
@@ -266,6 +266,18 @@ section{
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+}
+.state{
+    height: 25%;
+    padding-left: 22%;
+}
+.state button{
+    background: transparent;
+    border: 0px;
+    float: right;
+    font-size: 1.5em;
+    height: 100%;
+    margin-right: 5px;
 }
 .pagination{
     width: 100%;

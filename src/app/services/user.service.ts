@@ -3,7 +3,8 @@ import {HttpClient, HttpParams} from '@angular/common/http'
 interface User{
   id : number,
   username : String,
-  extension : String
+  extension : String,
+  isActive : boolean
 }
 @Injectable({
   providedIn: 'root'
@@ -24,7 +25,7 @@ export class UserService {
     return this.httpClient.get('/api/auth/github')
   }
   setState(id : number, state : string){
-    return this.httpClient.patch<User>(`/auth/users/setState/${id}/${state}`, null)
+    return this.httpClient.patch<User>(`/api/auth/users/setState/${id}/${state}`, null)
   }
 
   changePassword(password : string, repeatPassword : string){
