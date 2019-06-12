@@ -202,7 +202,8 @@ section{
 
     align-items: center;
     padding: 10px 0;
-    transition: 1s;
+    opacity: 0;
+    transition: opacity 0s 1s, transform 1s;
     -webkit-transform: translateZ(0) translateY(100%);
     -moz-transform: translateZ(0) translateY(100%);
     -ms-transform: translateZ(0) translateY(100%);
@@ -215,6 +216,8 @@ section{
     -ms-transform: translateZ(0) translateY(0%);
     -o-transform: translateZ(0) translateY(0%);
     transform: translateZ(0) translateY(0%);    
+    opacity: 1;
+    transition: opacity 0s, transform 1s;
 }
 .sliding-info-container > div{
     float: left; 

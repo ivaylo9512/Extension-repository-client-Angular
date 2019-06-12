@@ -14,6 +14,8 @@ export class ExtensionComponent implements OnInit {
   extension : any
   @ViewChildren('extensionDescription') extensionDescriptions : QueryList<any>
   @ViewChild(MouseWheelDirective) wheelDirective : MouseWheelDirective
+  @ViewChild('extensionSection') extensionSection : ElementRef
+  @ViewChild("slidingContainer") slidingContainer : ElementRef
 
   constructor(private extensionService : ExtensionsService, private router : Router, private authService : AuthService, private route: ActivatedRoute) { }
 
@@ -77,6 +79,8 @@ export class ExtensionComponent implements OnInit {
     })
   }
   ngAfterViewInit() {
+    this.wheelDirective.extensionComponent.slidingContainer = this.slidingContainer
+    this.wheelDirective.extensionComponent.extensionSection = this.extensionSection
     this.extensionDescriptions.changes.subscribe(descriptions => {
       descriptions.toArray().forEach(description => {
         let height = description.nativeElement.offsetHeight

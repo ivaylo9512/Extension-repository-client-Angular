@@ -1,7 +1,7 @@
 <section mouseWheel>
     <div class="cover" [ngStyle]="{'background-image':'url(' + extension.coverLocation + ')'}" *ngIf="extension.coverLocation">
     </div>
-    <div [ngClass]="{'visible': !this.wheelDirective.extensionComponent.isCoverPresent, 'fade-in': this.wheelDirective.extensionComponent.currentSection != 'coverSection' }" class="extension-info">
+    <div #extensionSection [ngClass]="{'visible': !this.wheelDirective.extensionComponent.isCoverPresent, 'fade-in': this.wheelDirective.extensionComponent.currentSection != 'coverSection' }" class="extension-info">
         <div class="logo-container">
             <div class="hover-circle">
             </div>
@@ -33,7 +33,7 @@
         <div class="circle-container">
             <span [ngClass]="{'animate' : this.wheelDirective.extensionComponent.currentSection != 'coverSection' }" class="circle"></span>
         </div>
-        <div [ngClass]="{'slide-in' : this.wheelDirective.extensionComponent.currentSection == 'infoSection'}" class="sliding-info-container">
+        <div #slidingContainer [ngClass]="{'slide-in' : this.wheelDirective.extensionComponent.currentSection == 'infoSection'}" class="sliding-info-container">
             <div class="github-info">
                 <span>Pull requests</span>
                 <span>Open issues</span>

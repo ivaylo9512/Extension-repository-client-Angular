@@ -21,8 +21,8 @@ export class MouseWheelDirective implements OnInit {
   extensionComponent = {
     currentSection : 'coverSection',
     isCoverPresent : true,
-    animated : true,
-    isFinished : undefined
+    extensionSection : undefined,
+    slidingContainer : undefined
   }
   currentComponent : string
 
@@ -109,29 +109,27 @@ export class MouseWheelDirective implements OnInit {
     }
   }
   extensionAnimation(e){
+    const extensionOpacity = window.getComputedStyle(this.extensionComponent.extensionSection.nativeElement).getPropertyValue('opacity')
+    const sliderOpacity = window.getComputedStyle(this.extensionComponent.slidingContainer.nativeElement).getPropertyValue('opacity')
+
     const currentSection = this.extensionComponent.currentSection
     if(this.extensionComponent.isCoverPresent){
       if(currentSection == 'coverSection'){
         if(e.deltaY > 0){
           this.extensionComponent.currentSection = 'extensionSection'
-          this.extensionComponent.animated = false
-          this.extensionComponent.isFinished = setTimeout(() => {
-            this.extensionComponent.animated = true
-          }, 4100)
         }
       }else if(currentSection == 'extensionSection'){
-        if(e.deltaY < 0){
-          clearTimeout(this.submitComponent.isFinished)
+        if(e.deltaY < 0 && sliderOpacity == '0'){
           this.extensionComponent.currentSection = 'coverSection'
         }
       }
     }
     if(currentSection == 'extensionSection'){
-      if(e.deltaY > 0 && this.extensionComponent.animated){
+      if(e.deltaY > 0 && extensionOpacity == '1'){
         this.extensionComponent.currentSection = 'infoSection'
       }
     }else if(currentSection == 'infoSection'){
-      if(e.deltaY < 0){
+      if(e.deltaY < 0 ){
         this.extensionComponent.currentSection = 'extensionSection'
       }
     }
