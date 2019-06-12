@@ -59,6 +59,10 @@ import { FavExtensionsComponent } from './fav-extensions/fav-extensions.componen
         component: RegisterComponent
       },
       { 
+        path: 'extension', 
+        component: ExtensionComponent
+      },
+      { 
         path: 'extension/:id', 
         component: ExtensionComponent
       },

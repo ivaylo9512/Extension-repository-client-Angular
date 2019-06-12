@@ -46,6 +46,10 @@ h1{
     -ms-transform: translateZ(0) translateY(0);
     -o-transform: translateZ(0) translateY(0);
     transform: translateZ(0) translateY(0);
+    -webkit-animation: initial-translate 3s forwards; 
+    -moz-animation: initial-translate 3s forwards; 
+      -o-animation: initial-translate 3s forwards;
+         animation: initial-translate 3s forwards; 
     transition: 1s all;
 }   
 .extensions{
@@ -189,3 +193,35 @@ pagination-template ul{
     color: black;
     background-color: rgba(255, 255, 255, 0.3);
 }
+@-webkit-keyframes initial-translate {
+    from {
+      transform: translateY(80%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+  @-moz-keyframes initial-translate {
+    from {
+      transform: translateY(80%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+  @-o-keyframes initial-translate {
+    from {
+      transform: translateY(80%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+  @keyframes initial-translate {
+    from {
+      transform: translateY(80%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
