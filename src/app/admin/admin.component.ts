@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
+import { FormControl } from '@angular/forms';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-admin',
@@ -17,19 +19,28 @@ export class AdminComponent implements OnInit {
   github : any
   users : any[]
   foundUsers : any[]
+  search: FormControl = new FormControl()
+
   constructor(private userService : UserService) {
     this.users = undefined
+    this.foundUsers = undefined
     this.github = undefined
   }
 
   ngOnInit() {
     this.getUsers('all')
     this.getGithubSettings()
+
+    this.search.valueChanges.pipe(debounceTime(200)).subscribe(result => {
+      this.findUsers(result)
+    })
+  }
+  findUsers(result : string){
+    this.users = this.foundUsers.filter(user => user.username.startsWith(result))
   }
   getGithubSettings(){
     this.userService.getGithubSettings().subscribe(data => {
       this.github = data
-      console.log(data)
     })
   }
   changeCriteria(value){
@@ -38,6 +49,7 @@ export class AdminComponent implements OnInit {
   getUsers(state : string){
     this.userService.getAllByState(state).subscribe(data =>{
       this.users = data
+      this.foundUsers = data
       this.config.totalItems = data.length
     })
   }
