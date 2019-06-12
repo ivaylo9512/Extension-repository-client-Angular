@@ -1,4 +1,5 @@
 <span class="circle"></span>
+<span class="circle2"></span>
 <form #userForm="ngForm" autocomplete="on">
     <div class="inputs-container" [ngStyle]="{'display' : next ? 'none' : 'block'}">
         <div>  
@@ -26,7 +27,7 @@
         <button type="submit" [ngStyle]="{'display' : !next ? 'none' : 'inline-block'}" (click)=register(userForm)>register</button>
         <button type="button" routerLink="/login">login</button>
     </div>
-    <span></span>
+    <span class="circle3"></span>
 </form>
 <div class="errors" *ngIf="errors">
     <div>
