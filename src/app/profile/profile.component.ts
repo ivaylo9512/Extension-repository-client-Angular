@@ -68,12 +68,11 @@ export class ProfileComponent implements OnInit {
         }
       })
     })
-    this.userInfo.changes.subscribe(descriptions => {
-      descriptions.toArray().forEach(description => {
+    this.userInfo.changes.subscribe(descriptions => 
+      descriptions.toArray().forEach(description => 
         this.fixOverflow(description)
-        console.log(description)
-      })
-    })
+      )
+    )
   }
   fixOverflow(node){
           

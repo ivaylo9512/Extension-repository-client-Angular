@@ -24,6 +24,9 @@ export class UserService {
   getGithubSettings(){
     return this.httpClient.get('/api/auth/github')
   }
+  setGithubSettings(github){
+    return this.httpClient.post('/api/auth/github', github)
+  }
   setState(id : number, state : string){
     return this.httpClient.patch<User>(`/api/auth/users/setState/${id}/${state}`, null)
   }

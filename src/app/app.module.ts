@@ -40,7 +40,7 @@ import { FavExtensionsComponent } from './fav-extensions/fav-extensions.componen
     TagsComponent,
     RegisterComponent,
     MouseWheelDirective,
-    FavExtensionsComponent
+    FavExtensionsComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChildren, QueryList } from '@angular/core';
 import { UserService } from '../services/user.service';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import { debounceTime } from 'rxjs/operators';
 
 @Component({
@@ -10,6 +10,8 @@ import { debounceTime } from 'rxjs/operators';
 })
 export class AdminComponent implements OnInit {
   @ViewChildren('userDescriptions') userDescriptions : QueryList<any>
+
+  githubSettings : FormGroup
 
   config = {
     id: 'custom',
@@ -22,10 +24,17 @@ export class AdminComponent implements OnInit {
   foundUsers : any[]
   search: FormControl = new FormControl()
 
-  constructor(private userService : UserService) {
+  constructor(private userService : UserService, private fb: FormBuilder) {
     this.users = undefined
     this.foundUsers = undefined
     this.github = undefined
+
+    this.githubSettings = this.fb.group({
+      username: [''],
+      token: [''],
+      wait: [''],
+      rate: ['']
+    });
   }
 
   ngOnInit() {
@@ -38,8 +47,13 @@ export class AdminComponent implements OnInit {
   findUsers(result : string){
     this.users = this.foundUsers.filter(user => user.username.startsWith(result))
   }
+  setGithubSettings(){
+    this.userService.setGithubSettings(this.githubSettings.value).subscribe(data =>{
+      this.githubSettings.setValue(data)
+    })
+  }
   getGithubSettings(){
-    this.userService.getGithubSettings().subscribe(data => this.github = data)
+    this.userService.getGithubSettings().subscribe(data => this.githubSettings.setValue(data))
   }
   changeCriteria(value){
     this.getUsers(value.target.value)
