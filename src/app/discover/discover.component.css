@@ -4,9 +4,6 @@ section{
     overflow-x: hidden;
     position: relative;
 }
-section > div{
-    float: left;
-}
 form{
     height: 16%;
     margin-top: 20px;
@@ -219,6 +216,7 @@ h1{
 .menu{
     position: relative;
     margin-left: 35px;
+    display: inline-block;
     border-bottom: 1px solid black;
     margin-top: 10px;
 }
@@ -229,6 +227,7 @@ h1{
 .menu ul > :last-child{
     font-size: 1.9em;
     margin-left: 5px;
+    padding: 0px;
 }
 .menu label{
     text-align: center;
