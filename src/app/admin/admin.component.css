@@ -3,17 +3,73 @@ section{
     height: calc(100vh - 30px);
     width: 100%;
 }
-button{
-    border-radius: 5px;
-    background: black;
-    padding: 10px 20px;
-    margin-top: 8px;
-    border: 0px;
-    color: white;
-    align-self: center;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+.search{
+    height: 16%;
+    margin-top: 20px;
+    margin-left: 35px;
 }
-form{
+.search input{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    width: 50%;
+    height: 100%;
+    float: left;
+    padding: 0;
+    font-size: 2.5em;
+    border: 1px solid black;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+.search button{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 0;
+    height: 100%;
+    width: 12%;
+    float: left;
+    border: 1px solid black;
+    background: black;
+    color: white;
+
+}
+.menu{
+    position: relative;
+    margin-left: 35px;
+    display: inline-block;
+    border-bottom: 1px solid black;
+    margin-top: 10px;
+}
+.menu ul > :first-child{
+    font-size: 1.2em;
+    padding-left: 0px;
+}
+.menu ul > :last-child{
+    font-size: 1.9em;
+    margin-left: 5px;
+    padding: 0px;
+}
+.menu label{
+    text-align: center;
+    display: inline-block;
+    padding: 0.5% 10px;
+    color: black;
+    z-index: 4;
+    overflow: hidden;
+    cursor: pointer;
+    margin-right: 10px;
+    font-weight: bold;
+    font-size: 0.9em;
+
+}
+.menu i{
+    margin-right: 7px;
+    font-size: 0.9em;
+}
+.menu input{
+    display: none;
+}
+.menu input:checked + label{
+    text-decoration: underline;
+}
+.users form{
     height: 100%;
     width: 100%;
     position: absolute;
@@ -25,6 +81,16 @@ form{
     display: -ms-flexbox;
     display: flex;
 }
+.users button{
+    border-radius: 5px;
+    background: black;
+    padding: 10px 20px;
+    margin-top: 8px;
+    border: 0px;
+    color: white;
+    align-self: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
 .github-settings {
     width: 12%;
     padding-bottom: 22%;
@@ -32,11 +98,9 @@ form{
     overflow: hidden;
     position: relative;
     border-radius: 16px;
-    margin-top: 7%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    margin-right: 5%;
     border: 3px solid white;
-    margin-bottom: 7%;
+    margin-bottom: 13.5%;
 }
 .icon-container{
     display: -webkit-box;
@@ -205,4 +269,5 @@ form{
 }
 .pagination{
     width: 100%;
+    margin-bottom: 30px;
 }

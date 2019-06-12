@@ -1,4 +1,20 @@
 <section>
+    <form class="search">
+        <input [formControl]="search">
+        <button>Search</button>
+    </form>
+    <div class="menu">
+        <ul>
+            <label>Find by:</label>
+            <input checked name="order" value="name" id="all" type="radio" (click)="changeCriteria($event)">
+            <label for="all"><i class="fa fa-i-cursor"></i>All</label>
+            <input name="order" value="downloads" id="active" type="radio" (click)="changeCriteria($event)">
+            <label for="active" type='radio'><i class="fa fa-fire"></i>Download</label>
+            <input name="blocked" value="date" id="upload" type="radio" (click)="changeCriteria($event)">                
+            <label for="blocked" type='radio'><i class="fas fa-calendar-alt"></i>Upload</label>
+            <label>Users found: {{config.totalItems}}</label>
+        </ul>
+    </div>
     <div class="users" *ngIf="users">
         <div class="github-settings" *ngIf="github">
             <div class="container">

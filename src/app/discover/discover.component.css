@@ -254,9 +254,8 @@ i{
 }
 .pagination{
     width: 100%;
-}
-pagination-template ul{
     margin-bottom: 20px;
+
 }
 .menu li.current{
     color: black;
