@@ -16,6 +16,7 @@ export class AdminComponent implements OnInit {
   }
   github : any
   users : any[]
+  foundUsers : any[]
   constructor(private userService : UserService) {
     this.users = undefined
     this.github = undefined
@@ -30,6 +31,9 @@ export class AdminComponent implements OnInit {
       this.github = data
       console.log(data)
     })
+  }
+  changeCriteria(value){
+    this.getUsers(value.target.value)
   }
   getUsers(state : string){
     this.userService.getAllByState(state).subscribe(data =>{

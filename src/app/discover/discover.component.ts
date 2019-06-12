@@ -45,7 +45,6 @@ export class DiscoverComponent implements OnInit {
   changeCriteria(value){
     this.config.criteria = value.target.value
     this.findExtensions(0)
-
   }
   ngAfterViewInit() {
     this.extensionDescriptions.changes.subscribe(descriptions => {
