@@ -8,7 +8,7 @@
         <ul *ngIf="this.authService.isLoggedIn && !this.authService.isAdmin">
             <li class="user"><a [routerLink]="['/profile', this.authService.id]">{{this.authService.username}}</a>
                 <ul>
-                    <li><a [routerLink]="['/profile', this.authService.id]">Profile</a></li>
+                    <li><a [routerLink]="['/home/profile', this.authService.id]">Profile</a></li>
                     <li><a href="" (click)="this.authService.logout()">Logout</a></li>
                 </ul>
             </li>
@@ -19,7 +19,7 @@
         <ul *ngIf="this.authService.isLoggedIn && this.authService.isAdmin">
             <li class="user"><a [routerLink]="['/profile', this.authService.id]">{{this.authService.username}}</a>
                 <ul>
-                    <li><a [routerLink]="['/profile', this.authService.id]">Profile</a></li>
+                    <li><a [routerLink]="['/home/profile', this.authService.id]">Profile</a></li>
                     <li><a routerLink="/admin">Admin</a></li>
                     <li><a href="" (click)="this.authService.logout()">Logout</a></li>
                 </ul>

@@ -37,16 +37,22 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.profileSection.nativeElement.offsetHeight)
     this.wheelDirective.profileComponent.profileHeight = this.profileSection.nativeElement.offsetHeight
     this.homeComponent = this.route.component['name'] == 'HomeComponent'
     if(!this.homeComponent){
       this.getUser(+this.route.snapshot.paramMap.get('id'));
+
+      this.wheelDirective.profileComponent.animate = true
+      this.wheelDirective.profileComponent.isHomeView = false
     }else{
       this.loggedUser = JSON.parse(localStorage.getItem('user'))
       if(this.loggedUser){
         this.getUser(this.loggedUser['id'])
       }
+      
+      this.wheelDirective.profileComponent.animate = undefined
+      this.wheelDirective.profileComponent.isHomeView = true
+
     }
   }
 

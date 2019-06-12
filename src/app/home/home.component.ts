@@ -7,6 +7,7 @@ import { NgModule } from '@angular/core';
 import { ProfileComponent } from '../profile/profile.component';
 import { MouseWheelDirective } from '../helpers/mouse-wheel.directive';
 import { FavExtensionsComponent } from '../fav-extensions/fav-extensions.component';
+import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -24,11 +25,22 @@ import { FavExtensionsComponent } from '../fav-extensions/fav-extensions.compone
 })
 export class HomeComponent implements OnInit {
 
+  isProfileRoute : boolean
+  routeSubscription
 
-  constructor(private authService : AuthService) {
+  constructor(private authService : AuthService, private router: Router) {
+    this.routeSubscription = this.router.events.subscribe((e: any) => {
+      if (e instanceof NavigationEnd) {
+          this.isProfileRoute = e.urlAfterRedirects != '/home'
+      }
+    });
   }
-
   ngOnInit() {
+  }
+  ngOnDestroy() {
+    if (this.routeSubscription) {  
+       this.routeSubscription.unsubscribe();
+    }
   }
 
 }

@@ -4,7 +4,7 @@
             <i class="fas fa-circle-notch fa-spin"></i>
         </div>
     </span>
-    <div [ngClass]="{'fade-in' : this.wheelDirective.profileAnimation.animate, 'fade-out' : this.wheelDirective.profileAnimation.animate === false}" class="profile-section" #profileSection>
+    <div [ngClass]="{'fade-in' : this.wheelDirective.profileComponent.animate, 'fade-out' : this.wheelDirective.profileComponent.animate === false}" class="profile-section" #profileSection>
         <div class="profile">
             <h1>{{user.username}}</h1>
             <div class="user-info-container">
@@ -27,10 +27,10 @@
             </div>
         </div>
         <div class="circle-container">
-            <span [ngClass]="{'animate' : this.wheelDirective.profileAnimation.animate}" [ngStyle]="{'transform': this.wheelDirective.profileAnimation.animate ? 'translateY(' + wheelDirective.profileComponent.circleTransform / 5 + '%)' : 'translateY(90%)'}" class="circle" id="circle"></span>
+            <span [ngClass]="{'animate' : this.wheelDirective.profileComponent.animate}" [ngStyle]="{'transform': this.wheelDirective.profileComponent.animate ? 'translateY(' + wheelDirective.profileComponent.circleTransform / 5 + '%)' : 'translateY(90%)'}" class="circle" id="circle"></span>
         </div>
     </div>
-    <div  [ngStyle]="{'display' : this.wheelDirective.profileAnimation.display ? 'block' : 'none'}" #extensionsContainer class="user-extensions" id="extensions-section">
+    <div  [ngStyle]="{'display' : this.wheelDirective.profileComponent.display ? 'block' : 'none'}" #extensionsContainer class="user-extensions" id="extensions-section">
         <div class="extensions">
             <div class="info-container" *ngFor="let extension of user['extensions'] | paginate: config" [routerLink]="['/extension', extension.id]">
                 <div class="info-box">
@@ -64,10 +64,10 @@
                 </div>
             </div>
             <div class="circle-container">
-                <span [ngStyle]="{'transform': this.wheelDirective.profileAnimation.animate ? 'translateY(' + wheelDirective.profileComponent.circleTransform * 2.5 + '%)' : 'translateY(90%)'}" class="circle" id="circle"></span>
+                <span [ngStyle]="{'transform': this.wheelDirective.profileComponent.animate ? 'translateY(' + wheelDirective.profileComponent.circleTransform * 2.5 + '%)' : 'translateY(90%)'}" class="circle" id="circle"></span>
             </div>
             <div class="circle-container">
-                <span [ngStyle]="{'transform': this.wheelDirective.profileAnimation.animate ? 'translateY(' + wheelDirective.profileComponent.circleTransform * 6.5 + '%' : 'translateY(0)'}" class="circle second" id="circle"></span>
+                <span [ngStyle]="{'transform': this.wheelDirective.profileComponent.animate ? 'translateY(' + wheelDirective.profileComponent.circleTransform * 6.5 + '%' : 'translateY(0)'}" class="circle second" id="circle"></span>
             </div>
         </div>
         <pagination-template #p="paginationApi" [id]="config.id" (pageChange)="config.currentPage = $event">

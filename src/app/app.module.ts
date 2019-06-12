@@ -51,10 +51,6 @@ import { FavExtensionsComponent } from './fav-extensions/fav-extensions.componen
     BrowserAnimationsModule,
     RouterModule.forRoot([
       {
-        path: '',
-        component: HomeComponent
-      },
-      {
         path: 'login',
         component: LoginComponent
       },
@@ -65,10 +61,6 @@ import { FavExtensionsComponent } from './fav-extensions/fav-extensions.componen
       { 
         path: 'extension/:id', 
         component: ExtensionComponent
-      },      
-      { 
-        path: 'profile/:id', 
-        component: ProfileComponent
       },
       { 
         path: 'admin', 
@@ -95,10 +87,21 @@ import { FavExtensionsComponent } from './fav-extensions/fav-extensions.componen
         component: PendingsComponent
       },
       { 
-        path: '**', 
-        redirectTo: '' 
+        path: 'home', 
+        component: HomeComponent,
+        children: [
+          {
+              path:'profile/:id',
+              component: ProfileComponent,
+          },
+        ],runGuardsAndResolvers: 'always',
       },
-    ],{onSameUrlNavigation : 'reload'})
+      { 
+        path: '**', 
+        redirectTo: '/home',
+        runGuardsAndResolvers: 'always',
+      },
+    ],{onSameUrlNavigation : 'reload',})
   ],
   providers: [
     { 

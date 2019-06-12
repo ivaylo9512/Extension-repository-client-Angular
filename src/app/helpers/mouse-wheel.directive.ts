@@ -5,20 +5,18 @@ import { ActivatedRoute } from '@angular/router';
 
 @Directive({ selector: '[mouseWheel]' })
 export class MouseWheelDirective implements OnInit {
-  profileAnimation = {
-    display : false,
-    animate : undefined,
-    isFinished : undefined,
-  }
   submitComponent = {
     currentSection : 'coverSection',
     animated : true,
     isFinished : undefined,
-
   }
   profileComponent = {
+    display : false,
+    animate : undefined,
+    isFinished : undefined,
     profileHeight : 0,
-    circleTransform: 0
+    circleTransform: 0,
+    isHomeView : undefined
   }
   extensionComponent = {
     currentSection : 'coverSection',
@@ -36,7 +34,7 @@ export class MouseWheelDirective implements OnInit {
   Wheel(e) {
     switch(this.currentComponent){
       case 'HomeComponent' :
-        this.homeAnimation(e)
+        this.pofileAnimation(e)
         break
       case 'CreateComponent' :
       case 'EditComponent' :
@@ -52,22 +50,22 @@ export class MouseWheelDirective implements OnInit {
     this.profileComponent.circleTransform = -(window.scrollY / this.profileComponent.profileHeight * 100)
 
   }
-  homeAnimation(e){
+  pofileAnimation(e){
     if(this.authService.isLoggedIn){
-      if(!this.profileAnimation.animate){
+      if(!this.profileComponent.animate){
 
         if (e.deltaY > 0) {
-          this.profileAnimation.animate = true
+          this.profileComponent.animate = true
 
-          this.profileAnimation.isFinished = setTimeout(() => {
-              this.profileAnimation.display = true
+          this.profileComponent.isFinished = setTimeout(() => {
+              this.profileComponent.display = true
           }, 4100);
         }
-      }else{
+      }else if(this.profileComponent.isHomeView){
         if (e.deltaY < 0 && window.scrollY == 0) {
-          clearTimeout(this.profileAnimation.isFinished)
-          this.profileAnimation.animate = false
-          this.profileAnimation.display = false
+          clearTimeout(this.profileComponent.isFinished)
+          this.profileComponent.animate = false
+          this.profileComponent.display = false
         }
       }
     }

@@ -1,4 +1,7 @@
 <section mouseWheel>
-    <app-fav-extensions></app-fav-extensions>
-    <app-profile class="home-view" *ngIf="this.authService.isLoggedIn"></app-profile>
+    <router-outlet></router-outlet>
+    <div *ngIf="!isProfileRoute">
+        <app-fav-extensions></app-fav-extensions>
+        <app-profile class="home-view" *ngIf="this.authService.isLoggedIn"></app-profile>
+    </div>
 </section>
