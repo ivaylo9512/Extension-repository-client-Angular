@@ -41,9 +41,10 @@ export class ProfileComponent implements OnInit {
     this.homeComponent = this.route.component['name'] == 'HomeComponent'
     if(!this.homeComponent){
       this.getUser(+this.route.snapshot.paramMap.get('id'));
-
+      
       this.wheelDirective.profileComponent.animate = true
       this.wheelDirective.profileComponent.isHomeView = false
+      clearTimeout(this.wheelDirective.profileComponent.isFinished)
     }else{
       this.loggedUser = JSON.parse(localStorage.getItem('user'))
       if(this.loggedUser){
@@ -51,6 +52,7 @@ export class ProfileComponent implements OnInit {
       }
       
       this.wheelDirective.profileComponent.animate = undefined
+      this.wheelDirective.profileComponent.display = false
       this.wheelDirective.profileComponent.isHomeView = true
 
     }

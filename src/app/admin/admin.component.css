@@ -145,7 +145,7 @@ section{
 .users{
     width: 85%;
     padding-left: 35px;
-    overflow: overlay;
+    overflow: auto;
     min-height: 65%;
 }
 .info-container{

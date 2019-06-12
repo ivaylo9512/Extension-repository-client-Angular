@@ -51,7 +51,7 @@ export class MouseWheelDirective implements OnInit {
 
   }
   pofileAnimation(e){
-    if(this.authService.isLoggedIn){
+    if(this.authService.isLoggedIn && this.profileComponent.isHomeView){
       if(!this.profileComponent.animate){
 
         if (e.deltaY > 0) {
@@ -61,7 +61,7 @@ export class MouseWheelDirective implements OnInit {
               this.profileComponent.display = true
           }, 4100);
         }
-      }else if(this.profileComponent.isHomeView){
+      }else{
         if (e.deltaY < 0 && window.scrollY == 0) {
           clearTimeout(this.profileComponent.isFinished)
           this.profileComponent.animate = false

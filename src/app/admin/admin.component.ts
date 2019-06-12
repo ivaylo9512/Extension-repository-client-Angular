@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChildren, QueryList } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { FormControl } from '@angular/forms';
 import { debounceTime } from 'rxjs/operators';
@@ -9,6 +9,7 @@ import { debounceTime } from 'rxjs/operators';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
+  @ViewChildren('userDescriptions') userDescriptions : QueryList<any>
 
   config = {
     id: 'custom',
@@ -55,6 +56,27 @@ export class AdminComponent implements OnInit {
     const state = user.isActive ? 'block' : 'enable'
     this.userService.setState(user.id, state).subscribe(data =>{
       user.isActive = data.isActive
+    })
+  }
+  ngAfterViewInit() {
+    this.userDescriptions.changes.subscribe(descriptions => {
+      descriptions.toArray().forEach(description => {
+      
+        let height = description.nativeElement.offsetHeight
+        let scrollHeight = description.nativeElement.scrollHeight
+        let text = description.nativeElement.innerHTML + '...'
+      
+        while(height < scrollHeight){
+          let words = text.split(' ')
+          words.pop()
+          words.pop()
+          text = words.join(' ') + '...'
+          
+          description.nativeElement.innerHTML = text
+          height = description.nativeElement.offsetHeight
+          scrollHeight = description.nativeElement.scrollHeight
+        }
+      })
     })
   }
 }

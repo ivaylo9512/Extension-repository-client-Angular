@@ -30,7 +30,7 @@
             <span [ngClass]="{'animate' : this.wheelDirective.profileComponent.animate}" [ngStyle]="{'transform': this.wheelDirective.profileComponent.animate ? 'translateY(' + wheelDirective.profileComponent.circleTransform / 5 + '%)' : 'translateY(90%)'}" class="circle" id="circle"></span>
         </div>
     </div>
-    <div  [ngStyle]="{'display' : this.wheelDirective.profileComponent.display ? 'block' : 'none'}" #extensionsContainer class="user-extensions" id="extensions-section">
+    <div [ngStyle]="{'display' : this.wheelDirective.profileComponent.display ? 'block' : 'none'}" #extensionsContainer class="user-extensions" id="extensions-section">
         <div class="extensions">
             <div class="info-container" *ngFor="let extension of user['extensions'] | paginate: config" [routerLink]="['/extension', extension.id]">
                 <div class="info-box">
