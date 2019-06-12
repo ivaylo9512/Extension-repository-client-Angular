@@ -5,18 +5,20 @@
         </div>
     </span>
     <div [ngClass]="{'fade-in' : this.wheelDirective.profileComponent.animate, 'fade-out' : this.wheelDirective.profileComponent.animate === false}" class="profile-section" #profileSection>
-        <div class="profile">
-            <h1>{{user.username}}</h1>
-            <div class="user-info-container">
-                <h2>Extensions: {{user['totalExtensions']}}</h2>
-                <h3>Rating: {{user['rating']}}</h3>
-                <h4>Country: {{user['country']}}</h4>
-                <h5>Info</h5>
+        <div class="user-info-container">
+            <div class="username">
+                <h1>{{user.username}}</h1>
             </div>
-            <div class="user-info">
-                <p #userInfo>
-                    {{user.info}}
-                </p>
+            <div class="profile">
+                <h2>Extensions: {{user.totalExtensions}}</h2>
+                <h3>Rating: {{user.rating}}</h3>
+                <h4>Country: {{user.country}}</h4>
+                <h5>Info</h5>
+                <div class="user-info">
+                    <p #userInfo>
+                        {{user.info}}
+                    </p>
+                </div>
             </div>
         </div>
         <div class="info-container">
