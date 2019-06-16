@@ -38,6 +38,8 @@ section{
 }
 .admin-menu{
     overflow: auto;
+    position: relative;
+    z-index: 6;
 }
 .admin-menu button{
     float: right;
