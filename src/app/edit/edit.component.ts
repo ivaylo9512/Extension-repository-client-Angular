@@ -194,22 +194,32 @@ export class EditComponent implements OnInit {
     this.tags.splice(index, 1)
   }
   setExtension(){
-    const extension = this.extensionService
+    const extension = this.extensionService.currentExtension
     this.extension = extension
-    this.tags = extension['tags']
-    this.coverURL = extension['coverLocation']
-    this.logoURL = extension['imageLocation']
-    this.initialGitHub = extension['gitHubLink']
-    this.initialName = extension['name']
+    this.nameInput.setValue(extension.name)
+    this.versionInput.setValue(extension.version)
+    this.gitHubInput.setValue(extension.gitHubLink)
+    this.descriptionInput.setValue(extension.description)
+
+    this.initialName = extension.name
+    this.initialGitHub = extension.gitHubLink
+    this.tags = extension.tags
+    this.coverURL = extension.coverLocation
+    this.logoURL = extension.imageLocation
   }
   getExtension(id : number){
     this.extensionService.getExtension(id).subscribe(extension =>{
       this.extension = extension
-      this.tags = extension['tags']
-      this.coverURL = extension['coverLocation']
-      this.logoURL = extension['imageLocation']
-      this.initialGitHub = extension['gitHubLink']
-      this.initialName = extension['name']
+      this.nameInput.setValue(extension.name)
+      this.versionInput.setValue(extension.version)
+      this.gitHubInput.setValue(extension.gitHubLink)
+      this.descriptionInput.setValue(extension.description)
+
+      this.initialName = extension.name
+      this.initialGitHub = extension.gitHubLink
+      this.tags = extension.tags
+      this.coverURL = extension.coverLocation
+      this.logoURL = extension.imageLocation
     })
   }
   focusInput(e){
