@@ -7,8 +7,9 @@ import { ActivatedRoute } from '@angular/router';
 export class MouseWheelDirective implements OnInit {
   submitComponent = {
     currentSection : 'coverSection',
-    animated : true,
     isFinished : undefined,
+    extensionSection : undefined,
+    previewSection : undefined
   }
   profileComponent = {
     display : false,
@@ -71,40 +72,21 @@ export class MouseWheelDirective implements OnInit {
     }
   }
   submitAnimation(e){
+    const extensionOpacity = window.getComputedStyle(this.submitComponent.extensionSection.nativeElement).getPropertyValue('opacity')
+    const previewOpacity = window.getComputedStyle(this.submitComponent.previewSection.nativeElement).getPropertyValue('opacity')
     if(this.submitComponent.currentSection == 'coverSection'){
       if (e.deltaY > 0) {
         this.submitComponent.currentSection = 'extensionSection'
-        this.submitComponent.animated = false
-        clearTimeout(this.submitComponent.isFinished)
-        this.submitComponent.isFinished = setTimeout(() => {
-          this.submitComponent.animated = true
-        }, 3000);
       }
     }else if(this.submitComponent.currentSection == 'extensionSection'){
-      if(e.deltaY < 0 && this.submitComponent.animated){
+      if(e.deltaY < 0 && extensionOpacity == '1'){
         this.submitComponent.currentSection = 'coverSection'
-        this.submitComponent.animated = false
-        clearTimeout(this.submitComponent.isFinished)
-        this.submitComponent.isFinished = setTimeout(() => {
-          this.submitComponent.animated = true
-        }, 3000);
-      }else if(this.submitComponent.animated){
+      }else if(extensionOpacity == '1'){
         this.submitComponent.currentSection = 'previewSection'
-        this.submitComponent.animated = false
-        clearTimeout(this.submitComponent.isFinished)
-        this.submitComponent.isFinished = setTimeout(() => {
-          this.submitComponent.animated = true
-        }, 3000);
-
       }
     }else{
-      if(e.deltaY < 0 && this.submitComponent.animated){
+      if(e.deltaY < 0 && previewOpacity == '1'){
         this.submitComponent.currentSection = 'extensionSection'
-        this.submitComponent.animated = false
-        clearTimeout(this.submitComponent.isFinished)
-        this.submitComponent.isFinished = setTimeout(() => {
-          this.submitComponent.animated = true
-        }, 3000);
       }
     }
   }

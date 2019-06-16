@@ -15,7 +15,9 @@ export class EditComponent implements OnInit {
   @ViewChild('tagsInputElmnt') tagsInputElmnt : ElementRef
   @ViewChild('tagsContainer') tagsContainer : ElementRef
   @ViewChild(MouseWheelDirective) wheelDirective
-  
+  @ViewChild('extensionSection') extensionSection : ElementRef
+  @ViewChild('previewSection') previewSection : ElementRef
+
   nameInput : FormControl = new FormControl()
   gitHubInput : FormControl = new FormControl()
   versionInput : FormControl = new FormControl()
@@ -91,6 +93,12 @@ export class EditComponent implements OnInit {
       }
     })
   }
+  
+  ngAfterViewInit() {
+    this.wheelDirective.extensionComponent.previewSection = this.previewSection
+    this.wheelDirective.submitComponent.extensionSection = this.extensionSection
+  }
+
   editExtension(){
     if(this.nameAvailable == 'true' && this.gitHubAvailable == 'true'){
       const name = this.nameInput.value
