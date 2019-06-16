@@ -133,7 +133,8 @@ export class CreateComponent implements OnInit {
       this.formData.set('extension', JSON.stringify(extension))
       this.extensionService.createExtension(this.formData).subscribe(
         data =>{
-          this.router.navigate(['extension', data])
+          this.extensionService.currentExtension = data
+          this.router.navigate(['extension', data.id])
         })
     }
   }

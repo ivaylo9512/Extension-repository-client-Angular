@@ -50,7 +50,9 @@ export class EditComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getExtension(+this.route.snapshot.paramMap.get('id'))
+    this.extensionService.currentExtension ? this.setExtension() :
+      this.getExtension(+this.route.snapshot.paramMap.get('id'))
+
     this.nameInput.valueChanges.pipe(debounceTime(200)).subscribe(name => {
       this.nameError = null
       this.extension.name = name
@@ -106,7 +108,8 @@ export class EditComponent implements OnInit {
       this.formData.set('extension', JSON.stringify(extension))
       this.extensionService.editExtension(this.extension.id, this.formData).subscribe(
         data =>{
-          this.router.navigate(['extension', data['id']])      
+          this.extensionService.currentExtension = data
+          this.router.navigate(['extension', data.id])      
         })
     }
   }
@@ -189,6 +192,15 @@ export class EditComponent implements OnInit {
   removeTag(tag){
     const index = this.tags.indexOf(tag)
     this.tags.splice(index, 1)
+  }
+  setExtension(){
+    const extension = this.extensionService
+    this.extension = extension
+    this.tags = extension['tags']
+    this.coverURL = extension['coverLocation']
+    this.logoURL = extension['imageLocation']
+    this.initialGitHub = extension['gitHubLink']
+    this.initialName = extension['name']
   }
   getExtension(id : number){
     this.extensionService.getExtension(id).subscribe(extension =>{

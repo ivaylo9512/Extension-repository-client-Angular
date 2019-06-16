@@ -33,8 +33,10 @@ interface Extension {
   providedIn: 'root'
 })
 export class ExtensionsService {
-
+  currentExtension : Extension
+  
   constructor(private httpClient : HttpClient) { 
+    this.currentExtension = undefined
   }
 
   getFeatured(){

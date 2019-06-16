@@ -21,12 +21,14 @@ export class ExtensionComponent implements OnInit {
 
   ngOnInit() {
     this.extension = []
-    this.getExtension(+this.route.snapshot.paramMap.get('id'))
+    this.extensionService.currentExtension ? this.extension = this.extensionService.currentExtension :
+      this.getExtension(+this.route.snapshot.paramMap.get('id'))
   }
 
   getExtension(id : number){
     this.extensionService.getExtension(id).subscribe(data =>{
       this.extension = data
+      this.extensionService.currentExtension = data
       if(!data.coverLocation){
         this.wheelDirective.extensionComponent.currentSection = 'extensionSection'
         this.wheelDirective.extensionComponent.isCoverPresent = false
