@@ -2,8 +2,32 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 
 interface Extension {
-  name : string
-  coverLocation : string
+  id : number,
+  name : string,
+  version : string,
+  description : string,
+  timesDownloaded : number,
+  isPending : boolean,
+  isFeatured : boolean,
+  ownerName : string,
+  ownerId : number,
+  gitHubLink : string,
+  lastCommit : string,
+  uploadDate : string,
+  openIssues : number,
+  pullRequests : number,
+  lastSuccessfulPullOfData : string,
+  lastFailedAttemptToCollectData : string,
+  lastErrorMessage : string,
+  fileLocation : string,
+  imageLocation : string,
+  coverLocation : string,
+  tags : string[],
+  rating : number,
+  timesRated : number,
+  currentUserRatingValue : number
+
+
 }
 @Injectable({
   providedIn: 'root'

@@ -2,9 +2,14 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http'
 interface User{
   id : number,
-  username : String,
-  extension : String,
-  isActive : boolean
+  username : string,
+  extensions : any[],
+  isActive : boolean,
+  rating : number,
+  extensionsRated : number,
+  profileImage : string,
+  country : string,
+  info : string
 }
 @Injectable({
   providedIn: 'root'
