@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChildren, QueryList } from '@angular/core';
+import { Component, OnInit, ViewChildren, QueryList, HostListener } from '@angular/core';
 import { ExtensionsService } from '../services/extensions.service';
 import { FormControl } from '@angular/forms';
 import { debounceTime, switchMap } from 'rxjs/operators';
@@ -9,6 +9,10 @@ import { debounceTime, switchMap } from 'rxjs/operators';
   styleUrls: ['./discover.component.css']
 })
 export class DiscoverComponent implements OnInit {
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.fixOverflow(this.extensionDescriptions)
+  }
   search: FormControl = new FormControl()
   extensions : any[]
   @ViewChildren('extensionDescriptions') extensionDescriptions : QueryList<any>
@@ -31,8 +35,7 @@ export class DiscoverComponent implements OnInit {
     this.search.valueChanges.pipe(debounceTime(200)).subscribe(result => {
       this.config.search = result
       this.findExtensions(1)
-    })
-    
+    }) 
   }
 
   findExtensions(page : number){
@@ -48,23 +51,25 @@ export class DiscoverComponent implements OnInit {
   }
   ngAfterViewInit() {
     this.extensionDescriptions.changes.subscribe(descriptions => {
-      descriptions.toArray().forEach(description => {
-      
-        let height = description.nativeElement.offsetHeight
-        let scrollHeight = description.nativeElement.scrollHeight
-        let text = description.nativeElement.innerHTML + '...'
-      
-        while(height < scrollHeight){
-          let words = text.split(' ')
-          words.pop()
-          words.pop()
-          text = words.join(' ') + '...'
-          
-          description.nativeElement.innerHTML = text
-          height = description.nativeElement.offsetHeight
-          scrollHeight = description.nativeElement.scrollHeight
-        }
-      })
+      this.fixOverflow(descriptions.toArray())
+    })
+  }
+  fixOverflow(descriptions){
+    descriptions.forEach(description => {    
+      let height = description.nativeElement.offsetHeight
+      let scrollHeight = description.nativeElement.scrollHeight
+      let text = description.nativeElement.innerHTML + '...'
+    
+      while(height < scrollHeight){
+        let words = text.split(' ')
+        words.pop()
+        words.pop()
+        text = words.join(' ') + '...'
+        
+        description.nativeElement.innerHTML = text
+        height = description.nativeElement.offsetHeight
+        scrollHeight = description.nativeElement.scrollHeight
+      }
     })
   }
 }
