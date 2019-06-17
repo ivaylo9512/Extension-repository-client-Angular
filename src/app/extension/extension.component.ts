@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChildren, QueryList, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChildren, QueryList, ViewChild, ElementRef, HostListener } from '@angular/core';
 import { ExtensionsService } from '../services/extensions.service';
 import { ActivatedRoute, Params, Route, Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
@@ -10,12 +10,17 @@ import { MouseWheelDirective } from '../helpers/mouse-wheel.directive';
   styleUrls: ['./extension.component.css']
 })
 export class ExtensionComponent implements OnInit {
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.fixOverflow(this.extensionDescription)
+  }
 
-  extension : any
-  @ViewChildren('extensionDescription') extensionDescriptions : QueryList<any>
+  @ViewChildren('extensionDescription') extensionDescription : QueryList<any>
   @ViewChild(MouseWheelDirective) wheelDirective : MouseWheelDirective
   @ViewChild('extensionSection') extensionSection : ElementRef
   @ViewChild("slidingContainer") slidingContainer : ElementRef
+
+  extension : any
 
   constructor(private extensionService : ExtensionsService, private router : Router, private authService : AuthService, private route: ActivatedRoute) { }
 
@@ -94,23 +99,27 @@ export class ExtensionComponent implements OnInit {
   ngAfterViewInit() {
     this.wheelDirective.extensionComponent.slidingContainer = this.slidingContainer
     this.wheelDirective.extensionComponent.extensionSection = this.extensionSection
-    this.extensionDescriptions.changes.subscribe(descriptions => {
-      descriptions.toArray().forEach(description => {
-        let height = description.nativeElement.offsetHeight
-        let scrollHeight = description.nativeElement.scrollHeight
-        let text = description.nativeElement.innerHTML + '...'
-      
-        while(height < scrollHeight){
-          let words = text.split(' ')
-          words.pop()
-          words.pop()
-          text = words.join(' ') + '...'
-          
-          description.nativeElement.innerHTML = text
-          height = description.nativeElement.offsetHeight
-          scrollHeight = description.nativeElement.scrollHeight
-        }
-      })
+    this.extensionDescription.changes.subscribe(descriptions => {
+      this.fixOverflow(descriptions.toArray())
+    })
+  }
+  fixOverflow(descriptions){
+    descriptions.forEach(description => {
+      description.nativeElement.innerHTML = this.extension.description
+      let height = description.nativeElement.offsetHeight
+      let scrollHeight = description.nativeElement.scrollHeight
+      let text = description.nativeElement.innerHTML + '...'
+    
+      while(height < scrollHeight){
+        let words = text.split(' ')
+        words.pop()
+        words.pop()
+        text = words.join(' ') + '...'
+        
+        description.nativeElement.innerHTML = text
+        height = description.nativeElement.offsetHeight
+        scrollHeight = description.nativeElement.scrollHeight
+      }
     })
   }
 }
