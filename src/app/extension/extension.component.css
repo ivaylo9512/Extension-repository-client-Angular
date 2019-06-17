@@ -25,7 +25,6 @@ section{
     background: white;
 }
 .info{
-    padding-right: 25px;
     height: 25%;
 }
 .extension-info.fade-in{
@@ -113,11 +112,13 @@ section{
     overflow: hidden;
 }
 .extension{
-    overflow: hidden;
     height: 50%;
     width:100%;
     text-align: center;
     z-index: 3;
+}
+.extension-info-container-mobile{
+    display: none;
 }
 .extension-info-container{
     height: 100%;
@@ -195,6 +196,9 @@ section{
     -o-transform: translateZ(0) translateY(0%);
     transform: translateZ(0) translateY(0%);
 }
+.info-container{
+    display: none;
+}
 .sliding-info-container{
     position: absolute;
     bottom: 0%;
@@ -234,6 +238,7 @@ section{
     width: 30%;
 }
 .sliding-info-container span,
+.info-container span,
 .tags a{
     box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.2), 0px 4px 0px -1px rgba(0, 0, 0, 0.19);
     background: white;
@@ -249,7 +254,8 @@ section{
     padding: 4px 0px;
     width: 23%;
 }
-.sliding-info-container .user-menu{
+.sliding-info-container .user-menu,
+.info-container .user-menu{
     width:40%;
     display: -webkit-box;
     display: -webkit-flex;
@@ -313,6 +319,75 @@ section{
 .tags a{
     float: left;
     padding: 4px 5px;
+}
+@media (max-width: 1200px) {
+    section{
+        overflow: auto;
+    }
+    .extension-info-container{
+        display: none;
+    }
+    .extension-info-container-mobile{
+        display: block;
+    }
+    .extension-info .circle{
+        width: 130%;
+        padding-bottom: 130%;
+        left: 50%;
+        margin-left: -65%;
+        bottom: 5%;
+        margin-bottom: 15%;
+    }
+    .extension-info .logo-container {
+        width: 30%;
+        margin: 0 0 0 -15%;
+        top: auto;
+        bottom: 6%;
+    }
+    .extension-info{
+        height: 60vh;
+        position: relative;
+    }
+    h1{
+        font-size: 5.8em;
+        font-weight: bold;
+        word-break: break-word;
+    }
+    .info{
+        width: 95%;
+        display: inline-block;
+        padding-bottom: 20px;
+    }
+    .sliding-info-container{
+        display: none;
+    }
+    .info-container{
+        display: block;
+        padding-bottom: 20px;
+    }
+    .info-container .user-menu{
+        width: 96%;
+        padding: 0 2%;
+        margin-bottom: 10px;
+    }
+    .tags{
+        display: block;
+        padding: 20px 0px;
+        text-align: center;
+        display: block;
+    }
+    .tags a{
+        float: none;
+        margin-left: 0px;
+        margin-right: 15px;
+    }
+    .user-menu a{
+        padding: 5% 0;
+        width: 34%;
+    }
+    .github-info{
+        text-align: center;
+    }
 }
 @-webkit-keyframes fadeIn {
     0%   { opacity: 0; }
