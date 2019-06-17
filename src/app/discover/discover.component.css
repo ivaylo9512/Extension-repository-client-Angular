@@ -280,6 +280,7 @@ i{
     .extensions{
         padding-top: 20px;
         padding-bottom: 20px;
+        min-height: 78%;
     }
     .menu label{
         margin-right: 5px;

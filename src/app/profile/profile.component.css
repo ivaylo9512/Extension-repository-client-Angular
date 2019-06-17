@@ -287,12 +287,11 @@
     -o-transform: translateZ(0) translateY(0%);
     transform: translateZ(0) translateY(0%);
 }
-.user-extensions{
+.second-section .user-extensions{
     position: relative;
     height: auto;
     overflow: hidden;
     padding-bottom: 15px;
-
 }
 .home-component .user-extensions{
     display: none;

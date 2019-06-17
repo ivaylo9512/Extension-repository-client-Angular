@@ -197,6 +197,7 @@ pagination-template ul{
     .extensions{
         padding-top: 20px;
         padding-bottom: 20px;
+        min-height: 78%;
     }
     .info-container{
         width: 45%;
