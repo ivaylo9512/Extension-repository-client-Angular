@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChildren, ElementRef, QueryList, ViewChild} from '@angular/core';
+import { Component, OnInit, ViewChildren, ElementRef, QueryList, ViewChild, ChangeDetectorRef} from '@angular/core';
 import { UserService } from '../services/user.service'
 import { ActivatedRoute } from '@angular/router';
 import { MouseWheelDirective } from '../helpers/mouse-wheel.directive';
@@ -25,14 +25,13 @@ export class ProfileComponent implements OnInit {
     animate : false
 
   }
-
   config = {
     itemsPerPage: 8,
     currentPage: 1,
     totalItems: null
   }
 
-  constructor(private wheelDirective : MouseWheelDirective ,private userService : UserService, private route: ActivatedRoute) {
+  constructor(private wheelDirective : MouseWheelDirective ,private userService : UserService, private route: ActivatedRoute, private cdRef : ChangeDetectorRef) {
     this.user = 'loading'
   }
 
@@ -73,6 +72,8 @@ export class ProfileComponent implements OnInit {
         this.fixOverflow(description)
       )
     )
+    this.wheelDirective.checkIfMobileScreen()
+    this.cdRef.detectChanges();
   }
   fixOverflow(node){
           

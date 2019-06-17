@@ -388,6 +388,9 @@
     .user-info-container{
         display: none;
     }
+    .home-component .user-extensions{
+        display: block;
+    }
 }
 @-webkit-keyframes fadeIn {
     0%   { opacity: 0; }

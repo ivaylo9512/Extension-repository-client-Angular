@@ -25,6 +25,7 @@ export class MouseWheelDirective implements OnInit {
     extensionSection : undefined,
     slidingContainer : undefined
   }
+  isMobile : boolean
   currentComponent : string
 
   @ViewChild('tagsContainer') tagsContainer : ElementRef
@@ -51,8 +52,19 @@ export class MouseWheelDirective implements OnInit {
     this.profileComponent.circleTransform = -(window.scrollY / this.profileComponent.profileHeight * 100)
 
   }
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.checkIfMobileScreen()
+  }
+  checkIfMobileScreen(){
+    if(window.innerWidth < 1200){
+      this.isMobile = true
+      this.profileComponent.display = true
+      this.profileComponent.animate = true
+    }
+  }
   pofileAnimation(e){
-    if(this.authService.isLoggedIn && this.profileComponent.isHomeView){
+    if(this.authService.isLoggedIn && this.profileComponent.isHomeView && !this.isMobile){
       if(!this.profileComponent.animate){
 
         if (e.deltaY > 0) {
