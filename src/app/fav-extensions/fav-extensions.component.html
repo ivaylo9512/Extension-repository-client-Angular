@@ -6,7 +6,7 @@
     </span>
     <div class="fav-extensions">
         <div #backgroundsContainer id="backgrounds" class="backgrounds">
-            <img class="current" *ngFor="let extension of extensions" [ngStyle]="{'background-image':'url(' + extension.coverLocation + ')'}">
+            <img class="current"  *ngFor="let extension of extensions" [ngStyle]="{'background-image':'url(' + extension.coverLocation + ')'}">
         </div>
         <ul id="backgrounds-nav">
             <li class="current" *ngFor="let extension of extensions"></li>
@@ -17,7 +17,7 @@
                 </div>
 
                 <div [ngClass]="{'fade-in' : extensions.indexOf(extension) == currentIndex}" class="logo-container">
-                    <img class="logo-box"/>
+                    <img [src]="extension.imageLocation" class="logo-box"/>
                 </div>
 
                 <div class="extension-info">

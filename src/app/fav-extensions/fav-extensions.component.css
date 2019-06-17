@@ -200,6 +200,15 @@ section{
     white-space: nowrap;
     overflow: hidden;
 }
+@media (max-width: 1200px) {
+    .fav-extensions .info-container {
+        width: 38%;
+        margin: -19% 0 0 -19%;
+    }
+    .backgrounds img{
+        background-position: left bottom;
+    }
+}
 @-webkit-keyframes fadeIn {
     0%   { opacity: 0; }
     100% { opacity: 1; }

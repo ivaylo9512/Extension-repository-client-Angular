@@ -63,7 +63,7 @@ export class ProfileComponent implements OnInit {
       descriptions.toArray().forEach(description => {
         this.extensionsContainer.nativeElement.style.display = "block"
         this.fixOverflow(description)
-        if(this.homeComponent){
+        if(this.homeComponent && !this.wheelDirective.profileComponent.display){
           this.extensionsContainer.nativeElement.style.display = "none"        
         }
       })

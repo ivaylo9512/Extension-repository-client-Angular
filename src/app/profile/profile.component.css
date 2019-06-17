@@ -286,13 +286,17 @@
 }
 .home-component .user-extensions{
     display: none;
+    height: auto;
+    overflow: hidden;
+    padding-bottom: 15px;
 }
 .user-extensions > div{
     width: 100%;
-    margin: 10%;
+    padding-left: 10%;
     margin-top: 0%;
-    margin-bottom: 0%;
-    height: 90%;
+    padding-bottom: 5%;
+    height: auto;
+    overflow: auto;
 }
 .user-extensions .info-container {
     position: relative;
@@ -319,6 +323,27 @@
     width: 5%;
     padding-bottom: 5%;
     transition: 6s;
+}
+@media (max-width: 1200px) {
+    .user-extensions .info-container {
+        width: 37.5%;
+    }
+    .fav-extensions .info-container {
+        width: 38%;
+        margin: -19% 0 0 -19%;
+    }
+    .user-extensions .hover-circle{
+        width: 15%;
+        height: 15%;
+    }
+    .logo-container{
+        width: 25%;
+        height: 25%;
+    }
+    .extension-info{
+        transition-delay: 1s;
+        opacity: 1;
+    }
 }
 @-webkit-keyframes fadeIn {
     0%   { opacity: 0; }
