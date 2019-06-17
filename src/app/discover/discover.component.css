@@ -265,6 +265,65 @@ i{
     color: black;
     background-color: rgba(255, 255, 255, 0.3);
 }
+@media (max-width: 1200px) {
+    form{
+        z-index: 5;
+        height: 12%;
+        position: relative;
+    }
+    form input{
+        width: 72%;
+    }
+    form button{
+        width: 19%;
+    }
+    .extensions{
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+    .menu label{
+        margin-right: 5px;
+        font-size: 0.8em;
+    }
+    .menu ul > :last-child{
+        font-size: 1.3em;
+        padding: 0px;
+    }
+    .info-container{
+        width: 45%;
+    }
+    .hover-circle{
+        width: 15%;
+        height: 15%;
+    }
+    .logo-container{
+        width: 25%;
+        height: 25%;
+    }
+    .extension-info{
+        transition-delay: 1s;
+        opacity: 1;
+    }
+    .extension-info p{
+        text-align: center;
+        font-size: 1em;
+    }
+    .extension-info b{
+        font-size: 1.4em;
+        text-align: center;
+        padding-left: 0;
+    }
+    .rating i {
+        font-size: 1.3em;
+    }
+    .circle{
+        width: 71%;
+        z-index: -1;
+        padding-bottom: 71%;
+        top: -15%;
+        right: -31%;
+    }
+}
 @-webkit-keyframes initial-translate {
     from {
       transform: translateY(80%);
