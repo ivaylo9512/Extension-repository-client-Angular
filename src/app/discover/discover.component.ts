@@ -55,7 +55,9 @@ export class DiscoverComponent implements OnInit {
     })
   }
   fixOverflow(descriptions){
-    descriptions.forEach(description => {    
+    descriptions.forEach((description, i) => {
+      description.nativeElement.innerHTML = this.extensions[i].description  
+       
       let height = description.nativeElement.offsetHeight
       let scrollHeight = description.nativeElement.scrollHeight
       let text = description.nativeElement.innerHTML + '...'

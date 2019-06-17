@@ -91,7 +91,8 @@ export class ProfileComponent implements OnInit {
   }
   handleExtensionsDescription(descriptions){
     this.extensionsContainer.nativeElement.style.display = "block"
-    descriptions.forEach(description => {
+    descriptions.forEach((description, i) => {
+      description.nativeElement.innerHTML = this.user.extensions[i].description
       this.fixOverflow(description)
     })
     if(this.homeComponent && !this.wheelDirective.profileComponent.display){
@@ -99,9 +100,10 @@ export class ProfileComponent implements OnInit {
     }
   }
   handleUserInfo(info){
-    info.forEach(description => 
+    info.forEach(description => { 
+      description.nativeElement.innerHTML = this.user.info
       this.fixOverflow(description)
-    )
+    })
   }
   getUser(id : number){
     this.userService.getUser(id).subscribe(data => {
