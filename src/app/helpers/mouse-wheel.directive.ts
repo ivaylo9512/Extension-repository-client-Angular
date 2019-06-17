@@ -1,4 +1,4 @@
-import { Directive,OnInit, Output, HostListener, EventEmitter,  ElementRef, ViewChild } from '@angular/core';
+import { Directive,OnInit, HostListener,  ElementRef, ViewChild } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { ActivatedRoute } from '@angular/router';
 
@@ -61,6 +61,8 @@ export class MouseWheelDirective implements OnInit {
       this.isMobile = true
       this.profileComponent.display = true
       this.profileComponent.animate = true
+    }else{
+      this.isMobile = false
     }
   }
   pofileAnimation(e){

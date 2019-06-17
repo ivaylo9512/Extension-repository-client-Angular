@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChildren, ElementRef, QueryList, ViewChild, ChangeDetectorRef} from '@angular/core';
+import { Component, OnInit, ViewChildren, ElementRef, QueryList, ViewChild, ChangeDetectorRef, HostListener} from '@angular/core';
 import { UserService } from '../services/user.service'
 import { ActivatedRoute } from '@angular/router';
 import { MouseWheelDirective } from '../helpers/mouse-wheel.directive';
@@ -10,6 +10,12 @@ import { MouseWheelDirective } from '../helpers/mouse-wheel.directive';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    this.handleExtensionsDescription(this.extensionDescriptions)
+    this.handleUserInfo(this.userInfo)
+  }
+
   loggedUser : any
   user : any
   admin : boolean
@@ -31,7 +37,7 @@ export class ProfileComponent implements OnInit {
     totalItems: null
   }
 
-  constructor(private wheelDirective : MouseWheelDirective ,private userService : UserService, private route: ActivatedRoute, private cdRef : ChangeDetectorRef) {
+  constructor(private wheelDirective : MouseWheelDirective, private userService : UserService, private route: ActivatedRoute, private cdRef : ChangeDetectorRef) {
     this.user = 'loading'
   }
 
@@ -56,27 +62,7 @@ export class ProfileComponent implements OnInit {
 
     }
   }
-
-  ngAfterViewInit() {
-    this.extensionDescriptions.changes.subscribe(descriptions => {
-      descriptions.toArray().forEach(description => {
-        this.extensionsContainer.nativeElement.style.display = "block"
-        this.fixOverflow(description)
-        if(this.homeComponent && !this.wheelDirective.profileComponent.display){
-          this.extensionsContainer.nativeElement.style.display = "none"        
-        }
-      })
-    })
-    this.userInfo.changes.subscribe(descriptions => 
-      descriptions.toArray().forEach(description => 
-        this.fixOverflow(description)
-      )
-    )
-    this.wheelDirective.checkIfMobileScreen()
-    this.cdRef.detectChanges();
-  }
-  fixOverflow(node){
-          
+  fixOverflow(node){  
     let height = node.nativeElement.offsetHeight
     let scrollHeight = node.nativeElement.scrollHeight
     let text = node.nativeElement.innerHTML + '...'
@@ -91,7 +77,31 @@ export class ProfileComponent implements OnInit {
       height = node.nativeElement.offsetHeight
       scrollHeight = node.nativeElement.scrollHeight
     }
-    
+  }
+  ngAfterViewInit() {
+    this.extensionDescriptions.changes.subscribe(descriptions => {
+      this.handleExtensionsDescription(descriptions.toArray())
+
+    })
+    this.userInfo.changes.subscribe(info => 
+      this.handleUserInfo(info.toArray())
+    )
+    this.wheelDirective.checkIfMobileScreen()
+    this.cdRef.detectChanges();
+  }
+  handleExtensionsDescription(descriptions){
+    this.extensionsContainer.nativeElement.style.display = "block"
+    descriptions.forEach(description => {
+      this.fixOverflow(description)
+    })
+    if(this.homeComponent && !this.wheelDirective.profileComponent.display){
+      this.extensionsContainer.nativeElement.style.display = "none"        
+    }
+  }
+  handleUserInfo(info){
+    info.forEach(description => 
+      this.fixOverflow(description)
+    )
   }
   getUser(id : number){
     this.userService.getUser(id).subscribe(data => {
