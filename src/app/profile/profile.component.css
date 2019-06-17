@@ -180,6 +180,10 @@
 .profile-section{
     position: relative;
 }
+.profile-container{
+    height: 100%;
+    position: relative;
+}
 .home-component  .profile-section{
     opacity: 0;
     position: relative;
@@ -208,6 +212,9 @@
     position: relative;
     float: right;
     z-index: 5;
+}
+.user-info-container-mobile{
+    display: none;
 }
 .profile{
     overflow: hidden;
@@ -283,12 +290,13 @@
 }
 .user-extensions{
     position: relative;
-}
-.home-component .user-extensions{
-    display: none;
     height: auto;
     overflow: hidden;
     padding-bottom: 15px;
+
+}
+.home-component .user-extensions{
+    display: none;
 }
 .user-extensions > div{
     width: 100%;
@@ -325,12 +333,31 @@
     transition: 6s;
 }
 @media (max-width: 1200px) {
-    .user-extensions .info-container {
-        width: 37.5%;
+    .profile-container{
+        height: 60vh;
     }
-    .fav-extensions .info-container {
-        width: 38%;
-        margin: -19% 0 0 -19%;
+    .second-section .profile-section{
+        height: auto;
+    }
+    .second-section{
+        position: relative;
+    }
+    .profile-section .circle{
+        width: 130%;
+        padding-bottom: 130%;
+        left: 50%;
+        margin-left: -65%;
+        bottom: 5%;
+        margin-bottom: 15%;
+    }
+    .profile-section .info-container {
+        width: 30%;
+        margin: 0 0 0 -15%;
+        top: auto;
+        bottom: 6%;
+    }
+    .info-container {
+        width: 37.5%;
     }
     .user-extensions .hover-circle{
         width: 15%;
@@ -343,6 +370,23 @@
     .extension-info{
         transition-delay: 1s;
         opacity: 1;
+    }
+    .extension-info p{
+        text-align: center;
+        font-size: 1em;
+    }
+    .extension-info b{
+        text-align: center;
+        padding-left: 0;
+    }
+    .rating i {
+        font-size: 1.3em;
+    }
+    .user-info-container-mobile{
+        display: block;
+    }
+    .user-info-container{
+        display: none;
     }
 }
 @-webkit-keyframes fadeIn {

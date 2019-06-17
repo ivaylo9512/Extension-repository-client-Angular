@@ -5,31 +5,47 @@
         </div>
     </span>
     <div [ngClass]="{'fade-in' : this.wheelDirective.profileComponent.animate, 'fade-out' : this.wheelDirective.profileComponent.animate === false}" class="profile-section" #profileSection>
-        <div class="user-info-container">
-            <div class="username">
-                <h1>{{user.username}}</h1>
-            </div>
-            <div class="profile">
-                <h2>Extensions: {{user.totalExtensions}}</h2>
-                <h3>Rating: {{user.rating}}</h3>
-                <h4>Country: {{user.country}}</h4>
-                <h5>Info</h5>
-                <div class="user-info">
-                    <p #userInfo>
-                        {{user.info}}
-                    </p>
+        <div class="profile-container">
+            <div class="user-info-container">
+                <div class="username">
+                    <h1>{{user.username}}</h1>
+                </div>
+                <div class="profile">
+                    <h2>Extensions: {{user.totalExtensions}}</h2>
+                    <h3>Rating: {{user.rating}}</h3>
+                    <h4>Country: {{user.country}}</h4>
+                    <h5>Info</h5>
+                    <div class="user-info">
+                        <p #userInfo>
+                            {{user.info}}
+                        </p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="info-container">
-            <div class="hover-circle">
+            <div class="info-container">
+                <div class="hover-circle">
+                </div>
+                <div class="info-box">
+                    <img class="logo-box" [src]="user.profileImage" *ngIf="user.profileImage"/>
+                </div>
             </div>
-            <div class="info-box">
-                <img class="logo-box" [src]="user.profileImage" *ngIf="user.profileImage"/>
+            <div class="circle-container">
+                <span [ngClass]="{'animate' : this.wheelDirective.profileComponent.animate}" [ngStyle]="{'transform': this.wheelDirective.profileComponent.animate ? 'translateY(' + wheelDirective.profileComponent.circleTransform / 5 + '%)' : 'translateY(90%)'}" class="circle" id="circle"></span>
             </div>
         </div>
-        <div class="circle-container">
-            <span [ngClass]="{'animate' : this.wheelDirective.profileComponent.animate}" [ngStyle]="{'transform': this.wheelDirective.profileComponent.animate ? 'translateY(' + wheelDirective.profileComponent.circleTransform / 5 + '%)' : 'translateY(90%)'}" class="circle" id="circle"></span>
+        <div class="user-info-container-mobile">
+                <div class="profile">
+                    <h1>{{user.username}}</h1>
+                    <h2>Extensions: {{user.totalExtensions}}</h2>
+                    <h3>Rating: {{user.rating}}</h3>
+                    <h4>Country: {{user.country}}</h4>
+                    <h5>Info</h5>
+                    <div class="user-info">
+                        <p>
+                            {{user.info}}
+                        </p>
+                    </div>
+                </div>
         </div>
     </div>
     <div [ngStyle]="{'display' : this.wheelDirective.profileComponent.display ? 'block' : 'none'}" #extensionsContainer class="user-extensions" id="extensions-section">
