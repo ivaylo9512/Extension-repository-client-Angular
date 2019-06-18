@@ -1,7 +1,8 @@
-import { Component, OnInit, ViewChildren, QueryList, HostListener } from '@angular/core';
+import { Component, OnInit, ViewChildren, QueryList, HostListener, ViewChild } from '@angular/core';
 import { ExtensionsService } from '../services/extensions.service';
 import { FormControl } from '@angular/forms';
 import { debounceTime, switchMap } from 'rxjs/operators';
+import { MouseWheelDirective } from '../helpers/mouse-wheel.directive';
 
 @Component({
   selector: 'app-discover',
@@ -16,7 +17,7 @@ export class DiscoverComponent implements OnInit {
   search: FormControl = new FormControl()
   extensions : any[]
   @ViewChildren('extensionDescriptions') extensionDescriptions : QueryList<any>
-
+  @ViewChild(MouseWheelDirective) mouseWheel
   config = {
     id: 'custom',
     itemsPerPage: 12,

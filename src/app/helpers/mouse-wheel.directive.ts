@@ -49,6 +49,7 @@ export class MouseWheelDirective implements OnInit {
   @HostListener("window:scroll", [])
   onWindowScroll() {
     this.profileComponent.circleTransform = -(window.scrollY / this.profileComponent.profileHeight * 100)
+    console.log(-(window.scrollY / this.profileComponent.profileHeight * 100))
 
   }
   @HostListener('window:resize', ['$event'])

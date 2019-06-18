@@ -282,3 +282,43 @@ section{
     width: 100%;
     margin-bottom: 30px;
 }
+@media (max-width: 1200px) {
+    .search{
+        z-index: 5;
+        height: 12%;
+        position: relative;
+    }
+    .search input{
+        width: 72%;
+    }
+    .search button{
+        width: 19%;
+    }
+    .info-container {
+        width: 37.5%;
+    }
+    .hover-circle{
+        width: 15%;
+        height: 15%;
+        opacity: 0;
+    }
+    .logo-container{
+        width: 25%;
+        height: 25%;
+    }
+    .user-info{
+        transition-delay: 1s;
+        opacity: 1;
+    }
+    .user-info p{
+        text-align: center;
+        font-size: 1em;
+    }
+    .user-info b{
+        text-align: center;
+        padding-left: 0;
+    }
+    .rating i {
+        font-size: 1.3em;
+    }
+}
