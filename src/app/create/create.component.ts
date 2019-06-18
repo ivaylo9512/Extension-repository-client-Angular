@@ -16,7 +16,6 @@ export class CreateComponent implements OnInit {
   @ViewChild('tagsContainer') tagsContainer : ElementRef
   @ViewChild(MouseWheelDirective) wheelDirective
   @ViewChild('extensionSection') extensionSection : ElementRef
-  @ViewChild('previewSection') previewSection : ElementRef
 
   nameInput : FormControl = new FormControl()
   gitHubInput : FormControl = new FormControl()
@@ -80,9 +79,8 @@ export class CreateComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    this.wheelDirective.submitComponent.previewSection = this.previewSection
     this.wheelDirective.submitComponent.extensionSection = this.extensionSection
-    this.wheelDirective.checkIfMobileScreen() 
+    this.wheelDirective.checkIfMobileScreen()
   }
 
   checkName(name){

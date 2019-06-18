@@ -8,8 +8,7 @@ export class MouseWheelDirective implements OnInit {
   submitComponent = {
     currentSection : 'coverSection',
     isFinished : undefined,
-    extensionSection : undefined,
-    previewSection : undefined
+    extensionSection : undefined
   }
   profileComponent = {
     display : false,
@@ -87,7 +86,6 @@ export class MouseWheelDirective implements OnInit {
   }
   submitAnimation(e){
     const extensionOpacity = window.getComputedStyle(this.submitComponent.extensionSection.nativeElement).getPropertyValue('opacity')
-    const previewOpacity = window.getComputedStyle(this.submitComponent.previewSection.nativeElement).getPropertyValue('opacity')
     if(this.submitComponent.currentSection == 'coverSection'){
       if (e.deltaY > 0) {
         this.submitComponent.currentSection = 'extensionSection'
@@ -95,12 +93,6 @@ export class MouseWheelDirective implements OnInit {
     }else if(this.submitComponent.currentSection == 'extensionSection'){
       if(e.deltaY < 0 && extensionOpacity == '1'){
         this.submitComponent.currentSection = 'coverSection'
-      }else if(extensionOpacity == '1'){
-        this.submitComponent.currentSection = 'previewSection'
-      }
-    }else{
-      if(e.deltaY < 0 && previewOpacity == '1'){
-        this.submitComponent.currentSection = 'extensionSection'
       }
     }
   }
