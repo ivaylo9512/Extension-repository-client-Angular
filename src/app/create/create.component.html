@@ -18,16 +18,6 @@
         </div>
     </section>
     <section class="extension-section">
-        <div class="github-info left" *ngIf="gitHub">
-            <span>User:</span>
-            <span>{{gitHub.user}}</span>
-            <span>Last commit</span>
-            <span>{{gitHub.lastCommit | date: 'yyyy-MM-dd'}}</span>
-            <span>Open issues</span>
-            <span>{{gitHub.openIssues}}</span>
-            <span>Pull requests</span>
-            <span>{{gitHub.pullRequests}}</span>
-        </div>
         <div class="extension-container" [ngClass]="{'fade-in' : this.wheelDirective.submitComponent.currentSection != 'coverSection'}" #extensionSection> 
             <div #tagsContainer (click)="focusInput(this)" class="tags">
                 <div *ngFor = "let tag of tags" (click)="removeTag(tag)" ><i class="fas fa-tags"></i>{{tag}}</div>
@@ -56,27 +46,35 @@
                 <input name="logo" (change)="addLogo($event)" type="file" id="logo" ngModel required>
             </div>
             <div class="extension">
-                <div>
+                <div class="github-container">
+                    <div class="github" *ngIf="gitHub">
+                        <span>User:</span>
+                        <span>Last commit</span>
+                        <span>Open issues</span>
+                        <span>Pull requests</span>
+                        <span>{{gitHub.user}}</span>
+                        <span>{{gitHub.lastCommit | date: 'yyyy-MM-dd'}}</span>
+                        <span>{{gitHub.openIssues}}</span>
+                        <span>{{gitHub.pullRequests}}</span>
+                    </div>
+                </div>
+                <div class="extension-info-container">                
                     <input [formControl]="nameInput" [value]="name" placeholder="Name" class="name">
                     <div class="loading-container">
                         <i *ngIf="nameAvailable == 'loading'" class="fas fa-circle-notch fa-spin"></i>
                         <i *ngIf="nameAvailable == 'true'" class="fas fa-check"></i>
                         <i *ngIf="nameAvailable == 'false'" class="fas fa-times"></i>
                     </div>
-                </div>
-                <div>
                     <input [ngClass]="{'red-input' : gitHubAvailable == 'false'}" [formControl]="gitHubInput" name="github" type="text" placeholder="GitHub repo">
                     <div class="loading-container">
                         <i *ngIf="gitHubAvailable == 'loading'" class="fas fa-circle-notch fa-spin"></i>
                         <i *ngIf="gitHubAvailable == 'true'" class="fas fa-check"></i>
                         <i *ngIf="gitHubAvailable == 'false'" class="fas fa-times"></i>
                     </div>
-                </div>
-                <div class="extension-info-container">
-                    <input [value]="version" [formControl]="versionInput" placeholder="Version">
-                </div>
-                <div class="info">
-                    <textarea [value]="description" [formControl]="descriptionInput" placeholder="Description"></textarea>
+                    <input class="version" [value]="version" [formControl]="versionInput" placeholder="Version">
+                    <div class="info">
+                        <textarea [value]="description" [formControl]="descriptionInput" placeholder="Description"></textarea>
+                    </div>
                 </div>
             </div>
             <div class="circle-container">
