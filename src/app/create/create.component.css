@@ -30,15 +30,9 @@ span{
     margin-left: 5px;
 }
 label{
-    border: 1px solid black;
-    padding: 5%;
     text-align: center;
     box-sizing: border-box;
-    width: 50%;
-    margin-left: 25%;
-    margin-bottom: 10px;
     border-radius: 16px;
-    display: inline-block;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 label:hover span{
@@ -199,7 +193,7 @@ button:hover i{
     left: 0%;
     top: 40%;
     height: 15.6%;
-    width:40%;
+    width:36%;
     text-align: center;
     z-index: 3;
 }
@@ -271,12 +265,17 @@ button:hover i{
     position: relative;
     margin-top: 0;
     border-radius: 5px;
-    padding: 8%;
     margin: 5px auto;
-    width: 60%;
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 75%;
+    padding: 30% 0;
     border-width: 1px;
     margin-left: 0;
+}
+.info-container label i{
+    position: absolute;
 }
 .info-container .circle-container{
     width: 100%;
@@ -336,9 +335,11 @@ button:hover i{
 .extension-info-container{
     text-align: center;
 }
-.name{
+.extension .name{
     font-size: 2.5em;
     text-align: center;
+    width: 90%;
+    padding-left: 5%;
 }
 .extension .info{
     height: 50%;
@@ -390,108 +391,6 @@ button:hover i{
     -o-transform: translateZ(0) translateY(0%);
     transform: translateZ(0) translateY(0%);
 }
-.logo{
-    width: 20%;
-    position: relative;
-    z-index: 4;
-    border-radius: 8%;
-    overflow: hidden;
-    padding-bottom: 20%;
-    left: 50%;
-    display: inline-block;
-    margin: 0 0 0 -10%;
-}
-.center-logo{
-    left:0;
-    margin:0;
-}
-.logo img{
-    width: 100%;
-    position: absolute;
-}
-.cover-section label{
-    border: 3px solid white;
-    color: white;
-
-}
-.extension-files label.black:hover{
-    background: white;
-    color: black;
-}
-.extension-files label:hover{
-    background: black;
-    color: white;
-}
-.extension-files > div{
-    width: 100%;
-}
-.extension-files input,
-.cover-section input{
-    display: none;
-}
-.extension-info{
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-.extension-info i{
-    margin-left: 5px;
-}
-.extension-info .fa-times{
-    margin-left: 7px;
-    color: rgba(115, 53, 53, 0.8);
-}
-.fa-check{
-    color: green;
-}
-.extension-info input{
-    height: 20%;
-    border: 2px solid black;
-    text-align: center;
-    box-sizing: border-box;
-    width: 50%;
-    margin-left: 25%;
-    margin-bottom: 10px;
-    border-radius: 16px;
-    display: inline-block;
-
-}
-.extension-description{
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    flex-direction: column;
-}
-.extension-description > div{
-    width: 100%;
-}
-.extension-description textarea{
-    margin: 8px 0;
-    align-items: stretch;
-}
-.red-input{
-    background: rgba(115, 53, 53, 0.5)
-}
-.info-input-container{
-    position: relative;
-    height: 18%;
-    margin-bottom: 10px;
-}
-.info-input-container input{
-    height: 100%;
-}
-.extension-info input.error{
-    position: absolute;
-    left: 0;
-    top: 0;
-    background: black;
-    display: none;
-    color: white;
-}
 .loading-container:hover ~ input.error{
     display: block;
 }
@@ -514,43 +413,9 @@ button:hover i{
     margin: 0;
     background: #00000080;
 }
-.logo-container{
-    width: 100%;
-    height: auto;
-    position: relative;
-    margin-bottom: 5px;
-    margin-top: 5px;
-}
-.github-info{
-    width: 40%;
-    height: 100%;
-}
-.github-info.left{
-    float: left;
-}
-.github-info.right{
-    float: right;
-}
-.github-info div{
-    text-align: center;
-}
-.github-info span{
-    padding: 4px 6px;
-    font-style: italic;
-}
-.github-info div > :first-child{
-    border: 1px solid #ddd;
-    border-radius: 3px;
-    font-size: 13px;
-    color: #333;
-    display: inline-block;
-}
-.github-info span{
-    display: block;
-}
 .loading-container{
     display: inline-block;
-
+    width: 5%;
 }
 @media (max-width: 1200px) {
     section{
