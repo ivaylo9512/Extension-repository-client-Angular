@@ -66,9 +66,11 @@ export class FavExtensionsComponent implements OnInit {
   ngAfterViewInit() {
     this.extensionDescriptions.changes.subscribe(descriptions => {
       this.fixOverflow(descriptions.toArray())
+      this.cdRef.detectChanges();
     })
   }
   fixOverflow(descriptions){
+    this.initial = true
     descriptions.forEach((description, i) => {
       description.nativeElement.innerHTML = this.extensions[i].description  
        
@@ -87,5 +89,6 @@ export class FavExtensionsComponent implements OnInit {
         scrollHeight = description.nativeElement.scrollHeight
       }
     })
+    this.initial = false
   }
 }

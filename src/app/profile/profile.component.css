@@ -367,6 +367,7 @@
     .user-extensions .hover-circle{
         width: 15%;
         height: 15%;
+        opacity: 0;
     }
     .logo-container{
         width: 25%;

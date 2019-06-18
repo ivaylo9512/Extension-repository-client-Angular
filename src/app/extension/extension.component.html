@@ -66,6 +66,8 @@
     </div>
     <div class="extension-info-container-mobile">
         <div class="extension">
+            <h1>{{extension.name}}</h1>
+
             <div class="admin-menu">
                 <button><i class="fas fa-cog"></i></button> 
                 <button (click)="deleteExtension()"><i class="fas fa-trash-alt"></i></button> 
@@ -74,8 +76,7 @@
                 <button [routerLink]="['/edit', extension.id]"><i class="fas fa-edit"></i></button> 
                 <button (click)="setPublishState()"><i *ngIf="extension.pending" class="fas fa-check"></i><i *ngIf="!extension.pending" class="fas fa-times"></i></button> 
             </div>
-
-            <h1>{{extension.name}}</h1>
+            
             <h2>Rating: {{extension.rating}}</h2>
             <h3>Owner: <a [routerLink]="['/profile', extension.ownerId]">{{extension.ownerName}}</a></h3>
             <h5>Info</h5>

@@ -288,7 +288,8 @@ i{
     }
     .menu ul > :last-child{
         font-size: 1.3em;
-        padding: 0px;
+        padding: 0;
+        margin: 0;
     }
     .info-container{
         width: 45%;
@@ -296,6 +297,7 @@ i{
     .hover-circle{
         width: 15%;
         height: 15%;
+        opacity: 0;
     }
     .logo-container{
         width: 25%;
