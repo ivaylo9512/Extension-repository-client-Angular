@@ -178,7 +178,7 @@ button:hover i{
     background-size: cover;
     background-position: bottom left;
 }
-.extension-section > div,
+.extension-container,
 .preview-section > div{
     width: 100%;
     opacity: 0;
@@ -259,12 +259,24 @@ button:hover i{
     display: -ms-flexbox;
     display: flex;
 }
-.info-container label{
+.submit-menu{
+    height: 50%;
+    width: 27%;
     position: absolute;
-    bottom: -45%;
-    width: 100%;
+    left: -33%;
+    top: 0;
+    text-align: center;
+}
+.info-container label{
+    position: relative;
+    margin-top: 0;
+    border-radius: 5px;
+    padding: 8%;
+    margin: 5px auto;
+    width: 60%;
+    display: block;
+    border-width: 1px;
     margin-left: 0;
-    padding: 10%;
 }
 .info-container .circle-container{
     width: 100%;
@@ -275,7 +287,7 @@ button:hover i{
 }
 .info-container:focus {
     outline: 0;
-  }
+}
 .info-box{
     position: relative;
     width: 100%;
@@ -317,6 +329,9 @@ button:hover i{
     width:40%;
     text-align: center;
     z-index: 3;
+}
+.extension-mobile {
+    display: none;
 }
 .extension-info-container{
     text-align: center;
@@ -537,7 +552,63 @@ button:hover i{
     display: inline-block;
 
 }
-
+@media (max-width: 1200px) {
+    section{
+        position: relative;
+    }
+    .extension-section .circle{
+        width: 130%;
+        padding-bottom: 130%;
+        left: 50%;
+        margin-left: -65%;
+        bottom: 5%;
+        margin-bottom: 15%;
+    }
+    .extension-section .info-container {
+        width: 30%;
+        margin: 0 0 0 -15%;
+        top: auto;
+        bottom: 6%;
+    }
+    .info-container label{
+        left: 110%;
+        padding: 4%;
+        bottom: 0;
+        margin-bottom: -1%;
+        border-radius: 5px;
+        border-width: 2px;
+        width: fit-content;
+    }
+    .extension-section .extension-container{
+        height: 60vh;
+    }
+    .extension-section .extension-container::after{
+        content: ' ';
+        height: 100vh;
+        background: white;
+        width: 100vh;
+        display: block;
+    }
+    .extension-mobile{
+        display: block;
+        z-index: 4;
+        position: relative;
+        text-align: center;
+    }
+    .extension-mobile input{
+        text-align: center;
+        border: 0px;
+        background: transparent;
+    }
+    .extension{
+        display: none;
+    }
+    .extension-section .tags{
+        top: 40%;
+        height: 50.6%;
+        width: 35%;
+    }
+}
 @-webkit-keyframes fadeIn {
     0%   { opacity: 0; }
     100% { opacity: 1; }

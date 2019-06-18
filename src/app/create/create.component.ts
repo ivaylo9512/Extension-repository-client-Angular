@@ -82,6 +82,7 @@ export class CreateComponent implements OnInit {
   ngAfterViewInit() {
     this.wheelDirective.submitComponent.previewSection = this.previewSection
     this.wheelDirective.submitComponent.extensionSection = this.extensionSection
+    this.wheelDirective.checkIfMobileScreen() 
   }
 
   checkName(name){

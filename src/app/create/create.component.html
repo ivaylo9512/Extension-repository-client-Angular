@@ -18,7 +18,7 @@
         </div>
     </section>
     <section class="extension-section">
-        <div [ngClass]="{'fade-in' : this.wheelDirective.submitComponent.currentSection != 'coverSection'}" #extensionSection> 
+        <div class="extension-container" [ngClass]="{'fade-in' : this.wheelDirective.submitComponent.currentSection != 'coverSection'}" #extensionSection> 
             <div #tagsContainer (click)="focusInput(this)" class="tags">
                 <div *ngFor = "let tag of tags" (click)="removeTag(tag)" ><i class="fas fa-tags"></i>{{tag}}</div>
                 <input [ngClass]="{'left' : tags.length > 0}" [formControl]="tagsInput"  placeholder="Tags" #tagsInputElmnt>
@@ -30,10 +30,14 @@
                 <div class="info-box">
                     <img class="logo-box" [src]="getSanitizeUrl(logoURL)" *ngIf="logoURL"/>
                 </div>
-                <label for="logo">
-                    <i class="fas fa-image"></i>
-                    <span>logo:</span>
-                </label>
+                <div class="submit-menu">
+                    <label [ngClass]="{'black' : file}" for="file">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                    </label>   
+                    <label for="logo">
+                            <i class="fas fa-image"></i>
+                    </label> 
+                </div>
                 <input name="logo" (change)="addLogo($event)" type="file" id="logo" ngModel required>
             </div>
             <div class="extension">
@@ -49,6 +53,14 @@
                 <span [ngClass]="{'animate' : this.wheelDirective.submitComponent.currentSection != 'coverSection'}" class="circle" id="circle"></span>
             </div>
         </div>
+        <div class="extension-mobile">
+            <input [formControl]="nameInput" [value]="name" placeholder="Name" class="name">
+            <input [value]="version" [formControl]="versionInput" placeholder="Version">
+            <div class="info">
+                <textarea [value]="description" [formControl]="descriptionInput" placeholder="Description"></textarea>
+            </div>
+        </div>
+        <div class="sliding-info-container"></div>
     </section>
     <section class="preview-section">
         <div [ngClass]="{'fade-in' : this.wheelDirective.submitComponent.currentSection == 'previewSection'}" #previewSection> 
