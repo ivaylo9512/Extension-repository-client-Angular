@@ -60,6 +60,9 @@ export class MouseWheelDirective implements OnInit {
       this.isMobile = true
       this.profileComponent.display = true
       this.profileComponent.animate = true
+
+      this.submitComponent.currentSection = 'extensionSection'
+      this.submitComponent.isFinished = true
     }else{
       this.isMobile = false
     }
@@ -86,13 +89,15 @@ export class MouseWheelDirective implements OnInit {
   }
   submitAnimation(e){
     const extensionOpacity = window.getComputedStyle(this.submitComponent.extensionSection.nativeElement).getPropertyValue('opacity')
-    if(this.submitComponent.currentSection == 'coverSection'){
-      if (e.deltaY > 0) {
-        this.submitComponent.currentSection = 'extensionSection'
-      }
-    }else if(this.submitComponent.currentSection == 'extensionSection'){
-      if(e.deltaY < 0 && extensionOpacity == '1'){
-        this.submitComponent.currentSection = 'coverSection'
+    if(!this.isMobile){
+      if(this.submitComponent.currentSection == 'coverSection'){
+        if (e.deltaY > 0) {
+          this.submitComponent.currentSection = 'extensionSection'
+        }
+      }else if(this.submitComponent.currentSection == 'extensionSection'){
+        if(e.deltaY < 0 && extensionOpacity == '1'){
+          this.submitComponent.currentSection = 'coverSection'
+        }
       }
     }
   }
