@@ -19,7 +19,7 @@
     </section>
     <section class="extension-section">
         <div class="extension-container" [ngClass]="{'fade-in' : this.wheelDirective.submitComponent.currentSection != 'coverSection'}" #extensionSection> 
-            <div #tagsContainer (click)="focusInput(this)" class="tags">
+            <div *ngIf="!this.wheelDirective.isMobile" #tagsContainer (click)="focusInput(this)" class="tags">
                 <div *ngFor = "let tag of tags" (click)="removeTag(tag)" ><i class="fas fa-tags"></i>{{tag}}</div>
                 <input [ngClass]="{'left' : tags.length > 0}" [formControl]="tagsInput"  placeholder="Tags" #tagsInputElmnt>
             </div>
@@ -65,7 +65,7 @@
                         <i *ngIf="nameAvailable == 'true'" class="fas fa-check"></i>
                         <i *ngIf="nameAvailable == 'false'" class="fas fa-times"></i>
                     </div>
-                    <input [ngClass]="{'red-input' : gitHubAvailable == 'false'}" [formControl]="gitHubInput" name="github" type="text" placeholder="GitHub repo">
+                    <input [formControl]="gitHubInput" name="github" type="text" placeholder="GitHub repo">
                     <div class="loading-container">
                         <i *ngIf="gitHubAvailable == 'loading'" class="fas fa-circle-notch fa-spin"></i>
                         <i *ngIf="gitHubAvailable == 'true'" class="fas fa-check"></i>
@@ -83,6 +83,7 @@
         </div>
         <div class="extension-mobile">
             <input [formControl]="nameInput" [value]="name" placeholder="Name" class="name">
+            <input [formControl]="gitHubInput" name="github" type="text" placeholder="GitHub repo">
             <input [value]="version" [formControl]="versionInput" placeholder="Version">
             <div class="info">
                 <textarea [value]="description" [formControl]="descriptionInput" placeholder="Description"></textarea>
@@ -94,4 +95,20 @@
             </div>
         </span>
     </section>
+    <div *ngIf="this.wheelDirective.isMobile" class="github-container">
+        <div class="github" *ngIf="gitHub">
+            <span>User:</span>
+            <span>Last commit</span>
+            <span>Open issues</span>
+            <span>Pull requests</span>
+            <span>{{gitHub.user}}</span>
+            <span>{{gitHub.lastCommit | date: 'yyyy-MM-dd'}}</span>
+            <span>{{gitHub.openIssues}}</span>
+            <span>{{gitHub.pullRequests}}</span>
+        </div>
+    </div>
+    <div *ngIf="this.wheelDirective.isMobile" #tagsContainer (click)="focusInput(this)" class="tags">
+        <div *ngFor = "let tag of tags" (click)="removeTag(tag)" ><i class="fas fa-tags"></i>{{tag}}</div>
+        <input [ngClass]="{'left' : tags.length > 0}" [formControl]="tagsInput"  placeholder="Tags" #tagsInputElmnt>
+    </div>
 </div>

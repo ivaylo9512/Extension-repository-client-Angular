@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { FormControl, NgForm } from '@angular/forms'
 import { debounceTime } from 'rxjs/operators';
 import { ExtensionsService } from '../services/extensions.service';
@@ -39,7 +39,7 @@ export class CreateComponent implements OnInit {
 
   tags : string[]
 
-  constructor(private extensionService : ExtensionsService, private router : Router, private sanitizer: DomSanitizer) {
+  constructor(private extensionService : ExtensionsService, private router : Router, private sanitizer: DomSanitizer, private cdRef : ChangeDetectorRef) {
     this.formData = new FormData()
     this.tags = []
     this.name = ''
@@ -81,6 +81,7 @@ export class CreateComponent implements OnInit {
   ngAfterViewInit() {
     this.wheelDirective.submitComponent.extensionSection = this.extensionSection
     this.wheelDirective.checkIfMobileScreen()
+    this.cdRef.detectChanges()
   }
 
   checkName(name){

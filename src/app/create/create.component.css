@@ -190,7 +190,7 @@ button:hover i{
     opacity: 1;
     pointer-events: all;
 }
-.extension-section .tags{
+.tags{
     position: absolute;
     left: 0%;
     top: 40%;
@@ -353,7 +353,8 @@ button:hover i{
 .extension-info-container{
     height: 60%
 }
-.extension .name{
+.extension .name,
+.extension-mobile .name{
     font-size: 2.5em;
     text-align: center;
 }
@@ -455,15 +456,6 @@ button:hover i{
         top: auto;
         bottom: 6%;
     }
-    .info-container label{
-        left: 110%;
-        padding: 4%;
-        bottom: 0;
-        margin-bottom: -1%;
-        border-radius: 5px;
-        border-width: 2px;
-        width: fit-content;
-    }
     .extension-section .extension-container{
         height: 60vh;
     }
@@ -474,24 +466,43 @@ button:hover i{
         width: 100vh;
         display: block;
     }
+    .submit-menu{
+        right: -33%;
+        left: auto;
+    }
     .extension-mobile{
         display: block;
         z-index: 4;
         position: relative;
         text-align: center;
+        height: 40%;
     }
     .extension-mobile input{
         text-align: center;
         border: 0px;
         background: transparent;
+        width: 100%;
+    }
+    .info{
+        height: 63%;
     }
     .extension{
         display: none;
     }
-    .extension-section .tags{
-        top: 40%;
-        height: 50.6%;
-        width: 35%;
+    .tags{
+        position: initial;
+        margin-bottom: 10px;
+        overflow: auto;
+        width: 100%;
+    }
+    .tags input{
+        box-shadow: none;
+    }
+    textarea{
+        box-shadow: none;
+    }
+    .github{
+        margin-bottom: 4%;
     }
 }
 @-webkit-keyframes fadeIn {
