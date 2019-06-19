@@ -14,6 +14,7 @@ export class ProfileComponent implements OnInit {
   onResize(event) {
     this.handleExtensionsDescription(this.extensionDescriptions)
     this.handleUserInfo(this.userInfo)
+    this.wheelDirective.checkIfMobileScreen()
   }
 
   loggedUser: any
