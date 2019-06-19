@@ -1,34 +1,37 @@
 import { Directive,OnInit, HostListener,  ElementRef, ViewChild } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { ActivatedRoute } from '@angular/router';
+import { JSDocCommentStmt } from '@angular/compiler';
 
 
 @Directive({ selector: '[mouseWheel]' })
 export class MouseWheelDirective implements OnInit {
   submitComponent = {
-    currentSection : 'coverSection',
-    isFinished : undefined,
-    extensionSection : undefined
+    currentSection: 'coverSection',
+    isFinished: undefined,
+    extensionSection: undefined
   }
   profileComponent = {
-    display : false,
-    animate : undefined,
-    isFinished : undefined,
-    profileHeight : 0,
+    display: false,
+    animate: undefined,
+    isFinished: undefined,
+    profileHeight: 0,
     circleTransform: 0,
-    isHomeView : undefined
+    isHomeView: undefined
   }
   extensionComponent = {
-    currentSection : 'coverSection',
-    isCoverPresent : true,
-    extensionSection : undefined,
-    slidingContainer : undefined
+    currentSection: 'coverSection',
+    isCoverPresent: true,
+    extensionSection: undefined,
+    slidingContainer: undefined
   }
-  isMobile : boolean
-  currentComponent : string
+
+  scrolledAmount: number
+  isMobile: boolean
+  currentComponent: string
 
   @ViewChild('tagsContainer') tagsContainer : ElementRef
-  constructor(private authService : AuthService, private route: ActivatedRoute){
+  constructor(private authService: AuthService, private route: ActivatedRoute){
   }
 
   @HostListener('wheel', ['$event']) 
@@ -46,11 +49,15 @@ export class MouseWheelDirective implements OnInit {
         break
     }
   }
-  @HostListener("window:scroll", [])
-  onWindowScroll() {
-    this.profileComponent.circleTransform = -(window.scrollY / this.profileComponent.profileHeight * 100)
-    console.log(-(window.scrollY / this.profileComponent.profileHeight * 100))
+  @HostListener("window:scroll", ['$event'])
+  onWindowScroll(e) {
+    const clientHeight = document.body.clientHeight
+    const innerHeight = window.innerHeight
 
+    this.profileComponent.circleTransform = -(window.scrollY / this.profileComponent.profileHeight * 100)
+    this.scrolledAmount = window.scrollY / (clientHeight - innerHeight) * 100
+
+    console.log(window.scrollY)
   }
   @HostListener('window:resize', ['$event'])
   onResize() {

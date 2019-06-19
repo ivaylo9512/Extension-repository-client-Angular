@@ -1,4 +1,4 @@
-<section mouseWheel>
+<section #discoverSection mouseWheel>
     <span *ngIf="!extensions" class="loading-animation">
         <div>
             <i class="fas fa-circle-notch fa-spin"></i>
@@ -22,7 +22,7 @@
             <label>Extensions found: {{config.totalItems}}</label>
         </ul>
     </div>
-    <span class="circle"></span>
+    <span class="circle first"></span>
     <div class="extensions">
         <div class="info-container" *ngFor="let extension of extensions | paginate: config" [routerLink]="['/extension', extension.id]">
             <div class="info-box">
@@ -56,6 +56,8 @@
             </div>
         </div>
     </div>
+    <span *ngIf="this.wheelDirective.isMobile && extensions" [ngStyle]="{'transform': 'translateY(' + (-this.wheelDirective.scrolledAmount * 9) + '%'}" class="circle second"></span>
+    <span [ngStyle]="{'transform': 'translateY(' + (-this.wheelDirective.scrolledAmount * 13.5) + '%'}" class="circle third"></span>
     <div class="pagination" *ngIf="extensions">
         <pagination-template #p="paginationApi" [id]="config.id" (pageChange)="this.findExtensions($event)">
             <ul class="pagination-list">

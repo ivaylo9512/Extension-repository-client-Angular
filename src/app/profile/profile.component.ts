@@ -42,7 +42,6 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.wheelDirective.profileComponent.profileHeight = this.profileSection.nativeElement.offsetHeight
     this.homeComponent = this.route.component['name'] == 'HomeComponent'
     if(!this.homeComponent){
       this.getUser(+this.route.snapshot.paramMap.get('id'));
@@ -78,7 +77,9 @@ export class ProfileComponent implements OnInit {
       scrollHeight = node.nativeElement.scrollHeight
     }
   }
+  
   ngAfterViewInit() {
+    this.wheelDirective.profileComponent.profileHeight = this.profileSection.nativeElement.offsetHeight
     this.extensionDescriptions.changes.subscribe(descriptions => {
       this.handleExtensionsDescription(descriptions.toArray())
 
@@ -89,6 +90,7 @@ export class ProfileComponent implements OnInit {
     this.wheelDirective.checkIfMobileScreen()
     this.cdRef.detectChanges();
   }
+
   handleExtensionsDescription(descriptions){
     this.extensionsContainer.nativeElement.style.display = "block"
     descriptions.forEach((description, i) => {
@@ -99,12 +101,14 @@ export class ProfileComponent implements OnInit {
       this.extensionsContainer.nativeElement.style.display = "none"        
     }
   }
+
   handleUserInfo(info){
     info.forEach(description => { 
       description.nativeElement.innerHTML = this.user.info
       this.fixOverflow(description)
     })
   }
+
   getUser(id : number){
     this.userService.getUser(id).subscribe(data => {
       this.user = data

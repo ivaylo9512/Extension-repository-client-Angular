@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChildren, QueryList, HostListener, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChildren, QueryList, HostListener, ViewChild, ElementRef } from '@angular/core';
 import { ExtensionsService } from '../services/extensions.service';
 import { FormControl } from '@angular/forms';
 import { debounceTime, switchMap } from 'rxjs/operators';
@@ -17,7 +17,9 @@ export class DiscoverComponent implements OnInit {
   search: FormControl = new FormControl()
   extensions : any[]
   @ViewChildren('extensionDescriptions') extensionDescriptions : QueryList<any>
-  @ViewChild(MouseWheelDirective) mouseWheel
+  @ViewChild('discoverSection') discoverSection : ElementRef
+  @ViewChild(MouseWheelDirective) wheelDirective
+
   config = {
     id: 'custom',
     itemsPerPage: 12,
@@ -51,6 +53,7 @@ export class DiscoverComponent implements OnInit {
     this.findExtensions(0)
   }
   ngAfterViewInit() {
+    this.wheelDirective.checkIfMobileScreen()
     this.extensionDescriptions.changes.subscribe(descriptions => {
       this.fixOverflow(descriptions.toArray())
     })

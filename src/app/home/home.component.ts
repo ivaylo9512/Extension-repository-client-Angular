@@ -1,13 +1,11 @@
 import { Component, OnInit, ViewChild, ElementRef, ViewChildren, QueryList, ChangeDetectorRef } from '@angular/core';
 import { AuthService } from '../services/auth.service'
-import { ExtensionsService } from '../services/extensions.service';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ProfileComponent } from '../profile/profile.component';
-import { MouseWheelDirective } from '../helpers/mouse-wheel.directive';
 import { FavExtensionsComponent } from '../fav-extensions/fav-extensions.component';
-import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-home',
