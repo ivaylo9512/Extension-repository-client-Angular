@@ -1,6 +1,7 @@
-import { Component, OnInit, ViewChildren, QueryList, HostListener } from '@angular/core';
+import { Component, OnInit, ViewChildren, QueryList, HostListener, ViewChild } from '@angular/core';
 import { ExtensionsService } from '../services/extensions.service';
 import { ActivatedRoute } from '@angular/router';
+import { MouseWheelDirective } from '../helpers/mouse-wheel.directive';
 
 @Component({
   selector: 'app-tags',
@@ -15,7 +16,8 @@ export class TagsComponent implements OnInit {
   extensions : any[]
   tag : string
   
-  @ViewChildren('extensionDescriptions') extensionDescriptions : QueryList<any>
+  @ViewChildren('extensionDescriptions') extensionDescriptions: QueryList<any>
+  @ViewChild(MouseWheelDirective) wheelDirective: MouseWheelDirective
 
   config = {
     id: 'custom',
@@ -24,7 +26,7 @@ export class TagsComponent implements OnInit {
     totalItems: null
   }
 
-  constructor(private extensionService : ExtensionsService, private route : ActivatedRoute) { 
+  constructor(private extensionService: ExtensionsService, private route: ActivatedRoute) { 
     this.extensions = undefined
   }
 
@@ -33,7 +35,7 @@ export class TagsComponent implements OnInit {
     this.findByTag(this.tag)
   }
 
-  findByTag(tag : string){
+  findByTag(tag: string){
     this.extensionService.getByTag(tag).subscribe(tagDto =>{
       this.extensions = tagDto['extensions']
       this.config.totalItems = tagDto['totalExtensions']

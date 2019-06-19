@@ -16,15 +16,15 @@ export class ProfileComponent implements OnInit {
     this.handleUserInfo(this.userInfo)
   }
 
-  loggedUser : any
-  user : any
-  admin : boolean
-  homeComponent : boolean
+  loggedUser: any
+  user: any
+  admin: boolean
+  homeComponent: boolean
 
-  @ViewChildren('extensionDescriptions') extensionDescriptions : QueryList<any>
-  @ViewChildren('userInfo') userInfo : QueryList<any>
-  @ViewChild('extensionsContainer') extensionsContainer : ElementRef
-  @ViewChild('profileSection') profileSection : ElementRef
+  @ViewChildren('extensionDescriptions') extensionDescriptions: QueryList<any>
+  @ViewChildren('userInfo') userInfo: QueryList<any>
+  @ViewChild('extensionsContainer') extensionsContainer: ElementRef
+  @ViewChild('profileSection') profileSection: ElementRef
   
   homeAnimation = {
     diplay : false,
@@ -37,7 +37,7 @@ export class ProfileComponent implements OnInit {
     totalItems: null
   }
 
-  constructor(private wheelDirective : MouseWheelDirective, private userService : UserService, private route: ActivatedRoute, private cdRef : ChangeDetectorRef) {
+  constructor(private wheelDirective: MouseWheelDirective, private userService: UserService, private route: ActivatedRoute, private cdRef: ChangeDetectorRef) {
     this.user = 'loading'
   }
 
@@ -88,7 +88,7 @@ export class ProfileComponent implements OnInit {
       this.handleUserInfo(info.toArray())
     )
     this.wheelDirective.checkIfMobileScreen()
-    this.cdRef.detectChanges();
+    this.cdRef.detectChanges()
   }
 
   handleExtensionsDescription(descriptions){
@@ -109,7 +109,7 @@ export class ProfileComponent implements OnInit {
     })
   }
 
-  getUser(id : number){
+  getUser(id: number){
     this.userService.getUser(id).subscribe(data => {
       this.user = data
       this.config.totalItems = data['totalExtensions']

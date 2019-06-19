@@ -1,5 +1,6 @@
-import { Component, OnInit, ViewChildren, QueryList, HostListener } from '@angular/core';
+import { Component, OnInit, ViewChildren, QueryList, HostListener, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { ExtensionsService } from '../services/extensions.service';
+import { MouseWheelDirective } from '../helpers/mouse-wheel.directive';
 
 @Component({
   selector: 'app-pendings',
@@ -12,7 +13,8 @@ export class PendingsComponent implements OnInit {
     this.fixOverflow(this.extensionDescriptions)
   }
   extensions : any[]
-  @ViewChildren('extensionDescriptions') extensionDescriptions : QueryList<any>
+  @ViewChildren('extensionDescriptions') extensionDescriptions: QueryList<any>
+  @ViewChild(MouseWheelDirective) wheelDirective: MouseWheelDirective
 
   config = {
     id: 'custom',
@@ -21,7 +23,7 @@ export class PendingsComponent implements OnInit {
     totalItems: null
   }
 
-  constructor(private extensionsService : ExtensionsService) { 
+  constructor(private extensionsService: ExtensionsService, private cdRef: ChangeDetectorRef) { 
     this.extensions = undefined
   }
 
@@ -37,9 +39,11 @@ export class PendingsComponent implements OnInit {
   }
 
   ngAfterViewInit() {
+    this.wheelDirective.checkIfMobileScreen()
     this.extensionDescriptions.changes.subscribe(descriptions => {
       this.fixOverflow(descriptions.toArray())
     })
+    this.cdRef.detectChanges()
   }
 
   fixOverflow(descriptions){

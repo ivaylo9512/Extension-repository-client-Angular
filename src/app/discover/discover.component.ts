@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChildren, QueryList, HostListener, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChildren, QueryList, HostListener, ViewChild, ElementRef, ChangeDetectorRef } from '@angular/core';
 import { ExtensionsService } from '../services/extensions.service';
 import { FormControl } from '@angular/forms';
 import { debounceTime, switchMap } from 'rxjs/operators';
@@ -16,9 +16,9 @@ export class DiscoverComponent implements OnInit {
   }
   search: FormControl = new FormControl()
   extensions : any[]
-  @ViewChildren('extensionDescriptions') extensionDescriptions : QueryList<any>
-  @ViewChild('discoverSection') discoverSection : ElementRef
-  @ViewChild(MouseWheelDirective) wheelDirective
+  @ViewChildren('extensionDescriptions') extensionDescriptions: QueryList<any>
+  @ViewChild('discoverSection') discoverSection: ElementRef
+  @ViewChild(MouseWheelDirective) wheelDirective: MouseWheelDirective
 
   config = {
     id: 'custom',
@@ -29,7 +29,7 @@ export class DiscoverComponent implements OnInit {
     search: ''
   }
 
-  constructor(private extensionsService : ExtensionsService) {
+  constructor(private extensionsService: ExtensionsService, private cdRef: ChangeDetectorRef) {
     this.extensions = undefined
    }
 
@@ -41,7 +41,7 @@ export class DiscoverComponent implements OnInit {
     }) 
   }
 
-  findExtensions(page : number){
+  findExtensions(page: number){
     this.extensionsService.getExtensions(this.config.search, this.config.criteria, (page - 1).toString() , this.config.itemsPerPage.toString()).subscribe(data => {
       this.extensions = data['extensions']
       this.config.currentPage = page
@@ -57,6 +57,8 @@ export class DiscoverComponent implements OnInit {
     this.extensionDescriptions.changes.subscribe(descriptions => {
       this.fixOverflow(descriptions.toArray())
     })
+    this.cdRef.detectChanges()
+
   }
   fixOverflow(descriptions){
     descriptions.forEach((description, i) => {

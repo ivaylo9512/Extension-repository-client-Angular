@@ -1,11 +1,13 @@
-<section>
+<section mouseWheel>
     <span *ngIf="!extensions"  class="loading-animation">
         <div>
             <i class="fas fa-circle-notch fa-spin"></i>
         </div>
     </span>
-    <h1>Extension with tag '{{tag}}': {{config.totalItems}}</h1>
-    <span class="circle"></span>
+    <h1>Extensions found: {{config.totalItems}}</h1>
+    <span class="circle first"></span>
+    <span *ngIf="this.wheelDirective.isMobile && extensions" [ngStyle]="{'transform': 'translateY(' + (-this.wheelDirective.scrolledAmount * 9) + '%'}" class="circle second"></span>
+    <span *ngIf="this.wheelDirective.isMobile && extensions" [ngStyle]="{'transform': 'translateY(' + (-this.wheelDirective.scrolledAmount * 13.5) + '%'}" class="circle third"></span>
     <div class="extensions">
         <div class="info-container" *ngFor="let extension of extensions | paginate: config" [routerLink]="['/extension', extension.id]">
             <div class="info-box">
