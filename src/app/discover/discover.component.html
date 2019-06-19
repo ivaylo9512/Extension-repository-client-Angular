@@ -56,8 +56,8 @@
             </div>
         </div>
     </div>
-    <span *ngIf="this.wheelDirective.isMobile && extensions" [ngStyle]="{'transform': 'translateY(' + (-this.wheelDirective.scrolledAmount * 13) + '%'}" class="circle second"></span>
-    <span *ngIf="this.wheelDirective.isMobile && extensions" [ngStyle]="{'transform': 'translateY(' + (-this.wheelDirective.scrolledAmount * 16.5) + '%'}" class="circle third"></span>
+    <span *ngIf="this.wheelDirective.isMobile && extensions" [ngStyle]="{'transform': 'translateY(' + (-this.wheelDirective.scrolledAmount * 13) + '%)', 'transition': this.wheelDirective.scrolledAmount == 0 ? '0s all' : '5s all'}" class="circle second"></span>
+    <span *ngIf="this.wheelDirective.isMobile && extensions" [ngStyle]="{'transform': 'translateY(' + (-this.wheelDirective.scrolledAmount * 16.5) + '%)', 'transition': this.wheelDirective.scrolledAmount == 0 ? '0s all' : '5s all'}" class="circle third"></span>
     <div class="pagination" *ngIf="extensions">
         <pagination-template #p="paginationApi" [id]="config.id" (pageChange)="this.findExtensions($event)">
             <ul class="pagination-list">

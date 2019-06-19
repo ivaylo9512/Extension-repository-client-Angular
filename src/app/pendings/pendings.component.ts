@@ -66,4 +66,8 @@ export class PendingsComponent implements OnInit {
       }
     })
   }
+  changePage(page){
+    this.config.currentPage = page
+    this.wheelDirective.calculateScrollAmount()
+  }
 }

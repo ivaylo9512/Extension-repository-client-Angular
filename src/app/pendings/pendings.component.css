@@ -60,6 +60,7 @@ h1{
     padding-bottom: 10%;
     margin-bottom: -10%;
     right: 5%;
+    bottom: 0;
 }
 .circle.third{
     margin-bottom: -5%;
@@ -67,6 +68,7 @@ h1{
     width: 5%;
     padding-bottom: 5%;
     transition: 6s;
+    bottom: 0;
 } 
 .extensions{
     width: 85%;

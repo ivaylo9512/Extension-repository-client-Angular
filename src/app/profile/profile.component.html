@@ -85,7 +85,7 @@
                 <span [ngStyle]="{'transform': this.wheelDirective.profileComponent.animate ? 'translateY(' + wheelDirective.profileComponent.circleTransform * 2.5 + '%)' : 'translateY(90%)'}" class="circle" id="circle"></span>
             </div>
             <div class="circle-container">
-                <span [ngStyle]="{'transform': this.wheelDirective.profileComponent.animate ? 'translateY(' + wheelDirective.profileComponent.circleTransform * 6.5 + '%' : 'translateY(0)'}" class="circle second" id="circle"></span>
+                <span [ngStyle]="{'transform': this.wheelDirective.profileComponent.animate ? 'translateY(' + wheelDirective.profileComponent.circleTransform * 6.5 + '%)' : 'translateY(0)'}" class="circle second" id="circle"></span>
             </div>
         </div>
         <pagination-template #p="paginationApi" [id]="config.id" (pageChange)="config.currentPage = $event">

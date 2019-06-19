@@ -51,17 +51,17 @@ export class MouseWheelDirective implements OnInit {
   }
   @HostListener("window:scroll", ['$event'])
   onWindowScroll(e) {
-    const clientHeight = document.body.clientHeight
-    const innerHeight = window.innerHeight
-
-    this.profileComponent.circleTransform = -(window.scrollY / this.profileComponent.profileHeight * 100)
-    this.scrolledAmount = window.scrollY / (clientHeight - innerHeight) * 100
-
-    console.log(window.scrollY)
+    this.calculateScrollAmount()
   }
   @HostListener('window:resize', ['$event'])
   onResize() {
     this.checkIfMobileScreen()
+  }
+  calculateScrollAmount(){
+    const clientHeight = document.body.clientHeight
+    const innerHeight = window.innerHeight
+    this.profileComponent.circleTransform = -(window.scrollY / this.profileComponent.profileHeight * 100)
+    this.scrolledAmount = window.scrollY / (clientHeight - innerHeight) * 100 || 0
   }
   checkIfMobileScreen(){
     if(window.innerWidth < 1200){
