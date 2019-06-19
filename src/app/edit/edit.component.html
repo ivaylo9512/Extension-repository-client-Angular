@@ -1,4 +1,4 @@
-<div mouseWheel>
+<div class="mouse-wheel" mouseWheel>
     <section class="cover-section" *ngIf="!this.wheelDirective.isMobile"> 
         <div class="input">
             <label for="cover" class="as-field">
@@ -18,7 +18,7 @@
         </div>
     </section>
     <section class="extension-section"> 
-        <div [ngClass]="{'fade-in' : this.wheelDirective.submitComponent.currentSection != 'coverSection'}" #extensionSection> 
+        <div [ngClass]="{'fade-in' : this.wheelDirective.submitComponent.currentSection != 'coverSection'}" #extensionSection class="extension-container">
             <div #tagsContainer (click)="focusInput(this)" class="tags">
                 <div *ngFor = "let tag of tags" (click)="removeTag(tag)" ><i class="fas fa-tags"></i>{{tag}}</div>
                 <input [ngClass]="{'left' : tags.length > 0}" [formControl]="tagsInput"  placeholder="Tags" #tagsInputElmnt>
@@ -88,12 +88,7 @@
             <div class="info">
                 <textarea [value]="description" [formControl]="descriptionInput" placeholder="Description"></textarea>
             </div>
-        </div>
-        <span *ngIf="gitHubAvailable == 'loading'"  class="loading-animation">
-            <div>
-                <i class="fas fa-circle-notch fa-spin"></i>
-            </div>
-        </span>    
+        </div>   
     </section>
     <div *ngIf="this.wheelDirective.isMobile" class="github-container">
         <div class="github" *ngIf="gitHub">
@@ -111,4 +106,9 @@
         <div *ngFor = "let tag of tags" (click)="removeTag(tag)" ><i class="fas fa-tags"></i>{{tag}}</div>
         <input [ngClass]="{'left' : tags.length > 0}" [formControl]="tagsInput"  placeholder="Tags" #tagsInputElmnt>
     </div>
+    <span *ngIf="gitHubAvailable == 'loading'" class="loading-animation">
+        <div>
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </div>
+    </span> 
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { debounceTime } from 'rxjs/operators';
 import { ExtensionsService } from '../services/extensions.service';
@@ -12,11 +12,10 @@ import { MouseWheelDirective } from '../helpers/mouse-wheel.directive';
   styleUrls: ['../create/create.component.css']
 })
 export class EditComponent implements OnInit {
-  @ViewChild('tagsInputElmnt') tagsInputElmnt : ElementRef
-  @ViewChild('tagsContainer') tagsContainer : ElementRef
-  @ViewChild(MouseWheelDirective) wheelDirective
-  @ViewChild('extensionSection') extensionSection : ElementRef
-  @ViewChild('previewSection') previewSection : ElementRef
+  @ViewChild('tagsInputElmnt') tagsInputElmnt: ElementRef
+  @ViewChild('tagsContainer') tagsContainer: ElementRef
+  @ViewChild(MouseWheelDirective) wheelDirective: MouseWheelDirective
+  @ViewChild('extensionSection') extensionSection: ElementRef
 
   nameInput : FormControl = new FormControl()
   gitHubInput : FormControl = new FormControl()
@@ -40,7 +39,7 @@ export class EditComponent implements OnInit {
 
   tags : string[]
 
-  constructor(private extensionService : ExtensionsService, private router : Router, private route : ActivatedRoute, private sanitizer: DomSanitizer) {
+  constructor(private extensionService : ExtensionsService, private router : Router, private route : ActivatedRoute, private sanitizer: DomSanitizer, private cdRef: ChangeDetectorRef) {
     this.formData = new FormData()
     this.extension = {}
     this.tags = []
@@ -75,6 +74,12 @@ export class EditComponent implements OnInit {
         this.checkGithub(gitHub)
       }else{
         this.gitHubAvailable = 'true'
+        this.gitHub = {
+          user: this.extension.ownerName,
+          pullRequests: this.extension.pullRequests,
+          lastCommit: this.extension.lastCommit,
+          openIssues: this.extension.openIssues
+        }
       }
     })
     this.versionInput.valueChanges.pipe(debounceTime(200)).subscribe(version => {
@@ -95,8 +100,9 @@ export class EditComponent implements OnInit {
   }
   
   ngAfterViewInit() {
-    this.wheelDirective.extensionComponent.previewSection = this.previewSection
+    this.wheelDirective.checkIfMobileScreen()
     this.wheelDirective.submitComponent.extensionSection = this.extensionSection
+    this.cdRef.detectChanges()
   }
 
   editExtension(){
@@ -203,6 +209,7 @@ export class EditComponent implements OnInit {
   }
   setExtension(){
     const extension = this.extensionService.currentExtension
+    console.log(extension)
     this.extension = extension
     this.nameInput.setValue(extension.name)
     this.versionInput.setValue(extension.version)
