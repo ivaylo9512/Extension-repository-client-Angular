@@ -121,6 +121,20 @@ form span{
 .logo{
     display: none;
 }
+@media (max-width: 1200px) {
+    form{
+        width: 85%;
+    }
+    .circle{
+        width: 50%;
+        padding-bottom: 50%;
+        left: -15%;
+        bottom: 52%;
+    }
+    .circle2{
+        opacity: 0;
+    }
+}
 @-webkit-keyframes initial-translate {
     from {
       transform: translateY(80%);
