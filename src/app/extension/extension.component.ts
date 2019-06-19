@@ -102,6 +102,9 @@ export class ExtensionComponent implements OnInit {
       this.fixOverflow(descriptions.toArray())
     })
   }
+  ngOnDestroy() {
+    this.extensionService.currentExtension = undefined
+  }
   fixOverflow(descriptions){
     descriptions.forEach(description => {
       description.nativeElement.innerHTML = this.extension.description

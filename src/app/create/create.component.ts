@@ -12,34 +12,34 @@ import { MouseWheelDirective } from '../helpers/mouse-wheel.directive';
   styleUrls: ['./create.component.css']
 })
 export class CreateComponent implements OnInit {
-  @ViewChild('tagsInputElmnt') tagsInputElmnt : ElementRef
-  @ViewChild('tagsContainer') tagsContainer : ElementRef
-  @ViewChild(MouseWheelDirective) wheelDirective
-  @ViewChild('extensionSection') extensionSection : ElementRef
+  @ViewChild('tagsInputElmnt') tagsInputElmnt: ElementRef
+  @ViewChild('tagsContainer') tagsContainer: ElementRef
+  @ViewChild(MouseWheelDirective) wheelDirective: MouseWheelDirective
+  @ViewChild('extensionSection') extensionSection: ElementRef
 
-  nameInput : FormControl = new FormControl()
-  gitHubInput : FormControl = new FormControl()
-  versionInput : FormControl = new FormControl()
-  descriptionInput : FormControl = new FormControl()
-  tagsInput : FormControl = new FormControl()
+  nameInput: FormControl = new FormControl()
+  gitHubInput: FormControl = new FormControl()
+  versionInput: FormControl = new FormControl()
+  descriptionInput: FormControl = new FormControl()
+  tagsInput: FormControl = new FormControl()
   
-  formData : FormData
-  logoURL : any
-  coverURL : any
-  gitHub : any
+  formData: FormData
+  logoURL: any
+  coverURL: any
+  gitHub: any
 
-  file : boolean
-  gitHubAvailable : string
-  nameAvailable : string
-  name : string
-  version : string
-  description : string
-  gitHubError : string
-  nameError : string
+  file: boolean
+  gitHubAvailable: string
+  nameAvailable: string
+  name: string
+  version: string
+  description: string
+  gitHubError: string
+  nameError: string
 
   tags : string[]
 
-  constructor(private extensionService : ExtensionsService, private router : Router, private sanitizer: DomSanitizer, private cdRef : ChangeDetectorRef) {
+  constructor(private extensionService: ExtensionsService, private router: Router, private sanitizer: DomSanitizer, private cdRef: ChangeDetectorRef) {
     this.formData = new FormData()
     this.tags = []
     this.name = ''
