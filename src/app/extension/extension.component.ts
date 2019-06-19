@@ -33,7 +33,6 @@ export class ExtensionComponent implements OnInit {
   }
   setExtension(extension){
     this.extension = extension
-    this.extensionService.currentExtension = extension
 
     if(!extension.coverLocation){
       this.wheelDirective.extensionComponent.currentSection = 'extensionSection'

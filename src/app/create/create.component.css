@@ -94,6 +94,7 @@ button:hover i{
     transform: translateX(100%);
 }
 .mouse-wheel{
+    min-height: 100vh;
     position: relative;
 }
 .black{
@@ -439,7 +440,6 @@ button:hover i{
     z-index: 4;
     margin: 0;
     background: #00000080;
-    padding-bottom: 10px;
 }
 .loading-container{
     display: inline-block;
@@ -510,6 +510,9 @@ button:hover i{
     }
     .github{
         margin-bottom: 4%;
+    }
+    .loading-animation{
+        padding-bottom: 10px;
     }
 }
 @-webkit-keyframes fadeIn {

@@ -51,9 +51,6 @@ export class EditComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.extensionService.currentExtension ? this.setExtension() :
-      this.getExtension(+this.route.snapshot.paramMap.get('id'))
-
     this.nameInput.valueChanges.pipe(debounceTime(200)).subscribe(name => {
       this.nameError = null
       this.extension.name = name
@@ -100,6 +97,9 @@ export class EditComponent implements OnInit {
   }
   
   ngAfterViewInit() {
+    this.extensionService.currentExtension ? this.setExtension() :
+    this.getExtension(+this.route.snapshot.paramMap.get('id'))
+    
     this.wheelDirective.checkIfMobileScreen()
     this.wheelDirective.submitComponent.extensionSection = this.extensionSection
     this.cdRef.detectChanges()
@@ -211,6 +211,7 @@ export class EditComponent implements OnInit {
     const extension = this.extensionService.currentExtension
     console.log(extension)
     this.extension = extension
+    console.log(extension.name)
     this.nameInput.setValue(extension.name)
     this.versionInput.setValue(extension.version)
     this.gitHubInput.setValue(extension.gitHubLink)
