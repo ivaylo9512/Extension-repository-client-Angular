@@ -3,6 +3,8 @@ import { ExtensionsService } from '../services/extensions.service';
 import { FormControl } from '@angular/forms';
 import { debounceTime, switchMap } from 'rxjs/operators';
 import { MouseWheelDirective } from '../helpers/mouse-wheel.directive';
+import { Subscription } from 'rxjs';
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-discover',
@@ -14,11 +16,13 @@ export class DiscoverComponent implements OnInit {
   onResize() {
     this.fixOverflow(this.extensionDescriptions)
   }
-  search: FormControl = new FormControl()
-  extensions : any[]
   @ViewChildren('extensionDescriptions') extensionDescriptions: QueryList<any>
   @ViewChild('discoverSection') discoverSection: ElementRef
   @ViewChild(MouseWheelDirective) wheelDirective: MouseWheelDirective
+
+  search: FormControl = new FormControl()
+  extensions : any[]
+  routeSubscription: Subscription
 
   config = {
     id: 'custom',
@@ -29,8 +33,13 @@ export class DiscoverComponent implements OnInit {
     search: ''
   }
 
-  constructor(private extensionsService: ExtensionsService, private cdRef: ChangeDetectorRef) {
+  constructor(private extensionsService: ExtensionsService, private cdRef: ChangeDetectorRef, private router: Router) {
     this.extensions = undefined
+    this.routeSubscription = this.router.events.subscribe((e: any) => {
+      if (e instanceof NavigationEnd) {
+        this.findExtensions(1)
+      }
+    })
    }
 
   ngOnInit() {
@@ -40,7 +49,11 @@ export class DiscoverComponent implements OnInit {
       this.findExtensions(1)
     }) 
   }
-
+  ngOnDestroy() {
+    if (this.routeSubscription) {  
+      this.routeSubscription.unsubscribe();
+   }
+  }
   findExtensions(page: number){
     this.extensionsService.getExtensions(this.config.search, this.config.criteria, (page - 1).toString() , this.config.itemsPerPage.toString()).subscribe(data => {
       this.extensions = data['extensions']

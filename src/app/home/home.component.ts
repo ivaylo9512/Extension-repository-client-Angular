@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, ViewChildren, QueryList, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service'
 
 import { BrowserModule } from '@angular/platform-browser';
@@ -6,6 +6,7 @@ import { NgModule } from '@angular/core';
 import { ProfileComponent } from '../profile/profile.component';
 import { FavExtensionsComponent } from '../fav-extensions/fav-extensions.component';
 import { Router, NavigationEnd } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -24,14 +25,14 @@ import { Router, NavigationEnd } from '@angular/router';
 export class HomeComponent implements OnInit {
 
   isProfileRoute : boolean
-  routeSubscription
+  routeSubscription: Subscription
 
   constructor(private authService : AuthService, private router: Router) {
     this.routeSubscription = this.router.events.subscribe((e: any) => {
       if (e instanceof NavigationEnd) {
           this.isProfileRoute = e.urlAfterRedirects != '/home'
       }
-    });
+    })
   }
   ngOnInit() {
   }

@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChildren, QueryList, HostListener, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { ExtensionsService } from '../services/extensions.service';
 import { MouseWheelDirective } from '../helpers/mouse-wheel.directive';
+import { Subscription } from 'rxjs';
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-pendings',
@@ -12,9 +14,11 @@ export class PendingsComponent implements OnInit {
   onResize() {
     this.fixOverflow(this.extensionDescriptions)
   }
-  extensions : any[]
   @ViewChildren('extensionDescriptions') extensionDescriptions: QueryList<any>
   @ViewChild(MouseWheelDirective) wheelDirective: MouseWheelDirective
+
+  extensions : any[]
+  routeSubscription: Subscription
 
   config = {
     id: 'custom',
@@ -23,14 +27,23 @@ export class PendingsComponent implements OnInit {
     totalItems: null
   }
 
-  constructor(private extensionsService: ExtensionsService, private cdRef: ChangeDetectorRef) { 
+  constructor(private extensionsService: ExtensionsService, private cdRef: ChangeDetectorRef, private router: Router) { 
     this.extensions = undefined
+    this.routeSubscription = this.router.events.subscribe((e: any) => {
+      if (e instanceof NavigationEnd) {
+        this.findPendings()
+      }
+    })
   }
 
   ngOnInit() {
     this.findPendings()
   }
-
+  ngOnDestroy() {
+    if (this.routeSubscription) {  
+      this.routeSubscription.unsubscribe();
+   }
+  }
   findPendings(){
     this.extensionsService.getPendings().subscribe(data => {
       this.extensions = data

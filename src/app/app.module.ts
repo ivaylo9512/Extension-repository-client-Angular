@@ -76,11 +76,13 @@ import { FavExtensionsComponent } from './fav-extensions/fav-extensions.componen
       },
       { 
         path: 'tag/:tag', 
-        component: TagsComponent
+        component: TagsComponent,
+        runGuardsAndResolvers: 'always'
       },
       { 
         path: 'discover', 
-        component: DiscoverComponent
+        component: DiscoverComponent,
+        runGuardsAndResolvers: 'always'
       },
       { 
         path: 'create', 
@@ -88,7 +90,8 @@ import { FavExtensionsComponent } from './fav-extensions/fav-extensions.componen
       },
       { 
         path: 'pendings', 
-        component: PendingsComponent
+        component: PendingsComponent,
+        runGuardsAndResolvers: 'always'
       },
       { 
         path: 'home', 
@@ -98,7 +101,8 @@ import { FavExtensionsComponent } from './fav-extensions/fav-extensions.componen
               path:'profile/:id',
               component: ProfileComponent,
           },
-        ],runGuardsAndResolvers: 'always',
+        ],
+        runGuardsAndResolvers: 'always'
       },
       { 
         path: '**', 

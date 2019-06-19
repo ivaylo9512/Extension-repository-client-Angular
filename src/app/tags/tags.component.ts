@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewChildren, QueryList, HostListener, ViewChild } from '@angular/core';
 import { ExtensionsService } from '../services/extensions.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { MouseWheelDirective } from '../helpers/mouse-wheel.directive';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-tags',
@@ -13,11 +14,13 @@ export class TagsComponent implements OnInit {
   onResize() {
     this.fixOverflow(this.extensionDescriptions)
   }
-  extensions : any[]
-  tag : string
-  
+
   @ViewChildren('extensionDescriptions') extensionDescriptions: QueryList<any>
   @ViewChild(MouseWheelDirective) wheelDirective: MouseWheelDirective
+
+  extensions : any[]
+  tag : string
+  routeSubscription: Subscription
 
   config = {
     id: 'custom',
@@ -26,15 +29,25 @@ export class TagsComponent implements OnInit {
     totalItems: null
   }
 
-  constructor(private extensionService: ExtensionsService, private route: ActivatedRoute) { 
+  constructor(private extensionService: ExtensionsService, private route: ActivatedRoute, private router: Router) { 
     this.extensions = undefined
+    this.routeSubscription = this.router.events.subscribe((e: any) => {
+      if (e instanceof NavigationEnd) {
+        this.tag = this.route.snapshot.paramMap.get('tag')
+        this.findByTag(this.tag)
+      }
+    })
   }
 
   ngOnInit() {
     this.tag = this.route.snapshot.paramMap.get('tag')
     this.findByTag(this.tag)
   }
-
+  ngOnDestroy() {
+    if (this.routeSubscription) {  
+      this.routeSubscription.unsubscribe();
+   }
+  }
   findByTag(tag: string){
     this.extensionService.getByTag(tag).subscribe(tagDto =>{
       this.extensions = tagDto['extensions']
