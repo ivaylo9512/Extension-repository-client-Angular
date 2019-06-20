@@ -79,7 +79,7 @@ export class ExtensionComponent implements OnInit {
   }
 
   refreshGitHub(){
-    this.extensionService.refreshGitHub(this.extension.id).subscribe(data =>{
+    this.extensionService.refreshGitHub(this.extension.id).subscribe(data => {
       this.extension.openIssues = data['openIssues']
       this.extension.pullRequests = data['pullRequests']
       this.extension.lastCommit = data['lastCommit']
