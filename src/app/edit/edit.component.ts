@@ -17,34 +17,34 @@ export class EditComponent implements OnInit {
   @ViewChild(MouseWheelDirective) wheelDirective: MouseWheelDirective
   @ViewChild('extensionSection') extensionSection: ElementRef
 
-  nameInput : FormControl = new FormControl()
-  gitHubInput : FormControl = new FormControl()
-  versionInput : FormControl = new FormControl()
-  descriptionInput : FormControl = new FormControl()
-  tagsInput : FormControl = new FormControl()
+  nameInput: FormControl = new FormControl()
+  gitHubInput: FormControl = new FormControl()
+  versionInput: FormControl = new FormControl()
+  descriptionInput: FormControl = new FormControl()
+  tagsInput: FormControl = new FormControl()
 
-  file : boolean
-  formData : FormData
-  extension : any
-  logoURL : any
-  coverURL : any
-  gitHub : any
+  file: boolean
+  formData: FormData
+  extension: any
+  logoURL: any
+  coverURL: any
+  gitHub: any
 
-  gitHubAvailable : string
-  nameAvailable : string
-  initialName : string
-  initialGitHub : string
-  gitHubError : string
-  nameError : string
+  gitHubAvailable: boolean
+  nameAvailable: boolean
+  initialName: string
+  initialGitHub: string
+  gitHubError: string
+  nameError: string
 
-  tags : string[]
+  tags: string[]
 
   constructor(private extensionService : ExtensionsService, private router : Router, private route : ActivatedRoute, private sanitizer: DomSanitizer, private cdRef: ChangeDetectorRef) {
     this.formData = new FormData()
     this.extension = {}
     this.tags = []
-    this.gitHubAvailable = 'true'
-    this.nameAvailable = 'true'
+    this.gitHubAvailable = true
+    this.nameAvailable = true
     this.logoURL = null
     this.coverURL = null
 
@@ -57,10 +57,10 @@ export class EditComponent implements OnInit {
       this.nameError = null
       this.extension.name = name
       if(name != this.initialName){
-        this.nameAvailable = 'loading'
+        this.nameAvailable = undefined
         this.checkName(name)
       }else{
-        this.nameAvailable = 'true'
+        this.nameAvailable = true
       }
     })
     this.gitHubInput.valueChanges.pipe(debounceTime(200)).subscribe(gitHub => {
@@ -68,11 +68,11 @@ export class EditComponent implements OnInit {
       this.gitHub = null
       this.extension.gitHubLink = gitHub
       if(gitHub != this.initialGitHub){
-        this.gitHubAvailable = 'loading'
+        this.gitHubAvailable = undefined
         
         this.checkGithub(gitHub)
       }else{
-        this.gitHubAvailable = 'true'
+        this.gitHubAvailable = true
         this.gitHub = {
           user: this.extension.ownerName,
           pullRequests: this.extension.pullRequests,
@@ -105,7 +105,7 @@ export class EditComponent implements OnInit {
   }
 
   editExtension(){
-    if(this.nameAvailable == 'true' && this.gitHubAvailable == 'true'){
+    if(this.nameAvailable && this.gitHubAvailable){
       const name = this.nameInput.value
       const github = this.extension.gitHubLink
       const version = this.extension.version
@@ -126,25 +126,26 @@ export class EditComponent implements OnInit {
         })
     }
   }
+
   checkName(name){
-    this.nameAvailable = 'loading'
     if(name.length == 0){
-      this.nameAvailable = null    
+      this.nameAvailable = null  
     }else if(name.length > 7){
-      this.extensionService.checkName(name).subscribe(available => {
-        this.nameAvailable = available.toString()
-        if(this.nameAvailable == 'false'){
+      this.extensionService.checkName(name).subscribe((available: boolean) => {
+        this.nameAvailable = available 
+        if(!this.nameAvailable){
           this.nameError = 'Name is unavailable.'
         }else{
           this.extension.name = name
-          this.nameAvailable = 'true'
+          this.nameAvailable = true
         }
       })
     }else{
-      this.nameAvailable = 'false'
+      this.nameAvailable = false
       this.nameError = 'Name is less than 7 symbolls'
     }
   }
+
   checkGithub(gitHub){
     const pattern = /^https:\/\/github\.com\/.+\/.+$/
     if(gitHub.length == 0){
@@ -153,17 +154,18 @@ export class EditComponent implements OnInit {
       this.extensionService.checkGithub(gitHub).subscribe(
         gitHub => {
           this.gitHub = gitHub
-          this.gitHubAvailable = 'true'
+          this.gitHubAvailable = true
         },
         error => {
-          this.gitHubAvailable = 'false'
+          this.gitHubAvailable = false
           this.gitHubError = error
         })
     }else{
-      this.gitHubAvailable = 'false'
+      this.gitHubAvailable = false
       this.gitHubError = 'Link is not a valid repo URL.'
     }
   }
+  
   addLogo(e){
     const logo = e.target.files[0]
     this.formData.set('image', logo)
@@ -174,8 +176,8 @@ export class EditComponent implements OnInit {
     reader.onload = (_event) => { 
       this.logoURL = reader.result; 
     }
-
   }
+
   addCover(e){
     const cover = e.target.files[0]
     this.formData.set('cover', cover)
@@ -185,11 +187,13 @@ export class EditComponent implements OnInit {
       this.coverURL = reader.result; 
     }
   }
+
   addFile(e){
     const file = e.target.files[0]
     this.file = true
     this.formData.set('file', file)
   }
+
   addTag(tag){
     tag = tag.trim()
     this.tagsInputElmnt.nativeElement.value = ''
@@ -202,11 +206,13 @@ export class EditComponent implements OnInit {
       }
     }
   }
+
   removeTag(tag){
     const index = this.tags.indexOf(tag)
     this.tags.splice(index, 1)
   }
-  getExtension(id : number){
+
+  getExtension(id: number){
     this.extensionService.getExtension(id).subscribe(extension =>{
       this.extension = extension
       this.nameInput.setValue(extension.name)
@@ -221,10 +227,12 @@ export class EditComponent implements OnInit {
       this.logoURL = extension.imageLocation
     })
   }
+
   focusInput(e){
     this.tagsInputElmnt.nativeElement.focus()
   }
-  getSanitizeUrl(url : string) {
+
+  getSanitizeUrl(url: string) {
     return this.sanitizer.bypassSecurityTrustUrl(url);
   }
 }

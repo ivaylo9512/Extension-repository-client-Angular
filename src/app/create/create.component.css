@@ -299,6 +299,7 @@ button:hover i{
     padding: 30% 0;
     border-width: 1px;
     margin-left: 0;
+    cursor: pointer;
 }
 .info-container label i{
     position: absolute;
@@ -380,6 +381,8 @@ button:hover i{
     width: 90%;
     text-align: center;
     background: transparent;
+    padding-bottom: 5px;
+    padding-top: 5px;
 }
 .extension input::placeholder { 
     color: black;

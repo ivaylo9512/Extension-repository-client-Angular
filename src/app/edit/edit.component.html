@@ -39,7 +39,7 @@
                     <label for="logo">
                             <i class="fas fa-image"></i>
                     </label> 
-                    <label type="submit">
+                    <label type="submit" (click)="editExtension()">
                         <i class="fas fa-angle-double-right"></i>
                     </label>
                 </div>
@@ -61,15 +61,15 @@
                 <div class="extension-info-container">                
                     <input [formControl]="nameInput" [value]="name" placeholder="Name" class="name">
                     <div class="loading-container">
-                        <i *ngIf="nameAvailable == 'loading'" class="fas fa-circle-notch fa-spin"></i>
-                        <i *ngIf="nameAvailable == 'true'" class="fas fa-check"></i>
-                        <i *ngIf="nameAvailable == 'false'" class="fas fa-times"></i>
+                        <i *ngIf="nameAvailable === undefined" class="fas fa-circle-notch fa-spin"></i>
+                        <i *ngIf="nameAvailable == true" class="fas fa-check"></i>
+                        <i *ngIf="nameAvailable == false" class="fas fa-times"></i>
                     </div>
                     <input [formControl]="gitHubInput" name="github" type="text" placeholder="GitHub repo">
                     <div class="loading-container">
-                        <i *ngIf="gitHubAvailable == 'loading'" class="fas fa-circle-notch fa-spin"></i>
-                        <i *ngIf="gitHubAvailable == 'true'" class="fas fa-check"></i>
-                        <i *ngIf="gitHubAvailable == 'false'" class="fas fa-times"></i>
+                        <i *ngIf="gitHubAvailable === undefined" class="fas fa-circle-notch fa-spin"></i>
+                        <i *ngIf="gitHubAvailable == true" class="fas fa-check"></i>
+                        <i *ngIf="gitHubAvailable == false" class="fas fa-times"></i>
                     </div>
                     <input class="version" [value]="version" [formControl]="versionInput" placeholder="Version">
                     <div class="info">
@@ -106,7 +106,7 @@
         <div *ngFor = "let tag of tags" (click)="removeTag(tag)" ><i class="fas fa-tags"></i>{{tag}}</div>
         <input [ngClass]="{'left' : tags.length > 0}" [formControl]="tagsInput"  placeholder="Tags" #tagsInputElmnt>
     </div>
-    <span *ngIf="gitHubAvailable == 'loading'" class="loading-animation">
+    <span *ngIf="gitHubAvailable === undefined" class="loading-animation">
         <div>
             <i class="fas fa-circle-notch fa-spin"></i>
         </div>

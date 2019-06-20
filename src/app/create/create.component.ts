@@ -29,8 +29,8 @@ export class CreateComponent implements OnInit {
   gitHub: any
 
   file: boolean
-  gitHubAvailable: string
-  nameAvailable: string
+  gitHubAvailable: boolean
+  nameAvailable: boolean
   name: string
   version: string
   description: string
@@ -45,17 +45,19 @@ export class CreateComponent implements OnInit {
     this.name = ''
     this.version = ''
     this.description = ''
+    this.gitHubAvailable = null
+    this.nameAvailable = null
   }
 
   ngOnInit() {
     this.nameInput.valueChanges.pipe(debounceTime(200)).subscribe(name => {
-      this.nameAvailable = 'loading'
+      this.nameAvailable = undefined
       this.nameError = null
       this.name = name
       this.checkName(name)
     })
     this.gitHubInput.valueChanges.pipe(debounceTime(200)).subscribe(gitHub => {
-      this.gitHubAvailable = 'loading'
+      this.gitHubAvailable = undefined
       this.gitHub = null
       this.gitHubError = null
       
@@ -85,24 +87,24 @@ export class CreateComponent implements OnInit {
   }
 
   checkName(name){
-    this.nameAvailable = 'loading'
     if(name.length == 0){
       this.nameAvailable = null    
     }else if(name.length > 7){
-      this.extensionService.checkName(name).subscribe(available => {
-        this.nameAvailable = available.toString()
-        if(this.nameAvailable == 'false'){
+      this.extensionService.checkName(name).subscribe((available: boolean) => {
+        this.nameAvailable = available
+        if(!this.nameAvailable){
           this.nameError = 'Name is unavailable.'
         }else{
           this.name = name
-          this.nameAvailable = 'true'
+          this.nameAvailable = true
         }
       })
     }else{
-      this.nameAvailable = 'false'
+      this.nameAvailable = false
       this.nameError = 'Name is less than 7 symbolls'
     }
   }
+
   checkGithub(gitHub){
     const pattern = /^https:\/\/github\.com\/.+\/.+$/
     if(gitHub.length == 0){
@@ -111,25 +113,25 @@ export class CreateComponent implements OnInit {
       this.extensionService.checkGithub(gitHub).subscribe(
         gitHub => {
           this.gitHub = gitHub
-          this.gitHubAvailable = 'true'
+          this.gitHubAvailable = true
         },
         error => {
-          this.gitHubAvailable = 'false'
+          this.gitHubAvailable = false
           this.gitHubError = error
         })
     }else{
-      this.gitHubAvailable = 'false'
+      this.gitHubAvailable = false
       this.gitHubError = 'Link is not a valid repo URL.'
     }
   }
 
   createExtension(extensionForm : NgForm){
-    if(this.nameAvailable == 'true' && this.gitHubAvailable == 'true'){
+    if(this.nameAvailable && this.gitHubAvailable){
       const name = this.nameInput.value
       const github = this.gitHubInput.value
       const version = this.version
       const description = this.description
-      const tags = this.tags.toString()      
+      const tags = this.tags.length > 0 ? this.tags.toString() : undefined 
       const extension = {
         name,
         version,
@@ -145,6 +147,7 @@ export class CreateComponent implements OnInit {
         })
     }
   }
+
   addLogo(e){
     const logo = e.target.files[0]
     this.formData.set('image', logo)
@@ -172,12 +175,15 @@ export class CreateComponent implements OnInit {
     this.file = true
     this.formData.set('file', file)
   }
+
   getSanitizeUrl(url : string) {
     return this.sanitizer.bypassSecurityTrustUrl(url);
   }
+
   focusInput(e){
     this.tagsInputElmnt.nativeElement.focus()
   }
+
   addTag(tag){
     tag = tag.trim()
     this.tagsInputElmnt.nativeElement.value = ''
@@ -190,6 +196,7 @@ export class CreateComponent implements OnInit {
       }
     }
   }
+
   removeTag(tag){
     const index = this.tags.indexOf(tag)
     this.tags.splice(index, 1)
