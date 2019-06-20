@@ -132,6 +132,8 @@ export class CreateComponent implements OnInit {
       const version = this.version
       const description = this.description
       const tags = this.tags.length > 0 ? this.tags.toString() : undefined 
+      this.gitHubAvailable = undefined
+
       const extension = {
         name,
         version,
@@ -140,8 +142,10 @@ export class CreateComponent implements OnInit {
         tags
       }
       this.formData.set('extension', JSON.stringify(extension))
+      
       this.extensionService.createExtension(this.formData).subscribe(
-        data =>{
+        data => {
+          this.gitHubAvailable = true
           this.extensionService.currentExtension = data
           this.router.navigate(['extension', data.id])
         })

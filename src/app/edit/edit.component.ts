@@ -110,7 +110,9 @@ export class EditComponent implements OnInit {
       const github = this.extension.gitHubLink
       const version = this.extension.version
       const description = this.extension.description
-      const tags = this.tags.toString()      
+      const tags = this.tags.toString()  
+      this.gitHubAvailable = undefined
+
       const extension = {
         name,
         version,
@@ -119,8 +121,10 @@ export class EditComponent implements OnInit {
         tags
       }
       this.formData.set('extension', JSON.stringify(extension))
+      
       this.extensionService.editExtension(this.extension.id, this.formData).subscribe(
-        data =>{
+        data => {
+          this.gitHubAvailable = true
           this.extensionService.currentExtension = data
           this.router.navigate(['extension', data.id])      
         })
@@ -213,7 +217,7 @@ export class EditComponent implements OnInit {
   }
 
   getExtension(id: number){
-    this.extensionService.getExtension(id).subscribe(extension =>{
+    this.extensionService.getExtension(id).subscribe(extension => {
       this.extension = extension
       this.nameInput.setValue(extension.name)
       this.versionInput.setValue(extension.version)
