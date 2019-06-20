@@ -46,16 +46,16 @@ export class ExtensionsService {
     return this.httpClient.get<Extension>(`/api/extensions/${id}`)
   }
   getPendings(){
-    return this.httpClient.get<Extension[]>('/api/auth/extensions/unpublished')
+    return this.httpClient.get<Extension[]>('/api/extensions/auth/unpublished')
   }
   getByTag(tag : string){
     return this.httpClient.get<any>(`/api/tag/${tag}`)
   }
   editExtension(id : number, formData){
-    return this.httpClient.post<Extension>(`/api/auth/extensions/edit/${id}`, formData)
+    return this.httpClient.post<Extension>(`/api/extensions/auth/edit/${id}`, formData)
   }
   createExtension(formData){
-    return this.httpClient.post<Extension>('/api/auth/extensions/create', formData)
+    return this.httpClient.post<Extension>('/api/extensions/auth/create', formData)
   }
   checkName(name : string){
     const params = new HttpParams().set('name', name)
@@ -70,18 +70,18 @@ export class ExtensionsService {
     return this.httpClient.get<any>('/api/extensions/filter', {params})                                          
   }
   setFeatureState(id : number, state : string){
-    return this.httpClient.patch<Extension>(`/api/auth/extensions/${id}/featured/${state}`, null)
+    return this.httpClient.patch<Extension>(`/api/extensions/auth/${id}/featured/${state}`, null)
   }
   setPublishState(id : number, state : string){
-    return this.httpClient.patch<Extension>(`/api/auth/extensions/${id}/status/${state}`, null)
+    return this.httpClient.patch<Extension>(`/api/extensions/auth/${id}/status/${state}`, null)
   }
   deleteExtension(id : number){
-    return this.httpClient.delete(`/api/auth/extensions/${id}`)
+    return this.httpClient.delete(`/api/extensions/auth/${id}`)
   }
   refreshGitHub(id : number){
-    return this.httpClient.patch<Extension>(`/api/auth/extensions/${id}/github`,null)
+    return this.httpClient.patch<Extension>(`/api/extensions/auth/${id}/github`,null)
   }
   rateExtension(id : number, rating : string){
-    return this.httpClient.patch(`/api/auth/rate/${id}/${rating}`, {})
+    return this.httpClient.patch(`/api/rating/auth/rate/${id}/${rating}`, {})
   }
 }

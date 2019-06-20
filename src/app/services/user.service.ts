@@ -24,20 +24,20 @@ export class UserService {
 
   getAllByState(state : string){
     const params = new  HttpParams().set('state', state)    
-    return this.httpClient.get<User[]>('/api/auth/users/all', {params})
+    return this.httpClient.get<User[]>('/api/users/auth/all', {params})
   }
   getGithubSettings(){
-    return this.httpClient.get('/api/auth/github')
+    return this.httpClient.get('/api/github/auth')
   }
   setGithubSettings(github){
-    return this.httpClient.post('/api/auth/github', github)
+    return this.httpClient.post('/api/github/auth', github)
   }
   setState(id : number, state : string){
-    return this.httpClient.patch<User>(`/api/auth/users/setState/${id}/${state}`, null)
+    return this.httpClient.patch<User>(`/api/users/auth/setState/${id}/${state}`, null)
   }
 
   changePassword(password : string, repeatPassword : string){
-    this.httpClient.patch('/auth/changePassword',{
+    this.httpClient.patch('/api/users/auth/changePassword',{
       password,
       repeatPassword
     })

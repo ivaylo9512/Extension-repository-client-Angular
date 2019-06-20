@@ -12,10 +12,10 @@ export class AuthService {
   username : string
 
   constructor(private httpClient : HttpClient, private router : Router) { 
-    if(localStorage.getItem('user') !== null && localStorage.getItem('Authorization') !== null){
+    if(localStorage.getItem('user') && localStorage.getItem('Authorization')){
       const user = JSON.parse(localStorage.getItem('user'))
       this.isLoggedIn = true
-      this.isAdmin = user['authorities'][0]['authority'] === 'ROLE_ADMIN' ? true : false
+      this.isAdmin = user['authorities'][0]['authority'] === 'ROLE_ADMIN'
       this.id = user['id']
       this.username = user['username']
     }else{
@@ -26,7 +26,7 @@ export class AuthService {
   }
 
   login(username, password) {
-    return this.httpClient.post('/login', {
+    return this.httpClient.post('/api/users/login', {
       username,
       password
     })
@@ -40,7 +40,7 @@ export class AuthService {
   }
   setUserDetails(user){
       this.isLoggedIn = true
-      this.isAdmin = user['authorities'][0]['authority'] === 'ROLE_ADMIN' ? true : false
+      this.isAdmin = user['authorities'][0]['authority'] === 'ROLE_ADMIN'
       this.username = user['username']
       this.id = user['id']
   }
