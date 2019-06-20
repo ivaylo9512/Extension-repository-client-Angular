@@ -18,8 +18,8 @@ export class TagsComponent implements OnInit {
   @ViewChildren('extensionDescriptions') extensionDescriptions: QueryList<any>
   @ViewChild(MouseWheelDirective) wheelDirective: MouseWheelDirective
 
-  extensions : any[]
-  tag : string
+  extensions: any[]
+  tag: string
   routeSubscription: Subscription
 
   config = {
@@ -31,6 +31,24 @@ export class TagsComponent implements OnInit {
 
   constructor(private extensionService: ExtensionsService, private route: ActivatedRoute, private router: Router) { 
     this.extensions = undefined
+  }
+
+  ngOnInit() {
+    this.tag = this.route.snapshot.paramMap.get('tag')
+    this.findByTag(this.tag)
+  }
+
+  ngOnDestroy() {
+    if (this.routeSubscription) {  
+      this.routeSubscription.unsubscribe();
+    }
+  }
+
+  ngAfterViewInit() {
+    this.extensionDescriptions.changes.subscribe(descriptions => {
+      this.fixOverflow(descriptions.toArray())
+    })
+
     this.routeSubscription = this.router.events.subscribe((e: any) => {
       if (e instanceof NavigationEnd) {
         this.tag = this.route.snapshot.paramMap.get('tag')
@@ -39,26 +57,13 @@ export class TagsComponent implements OnInit {
     })
   }
 
-  ngOnInit() {
-    this.tag = this.route.snapshot.paramMap.get('tag')
-    this.findByTag(this.tag)
-  }
-  ngOnDestroy() {
-    if (this.routeSubscription) {  
-      this.routeSubscription.unsubscribe();
-   }
-  }
   findByTag(tag: string){
     this.extensionService.getByTag(tag).subscribe(tagDto =>{
       this.extensions = tagDto['extensions']
       this.config.totalItems = tagDto['totalExtensions']
     })
   }
-  ngAfterViewInit() {
-    this.extensionDescriptions.changes.subscribe(descriptions => {
-      this.fixOverflow(descriptions.toArray())
-    })
-  }
+
   fixOverflow(descriptions){
     descriptions.forEach((description, i) => {
       description.nativeElement.innerHTML = this.extensions[i].description
@@ -79,6 +84,7 @@ export class TagsComponent implements OnInit {
       }
     })
   }
+
   changePage(page){
     this.config.currentPage = page
     this.wheelDirective.calculateScrollAmount()

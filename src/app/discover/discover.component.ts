@@ -21,7 +21,7 @@ export class DiscoverComponent implements OnInit {
   @ViewChild(MouseWheelDirective) wheelDirective: MouseWheelDirective
 
   search: FormControl = new FormControl()
-  extensions : any[]
+  extensions: any[]
   routeSubscription: Subscription
 
   config = {
@@ -35,11 +35,6 @@ export class DiscoverComponent implements OnInit {
 
   constructor(private extensionsService: ExtensionsService, private cdRef: ChangeDetectorRef, private router: Router) {
     this.extensions = undefined
-    this.routeSubscription = this.router.events.subscribe((e: any) => {
-      if (e instanceof NavigationEnd) {
-        this.findExtensions(1)
-      }
-    })
    }
 
   ngOnInit() {
@@ -49,11 +44,13 @@ export class DiscoverComponent implements OnInit {
       this.findExtensions(1)
     }) 
   }
+
   ngOnDestroy() {
     if (this.routeSubscription) {  
       this.routeSubscription.unsubscribe();
    }
   }
+
   findExtensions(page: number){
     this.extensionsService.getExtensions(this.config.search, this.config.criteria, (page - 1).toString() , this.config.itemsPerPage.toString()).subscribe(data => {
       this.extensions = data['extensions']
@@ -61,19 +58,28 @@ export class DiscoverComponent implements OnInit {
       this.config.totalItems = data['totalResults']
       this.wheelDirective.calculateScrollAmount()
     })
+  
   }
   changeCriteria(value){
     this.config.criteria = value.target.value
     this.findExtensions(0)
   }
+
   ngAfterViewInit() {
     this.wheelDirective.checkIfMobileScreen()
+
     this.extensionDescriptions.changes.subscribe(descriptions => {
       this.fixOverflow(descriptions.toArray())
     })
     this.cdRef.detectChanges()
 
+    this.routeSubscription = this.router.events.subscribe((e: any) => {
+      if (e instanceof NavigationEnd) {
+        this.findExtensions(1)
+      }
+    })
   }
+
   fixOverflow(descriptions){
     descriptions.forEach((description, i) => {
       description.nativeElement.innerHTML = this.extensions[i].description  

@@ -13,14 +13,14 @@ export class FavExtensionsComponent implements OnInit {
     this.fixOverflow(this.extensionDescriptions)
   }
 
-  @ViewChild('backgroundsContainer') backgroundsContainer : ElementRef
-  @ViewChildren('extensionDescriptions') extensionDescriptions : QueryList<any>
+  @ViewChild('backgroundsContainer') backgroundsContainer: ElementRef
+  @ViewChildren('extensionDescriptions') extensionDescriptions: QueryList<any>
 
-  extensions : any[]
-  currentIndex : number
-  initial : boolean
+  extensions: any[]
+  currentIndex: number
+  initial: boolean
 
-  constructor(private authService : AuthService, private extensionsService : ExtensionsService, private cdRef : ChangeDetectorRef) { 
+  constructor(private authService: AuthService, private extensionsService: ExtensionsService, private cdRef: ChangeDetectorRef) { 
     this.currentIndex = 0
     this.initial = true
     this.extensions = undefined
@@ -69,6 +69,7 @@ export class FavExtensionsComponent implements OnInit {
       this.cdRef.detectChanges();
     })
   }
+
   fixOverflow(descriptions){
     this.initial = true
     descriptions.forEach((description, i) => {

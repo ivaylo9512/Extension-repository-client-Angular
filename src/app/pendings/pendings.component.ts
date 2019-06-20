@@ -17,7 +17,7 @@ export class PendingsComponent implements OnInit {
   @ViewChildren('extensionDescriptions') extensionDescriptions: QueryList<any>
   @ViewChild(MouseWheelDirective) wheelDirective: MouseWheelDirective
 
-  extensions : any[]
+  extensions: any[]
   routeSubscription: Subscription
 
   config = {
@@ -29,6 +29,26 @@ export class PendingsComponent implements OnInit {
 
   constructor(private extensionsService: ExtensionsService, private cdRef: ChangeDetectorRef, private router: Router) { 
     this.extensions = undefined
+  }
+
+  ngOnInit() {
+    this.findPendings()
+  }
+
+  ngOnDestroy() {
+    if (this.routeSubscription) {  
+      this.routeSubscription.unsubscribe();
+   }
+  }
+
+  ngAfterViewInit() {
+    this.wheelDirective.checkIfMobileScreen()
+
+    this.extensionDescriptions.changes.subscribe(descriptions => {
+      this.fixOverflow(descriptions.toArray())
+    })
+    this.cdRef.detectChanges()
+
     this.routeSubscription = this.router.events.subscribe((e: any) => {
       if (e instanceof NavigationEnd) {
         this.findPendings()
@@ -36,27 +56,11 @@ export class PendingsComponent implements OnInit {
     })
   }
 
-  ngOnInit() {
-    this.findPendings()
-  }
-  ngOnDestroy() {
-    if (this.routeSubscription) {  
-      this.routeSubscription.unsubscribe();
-   }
-  }
   findPendings(){
     this.extensionsService.getPendings().subscribe(data => {
       this.extensions = data
       this.config.totalItems = this.extensions.length
     })
-  }
-
-  ngAfterViewInit() {
-    this.wheelDirective.checkIfMobileScreen()
-    this.extensionDescriptions.changes.subscribe(descriptions => {
-      this.fixOverflow(descriptions.toArray())
-    })
-    this.cdRef.detectChanges()
   }
 
   fixOverflow(descriptions){
@@ -79,6 +83,7 @@ export class PendingsComponent implements OnInit {
       }
     })
   }
+
   changePage(page){
     this.config.currentPage = page
     this.wheelDirective.calculateScrollAmount()
