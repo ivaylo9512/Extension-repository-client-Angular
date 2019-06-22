@@ -69,6 +69,32 @@ section{
 .menu input:checked + label{
     text-decoration: underline;
 }
+.circle{
+    background: linear-gradient(#e66465, #9198e5);
+    border-radius: 50%;
+    display: inline-block;
+    position: absolute;
+    z-index: -1;
+    -webkit-transform: translateZ(0) translateY(0);
+    -moz-transform: translateZ(0 translateY(0));
+    -ms-transform: translateZ(0) translateY(0);
+    -o-transform: translateZ(0) translateY(0);
+    transform: translateZ(0) translateY(0);
+    transition: 5s all;
+}
+.circle.first{
+    width: 35%;
+    padding-bottom: 35%;
+    right: 0;
+    top: 0;
+    margin-right: -12%;
+    margin-top: -10%;
+
+    -webkit-animation: initial-translate 3s forwards; 
+    -moz-animation: initial-translate 3s forwards; 
+      -o-animation: initial-translate 3s forwards;
+         animation: initial-translate 3s forwards; 
+}
 .users form{
     height: 100%;
     width: 100%;
@@ -336,4 +362,44 @@ section{
     .rating i {
         font-size: 1.3em;
     }
+    .circle.first{
+        width: 71%;
+        padding-bottom: 71%;
+        right: 0;
+        top: 0;
+        margin-right: -36%;
+        margin-top: -21%;
+    }
 }
+@-webkit-keyframes initial-translate {
+    from {
+      transform: translateY(80%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+  @-moz-keyframes initial-translate {
+    from {
+      transform: translateY(80%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+  @-o-keyframes initial-translate {
+    from {
+      transform: translateY(80%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+  @keyframes initial-translate {
+    from {
+      transform: translateY(80%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
