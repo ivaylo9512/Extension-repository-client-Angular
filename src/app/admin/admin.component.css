@@ -278,6 +278,20 @@ section{
     height: 100%;
     margin-right: 5px;
 }
+.rating{
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    align-items: center;
+    height: 25%;
+    width: 75%;
+    float: right;
+}
+.rating i{
+    font-size: 1.6em;
+    color: #f6cd61;
+}
 .pagination{
     width: 100%;
     margin-bottom: 30px;

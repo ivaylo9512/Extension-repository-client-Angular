@@ -15,7 +15,7 @@ export class AdminComponent implements OnInit {
 
   config = {
     id: 'custom',
-    itemsPerPage: 13,
+    itemsPerPage: 15,
     currentPage: 1,
     totalItems: null
   }

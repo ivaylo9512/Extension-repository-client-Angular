@@ -49,6 +49,18 @@
                     <p #userDescriptions>
                         {{user.info}}
                     </p>
+                    <div class="rating">
+                        <i *ngIf="user.rating == 0.5" class="fas fa-star-half"></i>
+                        <i *ngIf="user.rating >= 1" class="fas fa-star"></i>
+                        <i *ngIf="user.rating == 1.5" class="fas fa-star-half"></i>
+                        <i *ngIf="user.rating >= 2" class="fas fa-star"></i>
+                        <i *ngIf="user.rating == 2.5" class="fas fa-star-half"></i>
+                        <i *ngIf="user.rating >= 3" class="fas fa-star"></i>
+                        <i *ngIf="user.rating == 3.5" class="fas fa-star-half"></i>
+                        <i *ngIf="user.rating >= 4" class="fas fa-star"></i>
+                        <i *ngIf="user.rating == 4.5" class="fas fa-star-half"></i>
+                        <i *ngIf="user.rating >= 5" class="fas fa-star"></i>
+                    </div>
                     <div class="state">
                         <button (click)="setState(user, $event)">
                             <i *ngIf="user.isActive" class="fas fa-times-circle"></i>
