@@ -25,25 +25,6 @@ section{
 .fav-extensions{
     height: 100vh;
 }
-.fav-extensions ul{
-    position: absolute;
-    bottom: 5%;
-    width: 100%;
-    z-index: 4;
-    text-align:center;
-}
-.fav-extensions li{
-	display:inline-block;
-    height: auto;
-    width: 1%;
-    margin-right: 0.5%;
-    padding-top: 1%;
-    background-color: rgba(250, 250, 250, 0.3);
-    border-radius: 50%;
-}
-.fav-extensions li:hover{
-    background-color: rgba(0, 0, 0, 0.5);
-}
 .fav-extensions .current{
     background-color: rgba(0, 0, 0, 0.973);
 }
@@ -206,22 +187,23 @@ section{
         box-shadow: none;
         background: black;
         left: 0;
-        margin: -5% 0 0 -5%; 
+        margin: -5% 0 0 0%;
     }
 
     .fav-extensions{
         height: 8vh;
         background: black;
         position: relative;
-
     }
+    .extension-info{
+        display: none;
+    } 
     section{
         height: 8vh;
+        z-index: 7;
+        position: relative;
     }
     .backgrounds {
-        display: none;
-    }
-    .extension-info p{
         display: none;
     }
     .info-box{
@@ -233,16 +215,19 @@ section{
         height: 100%;
         bottom: 0;
         left: 50%;
+        margin-left: -5%;
     }
-    .name{
-        display: none;
-    }
+
     .info-box .logo-box{
         margin: -35% 0 0 -35%;
         width: 70%;
     }
     .rating{
         float: right;
+    }
+    .info-box:hover .logo-container{
+        width: 10%;
+        height: 100%;
     }
 
 }

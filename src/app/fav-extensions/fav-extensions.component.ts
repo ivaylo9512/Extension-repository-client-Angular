@@ -28,8 +28,7 @@ export class FavExtensionsComponent implements OnInit {
 
   ngOnInit() {
     this.extensionsService.getFeatured().subscribe(data => {
-      this.extensions = data;
-      this.extensions = this.extensions[0]
+      this.extensions = data
       this.setSlideShow()
     })
   }
@@ -37,8 +36,8 @@ export class FavExtensionsComponent implements OnInit {
   setSlideShow(){
     const backgrounds = this.backgroundsContainer.nativeElement.children
 
-    let currentBackground = backgrounds[this.currentIndex];
-    let nextBackground = backgrounds[this.currentIndex + 1];
+    let currentBackground = backgrounds[this.currentIndex]
+    let nextBackground = backgrounds[this.currentIndex + 1]
 
     let selected = false;
     setInterval(() => {
@@ -58,16 +57,16 @@ export class FavExtensionsComponent implements OnInit {
             setTimeout(() => {
                 currentBackground.classList.remove('backward');
                 currentBackground = nextBackground
-            }, 2000);
+            }, 2000)
         }
         selected = false;
-    }, 5000);
+    }, 5000)
   }
 
   ngAfterViewInit() {
     this.extensionDescriptions.changes.subscribe(descriptions => {
       this.fixOverflow(descriptions.toArray())
-      this.cdRef.detectChanges();
+      this.cdRef.detectChanges()
     })
   }
 

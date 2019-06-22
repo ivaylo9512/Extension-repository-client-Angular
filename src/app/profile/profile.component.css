@@ -27,7 +27,6 @@
     padding-bottom: 100%;
     width: 100%;
     position: absolute;
-    z-index: 2;
     transition: 2s;
 }
 .info-container{
@@ -140,7 +139,9 @@
     display: -ms-flexbox;
     display: flex;
     align-items: center;
-    height: 50%;
+    height: calc(50% - 20px);
+    padding: 10px 5px;
+    text-align: center;
     color: black;
 }
 .extension-info b{
@@ -215,6 +216,7 @@
 }
 .user-info-container-mobile{
     display: none;
+    position: relative;
 }
 .profile{
     overflow: hidden;

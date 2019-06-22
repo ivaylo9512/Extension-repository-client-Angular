@@ -271,13 +271,15 @@ section{
     font-size: 1.3em;
     font-style: italic;
     visibility: visible;
+    height: calc(50% - 20px);
+    padding: 10px 5px;
+    text-align: center;
+    color: black;
+    align-items: center;
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    height: 50%;
-    color: black;
 }
 .user-info b{
     margin-left: 5px;

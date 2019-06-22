@@ -188,8 +188,15 @@ h1{
     font-style: italic;
     visibility: visible;
     display: block;
-    height: 50%;
+    height: calc(50% - 20px);
+    padding: 10px 5px;
+    text-align: center;
     color: black;
+    align-items: center;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
 }
 .extension-info b{
     margin-left: 5px;
