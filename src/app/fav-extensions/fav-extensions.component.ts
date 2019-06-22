@@ -29,6 +29,7 @@ export class FavExtensionsComponent implements OnInit {
   ngOnInit() {
     this.extensionsService.getFeatured().subscribe(data => {
       this.extensions = data;
+      this.extensions = this.extensions[0]
       this.setSlideShow()
     })
   }

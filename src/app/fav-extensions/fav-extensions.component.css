@@ -221,22 +221,28 @@ section{
     .backgrounds {
         display: none;
     }
-
+    .extension-info p{
+        display: none;
+    }
     .info-box{
         width: 100%;
         padding-bottom: 10%;
     }
-
     .logo-container{
         width: 10%;
         height: 100%;
         bottom: 0;
         left: 50%;
     }
-    
+    .name{
+        display: none;
+    }
     .info-box .logo-box{
         margin: -35% 0 0 -35%;
         width: 70%;
+    }
+    .rating{
+        float: right;
     }
 
 }
