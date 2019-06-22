@@ -12,6 +12,7 @@ interface Extension {
   ownerName: string,
   ownerId: number,
   gitHubLink: string,
+  githubId: number,
   lastCommit: string,
   uploadDate: string,
   openIssues: number,

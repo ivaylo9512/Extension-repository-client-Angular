@@ -109,10 +109,10 @@ export class EditComponent implements OnInit {
       const id = this.extension.id
       const name = this.nameInput.value
       const github = this.extension.gitHubLink
+      const githubId = this.extension.githubId
       const version = this.extension.version
       const description = this.extension.description
       const tags = this.tags.length > 0 ? this.tags.toString() : undefined
-      
       this.gitHubAvailable = undefined
 
       const extension = {
@@ -121,6 +121,7 @@ export class EditComponent implements OnInit {
         version,
         description,
         github,
+        githubId,
         tags
       }
       this.formData.set('extension', JSON.stringify(extension))

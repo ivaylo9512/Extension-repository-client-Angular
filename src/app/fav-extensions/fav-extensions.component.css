@@ -202,12 +202,43 @@ section{
 }
 @media (max-width: 1200px) {
     .fav-extensions .info-container {
-        width: 38%;
-        margin: -19% 0 0 -19%;
+        width: 100%;
+        box-shadow: none;
+        background: black;
+        left: 0;
+        margin: -5% 0 0 -5%; 
     }
-    .backgrounds img{
-        background-position: left bottom;
+
+    .fav-extensions{
+        height: 8vh;
+        background: black;
+        position: relative;
+
     }
+    section{
+        height: 8vh;
+    }
+    .backgrounds {
+        display: none;
+    }
+
+    .info-box{
+        width: 100%;
+        padding-bottom: 10%;
+    }
+
+    .logo-container{
+        width: 10%;
+        height: 100%;
+        bottom: 0;
+        left: 50%;
+    }
+    
+    .info-box .logo-box{
+        margin: -35% 0 0 -35%;
+        width: 70%;
+    }
+
 }
 @-webkit-keyframes fadeIn {
     0%   { opacity: 0; }
