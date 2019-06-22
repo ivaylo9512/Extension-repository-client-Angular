@@ -36,7 +36,6 @@ export class AuthService {
     localStorage.removeItem('user')
     this.isLoggedIn = false
     this.isAdmin = false
-    this.router.navigate(['login'])
   }
   setUserDetails(user){
       this.isLoggedIn = true

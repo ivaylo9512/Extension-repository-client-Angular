@@ -39,6 +39,7 @@ section{
     overflow: auto;
     position: relative;
     z-index: 6;
+    margin-top: 15px;
 }
 .admin-menu button{
     float: right;
@@ -158,7 +159,8 @@ section{
     font-weight: bold;
 }
 .extension h5{
-    margin-top: 4%;
+    margin-top: 15px;
+    margin-bottom: 5px;
     font-size: 1.8em;
     font-weight: bold;
     text-decoration: underline;

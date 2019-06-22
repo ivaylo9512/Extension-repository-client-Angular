@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChildren, QueryList, ViewChild, ElementRef, HostListener } from '@angular/core';
+import { Component, OnInit, ViewChildren, QueryList, ViewChild, ElementRef, HostListener, ChangeDetectorRef } from '@angular/core';
 import { ExtensionsService } from '../services/extensions.service';
 import { ActivatedRoute, Params, Route, Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
@@ -15,22 +15,20 @@ export class ExtensionComponent implements OnInit {
     this.fixOverflow(this.extensionDescription)
   }
 
-  @ViewChildren('extensionDescription') extensionDescription : QueryList<any>
-  @ViewChild(MouseWheelDirective) wheelDirective : MouseWheelDirective
-  @ViewChild('extensionSection') extensionSection : ElementRef
-  @ViewChild("slidingContainer") slidingContainer : ElementRef
+  @ViewChildren('extensionDescription') extensionDescription: QueryList<any>
+  @ViewChild(MouseWheelDirective) wheelDirective: MouseWheelDirective
+  @ViewChild('extensionSection') extensionSection: ElementRef
+  @ViewChild("slidingContainer") slidingContainer: ElementRef
 
-  extension : any
+  extension: any
 
-  constructor(private extensionService : ExtensionsService, private router : Router, private authService : AuthService, private route: ActivatedRoute) { }
+  constructor(private extensionService: ExtensionsService, private router: Router, private authService: AuthService, private route: ActivatedRoute, private cdRef: ChangeDetectorRef ) {
+    this.extension = []
+  }
 
   ngOnInit() {
-    this.extension = []
-    const currentExtension = this.extensionService.currentExtension != undefined && +this.route.snapshot.paramMap.get('id') == this.extensionService.currentExtension.id
-    
-    currentExtension ? this.setExtension(this.extensionService.currentExtension) :
-      this.getExtension(+this.route.snapshot.paramMap.get('id'))
   }
+  
   setExtension(extension){
     this.extension = extension
 
@@ -39,6 +37,7 @@ export class ExtensionComponent implements OnInit {
       this.wheelDirective.extensionComponent.isCoverPresent = false
     }    
   }
+
   getExtension(id : number){
     this.extensionService.getExtension(id).subscribe(data =>{
       this.extension = data
@@ -50,6 +49,7 @@ export class ExtensionComponent implements OnInit {
       }
     })
   }
+
   setFeatureState(){
     let state : string
     if(this.extension.featured){
@@ -61,11 +61,13 @@ export class ExtensionComponent implements OnInit {
       this.extension.featured = data['featured']
     })
   }
+
   deleteExtension(){
     this.extensionService.deleteExtension(this.extension.id).subscribe(data =>{
       this.router.navigate(['/home'])   
     })
   }
+
   setPublishState(){
     let state : string
     if(this.extension.pending){
@@ -95,16 +97,25 @@ export class ExtensionComponent implements OnInit {
       this.extension.currentUserRatingValue = userRating
     })
   }
+
   ngAfterViewInit() {
     this.wheelDirective.extensionComponent.slidingContainer = this.slidingContainer
     this.wheelDirective.extensionComponent.extensionSection = this.extensionSection
     this.extensionDescription.changes.subscribe(descriptions => {
       this.fixOverflow(descriptions.toArray())
     })
+
+    const currentExtension = this.extensionService.currentExtension != undefined && +this.route.snapshot.paramMap.get('id') == this.extensionService.currentExtension.id
+    currentExtension ? this.setExtension(this.extensionService.currentExtension) :
+      this.getExtension(+this.route.snapshot.paramMap.get('id'))
+    
+    this.cdRef.detectChanges()
   }
+
   ngOnDestroy() {
     this.extensionService.currentExtension = undefined
   }
+
   fixOverflow(descriptions){
     descriptions.forEach(description => {
       description.nativeElement.innerHTML = this.extension.description

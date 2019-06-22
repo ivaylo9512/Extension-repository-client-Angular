@@ -52,7 +52,7 @@ export class ExtensionsService {
     return this.httpClient.get<any>(`/api/tag/${tag}`)
   }
   editExtension(id : number, formData){
-    return this.httpClient.post<Extension>(`/api/extensions/auth/edit/${id}`, formData)
+    return this.httpClient.post<Extension>(`/api/extensions/auth/edit`, formData)
   }
   createExtension(formData){
     return this.httpClient.post<Extension>('/api/extensions/auth/create', formData)
@@ -79,7 +79,7 @@ export class ExtensionsService {
     return this.httpClient.delete(`/api/extensions/auth/${id}`)
   }
   refreshGitHub(id : number){
-    return this.httpClient.patch<Extension>(`/api/extensions/auth/${id}/github`,null)
+    return this.httpClient.patch(`/api/github/auth/${id}/fetch`,null)
   }
   rateExtension(id : number, rating : string){
     return this.httpClient.patch(`/api/rating/auth/rate/${id}/${rating}`, {})

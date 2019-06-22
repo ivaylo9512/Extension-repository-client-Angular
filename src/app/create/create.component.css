@@ -216,6 +216,8 @@ button:hover i{
     display: -ms-flexbox;
     display: flex;
     align-items: center;
+    text-align: center;
+    justify-content: center;
 }
 .github{
     margin-bottom: -20%;
@@ -259,6 +261,9 @@ button:hover i{
     color: white;
     border: 3px solid white;
     margin-top: 3px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 .tags div,
 .github span{
@@ -486,6 +491,7 @@ button:hover i{
         position: relative;
         text-align: center;
         height: 40%;
+        padding: 0px 10px;
     }
     .extension-mobile input{
         text-align: center;

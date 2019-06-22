@@ -106,14 +106,17 @@ export class EditComponent implements OnInit {
 
   editExtension(){
     if(this.nameAvailable && this.gitHubAvailable){
+      const id = this.extension.id
       const name = this.nameInput.value
       const github = this.extension.gitHubLink
       const version = this.extension.version
       const description = this.extension.description
-      const tags = this.tags.toString()  
+      const tags = this.tags.length > 0 ? this.tags.toString() : undefined
+      
       this.gitHubAvailable = undefined
 
       const extension = {
+        id,
         name,
         version,
         description,

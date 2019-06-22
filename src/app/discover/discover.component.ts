@@ -62,7 +62,7 @@ export class DiscoverComponent implements OnInit {
   }
   changeCriteria(value){
     this.config.criteria = value.target.value
-    this.findExtensions(0)
+    this.findExtensions(1)
   }
 
   ngAfterViewInit() {

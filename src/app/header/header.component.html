@@ -21,7 +21,7 @@
                 <ul>
                     <li><a [routerLink]="['/home/profile', this.authService.id]">Profile</a></li>
                     <li><a routerLink="/admin">Admin</a></li>
-                    <li><a href="" (click)="this.authService.logout()">Logout</a></li>
+                    <li><a routerLink="/login" (click)="this.authService.logout()">Logout</a></li>
                 </ul>
             </li>
             <li><a routerLink="/home">Home</a></li>
