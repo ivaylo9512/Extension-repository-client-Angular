@@ -22,13 +22,11 @@ header.hidden {
 nav {
     float: right;
     height: 100%;
-    padding-right: 5%;
-
+    padding-right: 1%;
 }
 li {
   float: left;
 }
-
 li a{
     color: white;
     display: inline-block;
@@ -36,23 +34,15 @@ li a{
     padding: 7px 12px;
     text-decoration: none;
 }
-.user > a{
+.user{
+    float: left;
+}
+.user a{
     text-decoration: underline;
     font-size: 80%;
     padding: 8.5px 12px;
 }
-.user:hover ul{
-    display: block;
 
-}
-nav > ul ul li{
-    display: block;
-    float: none;
-    background: black;
-}
-nav > ul ul{
-    display: none;
-}
 span{
     background: linear-gradient(#e66465, #9198e5);
     border-radius: 50%;
@@ -105,7 +95,4 @@ nav span {
     -ms-transform: translateY(-30%);
         transform: translateY(-30%);
     
-}
-nav .user li {
-    display: block;
 }
