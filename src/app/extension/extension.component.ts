@@ -101,6 +101,7 @@ export class ExtensionComponent implements OnInit {
   ngAfterViewInit() {
     this.wheelDirective.extensionComponent.slidingContainer = this.slidingContainer
     this.wheelDirective.extensionComponent.extensionSection = this.extensionSection
+    this.wheelDirective.checkIfMobileScreen()
     this.extensionDescription.changes.subscribe(descriptions => {
       this.fixOverflow(descriptions.toArray())
     })

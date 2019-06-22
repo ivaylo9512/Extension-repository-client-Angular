@@ -71,6 +71,8 @@ export class MouseWheelDirective implements OnInit {
 
       this.submitComponent.currentSection = 'extensionSection'
       this.submitComponent.isFinished = true
+      
+      this.extensionComponent.currentSection = 'extensionSection'
     }else{
       this.isMobile = false
     }
@@ -102,6 +104,7 @@ export class MouseWheelDirective implements OnInit {
         if (e.deltaY > 0) {
           this.submitComponent.currentSection = 'extensionSection'
         }
+
       }else if(this.submitComponent.currentSection == 'extensionSection'){
         if(e.deltaY < 0 && extensionOpacity == '1'){
           this.submitComponent.currentSection = 'coverSection'
@@ -110,28 +113,33 @@ export class MouseWheelDirective implements OnInit {
     }
   }
   extensionAnimation(e){
-    const extensionOpacity = window.getComputedStyle(this.extensionComponent.extensionSection.nativeElement).getPropertyValue('opacity')
-    const sliderOpacity = window.getComputedStyle(this.extensionComponent.slidingContainer.nativeElement).getPropertyValue('opacity')
+    if(!this.isMobile){
+      const extensionOpacity = window.getComputedStyle(this.extensionComponent.extensionSection.nativeElement).getPropertyValue('opacity')
+      const sliderOpacity = window.getComputedStyle(this.extensionComponent.slidingContainer.nativeElement).getPropertyValue('opacity')
 
-    const currentSection = this.extensionComponent.currentSection
-    if(this.extensionComponent.isCoverPresent){
-      if(currentSection == 'coverSection'){
-        if(e.deltaY > 0){
+      const currentSection = this.extensionComponent.currentSection
+      if(this.extensionComponent.isCoverPresent){
+        if(currentSection == 'coverSection'){
+          if(e.deltaY > 0){
+            this.extensionComponent.currentSection = 'extensionSection'
+          }
+          
+        }else if(currentSection == 'extensionSection'){
+          if(e.deltaY < 0 && sliderOpacity == '0'){
+            this.extensionComponent.currentSection = 'coverSection'
+          }
+        }
+
+      }
+      
+      if(currentSection == 'extensionSection'){
+        if(e.deltaY > 0 && extensionOpacity == '1'){
+          this.extensionComponent.currentSection = 'infoSection'
+        }
+      }else if(currentSection == 'infoSection'){
+        if(e.deltaY < 0 ){
           this.extensionComponent.currentSection = 'extensionSection'
         }
-      }else if(currentSection == 'extensionSection'){
-        if(e.deltaY < 0 && sliderOpacity == '0'){
-          this.extensionComponent.currentSection = 'coverSection'
-        }
-      }
-    }
-    if(currentSection == 'extensionSection'){
-      if(e.deltaY > 0 && extensionOpacity == '1'){
-        this.extensionComponent.currentSection = 'infoSection'
-      }
-    }else if(currentSection == 'infoSection'){
-      if(e.deltaY < 0 ){
-        this.extensionComponent.currentSection = 'extensionSection'
       }
     }
   }
