@@ -98,9 +98,8 @@ section{
     overflow: hidden;
     position: relative;
     border-radius: 16px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border: 3px solid white;
-    margin-bottom: 13.5%;
+    margin-bottom: 0.5%;
 }
 .icon-container{
     display: -webkit-box;
@@ -157,7 +156,7 @@ section{
     margin-right: 5%;
     margin-top: 1%;
     margin-bottom: 2%;
-    width: 15%;
+    width: 20%;
     background-color: rgba(255, 255, 255, 0.3);
     z-index: 4;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -268,7 +267,8 @@ section{
 }
 .state{
     height: 25%;
-    padding-left: 22%;
+    width: 20%;
+    float: right;
 }
 .state button{
     background: transparent;
