@@ -23,7 +23,7 @@ import { TagsComponent } from './tags/tags.component';
 import { RegisterComponent } from './register/register.component';
 import { MouseWheelDirective } from './helpers/mouse-wheel.directive';
 import { FavExtensionsComponent } from './fav-extensions/fav-extensions.component';
-
+import { AuthGuard } from './helpers/auth.guard';
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,20 +59,18 @@ import { FavExtensionsComponent } from './fav-extensions/fav-extensions.componen
         component: RegisterComponent
       },
       { 
-        path: 'extension', 
-        component: ExtensionComponent
-      },
-      { 
         path: 'extension/:id', 
         component: ExtensionComponent
       },
       { 
         path: 'admin', 
-        component: AdminComponent
+        component: AdminComponent,
+        canActivate: [AuthGuard]
       },
       { 
         path: 'edit/:id', 
-        component: EditComponent
+        component: EditComponent,
+        canActivate: [AuthGuard]
       },
       { 
         path: 'tag/:tag', 
@@ -86,12 +84,14 @@ import { FavExtensionsComponent } from './fav-extensions/fav-extensions.componen
       },
       { 
         path: 'create', 
-        component: CreateComponent
+        component: CreateComponent,
+        canActivate: [AuthGuard]
       },
       { 
         path: 'pendings', 
         component: PendingsComponent,
-        runGuardsAndResolvers: 'always'
+        runGuardsAndResolvers: 'always',
+        canActivate: [AuthGuard]
       },
       { 
         path: 'home', 

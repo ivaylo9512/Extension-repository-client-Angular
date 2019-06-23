@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -10,6 +11,7 @@ export class AuthService {
   isAdmin : boolean
   id : number
   username : string
+  user = new BehaviorSubject(JSON.parse(localStorage.getItem('user')));
 
   constructor(private httpClient : HttpClient, private router : Router) { 
     if(localStorage.getItem('user') && localStorage.getItem('Authorization')){
@@ -36,6 +38,7 @@ export class AuthService {
     localStorage.removeItem('user')
     this.isLoggedIn = false
     this.isAdmin = false
+    this.router.navigate(['login'])
   }
   setUserDetails(user){
       this.isLoggedIn = true

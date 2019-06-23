@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { NgForm } from '@angular/forms'
-import { Router } from '@angular/router'
+import { Router, ActivatedRoute } from '@angular/router'
 
 @Component({
   selector: 'app-login',
@@ -9,11 +9,13 @@ import { Router } from '@angular/router'
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  error : string;
+  error: string;
+  returnUrl: string
 
-  constructor(private authService : AuthService, private router : Router) { }
+  constructor(private authService: AuthService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/home'
   }
 
   login(userForm : NgForm) {
@@ -24,7 +26,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('Authorization', data['token'])
         localStorage.setItem('user', JSON.stringify(data))
         this.authService.setUserDetails(data)
-        this.router.navigate(['/home'])
+        this.router.navigate([this.returnUrl])
 
       },
       err  => this.error = err
