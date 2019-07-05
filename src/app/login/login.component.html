@@ -1,22 +1,23 @@
-<span class="circle"></span>
-<span class="circle2"></span>
-<form #userForm="ngForm" (ngSubmit)="login(userForm)" autocomplete="on">
-    <div class="inputs-container">
-        <div>  
-            <i class="fas fa-user"></i>
-            <input name="username" type="text" placeholder="username" ngModel required autocomplete="username">
+<section>
+    <span class="circle"></span>
+    <form #userForm="ngForm" (ngSubmit)="login(userForm)" autocomplete="on">
+        <div class="inputs-container">
+            <div>  
+                <i class="fas fa-user"></i>
+                <input name="username" type="text" placeholder="username" ngModel required autocomplete="username">
+            </div>
+            <div>  
+                <i class="fas fa-key"></i>
+                <input name="password" type="password" placeholder="password" ngModel required autocomplete="password">
+            </div>
         </div>
-        <div>  
-            <i class="fas fa-key"></i>
-            <input name="password" type="password" placeholder="password" ngModel required autocomplete="password">
+        <div class="buttons-container">
+            <button type="submit">login</button>
+            <button routerLink="/register">register</button>
         </div>
+        <span class="circle2"></span>
+    </form>
+    <div class="errors" *ngIf="error">
+        <i class="fas fa-exclamation-triangle"></i>{{error}}
     </div>
-    <div class="buttons-container">
-        <button type="submit">login</button>
-        <button routerLink="/register">register</button>
-    </div>
-    <span class="circle3"></span>
-</form>
-<div class="errors" *ngIf="error">
-    <i class="fas fa-exclamation-triangle"></i>{{error}}
-</div>
+</section>
