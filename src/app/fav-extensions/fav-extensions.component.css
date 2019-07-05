@@ -187,7 +187,7 @@ section{
         box-shadow: none;
         background: black;
         left: 0;
-        margin: -5% 0 0 0%;
+        margin: -4.5vh 0 0 0%;
     }
 
     .fav-extensions{
@@ -208,7 +208,7 @@ section{
     }
     .info-box{
         width: 100%;
-        padding-bottom: 10%;
+        padding-bottom: 9vh;
     }
     .logo-container{
         width: 9vh;

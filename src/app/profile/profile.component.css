@@ -218,6 +218,12 @@
     display: none;
     position: relative;
 }
+.info-button{
+    position: absolute;
+    left: 59%;
+    top: calc(50%);
+    margin-top: -8%;
+}
 .profile{
     overflow: hidden;
     height: 50%;
@@ -342,17 +348,9 @@
     .second-section{
         position: relative;
     }
-    .profile-section .circle{
-        width: 130%;
-        padding-bottom: 130%;
-        left: 50%;
-        margin-left: -65%;
-        bottom: 5%;
-        margin-bottom: 15%;
-    }
     .profile-section .info-container {
-        width: 30%;
-        margin: 0 0 0 -15%;
+        width: 30vh;
+        margin: 0 0 0 -15vh;
         top: auto;
         bottom: 6%;
     }
@@ -366,14 +364,18 @@
     .info-container {
         width: 37.5%;
     }
+    .info-button{
+        left: calc(50% + 17vh);
+        top: 27vh;
+        margin: 0;
+    }
     .user-extensions .hover-circle{
-        width: 15%;
-        height: 15%;
-        opacity: 0;
+        display: none;
     }
     .logo-container{
         width: 25%;
         height: 25%;
+        overflow: visible;
     }
     .extension-info{
         transition-delay: 1s;
@@ -399,6 +401,48 @@
     .home-component .user-extensions{
         display: block;
     }
+}
+@media (min-width: 767px) and (max-width: 1200px){
+    .profile-section .circle{
+        width: 130%;
+        padding-bottom: 130%;
+        left: 50%;
+        margin-left: -65%;
+        bottom: 17vh;
+        margin-bottom: 0px;
+    }
+}
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    .profile-section .circle{
+        width: 130%;
+        padding-bottom: 130%;
+        left: 50%;
+        margin-left: -65%;
+        bottom: 17vh;
+        margin-bottom: 0px;
+    }
+}
+@media (min-width: 481px) and (max-width: 767px) {
+  
+    .profile-section .circle{
+        width: 130%;
+        padding-bottom: 130%;
+        left: 50%;
+        margin-left: -65%;
+        bottom: 10vh;
+        margin-bottom: 0px;
+    }
+}
+@media (max-width: 480px) {
+  
+    .profile-section .circle{
+        width: 70vh;
+        padding-bottom: 70vh;
+        left: 50%;
+        margin-left: -35vh;
+        bottom: 10vh;
+    }
+    
 }
 @-webkit-keyframes fadeIn {
     0%   { opacity: 0; }
