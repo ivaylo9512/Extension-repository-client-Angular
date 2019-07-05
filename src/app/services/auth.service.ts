@@ -11,7 +11,6 @@ export class AuthService {
   isAdmin : boolean
   id : number
   username : string
-  user = new BehaviorSubject(JSON.parse(localStorage.getItem('user')));
 
   constructor(private httpClient : HttpClient, private router : Router) { 
     if(localStorage.getItem('user') && localStorage.getItem('Authorization')){
@@ -33,6 +32,7 @@ export class AuthService {
       password
     })
   }
+
   logout() {
     localStorage.removeItem('Authorization')
     localStorage.removeItem('user')
@@ -40,6 +40,7 @@ export class AuthService {
     this.isAdmin = false
     this.router.navigate(['login'])
   }
+  
   setUserDetails(user){
       this.isLoggedIn = true
       this.isAdmin = user['authorities'][0]['authority'] === 'ROLE_ADMIN'

@@ -11,10 +11,9 @@ import { MouseWheelDirective } from '../helpers/mouse-wheel.directive';
 })
 export class ProfileComponent implements OnInit {
   @HostListener('window:resize', ['$event'])
-  onResize(event) {
+  onResize() {
     this.handleExtensionsDescription(this.extensionDescriptions)
     this.handleUserInfo(this.userInfo)
-    this.wheelDirective.checkIfMobileScreen()
   }
 
   loggedUser: any

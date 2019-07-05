@@ -24,10 +24,10 @@ import { Subscription } from 'rxjs';
 })
 export class HomeComponent implements OnInit {
 
-  isProfileRoute : boolean
+  isProfileRoute: boolean
   routeSubscription: Subscription
 
-  constructor(private authService : AuthService, private router: Router) {
+  constructor(private authService: AuthService, private router: Router) {
     this.routeSubscription = this.router.events.subscribe((e: any) => {
       if (e instanceof NavigationEnd) {
           this.isProfileRoute = e.urlAfterRedirects != '/home'

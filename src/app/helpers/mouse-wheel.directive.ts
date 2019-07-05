@@ -2,6 +2,7 @@ import { Directive,OnInit, HostListener,  ElementRef, ViewChild } from '@angular
 import { AuthService } from '../services/auth.service';
 import { ActivatedRoute } from '@angular/router';
 import { JSDocCommentStmt } from '@angular/compiler';
+import { HeaderService } from './header.service';
 
 
 @Directive({ selector: '[mouseWheel]' })
@@ -31,7 +32,7 @@ export class MouseWheelDirective implements OnInit {
   currentComponent: string
 
   @ViewChild('tagsContainer') tagsContainer : ElementRef
-  constructor(private authService: AuthService, private route: ActivatedRoute){
+  constructor(private authService: AuthService, private route: ActivatedRoute, private headerService: HeaderService){
   }
 
   @HostListener('wheel', ['$event']) 
@@ -51,21 +52,29 @@ export class MouseWheelDirective implements OnInit {
   }
   @HostListener("window:scroll", ['$event'])
   onWindowScroll(e) {
+    if(this.profileComponent.isHomeView && this.isMobile){
+      this.headerService.setScrollY(scrollY)
+    }
     this.calculateScrollAmount()
   }
+
   @HostListener('window:resize', ['$event'])
   onResize() {
     this.checkIfMobileScreen()
   }
+
   calculateScrollAmount(){
     const clientHeight = document.body.clientHeight
     const innerHeight = window.innerHeight
     this.profileComponent.circleTransform = -(window.scrollY / this.profileComponent.profileHeight * 100)
     this.scrolledAmount = window.scrollY / (clientHeight - innerHeight) * 100 || 0
   }
+
   checkIfMobileScreen(){
     if(window.innerWidth < 1200){
+      this.headerService.isMobile = true
       this.isMobile = true
+
       this.profileComponent.display = true
       this.profileComponent.animate = true
 
@@ -75,8 +84,10 @@ export class MouseWheelDirective implements OnInit {
       this.extensionComponent.currentSection = 'extensionSection'
     }else{
       this.isMobile = false
+      this.headerService.isMobile = false
     }
   }
+
   pofileAnimation(e){
     if(this.authService.isLoggedIn && this.profileComponent.isHomeView && !this.isMobile){
       if(!this.profileComponent.animate){
@@ -97,6 +108,7 @@ export class MouseWheelDirective implements OnInit {
       }
     }
   }
+
   submitAnimation(e){
     const extensionOpacity = window.getComputedStyle(this.submitComponent.extensionSection.nativeElement).getPropertyValue('opacity')
     if(!this.isMobile){
@@ -112,6 +124,7 @@ export class MouseWheelDirective implements OnInit {
       }
     }
   }
+
   extensionAnimation(e){
     if(!this.isMobile){
       const extensionOpacity = window.getComputedStyle(this.extensionComponent.extensionSection.nativeElement).getPropertyValue('opacity')
@@ -143,8 +156,9 @@ export class MouseWheelDirective implements OnInit {
       }
     }
   }
+
   ngOnInit() {
     this.currentComponent = this.route.component['name']
+    this.headerService.currentComponent = this.currentComponent
   }
-
 }

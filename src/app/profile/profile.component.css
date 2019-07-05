@@ -192,7 +192,7 @@
 }
 .home-component .fade-in{
     opacity: 1;
-    transition: all 4s ease-out;
+    transition: opacity 4s ease-out;
     -webkit-animation: fadeIn 4s;
     -moz-animation: fadeIn 4s;
     -o-animation: fadeIn 4s;

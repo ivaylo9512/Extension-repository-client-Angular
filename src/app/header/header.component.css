@@ -13,11 +13,6 @@ header {
     background-color: rgba(0, 0, 0, 0.9);
     z-index: 6;
 }
-header.hidden {
-    -webkit-transform: translateY(-100%);
-        -ms-transform: translateY(-100%);
-            transform: translateY(-100%);
-}
 nav {
     float: right;
     height: 100%;
@@ -95,3 +90,10 @@ nav span {
         transform: translateY(-30%);
     
 }
+
+@media (max-width: 1200px) {
+    header.fixed {
+        position: fixed;
+        top: 0;
+    }
+}   

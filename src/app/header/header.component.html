@@ -1,5 +1,5 @@
-<header>
-    <nav>
+<header #header>
+    <nav #mouseWheel>
         <ul *ngIf="!this.authService.isLoggedIn">
             <li><a routerLink="/home">Home</a></li>
             <li><a routerLink="/discover">Discover</a></li>
@@ -18,7 +18,7 @@
         </ul>
         <ul *ngIf="this.authService.isLoggedIn && this.authService.isAdmin">
             <ul class="user">
-                <li><a routerLink="/login" (click)="this.authService.logout()">Logout</a></li>
+                <li><a routerLink="/login" (click)="this.authService.logout()">logout</a></li>
                 <li><a [routerLink]="['/home/profile', this.authService.id]">{{this.authService.username}}</a>
             </ul>
             <li><a routerLink="/home">Home</a></li>
