@@ -2,6 +2,8 @@ section{
     padding-top: 30px;
     height: calc(100vh - 30px);
     width: 100%;
+    overflow-x: hidden;
+    position: relative;
 }
 .search{
     height: 16%;
@@ -110,7 +112,7 @@ section{
 .users form button{
     border-radius: 5px;
     background: black;
-    padding: 10px 20px;
+    padding: 5px 11px;
     margin-top: 8px;
     border: 0px;
     color: white;
@@ -118,31 +120,16 @@ section{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .github-settings {
-    width: 12%;
-    padding-bottom: 22%;
-    float: right;
+    width: 20%;
+    padding-bottom: 20%;
     overflow: hidden;
-    position: relative;
-    border-radius: 16px;
+    position: absolute;
+    border-radius: 50%;
+    bottom: 2%;
+    right: 3%;
     border: 3px solid white;
     margin-bottom: 0.5%;
-}
-.icon-container{
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    align-items: center;
-    font-size: 4em;
-    text-align: center;
-    color: white;
-    background: black;
-    justify-content: center;
-    height: 100%;
-    float: left;
-    background: black;
-    width: 100%;
-    position: relative;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .github-settings:hover .icon-container{
     display: none;
@@ -167,12 +154,34 @@ section{
     padding: 5px;
     text-align: center;
 }
+.github-settings button{
+    background: transparent;
+    border: 0px;
+}
+.icon-container{
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    align-items: center;
+    font-size: 2.5em;
+    text-align: center;
+    color: white;
+    justify-content: center;
+    height: 100%;
+    background: black;
+    width: 100%;
+    position: absolute;
+    top: 0;
+}
 .users{
     width: 85%;
+    margin-top: 12px;
     padding-left: 35px;
     overflow: auto;
     min-height: 65%;
     padding-bottom: 18px;
+    position: relative;
 }
 .info-container{
     position: relative;
@@ -295,13 +304,18 @@ section{
     overflow: hidden;
 }
 .state{
-    height: 25%;
-    width: 20%;
-    float: right;
+    height: 100%;
+}
+.state .fa-times-circle{
+    color: #ff5252;
+}
+.state .fa-check-circle{
+    color: #00ca00;
 }
 .state button{
     background: transparent;
     border: 0px;
+    padding-top: 0.1em;
     float: right;
     font-size: 1.5em;
     height: 100%;
