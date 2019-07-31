@@ -44,20 +44,24 @@ export class AdminComponent implements OnInit {
     this.search.valueChanges.pipe(debounceTime(200)).subscribe(result => this.findUsers(result))
     
   }
+
   findUsers(result : string){
-    this.users = this.foundUsers.filter(user => user.username.startsWith(result))
+    this.users = this.foundUsers.filter(user => user.username.toLowerCase().startsWith(result.toLowerCase()))
+    this.config.totalItems = this.users.length
   }
+
   setGithubSettings(){
-    this.userService.setGithubSettings(this.githubSettings.value).subscribe(data =>{
-      this.githubSettings.setValue(data)
-    })
+    this.userService.setGithubSettings(this.githubSettings.value).subscribe(data => this.githubSettings.setValue(data))
   }
+
   getGithubSettings(){
     this.userService.getGithubSettings().subscribe(data => this.githubSettings.setValue(data))
   }
+
   changeCriteria(value){
     this.getUsers(value.target.value)
   }
+
   getUsers(state : string){
     this.userService.getAllByState(state).subscribe(data =>{
       this.users = data
@@ -65,6 +69,7 @@ export class AdminComponent implements OnInit {
       this.config.totalItems = data.length
     })
   }
+
   setState(user, e){
     e.stopPropagation()
     const state = user.isActive ? 'block' : 'enable'
@@ -72,6 +77,7 @@ export class AdminComponent implements OnInit {
       user.isActive = data.isActive
     })
   }
+  
   ngAfterViewInit() {
     this.userDescriptions.changes.subscribe(descriptions => {
       descriptions.toArray().forEach(description => {
@@ -93,4 +99,5 @@ export class AdminComponent implements OnInit {
       })
     })
   }
+  
 }
