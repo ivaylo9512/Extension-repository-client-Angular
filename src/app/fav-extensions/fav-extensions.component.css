@@ -226,7 +226,7 @@ section{
         float: right;
     }
     .info-box:hover .logo-container{
-        width: 10%;
+        width: 9vh;
         height: 100%;
     }
 

@@ -96,4 +96,7 @@ nav span {
         position: fixed;
         top: 0;
     }
+    .user a{
+        padding: 8.5px 6px;
+    }
 }   
