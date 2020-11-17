@@ -3,6 +3,7 @@ import { ExtensionsService } from '../services/extensions.service';
 import { MouseWheelDirective } from '../helpers/mouse-wheel.directive';
 import { Subscription } from 'rxjs';
 import { Router, NavigationEnd } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-pendings',
@@ -19,6 +20,7 @@ export class PendingsComponent implements OnInit {
 
   extensions: any[]
   routeSubscription: Subscription
+  baseUrl: string
 
   config = {
     id: 'custom',
@@ -29,6 +31,7 @@ export class PendingsComponent implements OnInit {
 
   constructor(private extensionsService: ExtensionsService, private cdRef: ChangeDetectorRef, private router: Router) { 
     this.extensions = undefined
+    this.baseUrl = environment.baseUrl
   }
 
   ngOnInit() {

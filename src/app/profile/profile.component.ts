@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChildren, ElementRef, QueryList, ViewChild, Chan
 import { UserService } from '../services/user.service'
 import { ActivatedRoute } from '@angular/router';
 import { MouseWheelDirective } from '../helpers/mouse-wheel.directive';
-
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-profile',
@@ -20,6 +20,7 @@ export class ProfileComponent implements OnInit {
   user: any
   admin: boolean
   homeComponent: boolean
+  baseUrl: string
 
   @ViewChildren('extensionDescriptions') extensionDescriptions: QueryList<any>
   @ViewChildren('userInfo') userInfo: QueryList<any>
@@ -39,6 +40,7 @@ export class ProfileComponent implements OnInit {
 
   constructor(private wheelDirective: MouseWheelDirective, private userService: UserService, private route: ActivatedRoute, private cdRef: ChangeDetectorRef) {
     this.user = 'loading'
+    this.baseUrl = environment.baseUrl
   }
 
   ngOnInit() {
@@ -112,7 +114,8 @@ export class ProfileComponent implements OnInit {
   getUser(id: number){
     this.userService.getUser(id).subscribe(data => {
       this.user = data
-      this.config.totalItems = data['totalExtensions']
+      this.user.rating = this.user.rating.toFixed(2)
+      this.config.totalItems = data.totalExtensions
     })
   }
 }
