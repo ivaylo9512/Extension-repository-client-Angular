@@ -16,9 +16,9 @@ export class AuthService {
     if(localStorage.getItem('user') && localStorage.getItem('Authorization')){
       const user = JSON.parse(localStorage.getItem('user'))
       this.isLoggedIn = true
-      this.isAdmin = user['authorities'][0]['authority'] === 'ROLE_ADMIN'
-      this.id = user['id']
-      this.username = user['username']
+      this.isAdmin = user.role === 'ROLE_ADMIN'
+      this.id = user.id
+      this.username = user.username
     }else{
       this.isLoggedIn = false
       this.isAdmin = false
@@ -29,7 +29,9 @@ export class AuthService {
   login(username, password) {
     return this.httpClient.post('/api/users/login', {
       username,
-      password
+      password,
+    },{
+      observe: 'response'
     })
   }
 
@@ -42,10 +44,10 @@ export class AuthService {
   }
   
   setUserDetails(user){
-      this.isLoggedIn = true
-      this.isAdmin = user['authorities'][0]['authority'] === 'ROLE_ADMIN'
-      this.username = user['username']
-      this.id = user['id']
+    this.isLoggedIn = true
+    this.isAdmin = user.role === 'ROLE_ADMIN'
+    this.username = user.username
+    this.id = user.id
   }
 }
 

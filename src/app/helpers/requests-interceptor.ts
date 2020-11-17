@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-
 import { AuthService } from '../services/auth.service';
 
 @Injectable()
@@ -26,8 +25,7 @@ export class RequestsInterceptor implements HttpInterceptor {
             let error = err.error || err.statusText;
             if(err.status == 401 && error == "Jwt token has expired."){
                 this.authService.logout()
-                error = "Session has expired. Log again." 
-                return throwError(error)
+                return throwError("Session has expired. Log again." )
             }else{
                 return throwError(error)
             }

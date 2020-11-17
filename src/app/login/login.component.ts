@@ -21,13 +21,13 @@ export class LoginComponent implements OnInit {
   login(userForm : NgForm) {
     const username =  userForm.controls['username'].value
     const password = userForm.controls['password'].value
+
     this.authService.login(username, password).subscribe(
       data => {
-        localStorage.setItem('Authorization', data['token'])
-        localStorage.setItem('user', JSON.stringify(data))
-        this.authService.setUserDetails(data)
+        localStorage.setItem('Authorization', data.headers.get('Authorization'))
+        localStorage.setItem('user', JSON.stringify(data.body))
+        this.authService.setUserDetails(data.body)
         this.router.navigate([this.returnUrl])
-
       },
       err  => this.error = err
     );
