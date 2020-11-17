@@ -5,6 +5,7 @@ import { ExtensionsService } from '../services/extensions.service';
 import { FormControl } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MouseWheelDirective } from '../helpers/mouse-wheel.directive';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-edit',
@@ -36,7 +37,7 @@ export class EditComponent implements OnInit {
   initialGitHub: string
   gitHubError: string
   nameError: string
-
+  baseUrl: string
   tags: string[]
 
   constructor(private extensionService : ExtensionsService, private router : Router, private route : ActivatedRoute, private sanitizer: DomSanitizer, private cdRef: ChangeDetectorRef) {
@@ -47,7 +48,7 @@ export class EditComponent implements OnInit {
     this.nameAvailable = true
     this.logoURL = null
     this.coverURL = null
-
+    this.baseUrl = environment.baseUrl
   }
 
   ngOnInit() {

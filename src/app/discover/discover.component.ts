@@ -5,6 +5,7 @@ import { debounceTime, switchMap } from 'rxjs/operators';
 import { MouseWheelDirective } from '../helpers/mouse-wheel.directive';
 import { Subscription } from 'rxjs';
 import { Router, NavigationEnd } from '@angular/router';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-discover',
@@ -23,6 +24,7 @@ export class DiscoverComponent implements OnInit {
   search: FormControl = new FormControl()
   extensions: any[]
   routeSubscription: Subscription
+  baseUrl: string
 
   config = {
     id: 'custom',
@@ -35,7 +37,8 @@ export class DiscoverComponent implements OnInit {
 
   constructor(private extensionsService: ExtensionsService, private cdRef: ChangeDetectorRef, private router: Router) {
     this.extensions = undefined
-   }
+    this.baseUrl = environment.baseUrl
+  }
 
   ngOnInit() {
     this.findExtensions(1)
@@ -82,11 +85,11 @@ export class DiscoverComponent implements OnInit {
 
   fixOverflow(descriptions){
     descriptions.forEach((description, i) => {
-      description.nativeElement.innerHTML = this.extensions[i].description  
+      description.nativeElement.textContent = this.extensions[i].description  
        
       let height = description.nativeElement.offsetHeight
       let scrollHeight = description.nativeElement.scrollHeight
-      let text = description.nativeElement.innerHTML + '...'
+      let text = description.nativeElement.textContent + '...'
     
       while(height < scrollHeight){
         let words = text.split(' ')
@@ -94,7 +97,7 @@ export class DiscoverComponent implements OnInit {
         words.pop()
         text = words.join(' ') + '...'
         
-        description.nativeElement.innerHTML = text
+        description.nativeElement.textContent = text
         height = description.nativeElement.offsetHeight
         scrollHeight = description.nativeElement.scrollHeight
       }

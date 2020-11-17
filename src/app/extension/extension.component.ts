@@ -3,6 +3,7 @@ import { ExtensionsService } from '../services/extensions.service';
 import { ActivatedRoute, Params, Route, Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { MouseWheelDirective } from '../helpers/mouse-wheel.directive';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-extension',
@@ -21,9 +22,11 @@ export class ExtensionComponent implements OnInit {
   @ViewChild("slidingContainer") slidingContainer: ElementRef
 
   extension: any
+  baseUrl: string
 
   constructor(private extensionService: ExtensionsService, private router: Router, private authService: AuthService, private route: ActivatedRoute, private cdRef: ChangeDetectorRef ) {
     this.extension = []
+    this.baseUrl = environment.baseUrl
   }
 
   ngOnInit() {

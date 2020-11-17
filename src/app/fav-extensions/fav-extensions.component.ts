@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ViewChildren, QueryList, ElementRef, ChangeDetectorRef, HostListener } from '@angular/core';
 import { ExtensionsService } from '../services/extensions.service';
 import { AuthService } from '../services/auth.service';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-fav-extensions',
@@ -19,11 +20,13 @@ export class FavExtensionsComponent implements OnInit {
   extensions: any[]
   currentIndex: number
   initial: boolean
+  baseUrl: string
 
   constructor(private authService: AuthService, private extensionsService: ExtensionsService, private cdRef: ChangeDetectorRef) { 
     this.currentIndex = 0
     this.initial = true
     this.extensions = undefined
+    this.baseUrl = environment.baseUrl
   }
 
   ngOnInit() {

@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChildren, QueryList } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import { debounceTime } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-admin',
@@ -22,12 +23,15 @@ export class AdminComponent implements OnInit {
   github : any
   users : any[]
   foundUsers : any[]
-  search: FormControl = new FormControl()
+  search: FormControl
+  baseUrl: string
 
   constructor(private userService : UserService, private fb: FormBuilder) {
     this.users = undefined
     this.foundUsers = undefined
     this.github = undefined
+    this.search = new FormControl()
+    this.baseUrl = environment.baseUrl
 
     this.githubSettings = this.fb.group({
       username: [''],
